@@ -72,13 +72,13 @@ class Row extends Component {
 												border: 'none',
 												backgroundColor:
 													'rgba(0,0,255,0)',
-										  }
+                        }
 										: {
+                        resize:'none',
 												width: '100%',
 												borderRightColor: 'green',
 												borderRightStyle: 'solid',
 												borderRightWidth: '2px',
-												// padding: "10px",
 												height: '100%',
 												outline: 'none',
 												border: 'none',
