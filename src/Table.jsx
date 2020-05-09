@@ -1,102 +1,114 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
+import autosize from 'autosize'
 
 class Row extends Component {
-  state = {};
-  componentDidMount() {
-    this.setState({
-      left: this.props.left,
-      right: this.props.right,
-      counter: this.props.counter,
-    });
-  }
+	state = {}
+	componentDidMount() {
+		this.setState({
+			left: this.props.left,
+			right: this.props.right,
+			counter: this.props.counter,
+		})
+		autosize(document.querySelectorAll('textarea'))
+	}
 
-  render() {
-    return (
-      <React.Fragment>
-        <div className="outer">
-          <div
-            style={
-              this.state.active
-                ? {
-                    display: "flex",
-                    width: "100%",
-                    backgroundColor: "rgba(0,0,255,0.4)",
-                  }
-                : { display: "flex", width: "100%" }
-            }
-            className="OuterRow"
-          >
-            <div
-              style={{
-                textAlign: "center",
-                width: "4%",
-                padding: "10px 0",
-                border: "1px solid black",
-              }}
-              className="counter"
-            >
-              {this.state.counter}
-            </div>
-            <div
-              style={{
-                width: "48%",
-                padding: "10px",
-                border: "1px solid black",
-              }}
-              className="leftcont"
-            >
-              {this.state.left}
-            </div>
-            <div
-              style={{
-				width: "48%",
-                padding: "10px",
-                border: "1px solid black",
-              }}
-              className="rightcont"
-            >
-              <textarea
-                style={
-                  this.state.active
-                    ? {
-						
-                        width: "100%",
-                        padding: "10px",
-                        height: "100%",
-                        outline: "none",
-                        border: "none",
-                        backgroundColor: "rgba(0,0,255,0)",
-                      }
-                    : {
-						width: "100%",
-						borderRightColor : "black",
-						borderRightStyle: "solid",
-						borderRightWidth: "2px",
-                        // padding: "10px",	
-                        height: "100%",
-                        outline: "none",
-                        border: "none",
-                      }
-                }
-                type="text"
-                onBlurCapture={() => this.setState({ active: false })}
-                onFocusCapture={() => this.setState({ active: true })}
-              />
-            </div>
-          </div>
-        </div>
-      </React.Fragment>
-    );
-  }
+	render() {
+		return (
+			<React.Fragment>
+				<div className='outer'>
+					<div
+						style={
+							this.state.active
+								? {
+										display: 'flex',
+										width: '100%',
+										backgroundColor: 'rgba(0,0,255,0.4)',
+								  }
+								: { display: 'flex', width: '100%' }
+						}
+						className={`OuterRow ${
+							this.props.counter % 2 === 0 ? 'Odd' : 'Even'
+						}`}
+					>
+						<div
+							style={{
+								textAlign: 'center',
+								width: '4%',
+								padding: '10px 0',
+								border: '1px solid black',
+							}}
+							className='counter'
+						>
+							{this.state.counter}
+						</div>
+						<div
+							style={{
+								width: '48%',
+								padding: '10px',
+								border: '1px solid black',
+								textAlign: 'left',
+							}}
+							className='leftcont'
+						>
+							{this.state.left}
+						</div>
+						<div
+							style={{
+								width: '48%',
+								padding: '10px',
+								border: '1px solid black',
+								overflow: 'hidden',
+							}}
+							className='rightcont'
+						>
+							<textarea
+								style={
+									this.state.active
+										? {
+												width: '100%',
+												padding: '10px',
+												height: '100%',
+												outline: 'none',
+												border: 'none',
+												backgroundColor:
+													'rgba(0,0,255,0)',
+										  }
+										: {
+												width: '100%',
+												borderRightColor: 'green',
+												borderRightStyle: 'solid',
+												borderRightWidth: '2px',
+												// padding: "10px",
+												height: '100%',
+												outline: 'none',
+												border: 'none',
+												backgroundColor:
+													'rgba(0,0,255,0)',
+										  }
+								}
+								type='text'
+								onBlurCapture={() =>
+									this.setState({ active: false })
+								}
+								onFocusCapture={() =>
+									this.setState({ active: true })
+								}
+							/>
+						</div>
+					</div>
+				</div>
+			</React.Fragment>
+		)
+	}
 }
 
 export default class SplitText extends Component {
-  constructor() {
-    super();
-    this.update = this.update.bind(this);
-    this.state = {
-      paragraphs: [""],
-      inputarea: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ornare odio non scelerisque finibus. Donec at erat ac libero finibus fermentum id lacinia orci. Suspendisse interdum libero mollis, vulputate lectus laoreet, vehicula quam. Vestibulum velit felis, consequat ac ullamcorper vitae, malesuada nec mi. Maecenas venenatis ligula vel facilisis semper. Vestibulum rhoncus purus et facilisis rhoncus. Quisque eu sapien feugiat tellus interdum maximus id eget turpis. Ut laoreet ipsum nisi, eget vehicula tellus aliquet eget. Donec euismod lorem et vestibulum faucibus. Fusce euismod tempor diam, volutpat molestie nibh sollicitudin vitae. Cras nec finibus nisl.
+	constructor() {
+		super()
+		this.update = this.update.bind(this)
+		this.state = {
+			paragraphs: [''],
+			inputarea: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ornare odio non scelerisque finibus. Donec at erat ac libero finibus fermentum id lacinia orci. Suspendisse interdum libero mollis, vulputate lectus laoreet, vehicula quam. Vestibulum velit felis, consequat ac ullamcorper vitae, malesuada nec mi. Maecenas venenatis ligula vel facilisis semper. Vestibulum rhoncus purus et facilisis rhoncus. Quisque eu sapien feugiat tellus interdum maximus id eget turpis. Ut laoreet ipsum nisi, eget vehicula tellus aliquet eget. Donec euismod lorem et vestibulum faucibus. Fusce euismod tempor diam, volutpat molestie nibh sollicitudin vitae. Cras nec finibus nisl.
 
 Nullam et nisi tortor. Maecenas euismod nunc aliquet urna blandit laoreet. Praesent ut tortor nisi. Integer et ex mauris. Quisque eu metus sed dui viverra molestie et eget libero. Sed egestas leo quis sem ultricies mollis. Fusce eget efficitur tellus, iaculis molestie nisi.
         
@@ -115,81 +127,88 @@ Mauris fermentum purus tellus, eu volutpat turpis viverra in. Proin pulvinar urn
 Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum dapibus est in odio luctus varius. Vivamus a eros quam. Suspendisse in felis in neque sagittis viverra. Duis vestibulum et lorem non egestas. Nam efficitur nisl non tellus cursus feugiat. Suspendisse sapien nisi, interdum quis ex id, malesuada commodo lorem. Aliquam lobortis mauris quis tortor imperdiet, eget mollis quam feugiat. Etiam in tellus ex. Cras molestie lacinia vulputate. Nulla et elit volutpat, hendrerit ipsum sit amet, dapibus lorem.
         
 Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere purus tempus quis. Suspendisse auctor, nunc eget ornare vulputate, quam sapien dapibus sem, rutrum sagittis velit turpis sed augue. Maecenas convallis nulla lobortis, tempor turpis sit amet, pharetra purus. Sed commodo placerat fringilla. In hac habitasse platea dictumst. Proin pharetra et ex a fringilla. Phasellus eros justo, viverra sit amet rhoncus at, dictum id lectus. Nam tincidunt eros non sagittis blandit. Nunc in venenatis erat. Vestibulum dictum velit sit amet commodo ornare.`,
-      count: 0,
-      convert: [],
-    };
-  }
+			count: 0,
+			convert: [],
+		}
+	}
 
-  componentDidMount() {
-    // document.getElementById('after').style.display = 'none'
-  }
+	componentDidMount() {
+		// document.getElementById('after').style.display = 'none'
+	}
 
-  update() {
-    let paragraphs = this.state.inputarea.trim().split("\n");
+	update() {
+		let paragraphs = this.state.inputarea.trim().split('\n')
 
-    this.setState({ paragraphs: paragraphs });
-    let convert = [];
-    paragraphs.forEach((element) => {
-      let paragraph = { lines: [] };
-      let lines = element.trim().split(".");
-      lines.forEach((line) => {
-        line = line.trim();
-        if (line !== "") paragraph.lines.push(line);
-      });
-      if (paragraph.lines.length > 0) convert.push(paragraph);
-    });
-    this.setState({ convert: convert });
-    document.getElementById("after").style.display = "block";
-    document.getElementById("before").style.display = "none";
-    document.getElementById("before").style.visibility = "hidden";
-    this.forceUpdate();
+		this.setState({ paragraphs: paragraphs })
+		let convert = []
+		paragraphs.forEach((element) => {
+			let paragraph = { lines: [] }
+			let lines = element.trim().split('.')
+			lines.forEach((line) => {
+				line = line.trim()
+				if (line !== '') paragraph.lines.push(line)
+			})
+			if (paragraph.lines.length > 0) convert.push(paragraph)
+		})
+		this.setState({ convert: convert })
+		document.getElementById('after').style.display = 'block'
+		document.getElementById('before').style.display = 'none'
+		document.getElementById('before').style.visibility = 'hidden'
+		this.forceUpdate()
 
-    // const row = document.createElement('Row')
-    // row.left = 'hello'
-    // document.getElementById('after').appendChild(row)
-  }
+		// const row = document.createElement('Row')
+		// row.left = 'hello'
+		// document.getElementById('after').appendChild(row)
+	}
 
-  render() {
-    return (
-      <React.Fragment >
-		  <div className="outerPehle">
-
-		
-        <div id="before">
-          <textarea
-            name="inputarea"
-            id="inputarea"
-            cols="60"
-            rows="40"
-            onChange={(e) => this.setState({ inputarea: e.target.value })}
-            value={this.state.inputarea}
-          ></textarea>
-          <br />
-          <input type="submit" value="Submit" onClick={() => this.update()} />
-        </div>
-        <div id="after" className="after">
-          {this.state.convert.map((elem) => {
-            let counter = 0;
-            return elem.lines.map((line) => {
-              counter += 1;
-              if (counter === 1)
-                return (
-                  <React.Fragment>
-                    <br />
-                    <Row counter={counter} left={line}></Row>
-                  </React.Fragment>
-                );
-              return <Row counter={counter} left={line}></Row>;
-            });
-          })}
-        </div>
-        {/* {this.state.convert === [] ? (
+	render() {
+		return (
+			<React.Fragment>
+				<div className='outerPehle' style={{ margin: '2rem 0' }}>
+					<div id='before'>
+						<textarea
+							name='inputarea'
+							id='inputarea'
+							cols='60'
+							rows='40'
+							onChange={(e) =>
+								this.setState({ inputarea: e.target.value })
+							}
+							value={this.state.inputarea}
+						></textarea>
+						<br />
+						<input
+							type='submit'
+							value='Submit'
+							onClick={() => this.update()}
+						/>
+					</div>
+					<div id='after' className='after'>
+						{this.state.convert.map((elem) => {
+							let counter = 0
+							return elem.lines.map((line) => {
+								counter += 1
+								if (counter === 1)
+									return (
+										<React.Fragment>
+											<br />
+											<Row
+												counter={counter}
+												left={line}
+											></Row>
+										</React.Fragment>
+									)
+								return <Row counter={counter} left={line}></Row>
+							})
+						})}
+					</div>
+					{/* {this.state.convert === [] ? (
 					''
 				) : (
 					<DisplayText convert={this.state.convert}></DisplayText>
 				)} */}
 				</div>
-      </React.Fragment>
-    );
-  }
+			</React.Fragment>
+		)
+	}
 }

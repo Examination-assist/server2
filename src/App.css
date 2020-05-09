@@ -15,3 +15,10 @@
   width:100%;
   /* visibility: hidden; */
 }
+
+.Odd{
+  background-color: rgba(153, 205, 50, 0.4);
+}
+.Even{
+  background-color: rgba(46, 139, 86, 0.4);
+}
