@@ -1,0 +1,17 @@
+.outer{
+  position: relative;
+  /* top: 50%; */
+  margin-left:50%;
+  transform: translateX(-50%);
+  /* background-color: blanchedalmond; */
+}
+/* .leftcont:nth-child(even) {background-color: white;} */
+
+.pehle{
+  width:100%;
+}
+.outerPehle{
+  text-align: center;
+  width:100%;
+  /* visibility: hidden; */
+}
