@@ -4,6 +4,64 @@ import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 import axios from 'axios'
 
+let fromData = [
+	{
+		lines: [
+			'The shutting down of several newspapers’ print editions amid the coronavirus lockdown has magnified the problem of Google and Facebook snatching up news content from media organisations and making a profit for themselves.',
+			'A pittance is paid to the publishers through Google’s and Facebook’s advertisements on the web pages it disseminates.',
+		],
+	},
+	{
+		lines: [
+			'In fact, once the duopoly of Google and Facebook was established over the years, news organisations were made to compete with each other to get on Google News’ top results by paying to be displayed prominently.',
+			'Google also introduced Google amp, whereby the web page would load faster but with a Google dominant url and Google ads served along with the content.',
+		],
+	},
+	{
+		lines: [
+			'Similarly, Facebook forced news websites to accept a “revenue-sharing” model by which the social media outfit would pick up and share news content.',
+			'The condition was that Facebook would be allowed to post advertisements along with it, a percentage of whose revenue would go to the media outfit.',
+		],
+	},
+	{
+		lines: [
+			'Granted that Google and Facebook give news content legs.',
+			'They take the story beyond the geographical limits of the newspaper’s reach.',
+			'But if the disseminator makes nearly all the profits and shares mere peanuts with the producer of the content, how long will news production survive?',
+		],
+	},
+	{
+		lines: [
+			'This question was not seriously asked by news organisations scrambling to cope with finding a revenue model on the internet in the early 2000s and getting nowhere, and therefore trying to best each other to get more clicks and shares by paying Google and Facebook.',
+			'But now with no print advertising in the time of corona to cushion losses from having their content shared around for free, governments are stepping in on behalf of news organisations and telling Google and Facebook to play fair, and share.',
+		],
+	},
+]
+
+let dataConvertTest = [
+	[
+		'कोरोनोवायरस लॉकडाउन के बीच कई अखबारों के प्रिंट संस्करणों को बंद करने से Google और फेसबुक की समस्या बढ़ गई है और मीडिया संगठनों से समाचार सामग्री छीनकर अपने लिए लाभ कमा रहे हैं।',
+		'प्रकाशकों को Google के फेसबुक और फेसबुक के विज्ञापनों के माध्यम से भुगतान किया जाता है, यह उन वेब पेजों पर प्रसारित होता है।',
+	],
+	[
+		'वास्तव में, एक बार जब Google और फेसबुक का द्वंद्व स्थापित हो गया था, तब समाचार संगठनों को एक-दूसरे के साथ प्रतिस्पर्धा करने के लिए Google समाचार के शीर्ष परिणामों को प्रमुखता से प्रदर्शित करने के लिए बनाया गया था।',
+		'Google ने Google amp भी पेश किया, जिससे वेब पेज तेजी से लोड होगा लेकिन Google प्रमुख url और Google विज्ञापनों की सामग्री के साथ सेवा की जाएगी।',
+	],
+	[
+		'इसी तरह, फेसबुक ने समाचार वेबसाइटों को एक "राजस्व-साझाकरण" मॉडल स्वीकार करने के लिए मजबूर किया, जिसके द्वारा सोशल मीडिया संगठन समाचार सामग्री को उठाएगा और साझा करेगा।',
+		'शर्त यह थी कि फेसबुक को इसके साथ ही विज्ञापन पोस्ट करने की अनुमति होगी, जिसका प्रतिशत मीडिया के संगठन में जाएगा।',
+	],
+	[
+		'दी है कि Google और Facebook समाचार सामग्री पैर देते हैं।',
+		'वे समाचार पत्र की पहुंच की भौगोलिक सीमाओं से परे की कहानी लेते हैं।',
+		'लेकिन अगर प्रसारकर्ता लगभग सभी लाभ कमाते हैं और सामग्री के निर्माता के साथ महज मूंगफली साझा करते हैं, तो समाचार उत्पादन कब तक जीवित रहेगा?',
+	],
+	[
+		'यह सवाल गंभीरता से नहीं पूछा गया था कि समाचार संगठनों द्वारा 2000 के दशक की शुरुआत में इंटरनेट पर एक राजस्व मॉडल खोजने और कहीं नहीं मिलने का सामना करने के लिए, और इसलिए Google और फेसबुक को भुगतान करके अधिक क्लिक और शेयर प्राप्त करने के लिए एक दूसरे को सबसे अच्छा करने की कोशिश कर रहा था।',
+		'लेकिन अब कोरोना के समय में कोई प्रिंट विज्ञापन नहीं होने के कारण, उनकी सामग्री को मुफ्त में साझा करने से लेकर गद्दी खोने तक, सरकारें समाचार संगठनों की ओर से कदम बढ़ा रही हैं और Google और फेसबुक को निष्पक्ष और साझा करने के लिए कह रही हैं।',
+	],
+]
+
 const options = [
 	'Hindi',
 	'Bengali',
@@ -175,6 +233,7 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 		this.onChange = this.onChange.bind(this)
 		this.uploadFile = this.uploadFile.bind(this)
 		this.updateRow = this.updateRow.bind(this)
+		this.save = this.save.bind(this)
 	}
 
 	componentDidMount() {
@@ -202,6 +261,8 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 			lines.forEach((line) => {
 				line = line.trim()
 				if (line !== '') {
+					if (line[line.length - 1] !== '?')
+						if (line[line.length - 1] !== '!') line += '.'
 					paragraph.lines.push(line)
 					line_converted.push([])
 				}
@@ -212,8 +273,10 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 			}
 		})
 
-		this.setState({ converted: converted }, () => console.log(converted))
-		this.setState({ convert: convert })
+		this.setState({ converted: converted })
+		this.setState({ convert: convert }, () =>
+			console.log(JSON.stringify(this.state.convert))
+		)
 		document.getElementById('after').style.display = 'block'
 		document.getElementById('before').style.display = 'none'
 		document.getElementById('before').style.visibility = 'hidden'
@@ -228,22 +291,25 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 		let res = await this.uploadFile(this.state.file)
 		this.setState({ data: res.data.text })
 		this.setState({ inputarea: res.data.text })
-		console.log(res.data.text,res)
+		console.log(res.data.text, res)
 	}
 	onChange(e) {
 		this.setState({ file: e.target.files[0] })
 	}
 	async uploadFile(file) {
-		
 		const formData = new FormData()
 		formData.append('file', file)
 		formData.append('filename', file.name)
-		console.log(formData);
+		console.log(formData)
 		return await axios.post(this.UPLOAD_ENDPOINT, formData, {
 			headers: {
 				'content-type': 'multipart/form-data',
 			},
 		})
+	}
+
+	save(){
+		
 	}
 
 	// handleDropDown(e) {
@@ -328,6 +394,7 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 				) : (
 					<DisplayText convert={this.state.convert}></DisplayText>
 				)} */}
+				<input type="submit" value="Save" onClick={()=>this.save()}/>
 				</div>
 			</React.Fragment>
 		)
