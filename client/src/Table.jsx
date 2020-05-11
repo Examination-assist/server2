@@ -43,8 +43,9 @@ class Row extends Component {
 										display: 'flex',
 										width: '100%',
 										backgroundColor: `${
-											this.colors[this.props.counter % 2]
+											this.colors[this.props.counter % 2]	
 										}`,
+										fontWeight:"600"
 								  }
 						}
 						className={`OuterRow `}
