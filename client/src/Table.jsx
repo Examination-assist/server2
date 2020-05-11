@@ -26,7 +26,7 @@ class Row extends Component {
 		})
 		autosize(document.querySelectorAll('textarea'))
 	}
-	colors = ['#4040FF', '#FF9445', '#2EE8CE', '#E82EAD', '#FF8A33']
+	colors = ['#2EC1E8', '#3377FF']
 	render() {
 		return (
 			<React.Fragment>
@@ -43,7 +43,7 @@ class Row extends Component {
 										display: 'flex',
 										width: '100%',
 										backgroundColor: `${
-											this.colors[this.props.counter % 5]
+											this.colors[this.props.counter % 2]
 										}`,
 								  }
 						}
