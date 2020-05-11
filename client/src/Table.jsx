@@ -26,7 +26,7 @@ class Row extends Component {
 		})
 		autosize(document.querySelectorAll('textarea'))
 	}
-	colors = ['#FF4D7E', '#858BFf', '#78FFBF', '#FF6700', '#BDFF78']
+	colors = ['#4040FF', '#FF9445', '#2EE8CE', '#E82EAD', '#FF8A33']
 	render() {
 		return (
 			<React.Fragment>
