@@ -136,7 +136,7 @@ class Row extends Component {
 }
 
 export default class SplitText extends Component {
-	UPLOAD_ENDPOINT = 'http://127.0.0.1:8080/'
+	UPLOAD_ENDPOINT = 'http://localhost:8000/api/upload'
 
 	constructor() {
 		super()
@@ -235,7 +235,7 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 	}
 	async uploadFile(file) {
 		const formData = new FormData()
-		formData.append('avatar', file)
+		formData.append('file', file)
 		return await axios.post(this.UPLOAD_ENDPOINT, formData, {
 			headers: {
 				'content-type': 'multipart/form-data',
