@@ -26,6 +26,9 @@ class Row extends Component {
 		})
 		autosize(document.querySelectorAll('textarea'))
 	}
+
+	// colors = ['#4040FF', '#FF9445', '#2EE8CE', '#E82EAD', '#FF8A33']
+	
 	colors = ['#4040FF', '#FF9445', '#2EE8CE', '#E82EAD', '#FF8A33']
 	render() {
 		return (
