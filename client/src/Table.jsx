@@ -104,9 +104,9 @@ class Row extends Component {
 										: {
 												resize: 'none',
 												width: '100%',
-												borderRightColor: 'green',
-												borderRightStyle: 'solid',
-												borderRightWidth: '2px',
+												// borderRightColor: 'green',
+												// borderRightStyle: 'solid',
+												// borderRightWidth: '2px',
 												height: '100%',
 												outline: 'none',
 												border: 'none',
@@ -116,7 +116,7 @@ class Row extends Component {
 								}
 								type='text'
 								onBlurCapture={(e) => {
-									this.props.updateRow(this.state.paragraph,this.state.counter-1,e.target.value)
+										this.props.updateRow(this.state.paragraph,this.state.counter-1,e.target.value)
 									this.setState({ active: false })
 								}}
 								onFocusCapture={() =>
