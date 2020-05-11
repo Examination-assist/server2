@@ -26,10 +26,7 @@ class Row extends Component {
 		})
 		autosize(document.querySelectorAll('textarea'))
 	}
-
-	// colors = ['#4040FF', '#FF9445', '#2EE8CE', '#E82EAD', '#FF8A33']
-	
-	colors = ['#4040FF', '#FF9445', '#2EE8CE', '#E82EAD', '#FF8A33']
+	colors = ['#2EC1E8', '#3377FF']
 	render() {
 		return (
 			<React.Fragment>
@@ -46,7 +43,7 @@ class Row extends Component {
 										display: 'flex',
 										width: '100%',
 										backgroundColor: `${
-											this.colors[this.props.counter % 5]
+											this.colors[this.props.counter % 2]
 										}`,
 								  }
 						}
@@ -223,15 +220,15 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 					<button type='submit'>Upload File</button>
 				</form>
 				<div className='outerPehle' style={{ margin: '2rem 0' }}>
-		<div className='dropDown'>
-			<Dropdown
-				className='dropdownInner'
-				options={options}
-				onChange={this._onSelect}
-				value={defaultOption}
-				placeholder='Select Language'
-			/>
-		</div>
+					<div className='dropDown'>
+						<Dropdown
+							className='dropdownInner'
+							options={options}
+							onChange={this._onSelect}
+							value={defaultOption}
+							placeholder='Select Language'
+						/>
+					</div>
 					<div id='before'>
 						<textarea
 							name='inputarea'
