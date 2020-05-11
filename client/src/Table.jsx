@@ -23,6 +23,7 @@ class Row extends Component {
 			left: this.props.left,
 			right: this.props.right,
 			counter: this.props.counter,
+			paragraph:this.props.paragraph
 		})
 		autosize(document.querySelectorAll('textarea'))
 	}
@@ -114,9 +115,10 @@ class Row extends Component {
 										  }
 								}
 								type='text'
-								onBlurCapture={() =>
+								onBlurCapture={(e) => {
+									this.props.updateRow(this.state.paragraph,this.state.counter-1,e.target.value)
 									this.setState({ active: false })
-								}
+								}}
 								onFocusCapture={() =>
 									this.setState({ active: true })
 								}
@@ -168,15 +170,20 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 		this.onSubmit = this.onSubmit.bind(this)
 		this.onChange = this.onChange.bind(this)
 		this.uploadFile = this.uploadFile.bind(this)
+		this.updateRow = this.updateRow.bind(this)
 	}
 
 	componentDidMount() {
 		// document.getElementById('after').style.display = 'none'
 	}
 
-	// updateRow(){
-	// 	conve
-	// }
+	updateRow(para, count, value) {
+		let converted = this.state.converted
+		converted[para][count] = value
+		this.setState({ converted: converted }, () =>
+			console.log(this.state.converted)
+		)
+	}
 
 	update() {
 		let paragraphs = this.state.inputarea.trim().split('\n')
@@ -294,6 +301,7 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 												paragraph={this.paragraph}
 												counter={counter}
 												left={line}
+												updateRow={this.updateRow}
 											></Row>
 										</React.Fragment>
 									)
@@ -302,6 +310,7 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 										paragraph={this.paragraph}
 										counter={counter}
 										left={line}
+										updateRow={this.updateRow}
 									></Row>
 								)
 							})
