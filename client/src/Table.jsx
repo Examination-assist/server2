@@ -245,7 +245,7 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 	// 	this.setState({ language: e.target.value });
 	// 	console.log(e.target.language)
 	//   }
-	paragraph = 0
+	paragraph = -1
 
 	render() {
 		return (
