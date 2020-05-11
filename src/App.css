@@ -23,3 +23,9 @@
 .Even{
   background-color: rgba(46, 139, 86, 0.4);
 }
+
+.dropdownInner{ 
+  width:60%;
+  margin-left: 20vw;
+  margin-right: 20vw;
+}

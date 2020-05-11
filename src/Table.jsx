@@ -1,5 +1,16 @@
 import React, { Component } from 'react'
 import autosize from 'autosize'
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+
+
+
+const options = [
+	"Hindi", "Bengali", "Gujarati", "Kannada", "Malayalam", "Marathi", "Tamil" , "Telugu"
+  ];
+  const defaultOption = options[0];
+
+
 
 class Row extends Component {
 	state = {}
@@ -15,7 +26,9 @@ class Row extends Component {
 	render() {
 		return (
 			<React.Fragment>
+
 				<div className='outer'>
+
 					<div
 						style={
 							this.state.active
@@ -192,10 +205,17 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 									return (
 										<React.Fragment>
 											<br />
+											<div className="dropDown">
+
+											<Dropdown className="dropdownInner" options={options} onChange={this._onSelect} value={defaultOption} placeholder="Select Language" />;
+											</div>
+
 											<Row
 												counter={counter}
 												left={line}
-											></Row>
+											>
+
+											</Row>
 										</React.Fragment>
 									)
 								return <Row counter={counter} left={line}></Row>
