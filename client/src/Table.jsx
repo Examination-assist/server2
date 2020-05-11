@@ -23,7 +23,7 @@ class Row extends Component {
 			left: this.props.left,
 			right: this.props.right,
 			counter: this.props.counter,
-			paragraph:this.props.paragraph
+			paragraph: this.props.paragraph,
 		})
 		autosize(document.querySelectorAll('textarea'))
 	}
@@ -116,7 +116,11 @@ class Row extends Component {
 								}
 								type='text'
 								onBlurCapture={(e) => {
-									this.props.updateRow(this.state.paragraph,this.state.counter-1,e.target.value)
+									this.props.updateRow(
+										this.state.paragraph,
+										this.state.counter - 1,
+										e.target.value
+									)
 									this.setState({ active: false })
 								}}
 								onFocusCapture={() =>
@@ -181,9 +185,7 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 		// console.log(para,count)
 		let converted = this.state.converted
 		converted[para][count] = value
-		this.setState({ converted: converted }, () =>
-			console.log(this.state.converted)
-		)
+		this.setState({ converted: converted })
 	}
 
 	update() {
