@@ -16,6 +16,7 @@ const options = [
 ]
 // const defaultOption = options[0]
 
+
 class Row extends Component {
 	state = {}
 	componentDidMount() {
@@ -163,6 +164,7 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
 Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere purus tempus quis. Suspendisse auctor, nunc eget ornare vulputate, quam sapien dapibus sem, rutrum sagittis velit turpis sed augue. Maecenas convallis nulla lobortis, tempor turpis sit amet, pharetra purus. Sed commodo placerat fringilla. In hac habitasse platea dictumst. Proin pharetra et ex a fringilla. Phasellus eros justo, viverra sit amet rhoncus at, dictum id lectus. Nam tincidunt eros non sagittis blandit. Nunc in venenatis erat. Vestibulum dictum velit sit amet commodo ornare.`,
 			count: 0,
 			convert: [],
+			converted:[]
 		}
 		this.onSubmit = this.onSubmit.bind(this)
 		this.onChange = this.onChange.bind(this)
@@ -172,6 +174,10 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 	componentDidMount() {
 		// document.getElementById('after').style.display = 'none'
 	}
+
+	// updateRow(){
+	// 	conve
+	// }
 
 	update() {
 		let paragraphs = this.state.inputarea.trim().split('\n')
@@ -187,6 +193,11 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 			})
 			if (paragraph.lines.length > 0) convert.push(paragraph)
 		})
+		let converted=[]
+		for (let index = 0; index < paragraphs; index++) {
+			converted.push([])
+		}
+		this.setState({converted:converted},()=>console.log(converted))
 		this.setState({ convert: convert })
 		document.getElementById('after').style.display = 'block'
 		document.getElementById('before').style.display = 'none'
@@ -221,6 +232,7 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 	// 	this.setState({ language: e.target.value });
 	// 	console.log(e.target.language)
 	//   }
+	paragraph = 0
 
 	render() {
 		return (
@@ -274,13 +286,21 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 										<React.Fragment>
 											<br />
 											<Row
+												paragraph={this.paragraph}
 												counter={counter}
 												left={line}
 											></Row>
 										</React.Fragment>
 									)
-								return <Row counter={counter} left={line}></Row>
+								return (
+									<Row
+										paragraph={this.paragraph}
+										counter={counter}
+										left={line}
+									></Row>
+								)
 							})
+							this.paragraph += 1
 						})}
 					</div>
 					{/* {this.state.convert === [] ? (
