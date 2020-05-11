@@ -216,7 +216,7 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 		return (
 			<React.Fragment>
 				<form onSubmit={this.onSubmit}>
-					{/* <h1> React File Upload Example</h1> */}
+					<h1> React File Upload Example</h1>
 					<input type='file' onChange={this.onChange} />
 					<button type='submit'>Upload File</button>
 				</form>
