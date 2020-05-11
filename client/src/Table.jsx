@@ -45,7 +45,7 @@ class Row extends Component {
 										backgroundColor: `${
 											this.colors[this.props.counter % 2]	
 										}`,
-										fontWeight:"600"
+										fontWeight:"500"
 								  }
 						}
 						className={`OuterRow `}
