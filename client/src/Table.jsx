@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
 import autosize from 'autosize'
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
-
+import Dropdown from 'react-dropdown'
+import 'react-dropdown/style.css'
+import axios from 'axios'
 
 
 const options = [
-	"Hindi", "Bengali", "Gujarati", "Kannada", "Malayalam", "Marathi", "Tamil" , "Telugu"
-  ];
-  const defaultOption = options[0];
-
-
+	'Hindi',
+	'Bengali',
+	'Gujarati',
+	'Kannada',
+	'Malayalam',
+	'Marathi',
+	'Tamil',
+	'Telugu',
+]
+const defaultOption = options[0]
 
 class Row extends Component {
 	state = {}
@@ -26,9 +31,7 @@ class Row extends Component {
 	render() {
 		return (
 			<React.Fragment>
-
 				<div className='outer'>
-
 					<div
 						style={
 							this.state.active
@@ -116,10 +119,14 @@ class Row extends Component {
 }
 
 export default class SplitText extends Component {
+	UPLOAD_ENDPOINT = 'http://127.0.0.1:8080/'
+
 	constructor() {
 		super()
 		this.update = this.update.bind(this)
 		this.state = {
+			file: null,
+			data: '',
 			paragraphs: [''],
 			inputarea: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ornare odio non scelerisque finibus. Donec at erat ac libero finibus fermentum id lacinia orci. Suspendisse interdum libero mollis, vulputate lectus laoreet, vehicula quam. Vestibulum velit felis, consequat ac ullamcorper vitae, malesuada nec mi. Maecenas venenatis ligula vel facilisis semper. Vestibulum rhoncus purus et facilisis rhoncus. Quisque eu sapien feugiat tellus interdum maximus id eget turpis. Ut laoreet ipsum nisi, eget vehicula tellus aliquet eget. Donec euismod lorem et vestibulum faucibus. Fusce euismod tempor diam, volutpat molestie nibh sollicitudin vitae. Cras nec finibus nisl.
 
@@ -143,6 +150,9 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 			count: 0,
 			convert: [],
 		}
+		this.onSubmit = this.onSubmit.bind(this)
+		this.onChange = this.onChange.bind(this)
+		this.uploadFile = this.uploadFile.bind(this)
 	}
 
 	componentDidMount() {
@@ -173,10 +183,36 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 		// row.left = 'hello'
 		// document.getElementById('after').appendChild(row)
 	}
+	async onSubmit(e) {
+		e.preventDefault()
+		let res = await this.uploadFile(this.state.file)
+		this.setState({ data: res.data.text })
+		this.setState({inputarea:res.data.text})
+		console.log(res.data.text)
+	}
+	onChange(e) {
+		this.setState({ file: e.target.files[0] })
+	}
+	async uploadFile(file) {
+		const formData = new FormData()
+
+		formData.append('avatar', file)
+
+		return await axios.post(this.UPLOAD_ENDPOINT, formData, {
+			headers: {
+				'content-type': 'multipart/form-data',
+			},
+		})
+	}
 
 	render() {
 		return (
 			<React.Fragment>
+				<form onSubmit={this.onSubmit}>
+					{/* <h1> React File Upload Example</h1> */}
+					<input type='file' onChange={this.onChange} />
+					<button type='submit'>Upload File</button>
+				</form>
 				<div className='outerPehle' style={{ margin: '2rem 0' }}>
 					<div id='before'>
 						<textarea
@@ -205,17 +241,21 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 									return (
 										<React.Fragment>
 											<br />
-											<div className="dropDown">
-
-											<Dropdown className="dropdownInner" options={options} onChange={this._onSelect} value={defaultOption} placeholder="Select Language" />;
+											<div className='dropDown'>
+												<Dropdown
+													className='dropdownInner'
+													options={options}
+													onChange={this._onSelect}
+													value={defaultOption}
+													placeholder='Select Language'
+												/>
+												
 											</div>
 
 											<Row
 												counter={counter}
 												left={line}
-											>
-
-											</Row>
+											></Row>
 										</React.Fragment>
 									)
 								return <Row counter={counter} left={line}></Row>
