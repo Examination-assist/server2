@@ -4,7 +4,6 @@ import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 import axios from 'axios'
 
-
 const options = [
 	'Hindi',
 	'Bengali',
@@ -27,7 +26,7 @@ class Row extends Component {
 		})
 		autosize(document.querySelectorAll('textarea'))
 	}
-
+	colors = ['red', 'blue', 'green', 'yellow', 'purple']
 	render() {
 		return (
 			<React.Fragment>
@@ -38,13 +37,20 @@ class Row extends Component {
 								? {
 										display: 'flex',
 										width: '100%',
-										backgroundColor: 'rgba(0,0,255,0.4)',
+										// backgroundColor: 'rgba(0,0,255,0.4)',
 								  }
-								: { display: 'flex', width: '100%' }
+								: {
+										display: 'flex',
+										width: '100%',
+										backgroundColor: `${
+											this.colors[this.props.counter % 5]
+										}`,
+								  }
 						}
-						className={`OuterRow ${
-							this.props.counter % 2 === 0 ? 'Odd' : 'Even'
-						}`}
+						className={`OuterRow `}
+						// ${
+						// 	this.props.counter % 2 === 0 ? 'Odd' : 'Even'
+						// }
 					>
 						<div
 							style={{
@@ -187,7 +193,7 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 		e.preventDefault()
 		let res = await this.uploadFile(this.state.file)
 		this.setState({ data: res.data.text })
-		this.setState({inputarea:res.data.text})
+		this.setState({ inputarea: res.data.text })
 		console.log(res.data.text)
 	}
 	onChange(e) {
@@ -249,7 +255,6 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 													value={defaultOption}
 													placeholder='Select Language'
 												/>
-												
 											</div>
 
 											<Row
