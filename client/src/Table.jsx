@@ -178,6 +178,7 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 	}
 
 	updateRow(para, count, value) {
+		// console.log(para,count)
 		let converted = this.state.converted
 		converted[para][count] = value
 		this.setState({ converted: converted }, () =>
@@ -290,6 +291,7 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 					</div>
 					<div id='after' className='after'>
 						{this.state.convert.map((elem) => {
+							this.paragraph += 1
 							let counter = 0
 							return elem.lines.map((line) => {
 								counter += 1
@@ -314,7 +316,6 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 									></Row>
 								)
 							})
-							this.paragraph += 1
 						})}
 					</div>
 					{/* {this.state.convert === [] ? (
