@@ -228,14 +228,17 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 		let res = await this.uploadFile(this.state.file)
 		this.setState({ data: res.data.text })
 		this.setState({ inputarea: res.data.text })
-		console.log(res.data.text)
+		console.log(res.data.text,res)
 	}
 	onChange(e) {
 		this.setState({ file: e.target.files[0] })
 	}
 	async uploadFile(file) {
+		
 		const formData = new FormData()
 		formData.append('file', file)
+		formData.append('filename', file.name)
+		console.log(formData);
 		return await axios.post(this.UPLOAD_ENDPOINT, formData, {
 			headers: {
 				'content-type': 'multipart/form-data',
