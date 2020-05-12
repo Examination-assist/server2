@@ -64,7 +64,9 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
         ],
-
+        'links'=>[
+            public_path('uploads') => storage_path('app/public')
+        ]
     ],
 
     /*

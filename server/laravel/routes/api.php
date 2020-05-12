@@ -197,12 +197,12 @@ Route::post('/convert', function (Request $request) {
 
     $time = time();
 
-    $objWriter_s->save(public_path('word_files') . '/' . 's' . $time . '.docx');
-    $objWriter_both->save(public_path('word_files') . '/' . 'both' . $time . '.docx');
+    $objWriter_s->save(storage_path('app/public') . '/' . 's' . $time . '.docx');
+    $objWriter_both->save(storage_path('app/public') . '/' . 'both' . $time . '.docx');
 
     return response()->json([
         's' => $s,
-        'path_s' => public_path('word_files') . '/' . 's' . $time . '.docx',
-        'path_both' => public_path('word_files') . '/' . 'both' . $time . '.docx'
+        'path_s' => 'http://localhost:8000/storage/' . 's' . $time . '.docx',
+        'path_both' => 'http://localhost:8000/storage/' . 'both' . $time . '.docx'
     ]);
 });

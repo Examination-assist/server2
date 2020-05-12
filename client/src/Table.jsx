@@ -197,7 +197,6 @@ class Row extends Component {
 								}
 							/>
 						</div>
-						
 					</div>
 				</div>
 			</React.Fragment>
@@ -348,7 +347,11 @@ This question was not seriously asked by news organisations scrambling to cope w
 			}
 		)
 		// console.log(str)
-		this.setState({ view: result.data.s, path_s: result.data.path_s, path_both:result.data.path_both })
+		this.setState({
+			view: result.data.s,
+			path_s: result.data.path_s,
+			path_both: result.data.path_both,
+		})
 		console.log(result.data)
 		// console.log(result.data)
 		document.querySelector('#downloadButtons').style.display = 'block'
@@ -449,6 +452,9 @@ This question was not seriously asked by news organisations scrambling to cope w
 							>
 								<a href={this.state.path_s} target='_blank'>
 									Single
+								</a>{' '}
+								<a href={this.state.path_both} target='_blank'>
+									Both
 								</a>
 								{this.state.view.split('\n').map((item) => (
 									<p>{item}</p>
