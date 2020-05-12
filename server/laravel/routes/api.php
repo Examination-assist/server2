@@ -176,6 +176,7 @@ Route::post('/convert', function (Request $request) {
     $output = json_decode($request->output);
     for ($para = 0; $para < count($input); $para++) {
         for ($line = 0; $line < count($input[$para]); $line++) {
+            try{
             $s = $s . $input[$para][$line];
             $s = $s . "\n";
             $s = $s . $output[$para][$line];
@@ -185,6 +186,8 @@ Route::post('/convert', function (Request $request) {
             $s1 = $s1 . $output[$para][$line];
             $s1 = $s1 . "\n";
         }
+        catch(Exception $e){}
+    }
         $s = $s . "\n";
         $s1 = $s1 . "\n";
     }
