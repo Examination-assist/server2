@@ -35,3 +35,21 @@
   text-align: center;
   margin-bottom: 40px;
 }
+
+.buttons{
+  margin-bottom: 10px;
+}
+
+.set{
+  width:100%     ;
+  text-align: center; 
+overflow: hidden;
+}
+.audioPlayer{
+  width:70%;
+}
+
+
+.submitBefore{
+  margin-top: 10px;
+}

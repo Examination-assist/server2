@@ -124,6 +124,7 @@ class Row extends Component {
 								}
 							/>
 						</div>
+						
 					</div>
 				</div>
 			</React.Fragment>
