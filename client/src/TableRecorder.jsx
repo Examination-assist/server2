@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import autosize from "autosize";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-import Microphone from "./Microphone"
+import Microphone from "./Microphone";
 import axios from "axios";
 const options = [
   "Hindi",

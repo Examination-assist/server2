@@ -3,7 +3,7 @@ import autosize from 'autosize'
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 import axios from 'axios'
-
+import Microphone from "./Microphone";
 let fromData = [
 	{
 		lines: [
@@ -128,7 +128,7 @@ class Row extends Component {
 						</div>
 						<div
 							style={{
-								width: '48%',
+								width: '33%',
 								padding: '10px',
 								border: '1px solid black',
 								borderRight: '0',
@@ -140,7 +140,7 @@ class Row extends Component {
 						</div>
 						<div
 							style={{
-								width: '48%',
+								width: '33%',
 								padding: '10px',
 								border: '1px solid black',
 								overflow: 'hidden',
@@ -197,6 +197,19 @@ class Row extends Component {
 								}
 							/>
 						</div>
+						<div
+              style={{
+                width: "30%",
+                padding: "10px",
+                border: "1px solid black",
+                borderRight: "0",
+                textAlign: "left",
+              }}
+            >
+
+            <Microphone />
+            
+            </div>
 					</div>
 				</div>
 			</React.Fragment>
