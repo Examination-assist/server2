@@ -53,3 +53,44 @@ overflow: hidden;
 .submitBefore{
   margin-top: 10px;
 }
+
+
+.recordComplete{
+  text-align: center;
+  width:60%;
+  margin: 0 20%;
+}
+
+.recordOuter{
+  /* width:100%; */
+  text-align: center !important;
+}
+.downloadButtons{
+  margin-top: 10px !important  ;
+}
+.saveButton{
+  margin-top: 10px;
+}
+
+.totalCard{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  height:50%;
+  width:70%;
+  box-shadow: 10px 10px 8px rgba(58, 58, 58, 0.3);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.dropOuter{
+text-align: center !important;
+}
+
+.DropdownStart{
+  width:40%;
+  margin:0 30%;
+}
+.start{
+}
