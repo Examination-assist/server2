@@ -162,9 +162,9 @@ class Row extends Component {
 										: {
 												resize: 'none',
 												width: '100%',
-												borderRightColor: 'green',
-												borderRightStyle: 'solid',
-												borderRightWidth: '2px',
+												// borderRightColor: 'green',
+												// borderRightStyle: 'solid',
+												// borderRightWidth: '2px',
 												height: '100%',
 												outline: 'none',
 												border: 'none',
@@ -197,6 +197,7 @@ class Row extends Component {
 								}
 							/>
 						</div>
+						
 					</div>
 				</div>
 			</React.Fragment>
