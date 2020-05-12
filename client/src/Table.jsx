@@ -184,6 +184,17 @@ class Row extends Component {
 								onFocusCapture={() =>
 									this.setState({ active: true })
 								}
+								value={this.props.getConverted(
+									this.state.paragraph,
+									this.state.counter - 1
+								)}
+								onChange={(e) =>
+									this.props.updateRow(
+										this.state.paragraph,
+										this.state.counter - 1,
+										e.target.value
+									)
+								}
 							/>
 						</div>
 					</div>
@@ -194,7 +205,7 @@ class Row extends Component {
 }
 
 export default class SplitText extends Component {
-	UPLOAD_ENDPOINT = 'http://localhost:8000/api/upload'
+	UPLOAD_ENDPOINT = 'http://localhost:8000/api/'
 
 	constructor() {
 		super()
@@ -206,25 +217,18 @@ export default class SplitText extends Component {
 			file: null,
 			data: '',
 			paragraphs: [''],
-			inputarea: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ornare odio non scelerisque finibus. Donec at erat ac libero finibus fermentum id lacinia orci. Suspendisse interdum libero mollis, vulputate lectus laoreet, vehicula quam. Vestibulum velit felis, consequat ac ullamcorper vitae, malesuada nec mi. Maecenas venenatis ligula vel facilisis semper. Vestibulum rhoncus purus et facilisis rhoncus. Quisque eu sapien feugiat tellus interdum maximus id eget turpis. Ut laoreet ipsum nisi, eget vehicula tellus aliquet eget. Donec euismod lorem et vestibulum faucibus. Fusce euismod tempor diam, volutpat molestie nibh sollicitudin vitae. Cras nec finibus nisl.
+			view: '',
+			inputarea: `The shutting down of several newspapers’ print editions amid the coronavirus lockdown has magnified the problem of Google and Facebook snatching up news content from media organisations and making a profit for themselves. A pittance is paid to the publishers through Google’s and Facebook’s advertisements on the web pages it disseminates.
 
-Nullam et nisi tortor. Maecenas euismod nunc aliquet urna blandit laoreet. Praesent ut tortor nisi. Integer et ex mauris. Quisque eu metus sed dui viverra molestie et eget libero. Sed egestas leo quis sem ultricies mollis. Fusce eget efficitur tellus, iaculis molestie nisi.
-        
-Ut vestibulum ornare malesuada. Fusce tristique euismod nisi ac dapibus. Proin arcu sapien, pharetra et lacus non, posuere molestie elit. Quisque venenatis nibh non elit porta auctor. Aenean quis justo sem. Fusce suscipit nibh eu cursus varius. Vivamus facilisis sed odio sit amet tincidunt. Cras fringilla massa pharetra orci tincidunt, at molestie nunc dapibus. Cras at sem dolor. Vestibulum luctus neque ac mauris ultrices iaculis. Ut ac tempor nulla. Suspendisse malesuada sem ut bibendum sagittis. Maecenas ultrices est ac urna dictum, a blandit dui porttitor. Donec elit eros, malesuada at nunc a, faucibus vestibulum nisi.
-        
-Curabitur eget tempor urna, bibendum aliquet ipsum. Nullam viverra, mauris ut efficitur mollis, odio sem viverra metus, fermentum condimentum libero turpis vel magna. In et ultricies mi. Morbi vestibulum, purus sit amet hendrerit commodo, augue metus maximus mi, eget condimentum dui orci a ante. Nam pretium turpis lacus, tempus pretium mi eleifend at. Cras nec leo et elit fringilla accumsan sit amet et lectus. Pellentesque vitae ante sem. In hac habitasse platea dictumst.
-        
-Curabitur iaculis quis erat quis feugiat. Pellentesque metus purus, scelerisque tempus ullamcorper id, consequat a elit. Praesent efficitur vehicula tempus. Pellentesque in ultricies enim, a molestie massa. Vivamus vitae consectetur risus. In vel ullamcorper augue, tincidunt efficitur ipsum. Cras cursus sapien nec laoreet tempus.
-        
-Cras augue ipsum, finibus eu feugiat in, vehicula eget nunc. Mauris interdum purus eu velit euismod tristique. Etiam ultrices ut nunc vel tincidunt. Etiam eu dui sem. Fusce eget tortor in elit vestibulum congue quis vitae ligula. Nam interdum, purus vel facilisis dignissim, ex ligula cursus metus, sit amet posuere leo sapien non eros. Integer efficitur, purus quis ornare aliquam, nulla dui dictum tellus, ut vestibulum nisi massa nec est. Cras malesuada vitae dui in ullamcorper. Quisque dictum interdum nunc, ut mollis eros ullamcorper eu. Sed viverra, libero id laoreet rhoncus, nibh leo egestas ligula, ac congue ipsum tellus et mauris.
-        
-Cras libero turpis, convallis pellentesque viverra consequat, tristique vitae quam. Vivamus ipsum tellus, fermentum quis massa at, consequat auctor nulla. Nulla ultricies nunc ut posuere volutpat. Aliquam cursus, justo varius efficitur cursus, eros nisl faucibus ante, eu congue lectus lectus fermentum lorem. Ut eget scelerisque urna. Pellentesque maximus felis ac turpis faucibus, dapibus pharetra tellus aliquet. Aliquam vel commodo enim. Sed placerat neque elit, sit amet pellentesque odio maximus ut. Duis sollicitudin ullamcorper odio eu bibendum. Aliquam non feugiat mauris.
-        
-Mauris fermentum purus tellus, eu volutpat turpis viverra in. Proin pulvinar urna ac mauris luctus, vitae accumsan dui rhoncus. Duis lobortis pellentesque arcu, at egestas nisi tincidunt nec. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer imperdiet venenatis est. Praesent id tincidunt diam. Pellentesque facilisis nec massa in laoreet. Phasellus ut leo tincidunt massa vestibulum condimentum eu eget turpis. Duis quis ex consectetur, mollis orci id, varius nisl. Mauris porttitor, eros et molestie luctus, velit tellus consequat enim, vitae volutpat nisl odio quis neque. Mauris tincidunt scelerisque enim sed tempus. Duis sit amet enim libero. Proin scelerisque dolor diam, ornare varius nulla mollis at. Duis blandit vestibulum sem, id mollis libero vehicula eget. Aliquam accumsan vel nisl id venenatis. Maecenas vitae lectus efficitur, sagittis nunc volutpat, dapibus mi.
-        
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum dapibus est in odio luctus varius. Vivamus a eros quam. Suspendisse in felis in neque sagittis viverra. Duis vestibulum et lorem non egestas. Nam efficitur nisl non tellus cursus feugiat. Suspendisse sapien nisi, interdum quis ex id, malesuada commodo lorem. Aliquam lobortis mauris quis tortor imperdiet, eget mollis quam feugiat. Etiam in tellus ex. Cras molestie lacinia vulputate. Nulla et elit volutpat, hendrerit ipsum sit amet, dapibus lorem.
-        
-Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere purus tempus quis. Suspendisse auctor, nunc eget ornare vulputate, quam sapien dapibus sem, rutrum sagittis velit turpis sed augue. Maecenas convallis nulla lobortis, tempor turpis sit amet, pharetra purus. Sed commodo placerat fringilla. In hac habitasse platea dictumst. Proin pharetra et ex a fringilla. Phasellus eros justo, viverra sit amet rhoncus at, dictum id lectus. Nam tincidunt eros non sagittis blandit. Nunc in venenatis erat. Vestibulum dictum velit sit amet commodo ornare.`,
+In fact, once the duopoly of Google and Facebook was established over the years, news organisations were made to compete with each other to get on Google News’ top results by paying to be displayed prominently. Google also introduced Google amp, whereby the web page would load faster but with a Google dominant url and Google ads served along with the content.
+
+Similarly, Facebook forced news websites to accept a “revenue-sharing” model by which the social media outfit would pick up and share news content. The condition was that Facebook would be allowed to post advertisements along with it, a percentage of whose revenue would go to the media outfit.
+
+Granted that Google and Facebook give news content legs. They take the story beyond the geographical limits of the newspaper’s reach. But if the disseminator makes nearly all the profits and shares mere peanuts with the producer of the content, how long will news production survive?
+
+This question was not seriously asked by news organisations scrambling to cope with finding a revenue model on the internet in the early 2000s and getting nowhere, and therefore trying to best each other to get more clicks and shares by paying Google and Facebook. But now with no print advertising in the time of corona to cushion losses from having their content shared around for free, governments are stepping in on behalf of news organisations and telling Google and Facebook to play fair, and share.
+			
+			`,
 			count: 0,
 			convert: [],
 			converted: [],
@@ -234,10 +238,11 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 		this.uploadFile = this.uploadFile.bind(this)
 		this.updateRow = this.updateRow.bind(this)
 		this.save = this.save.bind(this)
+		this.getConverted = this.getConverted.bind(this)
 	}
 
 	componentDidMount() {
-		// document.getElementById('after').style.display = 'none'
+		document.getElementById('after').style.display = 'none'
 	}
 
 	updateRow(para, count, value) {
@@ -245,6 +250,17 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 		let converted = this.state.converted
 		converted[para][count] = value
 		this.setState({ converted: converted })
+	}
+
+	getConverted(para, count) {
+		try {
+			if (this.state.converted[para][count] !== undefined)
+				return this.state.converted[para][count]
+		} catch {
+			return ''
+		}
+		// return this.state.converted[para][count] ? 'a' : 'b'
+		// return this.state.converted[para][count]
 	}
 
 	update() {
@@ -274,14 +290,13 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 		})
 
 		this.setState({ converted: converted })
-		this.setState({ convert: convert }, () =>
-			console.log(JSON.stringify(this.state.convert))
-		)
+		this.setState({ convert: convert })
 		document.getElementById('after').style.display = 'block'
 		document.getElementById('before').style.display = 'none'
 		document.getElementById('before').style.visibility = 'hidden'
 		this.forceUpdate()
 
+		this.setState({ converted: dataConvertTest })
 		// const row = document.createElement('Row')
 		// row.left = 'hello'
 		// document.getElementById('after').appendChild(row)
@@ -301,15 +316,37 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 		formData.append('file', file)
 		formData.append('filename', file.name)
 		console.log(formData)
-		return await axios.post(this.UPLOAD_ENDPOINT, formData, {
+		return await axios.post(this.UPLOAD_ENDPOINT + 'upload', formData, {
 			headers: {
 				'content-type': 'multipart/form-data',
 			},
 		})
 	}
 
-	save(){
-		
+	async save() {
+		let convertedParas = []
+		for (let index = 0; index < this.state.convert.length; index++) {
+			let lines = []
+			const element = this.state.convert[index]
+			element.lines.map((line) => lines.push(line))
+			convertedParas.push(lines)
+		}
+		// console.log(convertedParas)
+		const formData = new FormData()
+		formData.append('input', JSON.stringify(convertedParas))
+		formData.append('output', JSON.stringify(this.state.converted))
+		const result = await axios.post(
+			`${this.UPLOAD_ENDPOINT}convert`,
+			formData,
+			{
+				headers: {
+					'content-type': 'multipart/form-data',
+				},
+			}
+		)
+		// console.log(str)
+		this.setState({ view: result.data.s })
+		// console.log(result.data)
 	}
 
 	// handleDropDown(e) {
@@ -375,6 +412,7 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 												counter={counter}
 												left={line}
 												updateRow={this.updateRow}
+												getConverted={this.getConverted}
 											></Row>
 										</React.Fragment>
 									)
@@ -384,17 +422,26 @@ Proin quis molestie turpis. Etiam bibendum lobortis mauris, sit amet posuere pur
 										counter={counter}
 										left={line}
 										updateRow={this.updateRow}
+										getConverted={this.getConverted}
 									></Row>
 								)
 							})
 						})}
+						<input
+							onClick={() => this.save()}
+							type='submit'
+							value='Save'
+						/>
+						<div className="container">
+
+						{this.state.view.split('\n').map(item=><p>{item}</p>)}
+						</div>
 					</div>
 					{/* {this.state.convert === [] ? (
 					''
 				) : (
 					<DisplayText convert={this.state.convert}></DisplayText>
 				)} */}
-				<input type="submit" value="Save" onClick={()=>this.save()}/>
 				</div>
 			</React.Fragment>
 		)

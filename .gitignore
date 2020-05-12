@@ -1,5 +1,6 @@
 **/node_modules
 **/uploads
+**/word_files
 /node_modules
 /public/hot
 /public/storage
