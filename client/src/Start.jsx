@@ -78,6 +78,7 @@ class Start extends Component {
 							onChange={(e) =>
 								this.setState({ drop2: e.value }, () => {})
 							}
+							
 							placeholder='Select User Type '
 						/>
 

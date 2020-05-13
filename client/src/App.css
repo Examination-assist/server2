@@ -91,3 +91,41 @@ text-align: center !important;
 
 .start{
 }
+.textArea{
+	padding:20px;
+	margin-top: 20px;
+}
+
+.buttonTable{
+    padding:10px 30px;
+    border-radius: 30px;
+	border: none;
+	margin-top:20px;
+}
+.buttonText{
+    font-size: 1rem;
+    font-weight: 600;
+
+}
+
+
+.halfButton1{
+	padding:10px 20px;
+    border-radius: 30px  0 0 30px;
+	border: none;
+	margin-top:10px;
+}
+.halfButton2{
+	padding:10px 20px;
+    border-radius: 0  30px 30px 0;
+	border: none;
+	margin-top:10px;
+}
+
+.OutputRecord{
+	/* visibility: hidden ; */
+ 	/* display: none ; */
+}
+
+
+

@@ -4,7 +4,7 @@ import React from 'react'
 import './App.css'
 
 import Table from './Table'
-// import TableRecorder from  './TableRecorder'
+// import Record from  './Record'
 // import Microphone from  './Microphone'
 // import FileUploadForm from './FileUpload';
 import Start from './Start'
@@ -18,9 +18,12 @@ class App extends React.Component {
 						<Route exact path='/'>
 							<Start></Start>
 						</Route>
-						<Route path='/table'>
+						<Route exact path='/table'>
 							<Table></Table>
 						</Route>
+						{/* <Route exact path='/record'>
+							<Record></Record>
+						</Route> */}
 					</Switch>
 				</Router>
 			</div>
