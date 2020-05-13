@@ -185,11 +185,16 @@ Route::post('/convert', function (Request $request) {
 
             $s1 = $s1 . $output[$para][$line];
             $s1 = $s1 . "\n";
+
+            $section_s = $phpWord_s->addSection();
+            $section_both = $phpWord_both->addSection();        
         }
         catch(Exception $e){}
     }
         $s = $s . "\n";
         $s1 = $s1 . "\n";
+        $section_s = $phpWord_s->addSection();
+        $section_both = $phpWord_both->addSection();    
     }
 
     $section_s->addText($s1);
