@@ -359,7 +359,8 @@ This question was not seriously asked by news organisations scrambling to cope w
 		)
 		// console.log(str)
 		this.setState({
-			view: result.data.s,
+      view: result.data.s,
+      SingleText: result.data.s1,
 			path_s: result.data.path_s,
 			path_both: result.data.path_both,
 		})

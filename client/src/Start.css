@@ -1,0 +1,20 @@
+.button{
+    padding:10px 30px;
+    border-radius: 30px;
+    border: none;
+}
+.buttonText{
+    font-size: 1rem;
+    font-weight: 600;
+
+}
+.start{
+        /* position: relative;
+        margin-top:12.5%;
+        transform: translateY(-50%); */
+
+}
+.DropdownStart{
+    width:40%;
+    margin:0 30%;
+  }

@@ -201,6 +201,7 @@ Route::post('/convert', function (Request $request) {
 
     return response()->json([
         's' => $s,
+        's1' => $s1,
         'path_s' => 'http://localhost:8000/storage/' . 's' . $time . '.docx',
         'path_both' => 'http://localhost:8000/storage/' . 'both' . $time . '.docx'
     ]);

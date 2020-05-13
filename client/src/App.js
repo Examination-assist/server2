@@ -3,7 +3,7 @@ import React from 'react'
 
 import './App.css'
 
-// import Table from  './Table'
+import Table from './Table'
 // import TableRecorder from  './TableRecorder'
 // import Microphone from  './Microphone'
 // import FileUploadForm from './FileUpload';
@@ -17,6 +17,9 @@ class App extends React.Component {
 					<Switch>
 						<Route path='/'>
 							<Start></Start>
+						</Route>
+						<Route path='/table'>
+							<Table></Table>
 						</Route>
 					</Switch>
 				</Router>
