@@ -1,19 +1,28 @@
-import React from 'react';
-// import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React from 'react'
+
+import './App.css'
+
 // import Table from  './Table'
 // import TableRecorder from  './TableRecorder'
 // import Microphone from  './Microphone'
 // import FileUploadForm from './FileUpload';
 import Start from './Start'
-function App() {
-  return (
-    <div className="App">
-     {/* <TableRecorder /> */}
-     <Start></Start>
-     {/* <FileUploadForm></FileUploadForm> */}
-    </div>
-  );
+
+class App extends React.Component {
+	render() {
+		return (
+			<div className='App'>
+				<Router>
+					<Switch>
+						<Route path='/'>
+							<Start></Start>
+						</Route>
+					</Switch>
+				</Router>
+			</div>
+		)
+	}
 }
 
-export default App;
+export default App
