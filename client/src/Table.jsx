@@ -4,6 +4,8 @@ import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 import axios from 'axios'
 import Microphone from './Microphone'
+import Record from './Record'
+import './App.css'
 let fromData = [
 	{
 		lines: [
@@ -128,7 +130,7 @@ class Row extends Component {
 						</div>
 						<div
 							style={{
-								width: '33%',
+								width: '30%',
 								padding: '10px',
 								border: '1px solid black',
 								borderRight: '0',
@@ -140,7 +142,7 @@ class Row extends Component {
 						</div>
 						<div
 							style={{
-								width: '33%',
+								width: '30%',
 								padding: '10px',
 								border: '1px solid black',
 								overflow: 'hidden',
@@ -199,7 +201,7 @@ class Row extends Component {
 						</div>
 						<div
 							style={{
-								width: '30%',
+								width: '36%',
 								padding: '10px',
 								border: '1px solid black',
 								borderRight: '0',
@@ -218,15 +220,15 @@ class Row extends Component {
 export default class SplitText extends Component {
 	UPLOAD_ENDPOINT = 'http://localhost:8000/api/'
 
-	constructor() {
-		super()
+	constructor(props) {
+		super(props)
 		this.update = this.update.bind(this)
-    this.handleDropDown = this.handleDropDown.bind(this);
-    
+		this.handleDropDown = this.handleDropDown.bind(this)
 
 		this.state = {
 			language: 'Hindi',
 			file: null,
+			// statusRecorder: False,
 			data: '',
 			paragraphs: [''],
 			view: '',
@@ -253,6 +255,7 @@ This question was not seriously asked by news organisations scrambling to cope w
 		this.updateRow = this.updateRow.bind(this)
 		this.save = this.save.bind(this)
 		this.getConverted = this.getConverted.bind(this)
+		this.handlerecord = this.handlerecord.bind(this)
 	}
 
 	componentDidMount() {
@@ -360,8 +363,8 @@ This question was not seriously asked by news organisations scrambling to cope w
 		)
 		// console.log(str)
 		this.setState({
-      view: result.data.s,
-      SingleText: result.data.s1,
+			view: result.data.s,
+			SingleText: result.data.s1,
 			path_s: result.data.path_s,
 			path_both: result.data.path_both,
 		})
@@ -369,14 +372,22 @@ This question was not seriously asked by news organisations scrambling to cope w
 		// console.log(result.data)
 		document.querySelector('#downloadButtons').style.display = 'block'
 	}
-
 	handleDropDown(e) {
-		this.setState({ language: e.value });
+		this.setState({ language: e.value })
 		console.log(e.language)
-	  }
+	}
+	
 	paragraph = -1
+	handlerecord() {
+		document.getElementsByClassName('OutputRecord').style.display = 'none '
+		// document.getElementsByClassName('OutputRecord').style.visibility ='visible '
+		// document.getElementById('before').style.visibility = 'hidden'
+	}
 
 	render() {
+		const textSingle = {
+			text: this.state.SingleText,
+		}
 		return (
 			<React.Fragment>
 				<div className='outerPehle' style={{ margin: '2rem 0' }}>
@@ -384,11 +395,17 @@ This question was not seriously asked by news organisations scrambling to cope w
 					<div id='before'>
 						<div className='uploadFile'>
 							<form onSubmit={this.onSubmit}>
-								<h1> Upload File</h1>
-									<h5>Choose File  to translate </h5>
+								<h3> Upload File</h3>
+								<h5>Choose File to translate </h5>
 
-								<input type='file' onChange={this.onChange} />
-								<button type='submit'>Upload File</button>
+								<input
+									className='buttonTable'
+									type='file'
+									onChange={this.onChange}
+								/>
+								<button className='buttonTable' type='submit'>
+									Upload File
+								</button>
 								<div className='dropDown'>
 									<h5>Choose language to translate into:</h5>
 									<Dropdown
@@ -416,6 +433,7 @@ This question was not seriously asked by news organisations scrambling to cope w
 						></textarea>
 						<br />
 						<input
+							className='buttonTable'
 							type='submit'
 							value='Submit'
 							onClick={() => this.update()}
@@ -451,14 +469,8 @@ This question was not seriously asked by news organisations scrambling to cope w
 								)
 							})
 						})}
-						<div className='recordOuter'>
-							<div className='recordComplete'>
-								<h3> Record complete transcript</h3>
-								<Microphone />
-							</div>
-						</div>
 						<input
-							className='saveButton'
+							className='buttonTable saveButton '
 							onClick={() => this.save()}
 							type='submit'
 							value='Save'
@@ -474,14 +486,38 @@ This question was not seriously asked by news organisations scrambling to cope w
 								}}
 							>
 								<a href={this.state.path_s} target='_blank'>
-									Single
+									<button className='halfButton1'>
+										Single
+									</button>
 								</a>{' '}
 								<a href={this.state.path_both} target='_blank'>
-									Both
+									<button className='halfButton2'>
+										Both
+									</button>
 								</a>
-								{this.state.view.split('\n').map((item) => (
-									<p>{item}</p>
-								))}
+								<br />
+								<a onClick={this.handleRecord}>
+									<button
+										class='buttonTable'
+										onClick={this.handleRecord}
+									>
+										<span className='buttonText'>
+											Record complete transcript
+										</span>
+									</button>
+								</a>
+								<div className='Record OutputRecord'>
+									<Record {...textSingle}></Record>
+								</div>
+								<br />
+								<textarea
+									name=''
+									className='textArea'
+									value={this.state.view}
+									id=''
+									cols='90'
+									rows='40'
+								></textarea>
 							</div>
 						</div>
 					</div>

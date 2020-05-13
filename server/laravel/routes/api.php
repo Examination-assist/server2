@@ -210,12 +210,11 @@ Route::post('/convert', function (Request $request) {
 
     $section_s->addText($s1);
     $section_both->addText($s);
-
     $serial_input = serialize($input);
     $serial_output = serialize($output);
-    DB::table('document')->insert([
-        ['input' => $serial_input, 'output' => $serial_output]
-    ]);
+    // DB::table('document')->insert([
+    //     ['input' => $serial_input, 'output' => $serial_output]
+    // ]);
 
     $objWriter_s = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord_s, 'Word2007');
     $objWriter_both = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord_both, 'Word2007');
