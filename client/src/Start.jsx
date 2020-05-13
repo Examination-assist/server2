@@ -66,9 +66,9 @@ class Start extends Component {
 						<Dropdown
 							className='DropdownStart'
 							options={optionsDiscipline}
-							onChange={(e) => {
+							onChange={(e) =>
 								this.setState({ drop2: e.value }, () => {})
-							}}
+							}
 							placeholder='Select Your Discipline'
 						/>
 						<br />
