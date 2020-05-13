@@ -15,7 +15,7 @@ class App extends React.Component {
 			<div className='App'>
 				<Router>
 					<Switch>
-						<Route path='/'>
+						<Route exact path='/'>
 							<Start></Start>
 						</Route>
 						<Route path='/table'>

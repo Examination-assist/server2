@@ -221,7 +221,8 @@ export default class SplitText extends Component {
 	constructor() {
 		super()
 		this.update = this.update.bind(this)
-		// this.handleDropDown = this.handleDropDown.bind(this);
+    this.handleDropDown = this.handleDropDown.bind(this);
+    
 
 		this.state = {
 			language: 'Hindi',
@@ -369,10 +370,10 @@ This question was not seriously asked by news organisations scrambling to cope w
 		document.querySelector('#downloadButtons').style.display = 'block'
 	}
 
-	// handleDropDown(e) {
-	// 	this.setState({ language: e.target.value });
-	// 	console.log(e.target.language)
-	//   }
+	handleDropDown(e) {
+		this.setState({ language: e.value });
+		console.log(e.language)
+	  }
 	paragraph = -1
 
 	render() {
@@ -384,6 +385,8 @@ This question was not seriously asked by news organisations scrambling to cope w
 						<div className='uploadFile'>
 							<form onSubmit={this.onSubmit}>
 								<h1> Upload File</h1>
+									<h5>Choose File  to translate </h5>
+
 								<input type='file' onChange={this.onChange} />
 								<button type='submit'>Upload File</button>
 								<div className='dropDown'>
