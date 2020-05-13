@@ -162,12 +162,19 @@ Route::post('/upload', function (Request $request) {
 });
 
 Route::any('/display', function (Request $request) {
-    $str = DB::table('document')->select('input')->where('doc_id',1)->get();
-    for ($i=0; $i < count($str); $i++) { 
-        Log::info(unserialize(strval($str[$i]->input)));
+    $str = DB::table('document')->select('input', 'output')->get();
+    $data = [];
+    for ($i = 0; $i < count($str); $i++) {
+        $unserial_input = (unserialize(strval($str[$i]->input)));
+        $unserial_output = (unserialize(strval($str[$i]->output)));
+        array_push($data, array('input' => $unserial_input, 'output' => $unserial_output));
     }
-
-
+    return response()->json(
+        $data,
+        200,
+        ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
+        JSON_UNESCAPED_UNICODE
+    );
 });
 
 Route::post('/convert', function (Request $request) {
