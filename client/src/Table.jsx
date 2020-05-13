@@ -231,6 +231,7 @@ export default class SplitText extends Component {
 			// statusRecorder: False,
 			data: '',
 			paragraphs: [''],
+			toggle: false,
 			view: '',
 			inputarea: `The shutting down of several newspapers’ print editions amid the coronavirus lockdown has magnified the problem of Google and Facebook snatching up news content from media organisations and making a profit for themselves. A pittance is paid to the publishers through Google’s and Facebook’s advertisements on the web pages it disseminates.
 
@@ -378,9 +379,12 @@ This question was not seriously asked by news organisations scrambling to cope w
 	}
 	
 	paragraph = -1
-	handlerecord() {
-		console.log(document.querySelector('#OutputRecord'))
-		document.querySelector('#OutputRecord').style.display = 'block'
+	handlerecord() {	
+		this.setState({toggle : !this.state.toggle})
+		// console.log(document.querySelector('#textInButton'))
+		// document.querySelector('#textInButton').style.display = 'block'
+		console.log(this.state.toggle);
+		
 	}
 
 	render() {
@@ -500,14 +504,19 @@ This question was not seriously asked by news organisations scrambling to cope w
 										class='buttonTable'
 										onClick={this.handlerecord}
 									>
-										<span className='buttonText'>
+								{ !this.state.toggle && <span className='buttonText'>
 											Record complete transcript
-										</span>
+										</span>}
+										{ this.state.toggle && <span className='buttonText'>
+Cancel Recording										</span>}
+
+										
 									</button>
 								</div>
-								<div style={{display:'none'}} id='OutputRecord' className='Record OutputRecord'>
-									<Record {...textSingle}></Record>
-								</div>
+							
+
+								{ this.state.toggle && <Record {...textSingle}></Record>}
+
 								<br />
 								<textarea
 									name=''
