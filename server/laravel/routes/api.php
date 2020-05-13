@@ -161,10 +161,13 @@ Route::post('/upload', function (Request $request) {
     // ->with('file', $fileName);
 });
 
-Route::get('/display', function (Request $request) {
-    $str = DB::table('document')->select();
-    Log::info($str);
-    // return response()->json('document'=>$str);
+Route::any('/display', function (Request $request) {
+    $str = DB::table('document')->select('input')->where('doc_id',1)->get();
+    for ($i=0; $i < count($str); $i++) { 
+        Log::info(unserialize(strval($str[$i]->input)));
+    }
+
+
 });
 
 Route::post('/convert', function (Request $request) {
@@ -214,10 +217,7 @@ Route::post('/convert', function (Request $request) {
 
     $objWriter_s->save(storage_path('app/public') . '/' . 's' . $time . '.docx');
     $objWriter_both->save(storage_path('app/public') . '/' . 'both' . $time . '.docx');
-    $str = DB::table('document')->select('input')->where('doc_id',1)->get();
-    
-    Log::info(($str[0])->input);
-   
+
     return response()->json([
         's' => $s,
         's1' => $s1,
