@@ -144,7 +144,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/upload', function (Request $request) {
     $request->validate([
-        'file' => 'required', //mimes:pdf,xlx,csv|max:2048',
+        'file' => 'required',
     ]);
 
 
@@ -154,11 +154,7 @@ Route::post('/upload', function (Request $request) {
     $paths = public_path('uploads') . $fileName;
     $docObj = new DocxConversion(public_path('uploads') . '/' . $fileName);
 
-    // Log::info();
-    // return 'ok';
     return response()->json(['data' => 'ok', 'file' => $fileName, 'text' => $docObj->convertToText(), 'paths' => $paths]);
-    // ->with('success', 'You have successfully upload file.');
-    // ->with('file', $fileName);
 });
 
 Route::any('/display', function (Request $request) {
