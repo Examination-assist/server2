@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -129,7 +131,7 @@ class DocxConversion
                 return $this->read_doc();
             } elseif ($file_ext == "docx") {
                 return $this->read_docx();
-            } 
+            }
         } else {
             return "Invalid File Type";
         }
@@ -159,6 +161,12 @@ Route::post('/upload', function (Request $request) {
     // ->with('file', $fileName);
 });
 
+Route::get('/display', function (Request $request) {
+    $str = DB::table('document')->select();
+    Log::info($str);
+    // return response()->json('document'=>$str);
+});
+
 Route::post('/convert', function (Request $request) {
     $phpWord_s = new \PhpOffice\PhpWord\PhpWord();
     $phpWord_both = new \PhpOffice\PhpWord\PhpWord();
@@ -168,28 +176,36 @@ Route::post('/convert', function (Request $request) {
 
     $s = "";
     $s1 = "";
+
     $input = json_decode($request->input);
     $output = json_decode($request->output);
     for ($para = 0; $para < count($input); $para++) {
         for ($line = 0; $line < count($input[$para]); $line++) {
-            try{
-            $s = $s . $input[$para][$line];
-            $s = $s . "\n";
-            $s = $s . $output[$para][$line];
-            $s = $s . "\n";
-            $s = $s . "\n";
+            try {
+                $s = $s . $input[$para][$line];
+                $s = $s . "\n";
+                $s = $s . $output[$para][$line];
+                $s = $s . "\n";
+                $s = $s . "\n";
 
-            $s1 = $s1 . $output[$para][$line];
-            $s1 = $s1 . "\n";
+                $s1 = $s1 . $output[$para][$line];
+                $s1 = $s1 . "\n";
+            } catch (Exception $e) {
+            }
         }
-        catch(Exception $e){}
-    }
         $s = $s . "\n";
         $s1 = $s1 . "\n";
     }
 
+
     $section_s->addText($s1);
     $section_both->addText($s);
+
+    $serial_input = serialize($input);
+    $serial_output = serialize($output);
+    DB::table('document')->insert([
+        ['input' => $serial_input, 'output' => $serial_output]
+    ]);
 
     $objWriter_s = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord_s, 'Word2007');
     $objWriter_both = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord_both, 'Word2007');
@@ -198,7 +214,10 @@ Route::post('/convert', function (Request $request) {
 
     $objWriter_s->save(storage_path('app/public') . '/' . 's' . $time . '.docx');
     $objWriter_both->save(storage_path('app/public') . '/' . 'both' . $time . '.docx');
-
+    $str = DB::table('document')->select('input')->where('doc_id',1)->get();
+    
+    Log::info(($str[0])->input);
+   
     return response()->json([
         's' => $s,
         's1' => $s1,
