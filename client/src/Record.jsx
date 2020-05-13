@@ -9,14 +9,14 @@ class Record extends Component {
 			<div className='outer'>
 				<h1 class='RecordText'>
 					<textarea
-									name=''
-									className='textArea'
-									value={this.props.text}
-									id=''
-									cols='90'
-									rows='40'
-								></textarea>
-					
+						disabled
+						name=''
+						className='textArea'
+						value={this.props.text}
+						id=''
+						cols='90'
+						rows='40'
+					></textarea>
 				</h1>
 				<Microphone />
 			</div>

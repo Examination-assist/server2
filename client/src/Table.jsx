@@ -379,9 +379,8 @@ This question was not seriously asked by news organisations scrambling to cope w
 	
 	paragraph = -1
 	handlerecord() {
-		document.getElementsByClassName('OutputRecord').style.display = 'none '
-		// document.getElementsByClassName('OutputRecord').style.visibility ='visible '
-		// document.getElementById('before').style.visibility = 'hidden'
+		console.log(document.querySelector('#OutputRecord'))
+		document.querySelector('#OutputRecord').style.display = 'block'
 	}
 
 	render() {
@@ -496,17 +495,17 @@ This question was not seriously asked by news organisations scrambling to cope w
 									</button>
 								</a>
 								<br />
-								<a onClick={this.handleRecord}>
+								<div onClick={()=>this.handlerecord()}>
 									<button
 										class='buttonTable'
-										onClick={this.handleRecord}
+										onClick={this.handlerecord}
 									>
 										<span className='buttonText'>
 											Record complete transcript
 										</span>
 									</button>
-								</a>
-								<div className='Record OutputRecord'>
+								</div>
+								<div style={{display:'none'}} id='OutputRecord' className='Record OutputRecord'>
 									<Record {...textSingle}></Record>
 								</div>
 								<br />
@@ -517,6 +516,7 @@ This question was not seriously asked by news organisations scrambling to cope w
 									id=''
 									cols='90'
 									rows='40'
+									disabled
 								></textarea>
 							</div>
 						</div>
