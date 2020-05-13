@@ -124,16 +124,12 @@ class DocxConversion
 
         $fileArray = pathinfo($this->filename);
         $file_ext  = $fileArray['extension'];
-        if ($file_ext == "doc" || $file_ext == "docx" || $file_ext == "xlsx" || $file_ext == "pptx") {
+        if ($file_ext == "doc" || $file_ext == "docx") {
             if ($file_ext == "doc") {
                 return $this->read_doc();
             } elseif ($file_ext == "docx") {
                 return $this->read_docx();
-            } elseif ($file_ext == "xlsx") {
-                // return $this->xlsx_to_text();
-            } elseif ($file_ext == "pptx") {
-                // return $this->pptx_to_text();
-            }
+            } 
         } else {
             return "Invalid File Type";
         }
@@ -185,16 +181,11 @@ Route::post('/convert', function (Request $request) {
 
             $s1 = $s1 . $output[$para][$line];
             $s1 = $s1 . "\n";
-
-            $section_s = $phpWord_s->addSection();
-            $section_both = $phpWord_both->addSection();        
         }
         catch(Exception $e){}
     }
         $s = $s . "\n";
         $s1 = $s1 . "\n";
-        $section_s = $phpWord_s->addSection();
-        $section_both = $phpWord_both->addSection();    
     }
 
     $section_s->addText($s1);
