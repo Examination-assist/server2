@@ -14,8 +14,6 @@ const options = [
   { value: 'User4', label: 'User 4 | Yoga |Yoga 1 BOOK to Hindi' },
   { value: 'User5', label: 'User 5 | Self-Paced |Cultural BOOK to Marathi' },
   { value: 'User6', label: 'User 6 | Self-Paced |Mind BOOK to Gujurati' },
-  
-
 ]
 const defaultOption = options[0];
 

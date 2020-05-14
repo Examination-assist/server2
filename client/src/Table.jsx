@@ -227,6 +227,7 @@ export default class SplitText extends Component {
 
 		this.state = {
 			language: 'Hindi',
+			user: "user 1",
 			file: null,
 			// statusRecorder: False,
 			data: '',
@@ -394,6 +395,7 @@ This question was not seriously asked by news organisations scrambling to cope w
 		return (
 			<React.Fragment>
 				<div className='outerPehle' style={{ margin: '2rem 0' }}>
+					<h1>Welcome {this.state.user}</h1>
 					<h1>Translating from English to {this.state.language}</h1>
 					<div id='before'>
 						<div className='uploadFile'>
