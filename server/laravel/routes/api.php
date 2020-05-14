@@ -185,6 +185,9 @@ Route::post('/convert', function (Request $request) {
 
     $input = json_decode($request->input);
     $output = json_decode($request->output);
+
+    $to_ = $request->to_;
+    $user_id = $request->user_id;
     for ($para = 0; $para < count($input); $para++) {
         for ($line = 0; $line < count($input[$para]); $line++) {
             try {
@@ -209,7 +212,7 @@ Route::post('/convert', function (Request $request) {
     $serial_input = serialize($input);
     $serial_output = serialize($output);
     DB::table('document')->insert([
-        ['input' => $serial_input, 'output' => $serial_output]
+        ['input' => $serial_input, 'output' => $serial_output, 'to_' => $to_, 'user_id' => $user_id]
     ]);
 
     $objWriter_s = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord_s, 'Word2007');
