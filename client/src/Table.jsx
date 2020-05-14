@@ -234,16 +234,7 @@ export default class SplitText extends Component {
 			paragraphs: [''],
 			toggle: false,
 			view: '',
-			inputarea: `The shutting down of several newspapers’ print editions amid the coronavirus lockdown has magnified the problem of Google and Facebook snatching up news content from media organisations and making a profit for themselves. A pittance is paid to the publishers through Google’s and Facebook’s advertisements on the web pages it disseminates.
-
-In fact, once the duopoly of Google and Facebook was established over the years, news organisations were made to compete with each other to get on Google News’ top results by paying to be displayed prominently. Google also introduced Google amp, whereby the web page would load faster but with a Google dominant url and Google ads served along with the content.
-
-Similarly, Facebook forced news websites to accept a “revenue-sharing” model by which the social media outfit would pick up and share news content. The condition was that Facebook would be allowed to post advertisements along with it, a percentage of whose revenue would go to the media outfit.
-
-Granted that Google and Facebook give news content legs. They take the story beyond the geographical limits of the newspaper’s reach. But if the disseminator makes nearly all the profits and shares mere peanuts with the producer of the content, how long will news production survive?
-
-This question was not seriously asked by news organisations scrambling to cope with finding a revenue model on the internet in the early 2000s and getting nowhere, and therefore trying to best each other to get more clicks and shares by paying Google and Facebook. But now with no print advertising in the time of corona to cushion losses from having their content shared around for free, governments are stepping in on behalf of news organisations and telling Google and Facebook to play fair, and share.
-			
+			inputarea: `
 			`,
 			count: 0,
 			convert: [],
@@ -315,7 +306,7 @@ This question was not seriously asked by news organisations scrambling to cope w
 		document.getElementById('before').style.visibility = 'hidden'
 		this.forceUpdate()
 
-		this.setState({ converted: dataConvertTest })
+		// this.setState({ converted: dataConvertTest })
 		// const row = document.createElement('Row')
 		// row.left = 'hello'
 		// document.getElementById('after').appendChild(row)
@@ -430,6 +421,7 @@ This question was not seriously asked by news organisations scrambling to cope w
 							rows='40'
 							style={{
 								padding: '30px 50px',
+								
 							}}
 							onChange={(e) =>
 								this.setState({ inputarea: e.target.value })
