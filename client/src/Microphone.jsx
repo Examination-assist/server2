@@ -96,12 +96,12 @@ export default class Microphone extends React.Component {
     };
   }
   handleAudioStop(data) {
-    // console.log(data);
+    console.log(data);
     this.setState({ audioDetails: data });
-    // console.log(data);
+    console.log(data);
   }
   handleAudioUpload(file) {
-    // console.log(file);
+    console.log(file);
   }
   handleRest() {
     const reset = {
@@ -116,7 +116,23 @@ export default class Microphone extends React.Component {
     };
     this.setState({ audioDetails: reset });
   }
+
   render() {
+	var data = {};
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', this.state.url, true);
+	xhr.responseType = 'blob';
+	xhr.onload = function(e) {
+		if (this.status == 200) {
+			data.data = this.response;
+			data.name = "whatever_dataname.mp3";
+			// data.size = getYourBlobSize();
+			data.type = "audio/mpeg";
+			
+		}
+	};
+	xhr.send();
+	
     return (
       <div style={{width:"50%"}}className="Recorder">
         <Recorder
