@@ -65,12 +65,36 @@ let dataConvertTest = [
 ]
 
 const UserOptions = [
-	{ value: 'User1', label: 'User 1 | Engineering |EE BOOK to Telugu' },
-	{ value: 'User2', label: 'User 2 | Engineering |EE BOOK to Tamil' },
-	{ value: 'User3', label: 'User 3 | Yoga | Intro BOOK to Bengali' },
-	{ value: 'User4', label: 'User 4 | Yoga |Yoga 1 BOOK to Hindi' },
-	{ value: 'User5', label: 'User 5 | Self-Paced |Cultural BOOK to Marathi' },
-	{ value: 'User6', label: 'User 6 | Self-Paced |Mind BOOK to Gujurati' },
+	{
+		value: 'User1',
+		label: 'User 1 | Engineering |EE BOOK to Telugu',
+		language: 'Telugu',
+	},
+	{
+		value: 'User2',
+		label: 'User 2 | Engineering |EE BOOK to Tamil',
+		language: 'Tamil',
+	},
+	{
+		value: 'User3',
+		label: 'User 3 | Yoga | Intro BOOK to Bengali',
+		language: 'Bengali',
+	},
+	{
+		value: 'User4',
+		label: 'User 4 | Yoga |Yoga 1 BOOK to Hindi',
+		language: 'Hindi',
+	},
+	{
+		value: 'User5',
+		label: 'User 5 | Self-Paced |Cultural BOOK to Marathi',
+		language: 'Marathi',
+	},
+	{
+		value: 'User6',
+		label: 'User 6 | Self-Paced |Mind BOOK to Gujurati',
+		language: 'Gujurati',
+	},
 ]
 
 const options = [
@@ -260,7 +284,13 @@ export default class SplitText extends Component {
 	}
 
 	componentDidMount() {
-		console.log(localStorage.getItem('user_id'))
+		console.log()
+		// console.log(
+		let k=UserOptions.filter(
+				(e) => e.value === localStorage.getItem('user_id')
+			)[0]
+			this.setState({language:k.language})
+		// )
 		document.getElementById('after').style.display = 'none'
 	}
 
@@ -378,14 +408,13 @@ export default class SplitText extends Component {
 		this.setState({ language: e.value })
 		console.log(e.language)
 	}
-	
+
 	paragraph = -1
-	handlerecord() {	
-		this.setState({toggle : !this.state.toggle})
+	handlerecord() {
+		this.setState({ toggle: !this.state.toggle })
 		// console.log(document.querySelector('#textInButton'))
 		// document.querySelector('#textInButton').style.display = 'block'
-		console.log(this.state.toggle);
-		
+		console.log(this.state.toggle)
 	}
 
 	render() {
@@ -429,7 +458,6 @@ export default class SplitText extends Component {
 							rows='40'
 							style={{
 								padding: '30px 50px',
-								
 							}}
 							onChange={(e) =>
 								this.setState({ inputarea: e.target.value })
@@ -501,24 +529,26 @@ export default class SplitText extends Component {
 									</button>
 								</a>
 								<br />
-								<div onClick={()=>this.handlerecord()}>
+								<div onClick={() => this.handlerecord()}>
 									<button
 										class='buttonTable'
 										onClick={this.handlerecord}
 									>
-								{ !this.state.toggle && <span className='buttonText'>
-											Record complete transcript
-										</span>}
-										{ this.state.toggle && <span className='buttonText'>
-Cancel Recording										</span>}
-
-										
+										{!this.state.toggle && (
+											<span className='buttonText'>
+												Record complete transcript
+											</span>
+										)}
+										{this.state.toggle && (
+											<span className='buttonText'>
+												Cancel Recording{' '}
+											</span>
+										)}
 									</button>
 								</div>
-							
-
-								{ this.state.toggle && <Record {...textSingle}></Record>}
-
+								{this.state.toggle && (
+									<Record {...textSingle}></Record>
+								)}
 								<br />
 								<textarea
 									name=''
