@@ -386,6 +386,8 @@ export default class SplitText extends Component {
 		const formData = new FormData()
 		formData.append('input', JSON.stringify(convertedParas))
 		formData.append('output', JSON.stringify(this.state.converted))
+		formData.append('to_', this.state.language)
+		formData.append('user_id', this.state.user)
 		const result = await axios.post(
 			`${this.UPLOAD_ENDPOINT}convert`,
 			formData,
@@ -413,7 +415,7 @@ export default class SplitText extends Component {
 
 	paragraph = -1
 	handlerecord() {
-		this.setState({ toggle: !this.state.toggle })
+		// this.setState({ toggle: !this.state.toggle })
 		// console.log(document.querySelector('#textInButton'))
 		// document.querySelector('#textInButton').style.display = 'block'
 		console.log(this.state.toggle)
