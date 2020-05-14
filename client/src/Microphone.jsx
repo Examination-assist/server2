@@ -72,6 +72,7 @@
 // 		)
 // 	}
 // }
+
 import React from "react";
 import { Recorder } from "react-voice-recorder";
 import "./Microphone.css"
@@ -95,12 +96,12 @@ export default class Microphone extends React.Component {
     };
   }
   handleAudioStop(data) {
-    console.log(data);
+    // console.log(data);
     this.setState({ audioDetails: data });
-    //console.log(data);
+    // console.log(data);
   }
   handleAudioUpload(file) {
-    console.log(file);
+    // console.log(file);
   }
   handleRest() {
     const reset = {
