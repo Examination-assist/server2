@@ -6,7 +6,6 @@
   yarn 
   yarn start
   ```
-  
 ##### Step 2: run server side
    ```
  cd server
@@ -15,8 +14,6 @@
   php artisan storage: link
   php artisan serve
   ```
-
-  
 ##### Step 3: setup DB
    ```
  open .env in server/laravel/
@@ -28,15 +25,11 @@
   DB_PASSWORD
   according to your MySQL setup
    ```
-
-  
 ##### Step 4: Run
   ```
-
   open browser in localhost:xxxx
   by default port: 3000
 cd client
   yarn 
   yarn start
-  
   ```
