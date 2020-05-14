@@ -1,10 +1,5 @@
 # TexteditTranslate
 
-
-##### Step 1: run client side
-  # TexteditTranslate
-
-
 ##### Step 1: run client side
   ```
   cd client
