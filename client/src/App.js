@@ -21,9 +21,7 @@ class App extends React.Component {
 						<Route exact path='/table'>
 							<Table></Table>
 						</Route>
-						{/* <Route exact path='/record'>
-							<Record></Record>
-						</Route> */}
+
 					</Switch>
 				</Router>
 			</div>

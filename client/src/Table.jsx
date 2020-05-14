@@ -64,6 +64,15 @@ let dataConvertTest = [
 	],
 ]
 
+const UserOptions = [
+	{ value: 'User1', label: 'User 1 | Engineering |EE BOOK to Telugu' },
+	{ value: 'User2', label: 'User 2 | Engineering |EE BOOK to Tamil' },
+	{ value: 'User3', label: 'User 3 | Yoga | Intro BOOK to Bengali' },
+	{ value: 'User4', label: 'User 4 | Yoga |Yoga 1 BOOK to Hindi' },
+	{ value: 'User5', label: 'User 5 | Self-Paced |Cultural BOOK to Marathi' },
+	{ value: 'User6', label: 'User 6 | Self-Paced |Mind BOOK to Gujurati' },
+]
+
 const options = [
 	'Hindi',
 	'Bengali',
@@ -251,6 +260,7 @@ export default class SplitText extends Component {
 	}
 
 	componentDidMount() {
+		console.log(localStorage.getItem('user_id'))
 		document.getElementById('after').style.display = 'none'
 	}
 
