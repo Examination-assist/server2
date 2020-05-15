@@ -252,7 +252,7 @@ class Row extends Component {
 }
 
 export default class SplitText extends Component {
-	UPLOAD_ENDPOINT = 'http://localhost:8001/api/'
+	UPLOAD_ENDPOINT = 'http://localhost:8000/api/'
 
 	constructor(props) {
 		super(props)
