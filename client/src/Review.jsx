@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-// import autosize from 'autosize'
-// import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 import axios from 'axios'
-// import Microphone from './Microphone'
-// import Record from './Record'
 import './App.css'
 
 // let fromData = [
@@ -119,7 +115,6 @@ class Row extends Component {
 			counter: this.props.counter,
 			paragraph: this.props.paragraph,
 		})
-		// autosize(document.querySelectorAll('textarea'))
 	}
 	colors = ['#BFBBFF', '#C4E3FF']
 	render() {
@@ -133,8 +128,6 @@ class Row extends Component {
 										display: 'flex',
 										width: '100%',
 										fontWeight: '600',
-
-										// backgroundColor: 'rgba(0,0,255,0.4)',
 								  }
 								: {
 										display: 'flex',
@@ -146,9 +139,6 @@ class Row extends Component {
 								  }
 						}
 						className={`OuterRow `}
-						// ${
-						// 	this.props.counter % 2 === 0 ? 'Odd' : 'Even'
-						// }
 					>
 						<div
 							style={{
@@ -265,7 +255,6 @@ export default class SplitText extends Component {
 	}
 
 	updateRow(para, count, value) {
-		// console.log(para,count)
 		let converted = this.state.converted
 		converted[para][count] = value
 		this.setState({ converted: converted })
@@ -278,8 +267,6 @@ export default class SplitText extends Component {
 		} catch {
 			return ''
 		}
-		// return this.state.converted[para][count] ? 'a' : 'b'
-		// return this.state.converted[para][count]
 	}
 
 	update() {
@@ -424,16 +411,6 @@ export default class SplitText extends Component {
 									Upload File
 								</button>
 
-								{/* <div className='dropDown'>
-									<h5>Choose language to translate into:</h5>
-									<Dropdown
-										className='dropdownInner'
-										options={options}
-										onChange={this.handleDropDown}
-										value={this.state.language}
-										placeholder='Select Language'
-									/>
-								</div> */}
 							</form>
 						</div>
 						<h5>Original </h5>
@@ -514,11 +491,6 @@ export default class SplitText extends Component {
 							<span className='buttonText'>Save </span>
 						</button>
 					</div>
-					{/* {this.state.convert === [] ? (
-					''
-				) : (
-					<DisplayText convert={this.state.convert}></DisplayText>
-				)} */}
 				</div>
 			</React.Fragment>
 		)
