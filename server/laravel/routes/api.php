@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
@@ -172,6 +173,6 @@ Route::any('/display', function (Request $request) {
     );
 });
 
-// Route::any(('/test'),'UploadFile');
+Route::any(('/test'),'UploadFile');
 
 Route::post('/convert', 'UploadFile');

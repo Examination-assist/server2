@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Log;
+use Exception;
 use Illuminate\Http\Request;
 
 class UploadFile extends Controller
@@ -26,14 +26,17 @@ class UploadFile extends Controller
         $user_id = $request->user_id;
         for ($para = 0; $para < count($input); $para++) {
             for ($line = 0; $line < count($input[$para]); $line++) {
-                $s = $s . $input[$para][$line];
-                $s = $s . "\n";
-                $s = $s . $output[$para][$line];
-                $s = $s . "\n";
-                $s = $s . "\n";
+                try {
+                    $s = $s . $input[$para][$line];
+                    $s = $s . "\n";
+                    $s = $s . $output[$para][$line];
+                    $s = $s . "\n";
+                    $s = $s . "\n";
 
-                $s1 = $s1 . $output[$para][$line];
-                $s1 = $s1 . "\n";
+                    $s1 = $s1 . $output[$para][$line];
+                    $s1 = $s1 . "\n";
+                } catch (Exception $e) {
+                }
             }
             $s = $s . "\n";
             $s1 = $s1 . "\n";
@@ -42,8 +45,8 @@ class UploadFile extends Controller
 
         $section_s->addText($s1);
         $section_both->addText($s);
-        // $serial_input = serialize($input);
-        // $serial_output = serialize($output);
+        $serial_input = serialize($input);
+        $serial_output = serialize($output);
         // DB::table('document')->insert([
         //     ['input' => $serial_input, 'output' => $serial_output, 'to_' => $to_, 'user_id' => $user_id]
         // ]);
