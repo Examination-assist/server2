@@ -184,10 +184,9 @@ class Row extends Component {
 							className='rightcont'
 						>
 							{this.state.left}
-							
 						</div>
 						<div
-						className = "buttonSet"
+							className='buttonSet'
 							style={{
 								width: '20%',
 								padding: '10px',
@@ -196,19 +195,17 @@ class Row extends Component {
 								textAlign: 'left',
 							}}
 						>
-							<button className="button ButtonReview Accept">
+							<button className='button ButtonReview Accept'>
 								Accept
 							</button>
 							<br />
-							<button className="button ButtonReview Reject">
+							<button className='button ButtonReview Reject'>
 								Reject
-
 							</button>
 							<br />
-							<span classname="Remarks">Remarks: </span>
-							<textarea type="text" className="textReview"/>
+							<span classname='Remarks'>Remarks: </span>
+							<textarea type='text' className='textReview' />
 						</div>
-						
 					</div>
 				</div>
 			</React.Fragment>
@@ -225,8 +222,8 @@ export default class SplitText extends Component {
 		this.handleDropDown = this.handleDropDown.bind(this)
 
 		this.state = {
-			language: 'Hindi',	
-			user: "user 1",
+			language: 'Hindi',
+			user: 'user 1',
 			file: null,
 			fileOriginal: null,
 			// statusRecorder: False,
@@ -257,13 +254,13 @@ export default class SplitText extends Component {
 
 	componentDidMount() {
 		console.log()
-		this.setState({user : localStorage.getItem('user_id')})
-		let k=UserOptions.filter(
-				(e) => e.value === localStorage.getItem('user_id')
-			)[0]
-			this.setState({language:k.language})
+		this.setState({ user: localStorage.getItem('user_id') })
+		let k = UserOptions.filter(
+			(e) => e.value === localStorage.getItem('user_id')
+		)[0]
+		this.setState({ language: k.language })
 		console.log(localStorage.getItem('user_id'))
-		
+
 		document.getElementById('after').style.display = 'none'
 	}
 
@@ -317,11 +314,6 @@ export default class SplitText extends Component {
 		document.getElementById('before').style.display = 'none'
 		document.getElementById('before').style.visibility = 'hidden'
 		this.forceUpdate()
-
-		// this.setState({ converted: dataConvertTest })
-		// const row = document.createElement('Row')
-		// row.left = 'hello'
-		// document.getElementById('after').appendChild(row)
 	}
 	async onSubmit(e) {
 		e.preventDefault()
@@ -329,17 +321,14 @@ export default class SplitText extends Component {
 		this.setState({ dataOriginal: res.data.text })
 		this.setState({ inputareaOriginal: res.data.text })
 		console.log(res.data.text, res)
-
 	}
 	async onSubmit1(e) {
 		e.preventDefault()
-		// console.log(this.state.fileOriginal)
 		let res = await this.uploadFile(this.state.fileOriginal)
 		console.log(res)
 		this.setState({ data: res.data.text })
 		this.setState({ inputarea: res.data.text })
 		console.log(res.data.text, res)
-
 	}
 	onChange(e) {
 		this.setState({ file: e.target.files[0] })
@@ -358,7 +347,6 @@ export default class SplitText extends Component {
 			},
 		})
 	}
-	
 
 	async save() {
 		let convertedParas = []
@@ -400,15 +388,10 @@ export default class SplitText extends Component {
 	paragraph = -1
 	handlerecord() {
 		this.setState({ toggle: !this.state.toggle })
-		// console.log(document.querySelector('#textInButton'))
-		// document.querySelector('#textInButton').style.display = 'block'
 		console.log(this.state.toggle)
 	}
 
 	render() {
-		// const textSingle = {
-		// 	text: this.state.SingleText,
-		// }
 		return (
 			<React.Fragment>
 				<div className='outerPehle' style={{ margin: '2rem 0' }}>
@@ -427,8 +410,8 @@ export default class SplitText extends Component {
 								<button className='buttonTable' type='submit'>
 									Upload File
 								</button>
-			</form>
-			<form onSubmit={this.onSubmit1}>
+							</form>
+							<form onSubmit={this.onSubmit1}>
 								{/* <h3> Upload File</h3> */}
 								<h5>Choose File to Evaluate </h5>
 
@@ -440,7 +423,7 @@ export default class SplitText extends Component {
 								<button className='buttonTable' type='submit'>
 									Upload File
 								</button>
-								
+
 								{/* <div className='dropDown'>
 									<h5>Choose language to translate into:</h5>
 									<Dropdown
@@ -464,13 +447,15 @@ export default class SplitText extends Component {
 								padding: '30px 50px',
 							}}
 							onChange={(e) =>
-								this.setState({ inputareaOriginal: e.target.value })
+								this.setState({
+									inputareaOriginal: e.target.value,
+								})
 							}
 							value={this.state.inputareaOriginal}
 						></textarea>
-								<h5>Submitted Translation </h5>
+						<h5>Submitted Translation </h5>
 
-							<textarea
+						<textarea
 							name='inputarea'
 							id='inputarea'
 							cols='30'
@@ -526,11 +511,9 @@ export default class SplitText extends Component {
 							onClick={() => this.save()}
 							type='submit'
 						>
-							<span className='buttonText'>
-Save											</span>
-
-							</button>
-						</div>
+							<span className='buttonText'>Save </span>
+						</button>
+					</div>
 					{/* {this.state.convert === [] ? (
 					''
 				) : (
