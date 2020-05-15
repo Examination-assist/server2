@@ -173,6 +173,6 @@ Route::any('/display', function (Request $request) {
     );
 });
 
-Route::any(('/test'),'UploadFile');
+// Route::any(('/test'),'UploadFile');
 
-Route::post('/convert', 'UploadFile');
+Route::post('/convert', 'UploadFile@convert');

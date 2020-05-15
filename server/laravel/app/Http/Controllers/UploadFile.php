@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class UploadFile extends Controller
 {
     //
-    public function __invoke(Request $request)
+    public function convert(Request $request)
     {
         $phpWord_s = new \PhpOffice\PhpWord\PhpWord();
         $phpWord_both = new \PhpOffice\PhpWord\PhpWord();
