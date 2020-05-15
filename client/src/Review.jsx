@@ -217,7 +217,7 @@ class Row extends Component {
 }
 
 export default class SplitText extends Component {
-	UPLOAD_ENDPOINT = 'http://localhost:8001/api/'
+	UPLOAD_ENDPOINT = 'http://localhost:8000/api/'
 
 	constructor(props) {
 		super(props)
@@ -245,10 +245,10 @@ export default class SplitText extends Component {
 			path_both: '',
 		}
 		this.onSubmit = this.onSubmit.bind(this)
+		this.onSubmit1 = this.onSubmit1.bind(this)
 		this.onChange = this.onChange.bind(this)
 		this.onChange1 = this.onChange1.bind(this)
 		this.uploadFile = this.uploadFile.bind(this)
-		// this.uploadFile = this.uploadFile1.bind(this)
 		this.updateRow = this.updateRow.bind(this)
 		this.save = this.save.bind(this)
 		this.getConverted = this.getConverted.bind(this)
@@ -326,17 +326,19 @@ export default class SplitText extends Component {
 	async onSubmit(e) {
 		e.preventDefault()
 		let res = await this.uploadFile(this.state.file)
-		this.setState({ data: res.data.text })
-		this.setState({ inputarea: res.data.text })
+		this.setState({ dataOriginal: res.data.text })
+		this.setState({ inputareaOriginal: res.data.text })
 		console.log(res.data.text, res)
 
 	}
 	async onSubmit1(e) {
 		e.preventDefault()
-		let res = await this.uploadFile1(this.state.fileOriginal)
-		this.setState({ dataOriginal: res.dataOriginal.text })
-		this.setState({ inputareaOriginal: res.dataOriginal.text })
-		console.log(res.dataOriginal.text, res)
+		// console.log(this.state.fileOriginal)
+		let res = await this.uploadFile(this.state.fileOriginal)
+		console.log(res)
+		this.setState({ data: res.data.text })
+		this.setState({ inputarea: res.data.text })
+		console.log(res.data.text, res)
 
 	}
 	onChange(e) {
@@ -356,17 +358,7 @@ export default class SplitText extends Component {
 			},
 		})
 	}
-	async uploadFile1(fileOriginal) {
-		const formData = new FormData()
-		formData.append('file', fileOriginal)
-		formData.append('filename', fileOriginal.name)
-		console.log(formData)
-		return await axios.post(this.UPLOAD_ENDPOINT + 'upload', formData, {
-			headers: {
-				'content-type': 'multipart/form-data',
-			},
-		})
-	}
+	
 
 	async save() {
 		let convertedParas = []
