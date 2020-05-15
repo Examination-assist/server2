@@ -228,6 +228,7 @@ export default class SplitText extends Component {
 			language: 'Hindi',	
 			user: "user 1",
 			file: null,
+			fileOriginal: null,
 			// statusRecorder: False,
 			data: '',
 			paragraphs: [''],
@@ -235,6 +236,8 @@ export default class SplitText extends Component {
 			view: '',
 			inputarea: `
 			`,
+			dataOriginal: '',
+			inputareaOriginal: '',
 			count: 0,
 			convert: [],
 			converted: [],
@@ -243,7 +246,9 @@ export default class SplitText extends Component {
 		}
 		this.onSubmit = this.onSubmit.bind(this)
 		this.onChange = this.onChange.bind(this)
+		this.onChange1 = this.onChange1.bind(this)
 		this.uploadFile = this.uploadFile.bind(this)
+		// this.uploadFile = this.uploadFile1.bind(this)
 		this.updateRow = this.updateRow.bind(this)
 		this.save = this.save.bind(this)
 		this.getConverted = this.getConverted.bind(this)
@@ -324,14 +329,37 @@ export default class SplitText extends Component {
 		this.setState({ data: res.data.text })
 		this.setState({ inputarea: res.data.text })
 		console.log(res.data.text, res)
+
+	}
+	async onSubmit1(e) {
+		e.preventDefault()
+		let res = await this.uploadFile1(this.state.fileOriginal)
+		this.setState({ dataOriginal: res.dataOriginal.text })
+		this.setState({ inputareaOriginal: res.dataOriginal.text })
+		console.log(res.dataOriginal.text, res)
+
 	}
 	onChange(e) {
 		this.setState({ file: e.target.files[0] })
+	}
+	onChange1(e) {
+		this.setState({ fileOriginal: e.target.files[0] })
 	}
 	async uploadFile(file) {
 		const formData = new FormData()
 		formData.append('file', file)
 		formData.append('filename', file.name)
+		console.log(formData)
+		return await axios.post(this.UPLOAD_ENDPOINT + 'upload', formData, {
+			headers: {
+				'content-type': 'multipart/form-data',
+			},
+		})
+	}
+	async uploadFile1(fileOriginal) {
+		const formData = new FormData()
+		formData.append('file', fileOriginal)
+		formData.append('filename', fileOriginal.name)
 		console.log(formData)
 		return await axios.post(this.UPLOAD_ENDPOINT + 'upload', formData, {
 			headers: {
@@ -398,8 +426,7 @@ export default class SplitText extends Component {
 						<div className='uploadFile'>
 							<form onSubmit={this.onSubmit}>
 								<h3> Upload File</h3>
-								<h5>Choose File to Evaluate </h5>
-
+								<h5>Choose original File</h5>
 								<input
 									className='buttonTable'
 									type='file'
@@ -408,6 +435,20 @@ export default class SplitText extends Component {
 								<button className='buttonTable' type='submit'>
 									Upload File
 								</button>
+			</form>
+			<form onSubmit={this.onSubmit1}>
+								{/* <h3> Upload File</h3> */}
+								<h5>Choose File to Evaluate </h5>
+
+								<input
+									className='buttonTable'
+									type='file'
+									onChange={this.onChange1}
+								/>
+								<button className='buttonTable' type='submit'>
+									Upload File
+								</button>
+								
 								{/* <div className='dropDown'>
 									<h5>Choose language to translate into:</h5>
 									<Dropdown
@@ -420,11 +461,28 @@ export default class SplitText extends Component {
 								</div> */}
 							</form>
 						</div>
+						<h5>Original </h5>
+
 						<textarea
+							name='inputareaOriginal'
+							id='inputareaOriginal'
+							cols='30'
+							rows='20'
+							style={{
+								padding: '30px 50px',
+							}}
+							onChange={(e) =>
+								this.setState({ inputareaOriginal: e.target.value })
+							}
+							value={this.state.inputareaOriginal}
+						></textarea>
+								<h5>Submitted Translation </h5>
+
+							<textarea
 							name='inputarea'
 							id='inputarea'
-							cols='60'
-							rows='40'
+							cols='30'
+							rows='20'
 							style={{
 								padding: '30px 50px',
 							}}
