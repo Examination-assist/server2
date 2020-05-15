@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 import './Start.css'
-import Table from './Table'
-import { Route } from 'react-router-dom'
+// import Table from './Table'
+// import { Route } from 'react-router-dom'
 // const optionsDiscipline = [
 //     "Engineering & Technology",
 //     "Self Paced",
@@ -54,10 +54,10 @@ const defaultOption = options[0]
 // }
 
 class Start extends Component {
-	constructor() {
-		super()
-		// this.state = { drop2: 'Engineering' }
-	}
+	// constructor() {
+	// 	super()
+	// 	// this.state = { drop2: 'Engineering' }
+	// }
 	componentDidMount() {
 		console.log(this.state)
 		console.log()

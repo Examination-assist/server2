@@ -21,10 +21,9 @@ class Record extends Component {
 						></textarea>
 				</h1>
 						</div>
-						<div className="right">
-				<Microphone />
+						<div  className="right">
+				<Microphone className="completeRecord" />
 						</div>
-							
 			</div>
 		)
 	}

@@ -129,3 +129,29 @@ text-align: center !important;
 
 
 
+.buttonSet{
+	text-align: center !important;
+}
+
+.ButtonReview{
+	margin-top: 10px;
+	color:white !important;
+	font-weight:600;
+}
+
+.textReview{
+	margin-top: 10px;
+}
+
+.Accept{
+background-color: rgb(47, 255, 47) !important;
+}
+
+.Reject
+{
+	background-color: red !important;
+}
+.Remarks{
+	margin-top: 10px !important;
+	font-weight: 700;
+}

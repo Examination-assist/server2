@@ -123,7 +123,7 @@ export default class Microphone extends React.Component {
 	xhr.open('GET', this.state.url, true);
 	xhr.responseType = 'blob';
 	xhr.onload = function(e) {
-		if (this.status == 200) {
+		if (this.status === 200) {
 			data.data = this.response;
 			data.name = "whatever_dataname.mp3";
 			// data.size = getYourBlobSize();

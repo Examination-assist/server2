@@ -9,3 +9,16 @@
 .textAreaRecord{
 	padding:20px 30px;
 }
+.right{
+	text-align: center !important;
+	width:100% !important;
+}
+
+.completeRecord{
+	width:80%;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+.record-section{
+	width:100%;
+}

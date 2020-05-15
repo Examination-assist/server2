@@ -7,6 +7,7 @@ import Table from './Table'
 // import Record from  './Record'
 // import Microphone from  './Microphone'
 // import FileUploadForm from './FileUpload';
+import Review from './Review';
 import Start from './Start'
 
 class App extends React.Component {
@@ -21,7 +22,9 @@ class App extends React.Component {
 						<Route exact path='/table'>
 							<Table></Table>
 						</Route>
-
+						<Route exact path='/review'>
+							<Review></Review>
+						</Route>
 					</Switch>
 				</Router>
 			</div>

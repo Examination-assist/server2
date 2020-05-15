@@ -211,9 +211,9 @@ Route::post('/convert', function (Request $request) {
     $section_both->addText($s);
     $serial_input = serialize($input);
     $serial_output = serialize($output);
-    DB::table('document')->insert([
-        ['input' => $serial_input, 'output' => $serial_output, 'to_' => $to_, 'user_id' => $user_id]
-    ]);
+    // DB::table('document')->insert([
+    //     ['input' => $serial_input, 'output' => $serial_output, 'to_' => $to_, 'user_id' => $user_id]
+    // ]);
 
     $objWriter_s = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord_s, 'Word2007');
     $objWriter_both = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord_both, 'Word2007');
@@ -226,7 +226,7 @@ Route::post('/convert', function (Request $request) {
     return response()->json([
         's' => $s,
         's1' => $s1,
-        'path_s' => 'http://localhost:8000/storage/' . 's' . $time . '.docx',
-        'path_both' => 'http://localhost:8000/storage/' . 'both' . $time . '.docx'
+        'path_s' => 'http://localhost:8001/storage/' . 's' . $time . '.docx',
+        'path_both' => 'http://localhost:8001/storage/' . 'both' . $time . '.docx'
     ]);
 });

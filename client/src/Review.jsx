@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 // import autosize from 'autosize'
-import Dropdown from 'react-dropdown'
+// import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 import axios from 'axios'
-import Microphone from './Microphone'
-import Record from './Record'
+// import Microphone from './Microphone'
+// import Record from './Record'
 import './App.css'
 
 // let fromData = [
@@ -98,16 +98,16 @@ const UserOptions = [
 	},
 ]
 
-const options = [
-	'Hindi',
-	'Bengali',
-	'Gujarati',
-	'Kannada',
-	'Malayalam',
-	'Marathi',
-	'Tamil',
-	'Telugu',
-]
+// const options = [
+// 	'Hindi',
+// 	'Bengali',
+// 	'Gujarati',
+// 	'Kannada',
+// 	'Malayalam',
+// 	'Marathi',
+// 	'Tamil',
+// 	'Telugu',
+// ]
 // const defaultOption = options[0]
 
 class Row extends Component {
@@ -164,7 +164,7 @@ class Row extends Component {
 						</div>
 						<div
 							style={{
-								width: '30%',
+								width: '38%',
 								padding: '10px',
 								border: '1px solid black',
 								borderRight: '0',
@@ -176,74 +176,39 @@ class Row extends Component {
 						</div>
 						<div
 							style={{
-								width: '30%',
+								width: '38%',
 								padding: '10px',
 								border: '1px solid black',
 								overflow: 'hidden',
 							}}
 							className='rightcont'
 						>
-							<textarea
-								style={
-									this.state.active
-										? {
-												width: '100%',
-												padding: '10px',
-												height: '100%',
-												outline: 'none',
-												border: 'none',
-												backgroundColor:
-													'rgba(0,0,255,0)',
-										  }
-										: {
-												resize: 'none',
-												width: '100%',
-												// borderRightColor: 'green',
-												// borderRightStyle: 'solid',
-												// borderRightWidth: '2px',
-												height: '100%',
-												outline: 'none',
-												border: 'none',
-												backgroundColor:
-													'rgba(0,0,255,0)',
-										  }
-								}
-								type='text'
-								onBlurCapture={(e) => {
-									this.props.updateRow(
-										this.state.paragraph,
-										this.state.counter - 1,
-										e.target.value
-									)
-									this.setState({ active: false })
-								}}
-								onFocusCapture={() =>
-									this.setState({ active: true })
-								}
-								value={this.props.getConverted(
-									this.state.paragraph,
-									this.state.counter - 1
-								)}
-								onChange={(e) =>
-									this.props.updateRow(
-										this.state.paragraph,
-										this.state.counter - 1,
-										e.target.value
-									)
-								}
-							/>
+							{this.state.left}
+							
 						</div>
 						<div
+						className = "buttonSet"
 							style={{
-								width: '36%',
+								width: '20%',
 								padding: '10px',
 								border: '1px solid black',
 								borderRight: '0',
 								textAlign: 'left',
 							}}
 						>
-							<Microphone />
+							<button className="button ButtonReview Accept">
+								Accept
+							</button>
+							<br />
+							<button className="button ButtonReview Reject">
+								Reject
+
+							</button>
+							<br />
+							<span classname="Remarks">Remarks: </span>
+							<textarea type="text" className="textReview"/>
 						</div>
+						
 					</div>
 				</div>
 			</React.Fragment>
@@ -421,19 +386,19 @@ export default class SplitText extends Component {
 	}
 
 	render() {
-		const textSingle = {
-			text: this.state.SingleText,
-		}
+		// const textSingle = {
+		// 	text: this.state.SingleText,
+		// }
 		return (
 			<React.Fragment>
 				<div className='outerPehle' style={{ margin: '2rem 0' }}>
-					<h1>Welcome {this.state.user}</h1>
-					<h1>Translating from English to {this.state.language}</h1>
+					<h1>Welcome Evaluator</h1>
+					{/* <h1>Translating from English to {this.state.language}</h1> */}
 					<div id='before'>
 						<div className='uploadFile'>
 							<form onSubmit={this.onSubmit}>
 								<h3> Upload File</h3>
-								<h5>Choose File to translate </h5>
+								<h5>Choose File to Evaluate </h5>
 
 								<input
 									className='buttonTable'
@@ -443,7 +408,7 @@ export default class SplitText extends Component {
 								<button className='buttonTable' type='submit'>
 									Upload File
 								</button>
-								<div className='dropDown'>
+								{/* <div className='dropDown'>
 									<h5>Choose language to translate into:</h5>
 									<Dropdown
 										className='dropdownInner'
@@ -452,7 +417,7 @@ export default class SplitText extends Component {
 										value={this.state.language}
 										placeholder='Select Language'
 									/>
-								</div>
+								</div> */}
 							</form>
 						</div>
 						<textarea
@@ -515,61 +480,7 @@ export default class SplitText extends Component {
 Save											</span>
 
 							</button>
-						<div className='container'>
-							<div
-								id='downloadButtons'
-								className='downloadButtons'
-								style={{
-									margin: '0 auto',
-									width: '80%',
-									display: 'none',
-								}}
-							>
-								<a href={this.state.path_s} rel="noopener noreferrer" target='_blank'>
-									<button className='halfButton1'>
-										Single
-									</button>
-								</a>{' '}
-								<a href={this.state.path_both} rel="noopener noreferrer" target='_blank'>
-									<button className='halfButton2'>
-										Both
-									</button>
-								</a>
-								<br />
-								<div onClick={() => this.handlerecord()}>
-									<button
-										class='buttonTable'
-										onClick={this.handlerecord}
-									>
-										{!this.state.toggle && (
-											<span className='buttonText'>
-												Record complete transcript
-											</span>
-										)}
-										{this.state.toggle && (
-											<span className='buttonText'>
-												Cancel Recording{' '}
-											</span>
-										)}
-									</button>
-								</div>
-
-								{this.state.toggle && (
-									<Record style={{textAlign: "center"}}  {...textSingle}></Record>
-								)}
-								<br />
-								<textarea
-									name=''
-									className='textArea'
-									value={this.state.view}
-									id=''
-									cols='90'
-									rows='40'
-									disabled
-								></textarea>
-							</div>
 						</div>
-					</div>
 					{/* {this.state.convert === [] ? (
 					''
 				) : (
