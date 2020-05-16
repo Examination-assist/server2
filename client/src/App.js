@@ -9,6 +9,7 @@ import Table from './Table'
 // import FileUploadForm from './FileUpload';
 import Review from './Review';
 import Start from './Start'
+import Login from './Registration/Login';
 
 class App extends React.Component {
 	render() {
@@ -25,6 +26,7 @@ class App extends React.Component {
 						<Route exact path='/review'>
 							<Review></Review>
 						</Route>
+						<Route path='/login' component={Login}></Route>
 					</Switch>
 				</Router>
 			</div>
