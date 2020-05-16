@@ -5,7 +5,7 @@ export default class Login extends Component {
 	async componentDidMount() {
 		console.log(await axios.post('http://localhost:8000/api/register', {
 			first_name: 'Aniket',
-			// last_name: 'Chowdhury',
+			last_name: 'Chowdhury',
 			username: 'aniketbiprojit',
 			password: 'password',
 			user_type: 'Translator',
