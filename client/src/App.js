@@ -11,6 +11,7 @@ import Review from './Review';
 import Start from './Start'
 import Register from './scripts/Registration/Register';
 import Login from './scripts/Registration/Login';
+import Document from './scripts/Registration/Document';
 
 class App extends React.Component {
 	render() {
@@ -29,6 +30,7 @@ class App extends React.Component {
 						</Route>
 						<Route path='/register' component={Register}></Route>
 						<Route path='/login' component={Login}></Route>
+						<Route path='/document' component={Document}></Route>
 					</Switch>
 				</Router>
 			</div>

@@ -15,33 +15,10 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-
-
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 Route::post('/register','UserController@register');
 Route::post('/login','UserController@login');
 
+Route::post('/create_document','DocumentController@create');
+
 Route::post('/upload', 'UploadFile@index');
-
-Route::any('/display', function (Request $request) {
-    $str = DB::table('document')->select('input', 'output')->get();
-    $data = [];
-    for ($i = 0; $i < count($str); $i++) {
-        $unserial_input = (unserialize(strval($str[$i]->input)));
-        $unserial_output = (unserialize(strval($str[$i]->output)));
-        array_push($data, array('input' => $unserial_input, 'output' => $unserial_output));
-    }
-    return response()->json(
-        $data,
-        200,
-        ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
-        JSON_UNESCAPED_UNICODE
-    );
-});
-
-// Route::any(('/test'),'UploadFile');
-
 Route::post('/convert', 'UploadFile@convert');

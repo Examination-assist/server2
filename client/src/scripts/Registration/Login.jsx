@@ -71,7 +71,7 @@ export default class Login extends Component {
 								name='password'
 								required
 							/>
-							<br />
+
 							<p className='red' style={{ color: 'red' }}>
 								{this.state.err}
 							</p>

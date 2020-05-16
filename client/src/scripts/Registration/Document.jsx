@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 
 export default class Document extends Component {
 	constructor() {
@@ -14,12 +15,14 @@ export default class Document extends Component {
 
 	async componentDidMount() {
 		console.log(
-			await axios.post('http://localhost:8000', {
+			await axios.post('http://localhost:8000/api/create_document', {
 				name: 'Thy Do Mine',
 				from_: 'English',
                 to_: 'Telegu',
                 input:'',
                 ouput:''
+			},{
+				headers:{Authorization:localStorage.getItem('AuthToken')}
 			})
 		)
 	}
