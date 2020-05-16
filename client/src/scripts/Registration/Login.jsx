@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import "../../Register.css"
+import '../../Register.css'
 export default class Login extends Component {
 	constructor() {
 		super()
 		this.state = { success: false }
 		this.handleChange = this.handleChange.bind(this)
 		this.post = this.post.bind(this)
+		this.state = { err: '' }
 	}
 
 	handleChange(e) {
@@ -16,64 +17,71 @@ export default class Login extends Component {
 	async componentDidMount() {
 		this.setState({
 			email: '',
-            password: '',
+			password: '',
 		})
 	}
 
 	async post() {
-		const res = await axios.post('http://localhost:8000/api/login', {
-			email: this.state.email,
-			password: this.state.password,
-		})
-		console.log(res)
-		if (res.status === 200) {
-			const token = res.data.token
-			localStorage.setItem('AuthToken', token)
-			localStorage.setItem('email', res.data.email)
-			localStorage.setItem('user_id', res.data.user_id)
-			this.setState({ success: true })
-        }
-        if(res.status === 400){
-            console.log(res)
-            this.setState({err:res})
-        }
+		try {
+			const res = await axios.post('http://localhost:8000/api/login', {
+				email: this.state.email,
+				password: this.state.password,
+			})
+			if (res.status === 200) {
+				const token = res.data.token
+				localStorage.setItem('AuthToken', token)
+				localStorage.setItem('email', res.data.email)
+				localStorage.setItem('user_id', res.data.user_id)
+				this.setState({ success: true })
+			}
+			if (res.status) {
+				console.log(res)
+				this.setState({ err: res })
+			}
+			if (res.status === 403) {
+				this.setState({ err: 'Username or password incorrect' })
+			}
+		} catch (error) {
+			console.log(error)
+			this.setState({ err: 'Username or password missing' })
+		}
 	}
 
 	render() {
 		return (
-			<div className="card">
+			<div className='card'>
 				{!this.state.success ? (
-					<div className="">
-
-					<span className='cardTitle login'>Login Here</span>
-<br />
-<br />
-					<form method='post'>
-						<input
-							onChange={this.handleChange}
-							placeholder='email'
-							type='email'
-							name='email'
-							required
-						/>
+					<div className=''>
+						<span className='cardTitle login'>Login Here</span>
 						<br />
-						<input
-							onChange={this.handleChange}
-							placeholder='password'
-							type='password'
-							name='password'
-							required
-						/>
 						<br />
-						<input
-							type='button'
-							value='Submit'
-							onClick={this.post}
-						/>
-						
-					</form>
+						<form method='post'>
+							<input
+								onChange={this.handleChange}
+								placeholder='email'
+								type='email'
+								name='email'
+								required
+							/>
+							<br />
+							<input
+								onChange={this.handleChange}
+								placeholder='password'
+								type='password'
+								name='password'
+								required
+							/>
+							<br />
+							<p className='red' style={{ color: 'red' }}>
+								{this.state.err}
+							</p>
+							<input
+								type='button'
+								value='Submit'
+								onClick={this.post}
+							/>
+						</form>
 					</div>
-
 				) : (
 					'Login successful'
 				)}
