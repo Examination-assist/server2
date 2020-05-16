@@ -8,4 +8,6 @@ class UserType extends Model
 {
     //
     protected $table='user_types';
+
+    
 }
