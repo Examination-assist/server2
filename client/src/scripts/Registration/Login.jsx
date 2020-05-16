@@ -32,7 +32,11 @@ export default class Login extends Component {
 			localStorage.setItem('email', res.data.email)
 			localStorage.setItem('user_id', res.data.user_id)
 			this.setState({ success: true })
-		}
+        }
+        if(res.status === 400){
+            console.log(res)
+            this.setState({err:res})
+        }
 	}
 
 	render() {
