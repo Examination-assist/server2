@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('username',25)->nullable()->unique();
             $table->string('password',500);
             
-            $table->foreignId('type_id')->constrained();
+            $table->foreignId('type_id')->references('type_id')->on('user_types');
         });
     }
 
