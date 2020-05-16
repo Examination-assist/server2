@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\UserType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -16,11 +17,25 @@ class UserController extends Controller
             'password'=>'required',
             'user_type'=>'required'
         ]);
+        // Log::info();
+        $type_id = UserType::where('type',$validated['user_type'])->first()->type_id;
+        Log::info($type_id);
         
-        // Log::info($validated->user_type);
-        $model = UserType::where('type','Admin');
-        Log::info($model->first());
-        // UserType::
+        $user = new User;
+
+        $user->email = $request->email;
+        $user->username = $request->username;
+
+        $user->password = Crypt::encryptString($request->password);
+        
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->type_id = $type_id;
+        
+
+        Log::info($user);
+        $user->save();
+        // Log::info($model)
         // Log::info(Crypt::encryptString($request->user));
         // Log::info(Crypt::decryptString(Crypt::encryptString($request->user)));
 

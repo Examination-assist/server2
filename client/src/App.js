@@ -10,6 +10,7 @@ import Table from './Table'
 import Review from './Review';
 import Start from './Start'
 import Register from './scripts/Registration/Register';
+import Login from './scripts/Registration/Register';
 
 class App extends React.Component {
 	render() {
@@ -27,6 +28,7 @@ class App extends React.Component {
 							<Review></Review>
 						</Route>
 						<Route path='/register' component={Register}></Route>
+						<Route path='/login' component={Login}></Route>
 					</Switch>
 				</Router>
 			</div>
