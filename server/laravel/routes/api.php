@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\DB;
 // });
 
 Route::post('/register','UserController@register');
+Route::post('/login','UserController@login');
 
 Route::post('/upload', 'UploadFile@index');
 

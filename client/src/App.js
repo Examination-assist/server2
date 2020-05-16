@@ -10,7 +10,7 @@ import Table from './Table'
 import Review from './Review';
 import Start from './Start'
 import Register from './scripts/Registration/Register';
-import Login from './scripts/Registration/Register';
+import Login from './scripts/Registration/Login';
 
 class App extends React.Component {
 	render() {

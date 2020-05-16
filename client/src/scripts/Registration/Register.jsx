@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-export default class Login extends Component {
+export default class Register extends Component {
 	async componentDidMount() {
 		console.log(await axios.post('http://localhost:8000/api/register', {
 			first_name: 'Aniket',
