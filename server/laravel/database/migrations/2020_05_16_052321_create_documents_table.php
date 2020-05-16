@@ -20,7 +20,7 @@ class CreateDocumentsTable extends Migration
             $table->mediumText('input')->nullable();
             $table->mediumText('output')->nullable();
             $table->timestamps();
-            $table->foreignId('user_id')->references('user_id')->on('users');;
+            $table->foreignId('user_id')->references('user_id')->on('users');
         });
     }
 
