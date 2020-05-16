@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class UserType extends Model
 {
     //
-    protected $table='usertypes';
+    protected $table='user_types';
 }
