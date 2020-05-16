@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import "../../Register.css"
 export default class Login extends Component {
 	constructor() {
 		super()
@@ -15,8 +15,8 @@ export default class Login extends Component {
 
 	async componentDidMount() {
 		this.setState({
-			email: '8.aniket.chowdhury@gmail.com',
-            password: 'password',
+			email: '',
+            password: '',
 		})
 	}
 
@@ -37,8 +37,13 @@ export default class Login extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="card">
 				{!this.state.success ? (
+					<div className="">
+
+					<span className='cardTitle login'>Login Here</span>
+<br />
+<br />
 					<form method='post'>
 						<input
 							onChange={this.handleChange}
@@ -61,7 +66,10 @@ export default class Login extends Component {
 							value='Submit'
 							onClick={this.post}
 						/>
+						
 					</form>
+					</div>
+
 				) : (
 					'Login successful'
 				)}

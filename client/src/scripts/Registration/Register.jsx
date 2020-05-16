@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import '../../Register.css'
 export default class Register extends Component {
 	constructor() {
 		super()
@@ -40,57 +40,92 @@ export default class Register extends Component {
 
 	render() {
 		return (
-			<div>
-				{!this.state.success ? (
-					<form method='post'>
-						<br />
-						<input
-							onChange={this.handleChange}
-							placeholder='email'
-							type='email'
-							name='email'
-							required
-						/>
-						<br />
-						<input
-							onChange={this.handleChange}
-							placeholder='first_name'
-							type='text'
-							name='first_name'
-						/>
-						<br />
-						<input
-							onChange={this.handleChange}
-							placeholder='last_name'
-							type='text'
-							name='last_name'
-						/>
-						<br />
-						<input
-							onChange={this.handleChange}
-							placeholder='username'
-							type='text'
-							name='username'
-						/>
-						<br />
-						<input
-							onChange={this.handleChange}
-							placeholder='password'
-							type='password'
-							name='password'
-							required
-						/>
-						<br />
-						<input
-							type='button'
-							value='Submit'
-							onClick={this.post}
-						/>
-					</form>
-				) : (
-					'Registered'
-				)}
-			</div>
+				<div className='card'>
+					{!this.state.success ? (
+						<div className="beforeREG">
+
+					<span className='cardTitle'>Register Here</span>
+						<form method='post'>
+							<br />
+
+							<input
+								onChange={this.handleChange}
+								placeholder='Email ID'
+								type='email'
+								name='email'
+								required
+							/>
+							<br />
+							<div className='onPC'>
+								<input
+									className='name firstName'
+									onChange={this.handleChange}
+									placeholder='First Name'
+									type='text'
+									name='first_name'
+								/>
+								<input
+									className='name lastName'
+									onChange={this.handleChange}
+									placeholder='Last Name'
+									type='text'
+									name='last_name'
+								/>
+							</div>
+							<div className='onPhone'>
+								<input
+									className='name firstNamePhone'
+									onChange={this.handleChange}
+									placeholder='First Name'
+									type='text'
+									name='first_name'
+								/>
+								<br />
+								<br />
+								<input
+									className='name lastNamePhone'
+									onChange={this.handleChange}
+									placeholder='Last Name'
+									type='text'
+									name='last_name'
+								/>
+							</div>
+							<br className="onPhone" />
+
+							<input
+								onChange={this.handleChange}
+								placeholder='Username'
+								type='text'
+								name='username'
+							/>
+							<br />
+
+							<input
+								onChange={this.handleChange}
+								placeholder='Password'
+								type='password'
+								name='password'
+								required
+							/>
+							<br />
+							<input
+								className='registerButtonPhone onPhone'
+								type='button'
+								value='Submit'
+								onClick={this.post}
+							/>
+							<input
+								className='registerButtonPC onPC'
+								type='button'
+								value='Submit'
+								onClick={this.post}
+							/>
+						</form>
+				</div>
+					) : (
+						'Registered'
+						)}
+						</div>
 		)
 	}
 }
