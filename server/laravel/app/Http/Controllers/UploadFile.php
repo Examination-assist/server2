@@ -62,8 +62,8 @@ class UploadFile extends Controller
         return response()->json([
             's' => $s,
             's1' => $s1,
-            'path_s' => 'http://localhost:8001/storage/' . 's' . $time . '.docx',
-            'path_both' => 'http://localhost:8001/storage/' . 'both' . $time . '.docx'
+            'path_s' => 'http://localhost:8000/storage/' . 's' . $time . '.docx',
+            'path_both' => 'http://localhost:8000/storage/' . 'both' . $time . '.docx'
         ]);
     }
 }

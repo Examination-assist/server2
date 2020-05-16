@@ -144,9 +144,12 @@ text-align: center !important;
 }
 
 .Accept{
-background-color: rgb(47, 255, 47) !important;
+background-color: rgb(50, 212, 36) !important;
 }
-
+.Review
+{
+	background-color: rgb(243, 239, 12) !important;
+}
 .Reject
 {
 	background-color: red !important;

@@ -107,7 +107,12 @@ const UserOptions = [
 // const defaultOption = options[0]
 
 class Row extends Component {
-	state = {}
+	state = {
+		statusKey:"In Progress",
+		toggleAccept: false,
+		toggleReject: false,
+		toggleRedo: false,
+	}
 	componentDidMount() {
 		this.setState({
 			left: this.props.left,
@@ -117,6 +122,25 @@ class Row extends Component {
 		})
 	}
 	colors = ['#BFBBFF', '#C4E3FF']
+	handleAccept(){
+		this.setState({statusKey: "Accepted"})
+		this.setState({toggleAccept: true})
+		this.setState({toggleReject: false})
+		this.setState({toggleRedo: false})
+	}
+	handleReject(){
+		this.setState({statusKey: "Rejected"})
+		this.setState({toggleReject: true})
+		this.setState({toggleAccept: false})
+		this.setState({toggleRedo: false})
+
+	}
+	handleRedo(){
+		this.setState({statusKey: "Change required"})
+		this.setState({toggleRedo: true})
+		this.setState({toggleReject: false})
+		this.setState({toggleAccept: false})
+	}
 	render() {
 		return (
 			<React.Fragment>
@@ -154,7 +178,7 @@ class Row extends Component {
 						</div>
 						<div
 							style={{
-								width: '38%',
+								width: '30%',
 								padding: '10px',
 								border: '1px solid black',
 								borderRight: '0',
@@ -166,7 +190,7 @@ class Row extends Component {
 						</div>
 						<div
 							style={{
-								width: '38%',
+								width: '30%',
 								padding: '10px',
 								border: '1px solid black',
 								overflow: 'hidden',
@@ -174,6 +198,16 @@ class Row extends Component {
 							className='rightcont'
 						>
 							{this.state.left}
+						</div>
+						<div
+							style={{
+								width: '16%',
+								padding: '10px',
+								border: '1px solid black',
+								overflow: 'hidden',
+							}}
+						>
+							{this.state.statusKey}
 						</div>
 						<div
 							className='buttonSet'
@@ -185,16 +219,57 @@ class Row extends Component {
 								textAlign: 'left',
 							}}
 						>
-							<button className='button ButtonReview Accept'>
+							<div className="accepted">
+
+							<button onClick={() => this.handleAccept()} className='button ButtonReview Accept'>
 								Accept
 							</button>
 							<br />
-							<button className='button ButtonReview Reject'>
+							{this.state.toggleAccept && (
+									<div className="remarksRequired remarksAccept">
+
+									<span classname='Remarks'>Remarks: </span>
+									<br />
+									<textarea type='text' className='textReview' />
+									</div>
+								)}
+							
+							</div>
+
+							<br />
+							<div className="rejected">
+
+							<button onClick={() => this.handleReject()} className='button ButtonReview Reject'>
 								Reject
 							</button>
 							<br />
-							<span classname='Remarks'>Remarks: </span>
-							<textarea type='text' className='textReview' />
+							{this.state.toggleReject && (
+									<div className="remarksRequired">
+
+									<span classname='Remarks'>Remarks: </span>
+									<br />
+									<textarea type='text' className='textReview' />
+									</div>
+								)}
+							
+							</div>
+							<br />
+							<div className="redo">
+
+							<button onClick={() => this.handleRedo()}  className='button ButtonReview Review'>
+								Change
+							</button>
+							<br />
+							{this.state.toggleRedo && (
+									<div className="remarksRequired">
+
+									<span classname='Remarks'>Remarks: </span>
+									<br />
+									<textarea type='text' className='textReview' />
+									</div>
+								)}
+							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -365,7 +440,7 @@ export default class SplitText extends Component {
 		})
 		console.log(result.data)
 		// console.log(result.data)
-		document.querySelector('#downloadButtons').style.display = 'block'
+		// document.querySelector('#downloadButtons').style.display = 'block'
 	}
 	handleDropDown(e) {
 		this.setState({ language: e.value })

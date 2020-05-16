@@ -134,7 +134,7 @@ export default class Microphone extends React.Component {
 	xhr.send();
 	
     return (
-      <div style={{width:"50%"}}className="Recorder">
+      <div style={{width:"100%", textAlign:"center"}}className="Recorder">
         <Recorder
           record={true}
           audioURL={this.state.audioDetails.url}

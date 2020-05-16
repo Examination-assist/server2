@@ -11,13 +11,14 @@
 }
 .right{
 	text-align: center !important;
-	width:100% !important;
-}
+	width:62% !important;
+	margin-left: 19%;
+	margin-right: 19%;}
 
 .completeRecord{
-	width:80%;
-	margin-left: 10%;
-	margin-right: 10%;
+	/* width:60% !important;
+	margin-left: 20%;
+	margin-right: 20%; */
 }
 .record-section{
 	width:100%;

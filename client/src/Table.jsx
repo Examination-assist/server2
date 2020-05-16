@@ -164,7 +164,7 @@ class Row extends Component {
 						</div>
 						<div
 							style={{
-								width: '30%',
+								width: '33%',
 								padding: '10px',
 								border: '1px solid black',
 								borderRight: '0',
@@ -176,7 +176,7 @@ class Row extends Component {
 						</div>
 						<div
 							style={{
-								width: '30%',
+								width: '33%',
 								padding: '10px',
 								border: '1px solid black',
 								overflow: 'hidden',
@@ -235,11 +235,11 @@ class Row extends Component {
 						</div>
 						<div
 							style={{
-								width: '36%',
-								padding: '10px',
+								width: '30%',
+								padding: '20px',
 								border: '1px solid black',
 								borderRight: '0',
-								textAlign: 'left',
+								textAlign: 'center !important',
 							}}
 						>
 							<Microphone />
@@ -416,7 +416,7 @@ export default class SplitText extends Component {
 
 	paragraph = -1
 	handlerecord() {
-		// this.setState({ toggle: !this.state.toggle })
+		this.setState({ toggle: !this.state.toggle })
 		// console.log(document.querySelector('#textInButton'))
 		// document.querySelector('#textInButton').style.display = 'block'
 		console.log(this.state.toggle)
