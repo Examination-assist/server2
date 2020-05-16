@@ -16,7 +16,7 @@ export default class Login extends Component {
 	async componentDidMount() {
 		this.setState({
 			email: '8.aniket.chowdhury@gmail.com',
-			password: 'password',
+            password: 'password',
 		})
 	}
 
@@ -29,7 +29,8 @@ export default class Login extends Component {
 		if (res.status === 200) {
 			const token = res.data.token
 			localStorage.setItem('AuthToken', token)
-			localStorage.setItem('user_id', res.data.email)
+			localStorage.setItem('email', res.data.email)
+			localStorage.setItem('user_id', res.data.user_id)
 			this.setState({ success: true })
 		}
 	}

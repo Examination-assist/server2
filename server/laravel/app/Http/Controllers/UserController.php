@@ -21,18 +21,16 @@ class UserController extends Controller
             'password' => 'required'
         ]);
 
-        $user = User::where('email', $validated['email'])->select(['email', 'password'])->first();
-
+        $user = User::where('email', $validated['email'])->select(['email', 'password', 'user_id'])->first();
 
         if ($validated['password'] == Crypt::decryptString($user->password)) {
             $secret = base64_encode(env('SECRET'));
-            $encoded = JWT::encode(['email'=>$validated['email'],'exp'=>108000], $secret, 'HS512');
-    
-            // Log::info(JWT::decode($encoded, $secret, array('HS512'))->k);
-    
+            $encoded = JWT::encode(['email' => $validated['email'], 'exp' => 108000], $secret, 'HS512');
+
             return response()->json([
                 'token' => $encoded,
-                'email' => $validated['email']
+                'email' => $validated['email'],
+                'user_id' => $user->user_id,
             ]);
         } else {
             return response()->json([], 403);
@@ -63,9 +61,6 @@ class UserController extends Controller
 
         Log::info($user);
         $user->save();
-        // Log::info($model)
-        // Log::info(Crypt::encryptString($request->user));
-        // Log::info(Crypt::decryptString(Crypt::encryptString($request->user)));
 
         return response()->json(['user' => '']);
     }
