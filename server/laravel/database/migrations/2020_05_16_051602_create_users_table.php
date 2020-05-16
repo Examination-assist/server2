@@ -22,7 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('username',25)->nullable()->unique();
             $table->string('password',500);
-
+            
+            $table->foreignId('type_id')->constrained();
         });
     }
 
