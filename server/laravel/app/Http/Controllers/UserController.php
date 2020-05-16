@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Log;
 
 use Illuminate\Support\Facades\Crypt;
 
+use Firebase\JWT\JWT;
+
 class UserController extends Controller
 {
 
     function login(Request $request)
     {
-        Log::info($request);
-
         $validated = $request->validate([
             'email' => 'required',
             'password' => 'required'
@@ -23,13 +23,19 @@ class UserController extends Controller
 
         $user = User::where('email', $validated['email'])->select(['email', 'password'])->first();
 
+
         if ($validated['password'] == Crypt::decryptString($user->password)) {
+            $secret = base64_encode(env('SECRET'));
+            $encoded = JWT::encode(['email'=>$validated['email'],'exp'=>108000], $secret, 'HS512');
+    
+            // Log::info(JWT::decode($encoded, $secret, array('HS512'))->k);
+    
             return response()->json([
-                'token'=>'token'
+                'token' => $encoded,
+                'email' => $validated['email']
             ]);
-        }
-        else{
-            return response()->json([],403);
+        } else {
+            return response()->json([], 403);
         }
     }
     function register(Request $request)
