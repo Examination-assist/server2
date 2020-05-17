@@ -25,7 +25,7 @@ class UserController extends Controller
 
         if ($validated['password'] == Crypt::decryptString($user->password)) {
             $secret = base64_encode(env('SECRET'));
-            $encoded = JWT::encode(['email' => $validated['email'], 'exp' => 108000], $secret, 'HS512');
+            $encoded = JWT::encode(['email' => $validated['email']], $secret, 'HS512');
 
             return response()->json([
                 'token' => $encoded,
