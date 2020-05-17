@@ -262,6 +262,8 @@ export default class SplitText extends Component {
 		this.state = {
 			language: 'Hindi',	
 			user: "user 1",
+			book: 'book name',
+			chapter: 'chapter',
 			file: null,
 			// statusRecorder: False,
 			data: '',
@@ -430,10 +432,12 @@ export default class SplitText extends Component {
 			<React.Fragment>
 				<div className='outerPehle' style={{ margin: '2rem 0' }}>
 					<h1>Welcome {this.state.user}</h1>
+					<h3>Book: {this.state.book} | Chapter: {this.state.chapter}</h3>
 					<h1>Translating from English to {this.state.language}</h1>
 					<div id='before'>
 						<div className='uploadFile'>
 							<form onSubmit={this.onSubmit}>
+								
 								<h3> Upload File</h3>
 								<h5>Choose File to translate </h5>
 

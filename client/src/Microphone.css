@@ -18,8 +18,14 @@
 .recorder-box-inner
 {
 	min-height:250px !important;
+	width:100% !important;		
+	background-color: rgba(0, 119, 255, 0.411) !important;
+	border-radius: 20px;
 }
 .help{
 	visibility: hidden;
 	display: none !important;
 } 
+.record-section{
+	width:100% !important;
+}
