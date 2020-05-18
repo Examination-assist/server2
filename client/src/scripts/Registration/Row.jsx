@@ -10,6 +10,7 @@ export default class Row extends Component {
 			line_counter: this.props.line_counter,
 			paragraph: this.props.paragraph,
 			count: this.props.count,
+			change: this.props.change,
 		})
 	}
 	colors = ['#BFBBFF', '#C4E3FF']
@@ -72,6 +73,7 @@ export default class Row extends Component {
 							className='rightcont'
 						>
 							<textarea
+							disabled={this.state.change===true?false:true}
 								style={
 									this.state.active
 										? {
