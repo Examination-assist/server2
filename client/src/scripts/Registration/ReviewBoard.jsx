@@ -23,9 +23,9 @@ export default class ReviewBoard extends Component {
 	render() {
 		return (
 			<div>
-				<p style={{ padding: '0 10px' }}>
-					<Link to='/login'>Logout</Link>
-				</p>{' '}
+				<h1>
+					Review Documents
+				</h1>
 				{this.state.data.map((elem) => {
 					return (
 						<React.Fragment key={elem.doc_id}>
@@ -50,6 +50,14 @@ export default class ReviewBoard extends Component {
 						</React.Fragment>
 					)
 				})}
+				<p style={{ padding: '0 10px' }}>
+			
+			<Link to='/login'>
+			<button className='button'>
+					<div className='buttonText'>Logout from dashboard</div>
+				</button>
+				</Link>
+		</p>{' '}
 			</div>
 		)
 	}
