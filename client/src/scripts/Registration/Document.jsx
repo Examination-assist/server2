@@ -1,20 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 export default class Document extends Component {
 	constructor() {
 		super()
 		this.state = { success: false }
 		this.handleChange = this.handleChange.bind(this)
 		this.post = this.post.bind(this)
-		this.state={doc_id:''}
+		this.state = { doc_id: '' }
 	}
-
 	handleChange(e) {
 		this.setState({ [e.target.name]: e.target.value })
 	}
-
 	async componentDidMount() {
 		console.log('ladfhlads')
 		const res = await axios.post(
@@ -33,7 +30,6 @@ export default class Document extends Component {
 		console.log(res.data.doc_id)
 		this.setState({ doc_id: res.data.doc_id })
 	}
-
 	async post() {
 		// const res = await axios.post('http://localhost:8000/api/login', {
 		// 	email: this.state.email,
@@ -48,10 +44,27 @@ export default class Document extends Component {
 		// 	this.setState({ success: true })
 		// }
 	}
-
 	render() {
-		return <div>
-			{this.state.doc_id!==''?<Link to={`/store_document?doc_id=${this.state.doc_id}`}>Document</Link>:""}
-		</div>
+		return (
+			<div>
+				<div className='card'>
+					<h1>Create Document</h1>
+					{this.state.doc_id !== '' ? (
+						<Link
+							to={`/store_document?doc_id=${this.state.doc_id}`}
+						>
+							<button className='button'>
+								<span className='buttonText'>
+									{' '}
+									Go to Document
+								</span>
+							</button>
+						</Link>
+					) : (
+						''
+					)}
+				</div>
+			</div>
+		)
 	}
 }

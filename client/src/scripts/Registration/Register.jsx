@@ -21,7 +21,6 @@ export default class Register extends Component {
 			email: '',
 		})
 	}
-
 	async post() {
 		const res = await axios.post('http://localhost:8000/api/register', {
 			first_name: this.state.first_name,

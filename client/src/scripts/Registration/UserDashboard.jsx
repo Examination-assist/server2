@@ -21,11 +21,17 @@ export default class UserDashboard extends Component {
 		return (
 			<div>
 				<p style={{ padding: '0 10px' }}>
-					<Link to='/document'>Create Document</Link>
+					<h1>User Dashboard</h1>
+					<Link to='/document'>
+						<button className='button'>
+							<div className='buttonText'>
+								Create new Document
+							</div>
+						</button>
+					</Link>
 				</p>
-				<p style={{ padding: '0 10px' }}>
-					<Link to='/login'>Logout</Link>
-				</p>
+			
+				<h2>Your documents</h2>
 				{this.state.data.map((elem) => {
 					return (
 						<React.Fragment key={elem.doc_id}>
@@ -47,9 +53,20 @@ export default class UserDashboard extends Component {
 									</Link>
 								</span>
 							</p>
+
+
+
+							
 						</React.Fragment>
 					)
 				})}
+					<p style={{ padding: '0 10px' }}>
+					<Link to='/login'>
+						<button className='button'>
+							<div className='buttonText'>Logout from dashboard</div>
+						</button>
+					</Link>
+				</p>
 			</div>
 		)
 	}
