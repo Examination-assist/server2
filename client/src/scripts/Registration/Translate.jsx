@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+
+import Row from './Row'
 
 const qs = require('query-string')
+
 
 export default class Translate extends Component {
 	UPLOAD_ENDPOINT = 'http://localhost:8000/api/'
@@ -10,11 +13,11 @@ export default class Translate extends Component {
 	constructor() {
 		super()
 		this.state = {
-            doc_id: '',
-            result:''
+			doc_id: '',
+			result: '',
 		}
-    }
-    async componentDidMount() {
+	}
+	async componentDidMount() {
 		let doc_id = qs.parse(this.props.location.search)['doc_id']
 		this.setState({ doc_id: doc_id })
 
@@ -23,19 +26,19 @@ export default class Translate extends Component {
 			{
 				doc_id: doc_id,
 			}
-        )
-        console.log(result)
+		)
+		console.log(result)
 		this.setState({ result: JSON.stringify(result.data) })
 	}
 	render() {
-		return (<React.Fragment>
-            {this.state.doc_id === undefined ? (
-				<Redirect to='/'></Redirect>
+		return (
+			<React.Fragment>
+				{this.state.doc_id === undefined ? (
+					<Redirect to='/'></Redirect>
 				) : (
-                    <div>
-                        {this.state.result}
-                    </div>
-                )}
-        </React.Fragment>)
+					<div>{this.state.result}</div>
+				)}
+			</React.Fragment>
+		)
 	}
 }

@@ -293,7 +293,7 @@ export default class SplitText extends Component {
 		let k=UserOptions.filter(
 				(e) => e.value === localStorage.getItem('user_id')
 			)[0]
-			this.setState({language:k.language})
+			this.setState({language:'Hindi'})
 		console.log(localStorage.getItem('user_id'))
 		
 		document.getElementById('after').style.display = 'none'

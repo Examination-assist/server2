@@ -1,0 +1,31 @@
+.recorder-box{
+	width:100% !important;		
+	text-align:center;
+	/* height: 10% !important; */
+}
+.recorder-library-box .duration * {
+    color: #fff;
+    font-size: 20px;
+}
+.recorder-library-box *
+{
+	font-family: montserrat !important;
+}
+.reco-header  {
+	visibility: hidden;
+	display: none !important;
+}
+.recorder-box-inner
+{
+	min-height:250px !important;
+	width:100% !important;		
+	background-color: rgba(0, 119, 255, 0.411) !important;
+	border-radius: 20px;
+}
+.help{
+	visibility: hidden;
+	display: none !important;
+} 
+.record-section{
+	width:100% !important;
+}
