@@ -50,17 +50,5 @@ class DocumentController extends Controller
         return response()->json(['docs' => ($docs)]);
     }
 
-    function save_lines(Request $request)
-    {
-        $validated = $request->validate([
-            'translate' => 'required',
-            'doc_id' => 'required' 
-        ]);
-        for ($i=0; $i < count($request->translate); $i++) { 
-            $elem=($request->translate[$i]);
-            $line = new Translate($elem);
-            $line->doc_id=$request->doc_id;
-            $line->save();
-        }
-    }
+   
 }

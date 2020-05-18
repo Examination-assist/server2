@@ -7,8 +7,9 @@ export default class Row extends Component {
 		this.setState({
 			left: this.props.left,
 			right: this.props.right,
-			counter: this.props.counter,
+			line_counter: this.props.line_counter,
 			paragraph: this.props.paragraph,
+			count: this.props.count,
 		})
 	}
 	colors = ['#BFBBFF', '#C4E3FF']
@@ -28,7 +29,9 @@ export default class Row extends Component {
 										display: 'flex',
 										width: '100%',
 										backgroundColor: `${
-											this.colors[this.props.counter % 2]
+											this.colors[
+												this.props.line_counter % 2
+											]
 										}`,
 										fontWeight: '500',
 								  }
@@ -43,9 +46,9 @@ export default class Row extends Component {
 								border: '1px solid black',
 								borderRight: '0',
 							}}
-							className='counter'
+							className='line_counter'
 						>
-							{this.state.counter}
+							{this.state.line_counter}
 						</div>
 						<div
 							style={{
@@ -93,26 +96,35 @@ export default class Row extends Component {
 								type='text'
 								onBlurCapture={(e) => {
 									this.props.updateRow(
-										this.state.paragraph,
-										this.state.counter - 1,
+										this.state.count,
 										e.target.value
 									)
 									this.setState({ active: false })
 								}}
+								// 		this.state.paragraph,
+								// 		this.state.line_counter - 1,
+								// 		e.target.value
+								// 	)
+								// }}
 								onFocusCapture={() =>
 									this.setState({ active: true })
 								}
-								value={this.props.getConverted(
-									this.state.paragraph,
-									this.state.counter - 1
-								)}
+								value={this.state.right}
+								// {this.props.getConverted(
+								// 	this.state.paragraph,
+								// 	this.state.line_counter - 1
+								// )}
 								onChange={(e) =>
 									this.props.updateRow(
-										this.state.paragraph,
-										this.state.counter - 1,
+										this.state.count,
 										e.target.value
 									)
 								}
+								// 		this.state.paragraph,
+								// 		this.state.line_counter - 1,
+								// 		e.target.value
+								// 	)
+								// }
 							/>
 						</div>
 						<div
