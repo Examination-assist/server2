@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import '../../Register.css'
+import { Redirect } from 'react-router'
 export default class Login extends Component {
 	constructor() {
 		super()
@@ -83,7 +84,7 @@ export default class Login extends Component {
 						</form>
 					</div>
 				) : (
-					'Login successful'
+					<Redirect to='/dashboard'></Redirect>
 				)}
 			</div>
 		)

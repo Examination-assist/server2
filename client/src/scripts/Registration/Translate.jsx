@@ -36,7 +36,7 @@ export default class Translate extends Component {
 			}
 			translate.push(obj)
 		})
-		console.log(translate)
+		// console.log(translate)
 		const data = await axios.post(
 			'http://localhost:8000/api/update_lines',
 			{ translate: translate },
@@ -126,7 +126,7 @@ export default class Translate extends Component {
 									onClick={async () => {
 										this.save()
 										axios.post(
-											'http://localhost:8000/review',
+											'http://localhost:8000/api/review_document',
 											{
 												doc_id:this.state.doc_id
 											},
@@ -138,6 +138,7 @@ export default class Translate extends Component {
 												},
 											}
 										)
+										this.back()
 									}}
 								/>
 							</span>

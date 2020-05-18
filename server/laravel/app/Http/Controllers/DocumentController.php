@@ -33,6 +33,13 @@ class DocumentController extends Controller
 
         return response()->json(['doc_id' => $doc->id]);
     }
+    function review(Request $request)
+    {
+        $user_id = ($request->header('user_id'));
+        $validated = $request->validate(['doc_id' => 'required']);
+        document::where('doc_id',$request->doc_id)->update(['status'=>'Sent for Review']);
+
+    }
 
     function about(Request $request)
     {
@@ -49,6 +56,4 @@ class DocumentController extends Controller
         $docs = document::where('user_id', $user_id)->get();
         return response()->json(['docs' => ($docs)]);
     }
-
-   
 }

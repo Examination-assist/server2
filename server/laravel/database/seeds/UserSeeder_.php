@@ -26,5 +26,15 @@ class UserSeeder_ extends Seeder
             'type_id' => '3'
         ]);
         $user->save();
+
+        $user = new User([
+            'first_name' => 'R',
+            'last_name' => 'K',
+            'email' => 'rk@gmail.com',
+            'password' => 'eyJpdiI6InZWZW5keXpJcDc2NTVZRTJYZ094Q0E9PSIsInZhbHVlIjoibU9hTFRGZmRsRzY4YUk1bDFIL2JxUT09IiwibWFjIjoiNGQ3NmE0M2UwZjk3ZGY2NTA0ZDg3YzU3ZjllNzc5MjVlYmQzYWRiNDdkMzAyOTUwOGU1OWM4ZTE5NTgwZmQ3YyJ9',
+            'username' => 'rk',
+            'type_id' => '2'
+        ]);
+        $user->save();
     }
 }
