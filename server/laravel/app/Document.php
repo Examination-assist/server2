@@ -11,4 +11,5 @@ class document extends Model
     public $incrementing = false;
     public $timestamps = true;
 
+    protected $fillable=['name','from_','to_','input','output','user_id'];
 }
