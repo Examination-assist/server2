@@ -14,6 +14,7 @@ import Login from './scripts/Registration/Login';
 import Document from './scripts/Registration/Document';
 import Store from './scripts/Registration/Store';
 import Dashboard from './scripts/Registration/Dashboard';
+import Translate from './scripts/Registration/Translate';
 
 class App extends React.Component {
 	render() {
@@ -35,6 +36,7 @@ class App extends React.Component {
 						<Route path='/document' component={Document}></Route>
 						<Route path='/store_document' component={Store}></Route>
 						<Route path='/dashboard' component={Dashboard}></Route>
+						<Route path='/translate' component={Translate}></Route>
 					</Switch>
 				</Router>
 			</div>

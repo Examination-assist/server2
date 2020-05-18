@@ -19,6 +19,7 @@ Route::post('/create_document','DocumentController@create');
 Route::post('/store_document','DocumentController@store');
 Route::post('/about_document','DocumentController@about');
 Route::post('/show_documents','DocumentController@show');
+Route::post('/save_lines','DocumentController@save_lines');
 
 Route::post('/upload', 'UploadFile@index');
 Route::post('/convert', 'UploadFile@convert');

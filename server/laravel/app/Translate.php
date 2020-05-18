@@ -12,5 +12,5 @@ class Translate extends Model
     public $incrementing = true;
     public $timestamps = true;
 
-    protected $fillable = ['name', 'from_', 'to_', 'input', 'output', 'user_id'];
+    protected $fillable = ['line_counter', 'para', 'count', 'input', 'output', 'doc_id'];
 }

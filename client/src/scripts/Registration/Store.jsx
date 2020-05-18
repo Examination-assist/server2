@@ -11,7 +11,7 @@ export default class Store extends Component {
 		super()
 		this.onSubmit = this.onSubmit.bind(this)
 		this.uploadFile = this.uploadFile.bind(this)
-        this.save=this.save.bind(this)
+		this.save = this.save.bind(this)
 		this.onChange = this.onChange.bind(this)
 
 		this.state = {
@@ -28,20 +28,33 @@ Granted that Google and Facebook give news content legs. They take the story bey
 This question was not seriously asked by news organisations scrambling to cope with finding a revenue model on the internet in the early 2000s and getting nowhere, and therefore trying to best each other to get more clicks and shares by paying Google and Facebook. But now with no print advertising in the time of corona to cushion losses from having their content shared around for free, governments are stepping in on behalf of news organisations and telling Google and Facebook to play fair, and share.
 Google LLC is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware. It is considered one of the Big Four technology companies alongside Amazon, Apple, and Facebook.
 `,
-            translate:[]
+			translate: [],
 		}
 	}
 
-    async save(){
-        
-    }
+	async save() {
+		const result = await axios.post(
+			this.UPLOAD_ENDPOINT + 'save_lines',
+			{
+				translate: this.state.translate,
+				doc_id:this.state.doc_id
+			},
+			{
+				headers: { user_id: localStorage.getItem('user_id') },
+			}
+		)
+		if(result)
+		{
+			this.setState({success:true})
+		}
+	}
 
 	update() {
 		let paragraphs = this.state.inputarea.trim().split('\n')
-        let translate = []
+		let translate = []
 		// this.setState({ paragraphs: paragraphs })
-        let para = 1
-        let count=0;
+		let para = 1
+		let count = 0
 		paragraphs.forEach((element) => {
 			let paragraph = { lines: [] }
 			let lines = element.trim().split('.')
@@ -55,21 +68,27 @@ Google LLC is an American multinational technology company that specializes in I
 					paragraph.lines.push(line)
 				}
 				if (line.trim() !== '') {
-                    count+=1
-                    line_counter+=1
-                    let obj = {count:count,para:para,line_counter:line_counter,input:line}
-                    translate.push(obj)
-                }
+					count += 1
+					line_counter += 1
+					let obj = {
+						count: count,
+						para: para,
+						line_counter: line_counter,
+						input: line,
+					}
+					translate.push(obj)
+				}
 			})
 			if (paragraph.lines.length > 0) {
 				para += 1
 			}
-        })
-        this.setState({translate:translate},()=>console.log(this.state))
+		})
+		this.setState({ translate: translate }, () => {
+			console.log(this.state)
+			this.save()
+		})
 		this.forceUpdate()
-        
-        this.save()
-    }
+	}
 
 	onChange(e) {
 		this.setState({ file: e.target.files[0] })
@@ -156,6 +175,7 @@ Google LLC is an American multinational technology company that specializes in I
 							value='Submit'
 							onClick={() => this.update()}
 						/>
+						{this.state.success===true?<Redirect to={`/translate?doc_id=${this.state.doc_id}`}></Redirect>:''}
 					</div>
 				)}
 			</div>

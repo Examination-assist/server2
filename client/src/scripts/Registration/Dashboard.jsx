@@ -22,7 +22,7 @@ export default class Dashboard extends Component {
 			<div>
 				{this.state.data.map((elem) => {
 					return (
-						<React.Fragment>
+						<React.Fragment key={elem.doc_id}>
 							<p>
 								<span style={{padding:'0 10px'}}>{elem.name}</span>
 								<span style={{padding:'0 10px'}}>{elem.status}</span>
