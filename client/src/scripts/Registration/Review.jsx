@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
-import Row from './Row'
+import RowReview from './RowReview'
 
 const qs = require('query-string')
 
@@ -17,7 +17,6 @@ export default class Translate extends Component {
 			lines: [],
 			back: false,
 		}
-		this.updateRow = this.updateRow.bind(this)
 
 		this.save = this.save.bind(this)
 
@@ -28,24 +27,6 @@ export default class Translate extends Component {
 	}
 
 	async save() {
-		let translate = []
-		this.state.lines.map((line) => {
-			let obj = {
-				translate_id: line.translate_id,
-				output: line.output,
-			}
-			translate.push(obj)
-		})
-		// console.log(translate)
-		const data = await axios.post(
-			'http://localhost:8000/api/update_lines',
-			{ translate: translate },
-			{
-				headers: {
-					user_id: localStorage.getItem('user_id'),
-				},
-			}
-		)
 	}
 
 	async componentDidMount() {
@@ -73,11 +54,6 @@ export default class Translate extends Component {
 		})
 	}
 
-	updateRow(count, val) {
-		let line = this.state.lines[count - 1]
-		line.output = val
-		// console.log(this.state.lines[count - 1].output)
-	}
 
 	render() {
 		return (
@@ -90,13 +66,13 @@ export default class Translate extends Component {
 							return (
 								<React.Fragment key={line.translate_id}>
 									{line.line_counter === 1 ? <br /> : ''}
-									<Row
-										updateRow={this.updateRow}
+									<RowReview
+									status={line.status}
 										line_counter={line.line_counter}
 										count={line.count}
 										left={line.input}
 										right={line.output}
-									></Row>
+									/>
 								</React.Fragment>
 							)
 						})}
@@ -122,7 +98,7 @@ export default class Translate extends Component {
 							<span style={{ width: '40%' }}>
 								<input
 									type='button'
-									value='Send for review'
+									value='Send for final review'
 									onClick={async () => {
 										this.save()
 										axios.post(
