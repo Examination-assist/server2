@@ -13,7 +13,6 @@ export default class Store extends Component {
 		this.uploadFile = this.uploadFile.bind(this)
 		this.save = this.save.bind(this)
 		this.onChange = this.onChange.bind(this)
-
 		this.state = {
 			doc_id: ' ',
 			result: '',
@@ -147,12 +146,11 @@ Google LLC is an American multinational technology company that specializes in I
 									type='file'
 									onChange={this.onChange}
 								/>
+
 								<button className='buttonTable' type='submit'>
 									Upload File
 								</button>
-								<div className='dropDown'>
-									<h5>Choose language to translate into:</h5>
-								</div>
+								
 							</form>
 						</div>
 						<textarea

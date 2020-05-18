@@ -158,3 +158,13 @@ background-color: rgb(50, 212, 36) !important;
 	margin-top: 10px !important;
 	font-weight: 700;
 }
+.dropDown{
+	text-align: center;
+}
+.dropdownhello{
+	width:40%;
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-bottom:10px;
+}
+

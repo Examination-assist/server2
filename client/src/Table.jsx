@@ -446,9 +446,14 @@ export default class SplitText extends Component {
 									type='file'
 									onChange={this.onChange}
 								/>
+								<form action="">
+									<input type="text">Book Name</input>
+									<input type="number">Chapter Number</input>
+								</form>
 								<button className='buttonTable' type='submit'>
 									Upload File
 								</button>
+								
 								<div className='dropDown'>
 									<h5>Choose language to translate into:</h5>
 									<Dropdown

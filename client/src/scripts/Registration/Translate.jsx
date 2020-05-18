@@ -52,14 +52,16 @@ export default class Translate extends Component {
 		// console.log('ok')
 		let doc_id = qs.parse(this.props.location.search)['doc_id']
 		this.setState({ doc_id: doc_id })
-
+		
 		let result = await axios.post(
 			'http://localhost:8000/api/about_document',
 			{
 				doc_id: doc_id,
+				
 			}
-		)
-
+			)
+			console.log(doc_id);
+			
 		this.setState({ result: JSON.stringify(result.data) })
 
 		let data = await axios.post(

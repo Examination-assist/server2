@@ -20,6 +20,7 @@ export default class ReviewBoard extends Component {
 
 		console.log(this.statestate)
 	}
+	
 	render() {
 		return (
 			<div>

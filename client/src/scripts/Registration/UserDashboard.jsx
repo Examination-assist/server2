@@ -16,6 +16,7 @@ export default class UserDashboard extends Component {
 		)
 
 		this.setState({ data: result.data.docs })
+		
 	}
 	render() {
 		return (
@@ -30,8 +31,7 @@ export default class UserDashboard extends Component {
 						</button>
 					</Link>
 				</p>
-			
-				<h2>Your documents</h2>
+				<h2>My Work</h2>
 				{this.state.data.map((elem) => {
 					return (
 						<React.Fragment key={elem.doc_id}>
@@ -53,10 +53,6 @@ export default class UserDashboard extends Component {
 									</Link>
 								</span>
 							</p>
-
-
-
-							
 						</React.Fragment>
 					)
 				})}
