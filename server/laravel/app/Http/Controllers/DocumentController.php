@@ -25,6 +25,9 @@ class DocumentController extends Controller
         $doc->from_ = $request->from_;
         $doc->to_ = $request->to_;
 
+        $doc->book_name = $request->book_name;
+        $doc->chapter_number = $request->chapter_number;
+
         $doc->user_id = $user_id;
 
         $doc->course_name = User::where('user_id', $user_id)->select('course_name')->first()['course_name'];

@@ -11,6 +11,5 @@ class User extends Model
     public $incrementing = true;
     public $timestamps = true;
 
-    protected $fillable = ['first_name', 'last_name', 'email', 'username', 'password', 'type_id'];
-
+    protected $fillable = ['first_name', 'last_name', 'email', 'username', 'password', 'type_id', 'course_name'];
 }

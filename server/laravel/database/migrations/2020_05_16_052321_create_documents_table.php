@@ -23,6 +23,9 @@ class CreateDocumentsTable extends Migration
 
             $table->string('course_name')->nullable();
             
+            $table->string('book_name')->nullable();
+            $table->string('chapter_number')->nullable();
+            
             $table->timestamps();
             $table->foreignId('user_id')->references('user_id')->on('users');
         
