@@ -14,6 +14,7 @@ export default class Document extends Component {
 	}
 
 	async componentDidMount() {
+		console.log('ladfhlads')
 		console.log(
 			await axios.post('http://localhost:8000/api/create_document', {
 				name: 'Thy Do Mine',
@@ -22,7 +23,7 @@ export default class Document extends Component {
                 input:'',
                 ouput:''
 			},{
-				headers:{Authorization:localStorage.getItem('AuthToken')}
+				headers:{user_id:localStorage.getItem('user_id')}
 			})
 		)
 	}

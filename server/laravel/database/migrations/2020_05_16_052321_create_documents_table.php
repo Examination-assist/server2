@@ -20,6 +20,8 @@ class CreateDocumentsTable extends Migration
 
             $table->string('from_')->nullable();
             $table->string('to_')->nullable();
+
+            $table->string('course_name')->nullable();
             
             $table->mediumText('input')->nullable();
             $table->mediumText('output')->nullable();
