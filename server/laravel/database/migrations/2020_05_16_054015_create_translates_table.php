@@ -26,6 +26,7 @@ class CreateTranslatesTable extends Migration
             $table->mediumText('output')->nullable()->charset('utf8')->collation('utf8_unicode_ci');
             
             $table->foreignId('doc_id')->references('doc_id')->on('documents');
+            $table->string('status')->default('Draft');
         });
     }
 
