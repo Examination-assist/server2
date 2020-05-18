@@ -58,7 +58,8 @@ class UserController extends Controller
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->type_id = $type_id;
-
+        
+        $user->course_name = $request->course_name;
 
         Log::info($user);
         $user->save();

@@ -11,18 +11,18 @@ export default class Dashboard extends Component {
 		// this.setState({type:localStorage.getItem('type_id')})
 		let type = localStorage.getItem('type_id')
 		this.setState({ type: type }, () => console.log(this.state))
-
 	}
 	render() {
-
-		return <div>
-
-			<div className="card">
-			{this.state.type === "3" ? <UserDashboard /> : <ReviewBoard/>}
-			
+		return (
+			<div>
+				<div className='card'>
+					{this.state.type === '3' ? (
+						<UserDashboard />
+					) : (
+						<ReviewBoard />
+					)}
+				</div>
 			</div>
-			
-			
-			</div>
+		)
 	}
 }
