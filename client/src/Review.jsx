@@ -565,6 +565,14 @@ export default class SplitText extends Component {
 						>
 							<span className='buttonText'>Save </span>
 						</button>
+						<br />	
+						<button
+							className='buttonTable saveButton '
+						
+							type='submit'
+						>
+							<span className='buttonText'>Submit For Final Review </span>
+						</button>
 					</div>
 				</div>
 			</React.Fragment>

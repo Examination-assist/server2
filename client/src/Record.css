@@ -2,24 +2,52 @@
 	color : black;
 }
 
-.outer{
-	/* height:100vh; */
+.outerRecord{
+	height:60vh;
 	/* background-color: green;	 */
+	padding:20px
 }
 .textAreaRecord{
 	padding:20px 30px;
+	height:100%;
+	width:50%;
+	float:left;
 }
-.right{
+.textAreaRecordPhone{
+	padding:20px 30px;
+	height:100%;
+	width:80%;
+	/* float:left; */
+}
+/* .right{
 	text-align: center !important;
 	width:62% !important;
 	margin-left: 19%;
-	margin-right: 19%;}
-
-.completeRecord{
-	/* width:60% !important;
-	margin-left: 20%;
-	margin-right: 20%; */
+	margin-right: 19%;} */
+/* .record-section{
+	width:50%;
+} */
+.recorder-box-inner{
+	width:200%;
 }
-.record-section{
-	width:100%;
+.recorder{
+	/* position: absolute;
+	top: 65%;
+	transform: translateY(-50%);} */
+}
+.mic{
+	/* width:30%; */
+
+	width:30%;
+	text-align: left;
+	float:right;	
+}
+
+.recorderPhone{
+
+}
+.miconPhone{
+	width:52%;
+	/* text-align: left; */
+	float:left;
 }

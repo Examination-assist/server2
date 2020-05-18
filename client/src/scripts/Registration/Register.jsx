@@ -43,7 +43,6 @@ export default class Register extends Component {
 				<div className='card'>
 					{!this.state.success ? (
 						<div className="beforeREG">
-
 					<span className='cardTitle'>Register Here</span>
 						<form method='post'>
 							<br />
