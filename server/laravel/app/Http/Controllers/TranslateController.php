@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Translate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TranslateController extends Controller
 {
@@ -13,9 +14,8 @@ class TranslateController extends Controller
             'doc_id' => 'required'
         ]);
 
-        $translate=Translate::where('doc_id',$request->doc_id)->get();
-        return response()->json(['translate'=>$translate]);
-
+        $translate = Translate::where('doc_id', $request->doc_id)->get();
+        return response()->json(['translate' => $translate]);
     }
     function save_lines(Request $request)
     {
@@ -29,5 +29,16 @@ class TranslateController extends Controller
             $line->doc_id = $request->doc_id;
             $line->save();
         }
+    }
+    function update_lines(Request $request)
+    {
+        $validated=$request->validate(['translate'=>'required']);
+        Log::info($request);
+
+        for ($i=0; $i < count($request->translate); $i++) { 
+            $elem = $request->translate[$i];
+            Translate::where('translate_id',$elem['translate_id'])->update(['output'=>$elem['output']]);
+        }
+        return response()->json();
     }
 }

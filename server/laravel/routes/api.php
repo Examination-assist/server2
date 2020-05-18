@@ -22,6 +22,7 @@ Route::post('/show_documents','DocumentController@show');
 
 Route::post('/save_lines','TranslateController@save_lines');
 Route::post('/view_lines','TranslateController@view_lines');
+Route::post('/update_lines','TranslateController@update_lines');
 
 //view_translates
 

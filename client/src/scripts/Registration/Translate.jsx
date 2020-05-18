@@ -15,9 +15,39 @@ export default class Translate extends Component {
 			doc_id: '',
 			result: '',
 			lines: [],
+			back: false,
 		}
 		this.updateRow = this.updateRow.bind(this)
+
+		this.save = this.save.bind(this)
+
+		this.back = this.back.bind(this)
 	}
+	back() {
+		this.setState({ back: true })
+	}
+
+	async save() {
+		let translate = []
+		this.state.lines.map((line) => {
+			let obj = {
+				translate_id: line.translate_id,
+				output: line.output,
+			}
+			translate.push(obj)
+		})
+		console.log(translate)
+		const data = await axios.post(
+			'http://localhost:8000/api/update_lines',
+			{ translate: translate },
+			{
+				headers: {
+					user_id: localStorage.getItem('user_id'),
+				},
+			}
+		)
+	}
+
 	async componentDidMount() {
 		// console.log('ok')
 		let doc_id = qs.parse(this.props.location.search)['doc_id']
@@ -44,9 +74,9 @@ export default class Translate extends Component {
 	}
 
 	updateRow(count, val) {
-		let line = this.state.lines[count-1]
+		let line = this.state.lines[count - 1]
 		line.output = val
-		// console.log(this.state.lines[count-1].output)
+		// console.log(this.state.lines[count - 1].output)
 	}
 
 	render() {
@@ -65,11 +95,58 @@ export default class Translate extends Component {
 										line_counter={line.line_counter}
 										count={line.count}
 										left={line.input}
-										right={line.output===null?'':line.output}
+										right={line.output}
 									></Row>
 								</React.Fragment>
 							)
 						})}
+						<p style={{ textAlign: 'center' }}>
+							<span style={{ width: '40%' }}>
+								<input
+									type='button'
+									value='Save as draft'
+									onClick={() => this.save()}
+								/>
+							</span>
+							<span style={{ width: '40%' }}>
+								<input
+									type='button'
+									value='Save and Back'
+									onClick={async () => {
+										this.save()
+										this.back()
+										this.forceUpdate()
+									}}
+								/>
+							</span>
+							<span style={{ width: '40%' }}>
+								<input
+									type='button'
+									value='Send for review'
+									onClick={async () => {
+										this.save()
+										axios.post(
+											'http://localhost:8000/review',
+											{
+												doc_id:this.state.doc_id
+											},
+											{
+												headers: {
+													user_id: localStorage.getItem(
+														'user_id'
+													),
+												},
+											}
+										)
+									}}
+								/>
+							</span>
+						</p>
+						{this.state.back === true ? (
+							<Redirect to='/dashboard'></Redirect>
+						) : (
+							''
+						)}
 					</div>
 				)}
 			</React.Fragment>
