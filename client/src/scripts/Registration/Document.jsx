@@ -18,25 +18,25 @@ export default class Document extends Component {
 		super()
 		this.state = { success: false }
 		this.handleChange = this.handleChange.bind(this)
-		this.post = this.post.bind(this)
 		this.handleDropDown = this.handleDropDown.bind(this)
-		this.state = { doc_id: '' ,language: ''}
+		this.post = this.post.bind(this)
+		this.state = { doc_id: '', name: '', language: '' }
+	}
+
+	handleChange(e) {
+		this.setState({ [e.target.name]: e.target.value })
 	}
 	handleDropDown(e) {
 		this.setState({ language: e.value })
+		console.log(this.state)
 	}
-	handleChange(e) {
-		this.setState({ [e.target.name]: e.target.value })
-		console.log(e)
-	}
-
 	async componentDidMount() {
 		console.log('ladfhlads')
 		const res = await axios.post(
 			'http://localhost:8000/api/create_document',
 			{
-				book_name: '',
-				chapter_number:"",
+				name: 'hello',
+				chapter_number: '',
 				from_: 'English',
 				to_: this.state.language,
 				input: '',
@@ -68,37 +68,32 @@ export default class Document extends Component {
 	render() {
 		return (
 			<div className='card'>
-				<input
-						type='text'
-						onChange={this.handleChange}
-						placeholder='Book Name'
-						type='book_name'
-						name='book_name'
-					/>
-						<input
+				<form action=''>
+					<input type='text' placeholder='Book Name	' required></input>
+					<input
 						type='number'
-						onChange={this.handleChange}
 						placeholder='Chapter Number'
-						type='chapter_number'
-						name='chapter_number'
-					/>
+						required
+					></input>
 					<div className='dropDown'>
-									<h5>Choose language to translate into:</h5>
-									<Dropdown
-										className='dropdownhello'
-										options={options}
-										onChange={this.handleDropDown}
-										value={this.state.language}
-										placeholder='Select Language'
-									/>
-								</div>
-					<br />
+						<h5>Choose language to translate into:</h5>
+						<Dropdown
+							className='dropdownhello'
+							options={options}
+							onChange={this.handleDropDown}
+							value={this.state.language}
+							placeholder='Select Language'
+						/>
+					</div>
+					<input type='submit' Value='Submit' />
+				</form>
+				{this.state.doc_id !== '' ? (
 					<Link to={`/store_document?doc_id=${this.state.doc_id}`}>
-						<button className='button'>
-							<span className='buttonText'>Open Document </span>
-						</button>
+						<input type='button' Value='Open Document' />
 					</Link>
-			
+				) : (
+					''
+				)}
 			</div>
 		)
 	}
