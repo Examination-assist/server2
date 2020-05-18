@@ -37,7 +37,7 @@ class DocumentController extends Controller
     {
         $user_id = ($request->header('user_id'));
         $validated = $request->validate(['doc_id' => 'required']);
-        document::where('doc_id',$request->doc_id)->update(['status'=>'Sent for Review']);
+        document::where('doc_id',$request->doc_id)->update(['status'=>'Under Review']);
 
     }
 
@@ -56,4 +56,11 @@ class DocumentController extends Controller
         $docs = document::where('user_id', $user_id)->get();
         return response()->json(['docs' => ($docs)]);
     }
+
+    function show_review(Request $request){
+        $user_id = ($request->header('user_id'));
+        $docs = document::where('status','!=', 'Draft')->get();
+        return response()->json(['docs' => ($docs)]);
+    }
+
 }

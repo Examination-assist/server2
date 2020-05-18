@@ -21,7 +21,7 @@ class UserController extends Controller
             'password' => 'required'
         ]);
 
-        $user = User::where('email', $validated['email'])->select(['email', 'password', 'user_id'])->first();
+        $user = User::where('email', $validated['email'])->select(['email', 'password', 'user_id','type_id'])->first();
 
         if ($validated['password'] == Crypt::decryptString($user->password)) {
             $secret = base64_encode(env('SECRET'));
@@ -31,6 +31,7 @@ class UserController extends Controller
                 'token' => $encoded,
                 'email' => $validated['email'],
                 'user_id' => $user->user_id,
+                'type_id' => $user->type_id,
             ]);
         } else {
             return response()->json([], 403);

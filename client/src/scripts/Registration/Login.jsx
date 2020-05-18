@@ -30,9 +30,11 @@ export default class Login extends Component {
 			})
 			if (res.status === 200) {
 				const token = res.data.token
+				console.log(res.data)
 				localStorage.setItem('AuthToken', token)
 				localStorage.setItem('email', res.data.email)
 				localStorage.setItem('user_id', res.data.user_id)
+				localStorage.setItem('type_id', res.data.type_id)
 				this.setState({ success: true })
 			}
 			if (res.status) {

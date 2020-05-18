@@ -101,30 +101,16 @@ export default class Row extends Component {
 									)
 									this.setState({ active: false })
 								}}
-								// 		this.state.paragraph,
-								// 		this.state.line_counter - 1,
-								// 		e.target.value
-								// 	)
-								// }}
 								onFocusCapture={() =>
 									this.setState({ active: true })
 								}
 								value={this.state.right}
-								// {this.props.getConverted(
-								// 	this.state.paragraph,
-								// 	this.state.line_counter - 1
-								// )}
 								onChange={(e) =>
 									this.props.updateRow(
 										this.state.count,
 										e.target.value
 									)
 								}
-								// 		this.state.paragraph,
-								// 		this.state.line_counter - 1,
-								// 		e.target.value
-								// 	)
-								// }
 							/>
 						</div>
 						<div
