@@ -30,8 +30,14 @@ class DocumentController extends Controller
 
         $doc->save();
 
-        Log::info($doc);
+        return response()->json(['doc_id'=>$doc->id]);
+    }
 
-        return response()->json();
+    function about(Request $request){
+        $validated = $request->validate(['doc_id'=>'required']);
+        
+        $doc = document::where('doc_id',$request->doc_id)->first();
+
+        return response()->json($doc);
     }
 }

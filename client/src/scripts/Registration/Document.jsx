@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 export default class Document extends Component {
 	constructor() {
@@ -7,6 +8,7 @@ export default class Document extends Component {
 		this.state = { success: false }
 		this.handleChange = this.handleChange.bind(this)
 		this.post = this.post.bind(this)
+		this.state={doc_id:''}
 	}
 
 	handleChange(e) {
@@ -15,17 +17,21 @@ export default class Document extends Component {
 
 	async componentDidMount() {
 		console.log('ladfhlads')
-		console.log(
-			await axios.post('http://localhost:8000/api/create_document', {
+		const res = await axios.post(
+			'http://localhost:8000/api/create_document',
+			{
 				name: 'Thy Do Mine',
 				from_: 'English',
-                to_: 'Telegu',
-                input:'',
-                ouput:''
-			},{
-				headers:{user_id:localStorage.getItem('user_id')}
-			})
+				to_: 'Telegu',
+				input: '',
+				ouput: '',
+			},
+			{
+				headers: { user_id: localStorage.getItem('user_id') },
+			}
 		)
+		console.log(res.data.doc_id)
+		this.setState({ doc_id: res.data.doc_id })
 	}
 
 	async post() {
@@ -44,6 +50,8 @@ export default class Document extends Component {
 	}
 
 	render() {
-		return <div></div>
+		return <div>
+			{this.state.doc_id!==''?<Link to={`/store_document?doc_id=${this.state.doc_id}`}>Document</Link>:""}
+		</div>
 	}
 }

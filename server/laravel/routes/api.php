@@ -19,6 +19,8 @@ Route::post('/register','UserController@register');
 Route::post('/login','UserController@login');
 
 Route::post('/create_document','DocumentController@create');
+Route::post('/store_document','DocumentController@store');
+Route::post('/about_document','DocumentController@about');
 
 Route::post('/upload', 'UploadFile@index');
 Route::post('/convert', 'UploadFile@convert');

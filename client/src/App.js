@@ -12,6 +12,7 @@ import Start from './Start'
 import Register from './scripts/Registration/Register';
 import Login from './scripts/Registration/Login';
 import Document from './scripts/Registration/Document';
+import Store from './scripts/Registration/Store';
 
 class App extends React.Component {
 	render() {
@@ -31,6 +32,7 @@ class App extends React.Component {
 						<Route path='/register' component={Register}></Route>
 						<Route path='/login' component={Login}></Route>
 						<Route path='/document' component={Document}></Route>
+						<Route path='/store_document' component={Store}></Route>
 					</Switch>
 				</Router>
 			</div>
