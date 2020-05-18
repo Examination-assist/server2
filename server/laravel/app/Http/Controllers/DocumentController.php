@@ -40,4 +40,12 @@ class DocumentController extends Controller
 
         return response()->json($doc);
     }
+
+    function show(Request $request)
+    {
+        $user_id = ($request->header('user_id'));
+        $docs = document::where('user_id',$user_id)->get();
+        // Log::info(json_encode($docs));
+        return response()->json(['docs'=>($docs)]);
+    }
 }

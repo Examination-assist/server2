@@ -25,6 +25,8 @@ class CreateDocumentsTable extends Migration
             
             $table->timestamps();
             $table->foreignId('user_id')->references('user_id')->on('users');
+        
+            $table->string('status')->default('Draft');
         });
     }
 

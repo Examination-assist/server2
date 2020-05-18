@@ -12,5 +12,5 @@ class document extends Model
     public $incrementing = true;
     public $timestamps = true;
 
-    protected $fillable = ['name', 'from_', 'to_', 'input', 'output', 'user_id'];
+    protected $fillable = ['name', 'from_', 'to_', 'input', 'output', 'user_id','status'];
 }
