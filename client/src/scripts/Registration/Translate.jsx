@@ -16,6 +16,7 @@ export default class Translate extends Component {
 			result: '',
 			lines: [],
 			back: false,
+			change: true
 		}
 		this.updateRow = this.updateRow.bind(this)
 
@@ -60,6 +61,9 @@ export default class Translate extends Component {
 			}
 		)
 
+		if (result.data.status === 'Under Review') {
+			this.setState({ change: false })
+		}
 		this.setState({ result: JSON.stringify(result.data) })
 
 		let data = await axios.post(
@@ -91,6 +95,7 @@ export default class Translate extends Component {
 								<React.Fragment key={line.translate_id}>
 									{line.line_counter === 1 ? <br /> : ''}
 									<Row
+										change={this.state.change}
 										updateRow={this.updateRow}
 										line_counter={line.line_counter}
 										count={line.count}
@@ -128,7 +133,7 @@ export default class Translate extends Component {
 										axios.post(
 											'http://localhost:8000/api/review_document',
 											{
-												doc_id:this.state.doc_id
+												doc_id: this.state.doc_id,
 											},
 											{
 												headers: {
