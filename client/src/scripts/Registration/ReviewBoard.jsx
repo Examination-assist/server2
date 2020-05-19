@@ -29,7 +29,7 @@ export default class ReviewBoard extends Component {
 					{' '}
 					<table>
 						<tr>
-							<th>Document ID</th>
+							<th>Document ID</th>	
 							<th>Translator ID</th>
 							<th>Document Name</th>
 							<th>Book Name</th>
@@ -80,7 +80,7 @@ export default class ReviewBoard extends Component {
 										<td>
 											<span style={{ padding: '0 10px' }}>
 												<Link
-													to={`/translate?doc_id=${elem.doc_id}`}
+													to={`/review?doc_id=${elem.doc_id}`}
 												>
 													Visit
 												</Link>
