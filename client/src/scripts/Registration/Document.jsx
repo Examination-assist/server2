@@ -94,7 +94,7 @@ export default class Document extends Component {
 							placeholder='Select Language'
 						/>
 					</div>
-					<input type='submit' Value='Submit'  onClick={this.post}/>
+					<input type='button' Value='Submit'  onClick={this.post}/>
 				</form>
 				{this.state.doc_id !== '' ? (
 					<Link to={`/store_document?doc_id=${this.state.doc_id}`}>
