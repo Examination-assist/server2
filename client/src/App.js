@@ -23,7 +23,7 @@ class App extends React.Component {
 				<Router>
 					<Switch>
 						<Route exact path='/'>
-							<Start></Start>
+							<Dashboard></Dashboard>
 						</Route>
 						<Route exact path='/table'>
 							<Table></Table>

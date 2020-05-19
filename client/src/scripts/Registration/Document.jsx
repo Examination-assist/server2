@@ -20,7 +20,14 @@ export default class Document extends Component {
 		this.handleChange = this.handleChange.bind(this)
 		this.handleDropDown = this.handleDropDown.bind(this)
 		this.post = this.post.bind(this)
-		this.state = { doc_id: '', name: '', language: '' }
+		this.state = {
+			doc_id: '',
+			name: '',
+			language: '',
+			name: '',
+			book_name: '',
+			chapter_number: '',
+		}
 	}
 
 	handleChange(e) {
@@ -28,19 +35,21 @@ export default class Document extends Component {
 	}
 	handleDropDown(e) {
 		this.setState({ language: e.value })
-		console.log(this.state)
+		// console.log(this.state.)
 	}
 	async componentDidMount() {
 		console.log('ladfhlads')
+	}
+
+	async post() {
 		const res = await axios.post(
 			'http://localhost:8000/api/create_document',
 			{
-				name: 'hello',
-				chapter_number: '',
+				name: this.state.doc_name,
+				book_name: this.state.book_name,
+				chapter_number: this.state.chapter_number,
 				from_: 'English',
 				to_: this.state.language,
-				input: '',
-				ouput: '',
 			},
 			{
 				headers: { user_id: localStorage.getItem('user_id') },
@@ -50,29 +59,29 @@ export default class Document extends Component {
 		this.setState({ doc_id: res.data.doc_id })
 	}
 
-	async post() {
-		// const res = await axios.post('http://localhost:8000/api/login', {
-		// 	email: this.state.email,
-		// 	password: this.state.password,
-		// })
-		// console.log(res)
-		// if (res.status === 200) {
-		// 	const token = res.data.token
-		// 	localStorage.setItem('AuthToken', token)
-		// 	localStorage.setItem('email', res.data.email)
-		// 	localStorage.setItem('user_id', res.data.user_id)
-		// 	this.setState({ success: true })
-		// }
-	}
-
 	render() {
 		return (
 			<div className='card'>
 				<form action=''>
-					<input type='text' placeholder='Book Name	' required></input>
 					<input
+						type='text'
+						placeholder='Document Name'
+						name='doc_name'
+						onChange={(e) => this.handleChange(e)}
+						required
+					></input>
+					<input
+						type='text'
+						placeholder='Book Name'
+						name='book_name'
+						onChange={(e) => this.handleChange(e)}
+						required
+					></input>
+					<input
+						name='chapter_number'
 						type='number'
 						placeholder='Chapter Number'
+						onChange={(e) => this.handleChange(e)}
 						required
 					></input>
 					<div className='dropDown'>
@@ -85,7 +94,7 @@ export default class Document extends Component {
 							placeholder='Select Language'
 						/>
 					</div>
-					<input type='submit' Value='Submit' />
+					<input type='submit' Value='Submit'  onClick={this.post}/>
 				</form>
 				{this.state.doc_id !== '' ? (
 					<Link to={`/store_document?doc_id=${this.state.doc_id}`}>
