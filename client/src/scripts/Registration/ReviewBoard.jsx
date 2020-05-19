@@ -20,45 +20,87 @@ export default class ReviewBoard extends Component {
 
 		console.log(this.statestate)
 	}
-	
+
 	render() {
 		return (
-			<div>
-				<h1>
-					Review Documents
-				</h1>
-				{this.state.data.map((elem) => {
-					return (
-						<React.Fragment key={elem.doc_id}>
-							<p>
-								<span style={{ padding: '0 10px' }}>
-									{elem.doc_id}
-								</span>
-								<span style={{ padding: '0 10px' }}>
-									{elem.name}
-								</span>
-								<span style={{ padding: '0 10px' }}>
-									{elem.status}
-								</span>
-								<span style={{ padding: '0 10px' }}>
-									<Link
-										to={`/review?doc_id=${elem.doc_id}`}
-									>
-										Visit
-									</Link>
-								</span>
-							</p>
-						</React.Fragment>
-					)
-				})}
+			<div  style = {{textAlign:"center"}}>
+				<h1>Review Documents</h1>
+				<div className='outer'>
+					{' '}
+					<table>
+						<tr>
+							<th>Document ID</th>
+							<th>Translator ID</th>
+							<th>Document Name</th>
+							<th>Book Name</th>
+							<th>Chapter Number</th>
+							<th>Language</th>
+							<th>Status </th>
+							<th>Visit </th>
+						</tr>
+						{this.state.data.map((elem) => {
+							return (
+								<React.Fragment key={elem.doc_id}>
+									<tr>
+										<td>
+											<span style={{ padding: '0 10px' }}>
+												{elem.doc_id}
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
+												{elem.user_id}
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
+												{elem.name}
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
+												{elem.book_name}
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
+												{elem.chapter_number}
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
+												{elem.to_}
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
+												{elem.status}
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
+												<Link
+													to={`/translate?doc_id=${elem.doc_id}`}
+												>
+													Visit
+												</Link>
+											</span>
+										</td>
+									</tr>
+								</React.Fragment>
+							)
+						})}
+					</table>
+				</div>
 				<p style={{ padding: '0 10px' }}>
-			
-			<Link to='/login'>
-			<button className='button'>
-					<div className='buttonText'>Logout from dashboard</div>
-				</button>
-				</Link>
-		</p>{' '}
+					<Link to='/login'>
+						<button className='button'>
+							<div className='buttonText'>
+								Logout from dashboard
+							</div>
+						</button>
+					</Link>
+				</p>{' '}
 			</div>
 		)
 	}
