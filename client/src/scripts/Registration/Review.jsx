@@ -76,7 +76,7 @@ export default class Translate extends Component {
 								</React.Fragment>
 							)
 						})}
-						<p style={{ textAlign: 'center' }}>
+						{/* <p style={{ textAlign: 'center' }}>
 							<span style={{ width: '40%' }}>
 								<input
 									type='button'
@@ -118,7 +118,7 @@ export default class Translate extends Component {
 									}}
 								/>
 							</span>
-						</p>
+						</p> */}
 						{this.state.back === true ? (
 							<Redirect to='/dashboard'></Redirect>
 						) : (

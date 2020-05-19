@@ -20,13 +20,11 @@ export default class ReviewBoard extends Component {
 
 		console.log(this.statestate)
 	}
-	
+
 	render() {
 		return (
 			<div>
-				<h1>
-					Review Documents
-				</h1>
+				<h1>Review Documents</h1>
 				{this.state.data.map((elem) => {
 					return (
 						<React.Fragment key={elem.doc_id}>
@@ -41,9 +39,7 @@ export default class ReviewBoard extends Component {
 									{elem.status}
 								</span>
 								<span style={{ padding: '0 10px' }}>
-									<Link
-										to={`/review?doc_id=${elem.doc_id}`}
-									>
+									<Link to={`/review?doc_id=${elem.doc_id}`}>
 										Visit
 									</Link>
 								</span>
@@ -52,13 +48,14 @@ export default class ReviewBoard extends Component {
 					)
 				})}
 				<p style={{ padding: '0 10px' }}>
-			
-			<Link to='/login'>
-			<button className='button'>
-					<div className='buttonText'>Logout from dashboard</div>
-				</button>
-				</Link>
-		</p>{' '}
+					<Link to='/login'>
+						<button className='button'>
+							<div className='buttonText'>
+								Logout from dashboard
+							</div>
+						</button>
+					</Link>
+				</p>{' '}
 			</div>
 		)
 	}
