@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 class CreateDocumentsTable extends Migration
 {
     /**
@@ -22,14 +20,14 @@ class CreateDocumentsTable extends Migration
             $table->string('to_')->nullable();
 
             $table->string('course_name')->nullable();
-            
+
             $table->string('book_name')->nullable();
             $table->string('chapter_number')->nullable();
-            
+
             $table->timestamps();
             $table->foreignId('user_id')->references('user_id')->on('users');
-        
-            $table->string('status')->default('Draft');
+
+            $table->string('status')->default('In Progress');
         });
     }
 

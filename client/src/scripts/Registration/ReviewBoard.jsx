@@ -23,20 +23,26 @@ export default class ReviewBoard extends Component {
 
 	render() {
 		return (
-			<div  style = {{textAlign:"center"}}>
+			<div style={{ textAlign: 'center' }}>
 				<h1>Review Documents</h1>
-				<div className='outer'>
+				<div className='outerDash' style={{ overflowX: 'auto' }}>
 					{' '}
-					<table>
+					<table className='tableDash'>
 						<tr>
-							<th>Document ID</th>	
-							<th>Translator ID</th>
+							<th>Document ID</th>
+							<th>Translator Name</th>
 							<th>Document Name</th>
 							<th>Book Name</th>
 							<th>Chapter Number</th>
 							<th>Language</th>
+							<th>Created at</th>
+							<th>Updated at</th>
 							<th>Status </th>
 							<th>Visit </th>
+							<th>
+								Visit Complete
+								<br /> transcript{' '}
+							</th>
 						</tr>
 						{this.state.data.map((elem) => {
 							return (
@@ -74,6 +80,16 @@ export default class ReviewBoard extends Component {
 										</td>
 										<td>
 											<span style={{ padding: '0 10px' }}>
+												{elem.created_at}
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
+												{elem.updated_at}
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
 												{elem.status}
 											</span>
 										</td>
@@ -82,7 +98,16 @@ export default class ReviewBoard extends Component {
 												<Link
 													to={`/review?doc_id=${elem.doc_id}`}
 												>
-													Visit
+													Review
+												</Link>
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
+												<Link
+													to={`/review?doc_id=${elem.doc_id}`}
+												>
+													Complete Review
 												</Link>
 											</span>
 										</td>

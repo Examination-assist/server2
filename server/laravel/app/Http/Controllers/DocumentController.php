@@ -62,7 +62,7 @@ class DocumentController extends Controller
 
     function show_review(Request $request){
         $user_id = ($request->header('user_id'));
-        $docs = document::where('status','!=', 'Draft')->get();
+        $docs = document::where('status','!=', 'In Progress')->get();
         return response()->json(['docs' => ($docs)]);
     }
 

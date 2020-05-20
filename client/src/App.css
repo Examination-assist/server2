@@ -1,187 +1,218 @@
-.outer{
-  position: relative;
-  /* top: 50%; */
-  left:50%;
-  transform: translateX(-50%);
-  padding: 0 10vw;
-  /* background-color: blanchedalmond; */
+.outer {
+	position: relative;
+	/* top: 50%; */
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 0 10vw;
+	/* background-color: blanchedalmond; */
 }
 /* .leftcont:nth-child(even) {background-color: white;} */
 
-.pehle{
-  width:100%;
+.pehle {
+	width: 100%;
 }
 
-.outerPehle{
-  text-align: center;
-  width:100%;
-  /* visibility: hidden; */
+.outerPehle {
+	text-align: center;
+	width: 100%;
+	/* visibility: hidden; */
 }
 
-.Odd{
-  background-color: rgba(153, 205, 50, 0.4);
+.Odd {
+	background-color: rgba(153, 205, 50, 0.4);
 }
-.Even{
-  background-color: rgba(46, 139, 86, 0.4);
-}
-
-.dropdownInner{ 
-  margin-top:20px;
-  width:20%;
-  margin-left: 40vw; 
-  margin-right: 40vw;
-}
-.uploadFile{
-  text-align: center;
-  margin-bottom: 40px;
+.Even {
+	background-color: rgba(46, 139, 86, 0.4);
 }
 
-.buttons{
-  margin-bottom: 10px;
+.dropdownInner {
+	margin-top: 20px;
+	width: 20%;
+	margin-left: 40vw;
+	margin-right: 40vw;
+}
+.uploadFile {
+	text-align: center;
+	margin-bottom: 40px;
 }
 
-.set{
-  width:100%     ;
-  text-align: center; 
-overflow: hidden;
-}
-.audioPlayer{
-  width:70%;
+.buttons {
+	margin-bottom: 10px;
 }
 
-
-.submitBefore{
-  margin-top: 10px;
+.set {
+	width: 100%;
+	text-align: center;
+	overflow: hidden;
+}
+.audioPlayer {
+	width: 70%;
 }
 
-
-.recordComplete{
-  text-align: center;
-  width:60%;
-  margin: 0 20%;
+.submitBefore {
+	margin-top: 10px;
 }
 
-.recordOuter{
-  /* width:100%; */
-  text-align: center !important;
-}
-.downloadButtons{
-  margin-top: 10px !important  ;
-}
-.saveButton{
-  margin-top: 10px;
+.recordComplete {
+	text-align: center;
+	width: 60%;
+	margin: 0 20%;
 }
 
-.totalCard{
-  position: absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-  height:50%;
-  width:70%;
-  box-shadow: 10px 10px 8px rgba(58, 58, 58, 0.3);
-  border-radius: 10px;
-  text-align: center;
+.recordOuter {
+	/* width:100%; */
+	text-align: center !important;
+}
+.downloadButtons {
+	margin-top: 10px !important  ;
+}
+.saveButton {
+	margin-top: 10px;
 }
 
-.dropOuter{
-text-align: center !important;
+.totalCard {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 50%;
+	width: 70%;
+	box-shadow: 10px 10px 8px rgba(58, 58, 58, 0.3);
+	border-radius: 10px;
+	text-align: center;
 }
-
-
-.start{
+.dropOuter {
+	text-align: center !important;
 }
-.textArea{
-	padding:20px;
+.textArea {
+	padding: 20px;
 	margin-top: 20px;
 }
-
-.buttonTable{
-    padding:10px 30px;
-    border-radius: 30px;
+.buttonTable {
+	padding: 10px 30px;
+	border-radius: 30px;
 	border: none;
-	margin-top:20px;
+	margin-top: 20px;
+}
+.buttonText {
+	font-size: 1rem;
+	font-weight: 600;
+}
+.halfButton1 {
+	padding: 10px 20px;
+	border-radius: 30px 0 0 30px;
+	border: none;
+	margin-top: 10px;
+}
+.halfButton2 {
+	padding: 10px 20px;
+	border-radius: 0 30px 30px 0;
+	border: none;
+	margin-top: 10px;
+}
+.buttonSet {
+	text-align: center !important;
+}
+.ButtonReview {
+	margin-top: 10px;
+	color: white !important;
+	font-weight: 600;
+}
+.textReview {
+	margin-top: 10px;
+}
+.Accept {
+	background-color: rgb(50, 212, 36) !important;
+}
+.Review {
+	background-color: rgb(243, 239, 12) !important;
+}
+.Reject {
+	background-color: red !important;
+}
+.Remarks {
+	margin-top: 10px !important;
+	font-weight: 700;
+}
+.dropDown {
+	text-align: center;
+}
+.dropdownhello {
+	width: 40%;
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-bottom: 10px;
+}
+table,
+th,
+td {
+	border: 0.2px solid black;
+	border-collapse: collapse;
+	/* text-align: center; */
+}
+td {
+	padding: 3px;
+}
+th {
+	padding: 3px 5px;
+}
+.outerDashboard {
+	width: 100%;
+	text-align: center;
+}
+.outerreview {
+	text-align: center;
+}
+.ButtonReviewneeche {
+	margin: 0 3px 10px 3px;
+}
+tr:nth-child(odd) {
+	background-color: #c9c9c9;
+}
+.outerDash {
+	width: 100% !important;
+	text-align: center !important;
+}
+.tableDash {
+	width: 80% !important;
+	margin: 0 10% 0 8% !important;	
+}
+
+.button{
+    padding:10px 40px;
+    border-radius: 30px;
+    border: none;
+}
+.button1{
+	padding:10px 10px;
+	border-radius: 30px;
+    border: none;
 }
 .buttonText{
     font-size: 1rem;
     font-weight: 600;
-
 }
-
-
-.halfButton1{
-	padding:10px 20px;
-    border-radius: 30px  0 0 30px;
-	border: none;
-	margin-top:10px;
-}
-.halfButton2{
-	padding:10px 20px;
-    border-radius: 0  30px 30px 0;
-	border: none;
-	margin-top:10px;
-}
-
-.OutputRecord{
-	/* visibility: hidden ; */
- 	/* display: none ; */
-}
-
-
-
-.buttonSet{
-	text-align: center !important;
-}
-
 .ButtonReview{
-	margin-top: 10px;
-	color:white !important;
-	font-weight:600;
-}
+	font-weight: 800;
+    font-size: 1.2rem;
 
-.textReview{
-	margin-top: 10px;
-}
-
-.Accept{
-background-color: rgb(50, 212, 36) !important;
+	
 }
 .Review
 {
-	background-color: rgb(243, 239, 12) !important;
+	color: black !important;
 }
-.Reject
-{
-	background-color: red !important;
-}
-.Remarks{
-	margin-top: 10px !important;
-	font-weight: 700;
-}
-.dropDown{
+.carddash{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	/* background-color: rgb(236, 236, 236);
+	 */
+	 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+	 padding:20px;
+	border-radius: 20px;
 	text-align: center;
-}
-.dropdownhello{
-	width:40%;
-	margin-left: 30%;
-	margin-right: 30%;
-	margin-bottom:10px;
-}
-
-table, th, td {
-	border: 0.2px solid black;
-	border-collapse: collapse;
-
-  }
-
-td{
-	padding: 3px;
-}
-th{
-	padding:3px 3px;	
-}
-.outerDashboard
-{
-	width:100%;
-	text-align:center ;
+	width: 80%;
 }

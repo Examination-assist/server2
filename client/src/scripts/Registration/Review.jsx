@@ -73,7 +73,9 @@ export default class Translate extends Component {
 										left={line.input}
 										right={line.output}
 									/>
+									
 								</React.Fragment>
+
 							)
 						})}
 						{/* <p style={{ textAlign: 'center' }}>
@@ -119,6 +121,23 @@ export default class Translate extends Component {
 								/>
 							</span>
 						</p> */}
+						<div className="outerreview">
+						<h1>Review Complete Document</h1>
+						<button
+									className='button ButtonReview ButtonReviewneeche Accept'
+								>
+									Send for final review
+								</button>	
+							
+								<button
+									
+									className='button  ButtonReview ButtonReviewneeche Reject'
+								>
+									Reject
+								</button>	
+
+						</div>
+						
 						{this.state.back === true ? (
 							<Redirect to='/dashboard'></Redirect>
 						) : (

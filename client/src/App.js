@@ -2,20 +2,18 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import React from 'react'
 
 import './App.css'
-
 import Table from './Table'
 // import Record from  './Record'
 // import Microphone from  './Microphone'
 // import FileUploadForm from './FileUpload';
+// import Start from './Start'
 import Review from './scripts/Registration/Review'
-import Start from './Start'
 import Register from './scripts/Registration/Register'
 import Login from './scripts/Registration/Login'
 import Document from './scripts/Registration/Document'
 import Store from './scripts/Registration/Store'
 import Dashboard from './scripts/Registration/Dashboard'
 import Translate from './scripts/Registration/Translate'
-
 class App extends React.Component {
 	render() {
 		return (

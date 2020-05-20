@@ -129,15 +129,35 @@ export default class Row extends Component {
 										</span>
 										<br />
 										<textarea
-                                            type='text'
-                                            style={{width:'100px'}}
+											type='text'
+											style={{ width: '100px' }}
 											className='textReview'
 										/>
 									</div>
 								)}
 							</div>
-
-							<br />
+							<div className='redo'>
+								<button
+									onClick={() => this.handleRedo()}
+									className='button1 ButtonReview Review'
+								>
+									Ammendment
+								</button>
+								<br />
+								{this.state.toggleRedo && (
+									<div className='remarksRequired'>
+										<span classname='Remarks'>
+											Remarks:{' '}
+										</span>
+										<br />
+										<textarea
+											type='text'
+											style={{ width: '100px' }}
+											className='textReview'
+										/>
+									</div>
+								)}
+							</div>{' '}
 							<div className='rejected'>
 								<button
 									onClick={() => this.handleReject()}
@@ -153,36 +173,14 @@ export default class Row extends Component {
 										</span>
 										<br />
 										<textarea
-                                            type='text'
-                                            style={{width:'100px'}}
+											type='text'
+											style={{ width: '100px' }}
 											className='textReview'
 										/>
 									</div>
 								)}
 							</div>
 							<br />
-							<div className='redo'>
-								<button
-									onClick={() => this.handleRedo()}
-									className='button ButtonReview Review'
-								>
-									Change
-								</button>
-								<br />
-								{this.state.toggleRedo && (
-									<div className='remarksRequired'>
-										<span classname='Remarks'>
-											Remarks:{' '}
-										</span>
-										<br />
-										<textarea
-                                            type='text'
-                                            style={{width:'100px'}}
-											className='textReview'
-										/>
-									</div>
-								)}
-							</div>
 						</div>
 					</div>
 				</div>

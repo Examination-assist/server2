@@ -15,7 +15,7 @@ export default class Dashboard extends Component {
 	render() {
 		return (
 			<div>
-				<div className='card'>
+				<div className='carddash'>
 					{this.state.type === '3' ? (
 						<UserDashboard />
 					) : (
