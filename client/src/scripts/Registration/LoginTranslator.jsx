@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import '../../Register.css'
 import { Redirect } from 'react-router'
-export default class Login extends Component {
+export default class LoginTranslator extends Component {
 	constructor() {
 		super()
 		this.state = { success: false }
@@ -55,8 +55,8 @@ export default class Login extends Component {
 			<div className='card'>
 				{!this.state.success ? (
 					<div className=''>
-							<h1>
-							Reviewers 
+						<h1>
+							Translators 
 						</h1>
 						<span className='cardTitle login'>Login Here</span>
 						
@@ -87,12 +87,11 @@ export default class Login extends Component {
 								value='Submit'
 								onClick={this.post}
 							/>
-
 						</form>
 						<br />
 						<br />
-						<a href="./loginTranslator">
-						<span className=' '>Are you a translator?</span>
+						<a href="./login">
+						<span className=' '>Are you a reviewer?</span>
 						</a>
 					</div>
 				) : (
