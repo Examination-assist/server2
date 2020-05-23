@@ -26,8 +26,7 @@ export default class Translate extends Component {
 		this.setState({ back: true })
 	}
 
-	async save() {
-	}
+	async save() {}
 
 	async componentDidMount() {
 		// console.log('ok')
@@ -54,7 +53,6 @@ export default class Translate extends Component {
 		})
 	}
 
-
 	render() {
 		return (
 			<React.Fragment>
@@ -65,17 +63,30 @@ export default class Translate extends Component {
 						{this.state.lines.map((line) => {
 							return (
 								<React.Fragment key={line.translate_id}>
-									{line.line_counter === 1 ? <br /> : ''}
+									{line.line_counter === 1 ? (
+										<React.Fragment>
+											<br />
+											<p
+												style={{
+													width: '80%',
+													margin: '0 auto',
+													fontWeight: 700,
+												}}
+											>
+												PARAGRAPH {line.para} <br />
+											</p>
+										</React.Fragment>
+									) : (
+										''
+									)}
 									<RowReview
-									status={line.status}
+										status={line.status}
 										line_counter={line.line_counter}
 										count={line.count}
 										left={line.input}
 										right={line.output}
 									/>
-									
 								</React.Fragment>
-
 							)
 						})}
 						{/* <p style={{ textAlign: 'center' }}>
@@ -121,23 +132,17 @@ export default class Translate extends Component {
 								/>
 							</span>
 						</p> */}
-						<div className="outerreview">
-						<h1>Review Complete Document</h1>
-						<button
-									className='button ButtonReview ButtonReviewneeche Accept'
-								>
-									Send for final review
-								</button>	
-							
-								<button
-									
-									className='button  ButtonReview ButtonReviewneeche Reject'
-								>
-									Reject
-								</button>	
+						<div className='outerreview'>
+							<h1>Review Complete Document</h1>
+							<button className='button ButtonReview ButtonReviewneeche Accept'>
+								Send for final review
+							</button>
 
+							<button className='button  ButtonReview ButtonReviewneeche Reject'>
+								Reject
+							</button>
 						</div>
-						
+
 						{this.state.back === true ? (
 							<Redirect to='/dashboard'></Redirect>
 						) : (
