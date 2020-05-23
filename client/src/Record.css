@@ -1,7 +1,6 @@
 .RecordText{
 	color : black;
 }
-
 .outerRecord{
 	height:60vh;
 	/* background-color: green;	 */
@@ -27,9 +26,9 @@
 /* .record-section{
 	width:50%;
 } */
-.recorder-box-inner{
+/* .recorder-box-inner{
 	width:200%;
-}
+} */
 .recorder{
 	/* position: absolute;
 	top: 65%;
@@ -45,9 +44,7 @@
 	text-align: left;
 	float:right;	
 }
-
 .recorderPhone{
-
 }
 .miconPhone{
 	width:52%;

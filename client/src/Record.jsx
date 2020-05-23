@@ -7,7 +7,6 @@ class Record extends Component {
 	render() {
 		return (
 			<React.Fragment>
-
 			<div className='outerRecord onPC'>
 				<textarea
 					name=''
@@ -23,7 +22,6 @@ class Record extends Component {
 					</div>
 				</div>
 			</div>
-
 			<div className='outerRecord onPhone'>
 				<textarea
 					disabled

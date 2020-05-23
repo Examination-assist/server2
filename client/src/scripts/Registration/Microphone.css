@@ -7,7 +7,7 @@
     color: #fff;
     font-size: 20px;
 }
-.recorder-library-box *
+.recorder-library-box *	
 {
 	font-family: montserrat !important;
 }
@@ -17,8 +17,8 @@
 }
 .recorder-box-inner
 {
-	min-height:250px !important;
-	width:100% !important;		
+	min-height:100px !important;
+	width:100% !important;			
 	background-color: rgba(0, 119, 255, 0.411) !important;
 	border-radius: 20px;
 }
@@ -29,3 +29,9 @@
 .record-section{
 	width:100% !important;
 }
+.mic-icon{
+	
+}
+.duration{
+visibility: hidden;
+display: none;}
