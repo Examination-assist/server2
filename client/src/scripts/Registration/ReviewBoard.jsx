@@ -31,9 +31,9 @@ export default class ReviewBoard extends Component {
 						<tr>
 							<th>Document ID</th>
 							<th>Translator Name</th>
-							<th>Document Name</th>
-							<th>Book Name</th>
-							<th>Chapter Number</th>
+							<th>Course Discipline</th>
+							<th>Course Name</th>
+							<th>Lecture Number</th>
 							<th>Language</th>
 							<th>Created at</th>
 							<th>Updated at</th>

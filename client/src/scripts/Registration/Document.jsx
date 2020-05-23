@@ -65,14 +65,14 @@ export default class Document extends Component {
 				<form action=''>
 					<input
 						type='text'
-						placeholder='Document Name'
+						placeholder='Course Discipline'
 						name='doc_name'
 						onChange={(e) => this.handleChange(e)}
 						required
 					></input>
 					<input
 						type='text'
-						placeholder='Book Name'
+						placeholder='Course Name'
 						name='book_name'
 						onChange={(e) => this.handleChange(e)}
 						required
@@ -80,7 +80,7 @@ export default class Document extends Component {
 					<input
 						name='chapter_number'
 						type='number'
-						placeholder='Chapter Number'
+						placeholder='Lecture Number'
 						onChange={(e) => this.handleChange(e)}
 						required
 					></input>

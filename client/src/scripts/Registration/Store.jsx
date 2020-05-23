@@ -19,14 +19,7 @@ export default class Store extends Component {
 			book: 'book name',
 			chapter: 'chapter',
 			file: null,
-			inputarea: `The shutting down of several newspapers’ print editions amid the coronavirus lockdown has magnified the problem of Google and Facebook snatching up news content from media organisations and making a profit for themselves. A pittance is paid to the publishers through Google’s and Facebook’s advertisements on the web pages it disseminates.
-In fact, once the duopoly of Google and Facebook was established over the years, news organisations were made to compete with each other to get on Google News’ top results by paying to be displayed prominently. Google also introduced Google amp, whereby the web page would load faster but with a Google dominant url and Google ads served along with the content.
- 
-Similarly, Facebook forced news websites to accept a “revenue-sharing” model by which the social media outfit would pick up and share news content. The condition was that Facebook would be allowed to post advertisements along with it, a percentage of whose revenue would go to the media outfit.
-Granted that Google and Facebook give news content legs. They take the story beyond the geographical limits of the newspaper’s reach. But if the disseminator makes nearly all the profits and shares mere peanuts with the producer of the content, how long will news production survive?
-This question was not seriously asked by news organisations scrambling to cope with finding a revenue model on the internet in the early 2000s and getting nowhere, and therefore trying to best each other to get more clicks and shares by paying Google and Facebook. But now with no print advertising in the time of corona to cushion losses from having their content shared around for free, governments are stepping in on behalf of news organisations and telling Google and Facebook to play fair, and share.
-Google LLC is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware. It is considered one of the Big Four technology companies alongside Amazon, Apple, and Facebook.
-`,
+			inputarea: ``,
 			translate: [],
 		}
 	}
@@ -135,7 +128,7 @@ Google LLC is an American multinational technology company that specializes in I
 				) : (
 					// ''
 					<div className='outerPehle' style={{ margin: '2rem 0' }}>
-						{this.state.result}
+						{/* {this.state.result} */}
 						<div className='uploadFile'>
 							<form onSubmit={this.onSubmit}>
 								<h3> Upload File</h3>

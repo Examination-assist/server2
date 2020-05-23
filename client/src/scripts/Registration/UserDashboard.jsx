@@ -14,7 +14,7 @@ export default class UserDashboard extends Component {
 			{},
 			{ headers: { user_id: localStorage.getItem('user_id') } }
 		)
-
+		
 		this.setState({ data: result.data.docs })
 	}
 	render() {
@@ -35,9 +35,9 @@ export default class UserDashboard extends Component {
 					<table className='tableDash'>
 						<tr>
 							<th>Document ID</th>
-							<th>Document Name</th>
-							<th>Book Name</th>
-							<th>Chapter Number</th>
+							<th>Course Discipline</th>
+							<th>Course Name</th>
+							<th>Lecture Number</th>
 							<th>Language</th>
 							<th>Created at</th>
 							<th>Updated at</th>

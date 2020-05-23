@@ -16,7 +16,7 @@ export default class Translate extends Component {
 			result: '',
 			lines: [],
 			back: false,
-			change: true
+			change: true,
 		}
 		this.updateRow = this.updateRow.bind(this)
 
@@ -53,12 +53,11 @@ export default class Translate extends Component {
 		// console.log('ok')
 		let doc_id = qs.parse(this.props.location.search)['doc_id']
 		this.setState({ doc_id: doc_id })
-		
+
 		let result = await axios.post(
 			'http://localhost:8000/api/about_document',
 			{
 				doc_id: doc_id,
-				
 			}
 		)
 
@@ -107,49 +106,56 @@ export default class Translate extends Component {
 								</React.Fragment>
 							)
 						})}
-						<p style={{ textAlign: 'center' }}>
-							<span style={{ width: '40%' }}>
-								<input
-									type='button'
-									value='Save as draft'
-									onClick={() => this.save()}
-								/>
-							</span>
-							<span style={{ width: '40%' }}>
-								<input
-									type='button'
-									value='Save and Back'
-									onClick={async () => {
-										this.save()
-										this.back()
-										this.forceUpdate()
-									}}
-								/>
-							</span>
-							<span style={{ width: '40%' }}>
-								<input
-									type='button'
-									value='Send for review'
-									onClick={async () => {
-										this.save()
-										axios.post(
-											'http://localhost:8000/api/review_document',
-											{
-												doc_id: this.state.doc_id,
-											},
-											{
-												headers: {
-													user_id: localStorage.getItem(
-														'user_id'
-													),
-												},
-											}
-										)
-										this.back()
-									}}
-								/>
-							</span>
-						</p>
+						{this.state.change === true ? (
+							<React.Fragment>
+								<p style={{ textAlign: 'center' }}>
+									<span style={{ width: '40%' }}>
+										<input
+											type='button'
+											value='Save as draft'
+											onClick={() => this.save()}
+										/>
+									</span>
+									<span style={{ width: '40%' }}>
+										<input
+											type='button'
+											value='Save and Back'
+											onClick={async () => {
+												this.save()
+												this.back()
+												this.forceUpdate()
+											}}
+										/>
+									</span>
+									<span style={{ width: '40%' }}>
+										<input
+											type='button'
+											value='Send for review'
+											onClick={async () => {
+												this.save()
+												axios.post(
+													'http://localhost:8000/api/review_document',
+													{
+														doc_id: this.state
+															.doc_id,
+													},
+													{
+														headers: {
+															user_id: localStorage.getItem(
+																'user_id'
+															),
+														},
+													}
+												)
+												this.back()
+											}}
+										/>
+									</span>
+								</p>
+							</React.Fragment>
+						) : (
+							''
+						)}
 						{this.state.back === true ? (
 							<Redirect to='/dashboard'></Redirect>
 						) : (

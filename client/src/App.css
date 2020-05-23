@@ -1,3 +1,6 @@
+body{
+	font-size: 1.24rem !important;
+}
 .outer {
 	position: relative;
 	/* top: 50%; */
