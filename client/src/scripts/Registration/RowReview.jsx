@@ -98,9 +98,13 @@ export default class Row extends Component {
 							{this.state.right}
 							<div
 								className='div'
-								style={{ position: 'absolute',bottom:0,borderRadius:0 }}
+								style={{
+									position: 'absolute',
+									bottom: 0,
+									borderRadius: 0,
+								}}
 							>
-								<audio controls></audio>
+								<audio height='54px' controls></audio>
 							</div>
 						</div>
 						<div

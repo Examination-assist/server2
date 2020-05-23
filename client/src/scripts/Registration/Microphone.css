@@ -30,7 +30,7 @@
 .record-section{
 	width:100% !important;
 }
-audio{
+.audio-section>audio{
 	position: relative;
 	top:-58px !important;
 	height:20px;
