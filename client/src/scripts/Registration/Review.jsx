@@ -16,6 +16,7 @@ export default class Translate extends Component {
 			result: '',
 			lines: [],
 			back: false,
+			document_about:{}
 		}
 
 		this.save = this.save.bind(this)
@@ -39,9 +40,8 @@ export default class Translate extends Component {
 				doc_id: doc_id,
 			}
 		)
-
-		this.setState({ result: JSON.stringify(result.data) })
-
+		this.setState({document_about:result.data});
+		
 		let data = await axios.post(
 			'http://localhost:8000/api/view_lines',
 			{ doc_id: this.state.doc_id },
@@ -60,6 +60,25 @@ export default class Translate extends Component {
 					<Redirect to='/'></Redirect>
 				) : (
 					<div>
+						<p
+							style={{
+								width: '80%',
+								margin: '80px auto 20px',
+								fontWeight: 700,
+							}}
+						>
+							{this.state.document_about === {} ? (
+								''
+							) : (
+								<React.Fragment>
+									{`Course Discipline: ${this.state.document_about.name}`}
+									<br />
+									{`Course Name: ${this.state.document_about.book_name}`}
+									<br/>
+									{`Lecture Number: ${this.state.document_about.chapter_number}`}
+								</React.Fragment>
+							)}
+						</p>
 						{this.state.lines.map((line) => {
 							return (
 								<React.Fragment key={line.translate_id}>

@@ -17,6 +17,7 @@ export default class Translate extends Component {
 			lines: [],
 			back: false,
 			change: true,
+			document_about: {},
 		}
 		this.updateRow = this.updateRow.bind(this)
 
@@ -60,7 +61,9 @@ export default class Translate extends Component {
 				doc_id: doc_id,
 			}
 		)
+		this.setState({ document_about: result.data })
 
+		this.setState()
 		if (result.data.status === 'Under Review') {
 			this.setState({ change: false })
 		}
@@ -90,13 +93,40 @@ export default class Translate extends Component {
 					<Redirect to='/'></Redirect>
 				) : (
 					<div>
+						<p
+							style={{
+								width: '80%',
+								margin: '80px auto 20px',
+								fontWeight: 700,
+							}}
+						>
+							{this.state.document_about === {} ? (
+								''
+							) : (
+								<React.Fragment>
+									{`Course Discipline: ${this.state.document_about.name}`}
+									<br />
+									{`Course Name: ${this.state.document_about.book_name}`}
+									<br/>
+									{`Lecture Number: ${this.state.document_about.chapter_number}`}
+								</React.Fragment>
+							)}
+						</p>
 						{this.state.lines.map((line) => {
 							return (
 								<React.Fragment key={line.translate_id}>
 									{line.line_counter === 1 ? (
 										<React.Fragment>
-											<br/>
-											<p style={{width:"80%",margin:"0 auto",fontWeight:700}}>PARAGRAPH {line.para} <br/></p>
+											<br />
+											<p
+												style={{
+													width: '80%',
+													margin: '0 auto',
+													fontWeight: 700,
+												}}
+											>
+												PARAGRAPH {line.para} <br />
+											</p>
 										</React.Fragment>
 									) : (
 										''
