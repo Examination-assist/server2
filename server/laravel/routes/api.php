@@ -41,7 +41,8 @@ Route::post('/convert', 'UploadFile@convert');
 
 Route::post('/upload_audio',function (Request $request){
     $blobInput = $request->file('upl');
-    Log::info($blobInput);
-    //save the wav file to 'storage/app/audio' path with fileanme test.wav
-    Storage::put('audio/test.wav', file_get_contents($blobInput));
+    $filename = time() . '.' . 'audio.wav';
+
+    Log::info($request->count);
+    Storage::put('audio/'.$filename, file_get_contents($blobInput));
 });
