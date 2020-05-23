@@ -169,7 +169,9 @@ export default class Row extends Component {
 										<br />
 										<textarea
 											type='text'
-											style={{ width: '90%' }}
+											style={{ width: '90%',
+											height: '200px',
+										}}
 											className='textReview'
 										/>
 									</div>
