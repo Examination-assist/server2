@@ -1,17 +1,23 @@
-var mysql = require('mysql')
-var connection = mysql.createConnection({
-	host: '0.tcp.ngrok.io',
-	port: '11641',
-	user: 'root',
-	password: 'password',
-	database: 'formbuilder',
+const express = require('express')
+
+const app = express()
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+app.use(require('cors')())
+
+app.post('/api/upload_audio', (req, res) => {
+	console.log('ok')
+	console.log(req.body.filename)
 })
 
-connection.connect()
-
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-	if (error) throw error
-	console.log('The solution is: ', results[0].solution)
+const util = require('util');
+const fs = require('fs');
+const readFile = util.promisify(fs.readFile);
+app.get('/',async (req,res)=>{
+	data=await readFile('./audio');
+	res.send(data)
 })
 
-connection.end()
+app.listen(8080)
