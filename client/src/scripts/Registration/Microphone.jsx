@@ -24,36 +24,26 @@ export default class Microphone extends React.Component {
 		console.log(data)
 	}
 
-	blobToFile(theBlob, fileName){
-		//A Blob() is almost a File() - it's just missing the two properties below which we will add
-		theBlob.lastModifiedDate = new Date();
-		theBlob.name = fileName;
-		return theBlob;
-	}
-
-	async uploadFile(file) {
-		const formData = new FormData()
-		formData.append('file', file)
-		formData.append('filename', file.name)
-		
-		console.log(formData)
-		return await axios.post('http://localhost:8080/api/' + 'upload_audio', formData, {
-			headers: {
-				'content-type': 'multipart/form-data',
-			},
-		})
-		// console.log()
-	}
-
 	async handleAudioUpload() {
-		let blob = this.state.audioDetails
-		// let file=(this.blobToFile(blob.blob,'one.mp3'))
-		// let res = await this.uploadFile(file)
-		let k=(await blob.blob.text())
-		// let form = new FormData()
-		// form.append('kkk',blob.blob)
+		let blob = this.state.audioDetails.blob
+		console.log(blob)
+		let fileReader = new FileReader()
+		let audioBuffer
+		var audioContext = new AudioContext()
+
+
+		fileReader.onloadend = () => {
+			audioBuffer = fileReader.result
+			console.log(audioBuffer)
+			const bufferToWav=require('audiobuffer-to-wav')
+			audioContext.decodeAudioData(audioBuffer,(buffer)=>{
+				var wav = bufferToWav(buffer)
+				console.log(wav)
+			})
+		}
+
+		fileReader.readAsArrayBuffer(blob)
 		
-		await axios.post('http://localhost:8000/api/upload_audio',{blob:k})
 	}
 	handleRest() {
 		const reset = {
