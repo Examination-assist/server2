@@ -78,7 +78,7 @@ export default class Row extends Component {
 								borderRight: '0',
 								textAlign: 'left',
 								fontSize: '1.5rem',
-								fontWeight:"700",
+								fontWeight: '700',
 							}}
 							className='leftcont'
 						>
@@ -91,11 +91,17 @@ export default class Row extends Component {
 								border: '1px solid black',
 								overflow: 'hidden',
 								fontSize: '1.5rem',
-								fontWeight:"700",
+								fontWeight: '700',
 							}}
 							className='rightcont'
 						>
 							{this.state.right}
+							<div
+								className='div'
+								style={{ position: 'absolute',bottom:0,borderRadius:0 }}
+							>
+								<audio controls></audio>
+							</div>
 						</div>
 						<div
 							style={{
