@@ -16,6 +16,7 @@ export default class Translate extends Component {
 			result: '',
 			lines: [],
 			back: false,
+			document_about:{}
 		}
 
 		this.save = this.save.bind(this)
@@ -39,9 +40,8 @@ export default class Translate extends Component {
 				doc_id: doc_id,
 			}
 		)
-
-		this.setState({ result: JSON.stringify(result.data) })
-
+		this.setState({document_about:result.data});
+		
 		let data = await axios.post(
 			'http://localhost:8000/api/view_lines',
 			{ doc_id: this.state.doc_id },
