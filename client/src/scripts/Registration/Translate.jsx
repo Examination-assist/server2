@@ -96,6 +96,7 @@ export default class Translate extends Component {
 								<React.Fragment key={line.translate_id}>
 									{line.line_counter === 1 ? <br /> : ''}
 									<Row
+										doc_id={this.state.doc_id}
 										change={this.state.change}
 										updateRow={this.updateRow}
 										line_counter={line.line_counter}

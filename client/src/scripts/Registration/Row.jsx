@@ -11,6 +11,7 @@ export default class Row extends Component {
 			paragraph: this.props.paragraph,
 			count: this.props.count,
 			change: this.props.change,
+			doc_id: this.props.doc_id,
 		})
 	}
 	colors = ['#BFBBFF', '#C4E3FF']
@@ -73,7 +74,9 @@ export default class Row extends Component {
 							className='rightcont'
 						>
 							<textarea
-							disabled={this.state.change===true?false:true}
+								disabled={
+									this.state.change === true ? false : true
+								}
 								style={
 									this.state.active
 										? {
@@ -124,7 +127,12 @@ export default class Row extends Component {
 								textAlign: 'center !important',
 							}}
 						>
-							<Microphone />
+							<Microphone
+								doc_id={this.props.doc_id}
+								line_counter={this.props.line_counter}
+								paragraph={this.props.paragraph}
+								count={this.props.count}
+							/>
 						</div>
 					</div>
 				</div>

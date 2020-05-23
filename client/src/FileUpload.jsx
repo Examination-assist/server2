@@ -17,7 +17,7 @@ class FileUploadForm extends React.Component {
 		e.preventDefault()
 		let res = await this.uploadFile(this.state.file)
 		this.setState({ data: res.data.text })
-		console.log(res.data)
+		// console.log(res.data)
 	}
 	onChange(e) {
 		this.setState({ file: e.target.files[0] })

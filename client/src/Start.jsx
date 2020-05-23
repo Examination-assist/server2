@@ -59,8 +59,8 @@ class Start extends Component {
 	// 	// this.state = { drop2: 'Engineering' }
 	// }
 	componentDidMount() {
-		console.log(this.state)
-		console.log()
+		// console.log(this.state)
+		// console.log()
 	}
 	state = {}
 	render() {

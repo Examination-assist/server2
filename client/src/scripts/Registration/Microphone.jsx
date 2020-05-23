@@ -3,6 +3,8 @@ import { Recorder } from 'react-voice-recorder'
 import './Microphone.css'
 import axios from 'axios'
 
+const qs = require('query-string')
+
 export default class Microphone extends React.Component {
 	constructor(props) {
 		super(props)
@@ -19,19 +21,34 @@ export default class Microphone extends React.Component {
 			},
 		}
 	}
+
+	componentDidMount() {
+		this.setState({
+			doc_id: this.props.doc_id,
+			line_counter: this.props.line_counter,
+			paragraph: this.props.paragraph,
+			count: this.props.count,
+		})
+	}
 	handleAudioStop(data) {
 		this.setState({ audioDetails: data })
-		console.log(data)
 	}
 
 	async handleAudioUpload() {
+		console.log(this.state)
 		let blob = this.state.audioDetails.blob
-		
+
 		let fd = new FormData()
-		fd.append('upl',blob,'audio.wav')
+		fd.append('upl', blob, 'audio.wav')
+
+		fd.append('count', this.state.count)
+		fd.append('doc_id', this.state.doc_id)
+
 		console.log(blob)
 		console.log(fd)
-		console.log(await axios.post('http://localhost:8000/api/upload_audio',fd))
+		console.log(
+			await axios.post('http://localhost:8000/api/upload_audio', fd)
+		)
 	}
 	handleRest() {
 		const reset = {

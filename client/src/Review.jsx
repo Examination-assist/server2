@@ -318,7 +318,7 @@ export default class SplitText extends Component {
 	}
 
 	componentDidMount() {
-		console.log()
+		// console.log()
 		this.setState({ user: localStorage.getItem('user_id') })
 		let k = UserOptions.filter(
 			(e) => e.value === localStorage.getItem('user_id')
@@ -382,15 +382,15 @@ export default class SplitText extends Component {
 		let res = await this.uploadFile(this.state.file)
 		this.setState({ dataOriginal: res.data.text })
 		this.setState({ inputareaOriginal: res.data.text })
-		console.log(res.data.text, res)
+		// console.log(res.data.text, res)
 	}
 	async onSubmit1(e) {
 		e.preventDefault()
 		let res = await this.uploadFile(this.state.fileOriginal)
-		console.log(res)
+		// console.log(res)
 		this.setState({ data: res.data.text })
 		this.setState({ inputarea: res.data.text })
-		console.log(res.data.text, res)
+		// console.log(res.data.text, res)
 	}
 	onChange(e) {
 		this.setState({ file: e.target.files[0] })
@@ -438,13 +438,13 @@ export default class SplitText extends Component {
 			path_s: result.data.path_s,
 			path_both: result.data.path_both,
 		})
-		console.log(result.data)
+		// console.log(result.data)
 		// console.log(result.data)
 		// document.querySelector('#downloadButtons').style.display = 'block'
 	}
 	handleDropDown(e) {
 		this.setState({ language: e.value })
-		console.log(e.language)
+		// console.log(e.language)
 	}
 
 	paragraph = -1
