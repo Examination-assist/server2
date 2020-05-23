@@ -59,6 +59,8 @@ export default class Row extends Component {
 								border: '1px solid black',
 								borderRight: '0',
 								textAlign: 'left',
+								fontSize: '1.5rem',
+								fontWeight:"700"
 							}}
 							className='leftcont'
 						>
@@ -85,6 +87,8 @@ export default class Row extends Component {
 												height: '100%',
 												outline: 'none',
 												border: 'none',
+												fontSize: '1.5rem',
+												fontWeight:"700",
 												backgroundColor:
 													'rgba(0,0,255,0)',
 										  }
@@ -94,6 +98,8 @@ export default class Row extends Component {
 												height: '100%',
 												outline: 'none',
 												border: 'none',
+												fontSize: '1.5rem',
+												fontWeight:"700",
 												backgroundColor:
 													'rgba(0,0,255,0)',
 										  }
