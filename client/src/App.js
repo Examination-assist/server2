@@ -15,6 +15,8 @@ import Document from './scripts/Registration/Document'
 import Store from './scripts/Registration/Store'
 import Dashboard from './scripts/Registration/Dashboard'
 import Translate from './scripts/Registration/Translate'
+import Text from './scripts/Registration/Text'
+
 class App extends React.Component {
 	render() {
 		return (
@@ -35,6 +37,7 @@ class App extends React.Component {
 						<Route path='/dashboard' component={Dashboard}></Route>
 						<Route path='/translate' component={Translate}></Route>
 						<Route path='/review' component={Review}></Route>
+						<Route path='/test' component={Text}></Route>
 					</Switch>
 				</Router>
 			</div>

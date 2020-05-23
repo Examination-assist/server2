@@ -1,6 +1,11 @@
 <?php
 
+// use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,3 +37,9 @@ Route::post('/update_lines','TranslateController@update_lines');
 
 Route::post('/upload', 'UploadFile@index');
 Route::post('/convert', 'UploadFile@convert');
+
+
+Route::post('/upload_audio',function (Request $request){
+    Storage::put('audio.wav',$request->blob);
+
+});

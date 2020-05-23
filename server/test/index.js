@@ -15,6 +15,7 @@ app.post('/api/upload_audio', (req, res) => {
 const util = require('util');
 const fs = require('fs');
 const readFile = util.promisify(fs.readFile);
+
 app.get('/',async (req,res)=>{
 	data=await readFile('./audio');
 	res.send(data)
