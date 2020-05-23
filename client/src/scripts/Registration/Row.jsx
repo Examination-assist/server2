@@ -127,12 +127,16 @@ export default class Row extends Component {
 								textAlign: 'center !important',
 							}}
 						>
-							<Microphone
-								doc_id={this.props.doc_id}
-								line_counter={this.props.line_counter}
-								paragraph={this.props.paragraph}
-								count={this.props.count}
-							/>
+							{this.state.change === true ? (
+								<Microphone
+									doc_id={this.props.doc_id}
+									line_counter={this.props.line_counter}
+									paragraph={this.props.paragraph}
+									count={this.props.count}
+								/>
+							) : (
+								<audio controls></audio>
+							)}
 						</div>
 					</div>
 				</div>
