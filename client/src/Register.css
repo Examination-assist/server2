@@ -37,9 +37,9 @@ input{
 	width: 60%;
 	margin-bottom: 20px;
 	padding: 12px;
-	text-align: center;
+	/* text-align: center; */
 	border: 1.4px solid rgb(119, 119, 119);
-	border-radius: 16px;
+	border-radius: 2px;
 	font-weight: 600;
   }
   

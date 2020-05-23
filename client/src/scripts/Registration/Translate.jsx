@@ -66,7 +66,7 @@ export default class Translate extends Component {
 		}
 		this.setState({ result: JSON.stringify(result.data) })
 
-		let data = await axios.post(
+		let data = await axios.post(	
 			'http://localhost:8000/api/view_lines',
 			{ doc_id: this.state.doc_id },
 			{ headers: { user_id: localStorage.getItem('user_id') } }
