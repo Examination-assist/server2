@@ -1,6 +1,7 @@
 .recorder-box{
 	width:100% !important;		
 	text-align:center;
+	padding:0 !important
 	/* height: 10% !important; */
 }
 .recorder-library-box .duration * {
@@ -17,7 +18,7 @@
 }
 .recorder-box-inner
 {
-	min-height:100px !important;
+	min-height:170px !important;
 	width:100% !important;			
 	background-color: rgba(0, 119, 255, 0.411) !important;
 	border-radius: 20px;
@@ -29,9 +30,22 @@
 .record-section{
 	width:100% !important;
 }
-.mic-icon{
+audio{
+	position: relative;
+	top:-58px !important;
+	height:20px;
 	
 }
 .duration{
-visibility: hidden;
-display: none;}
+	/* bottom:50px !important; */
+}
+
+
+.duration-section{
+	/* height:40px !important;  */
+	/* top:60px !important; */
+	bottom:0 !important;
+}
+.mic-icon{
+	margin-bottom:3px;
+}
