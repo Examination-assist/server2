@@ -10,7 +10,6 @@ class Record extends Component {
 
 			<div className='outerRecord onPC'>
 				<textarea
-					disabled
 					name=''
 					className='textAreaRecord'
 					value={this.props.text}

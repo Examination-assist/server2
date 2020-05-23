@@ -219,3 +219,24 @@ tr:nth-child(odd) {
 	text-align: center;
 	width: 80%;
 }
+.formButton{
+	text-align: center !important;
+}
+.leftBox{
+	float:left;
+	width:50%;
+	text-align: center;
+}
+.rightBox{
+	float:right;
+	width:50%;
+	text-align: center;
+}
+.box{
+	width:70%;	
+	background-color: antiquewhite;
+	padding:30px 30px;
+	/* position: absolute;
+	top:50%;
+	transform: translateY(-50%); */
+}

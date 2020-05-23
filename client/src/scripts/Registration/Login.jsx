@@ -85,6 +85,7 @@ export default class Login extends Component {
 							<input
 								type='button'
 								value='Submit'
+								className="formButton"
 								onClick={this.post}
 							/>
 

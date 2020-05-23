@@ -16,6 +16,7 @@ import Store from './scripts/Registration/Store'
 import Dashboard from './scripts/Registration/Dashboard'
 import Translate from './scripts/Registration/Translate'
 import Text from './scripts/Registration/Text'
+import FullReview from './scripts/Registration/FullReview'
 
 class App extends React.Component {
 	render() {
@@ -38,6 +39,7 @@ class App extends React.Component {
 						<Route path='/translate' component={Translate}></Route>
 						<Route path='/review' component={Review}></Route>
 						<Route path='/test' component={Text}></Route>
+						<Route path='/fullReview' component={FullReview}></Route>
 					</Switch>
 				</Router>
 			</div>

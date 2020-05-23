@@ -120,7 +120,7 @@ export default class UserDashboard extends Component {
 										<td>
 											<span style={{ padding: '0 10px' }}>
 												<Link
-													to={`/review?doc_id=${elem.doc_id}`}
+													to={`/fullreview?doc_id=${elem.doc_id}`}
 												>
 													Complete Review
 												</Link>
