@@ -50,15 +50,15 @@ Route::post('/upload_audio', function (Request $request) {
     if($audio::where(['doc_id'=>$request->doc_id,'count'=>$request->count])->exists()){
         $d=($audio::where(['doc_id'=>$request->doc_id,'count'=>$request->count])->get()->first());
         $filename=$d->filename;
-        Storage::put('audio/' . $filename, file_get_contents($blobInput));
+        Storage::disk('public')->put('audio/' . $filename, file_get_contents($blobInput));
         
-        $audio::where(['doc_id'=>$request->doc_id,'count'=>$request->count])->update(['filename'=>$filename])->save();
+        // $audio::where(['doc_id'=>$request->doc_id,'count'=>$request->count])->update(['filename'=>$filename])->save();
         
         return (asset('storage/audio/' . $filename));
     };
     
     $filename = time() . '.' . 'audio.wav';
-    Storage::put('audio/' . $filename, file_get_contents($blobInput));
+    Storage::disk('public')->put('audio/' . $filename, file_get_contents($blobInput));
 
     // Log::info($request->count);
     
