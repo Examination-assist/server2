@@ -26,24 +26,12 @@ export default class Microphone extends React.Component {
 
 	async handleAudioUpload() {
 		let blob = this.state.audioDetails.blob
-		console.log(blob)
-		let fileReader = new FileReader()
-		let audioBuffer
-		var audioContext = new AudioContext()
-
-
-		fileReader.onloadend = () => {
-			audioBuffer = fileReader.result
-			console.log(audioBuffer)
-			const bufferToWav=require('audiobuffer-to-wav')
-			audioContext.decodeAudioData(audioBuffer,(buffer)=>{
-				var wav = bufferToWav(buffer)
-				console.log(wav)
-			})
-		}
-
-		fileReader.readAsArrayBuffer(blob)
 		
+		let fd = new FormData()
+		fd.append('upl',blob,'audio.wav')
+		console.log(blob)
+		console.log(fd)
+		console.log(await axios.post('http://localhost:8000/api/upload_audio',fd))
 	}
 	handleRest() {
 		const reset = {

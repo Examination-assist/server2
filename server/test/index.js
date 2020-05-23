@@ -8,8 +8,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(require('cors')())
 
 app.post('/api/upload_audio', (req, res) => {
-	console.log('ok')
-	console.log(req.body.filename)
+	console.log(req.body)
+	// console.log(req.body.filename)
 })
 
 const util = require('util');
