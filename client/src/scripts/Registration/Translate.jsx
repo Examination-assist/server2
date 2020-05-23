@@ -66,7 +66,7 @@ export default class Translate extends Component {
 		}
 		this.setState({ result: JSON.stringify(result.data) })
 
-		let data = await axios.post(	
+		let data = await axios.post(
 			'http://localhost:8000/api/view_lines',
 			{ doc_id: this.state.doc_id },
 			{ headers: { user_id: localStorage.getItem('user_id') } }
@@ -93,7 +93,14 @@ export default class Translate extends Component {
 						{this.state.lines.map((line) => {
 							return (
 								<React.Fragment key={line.translate_id}>
-									{line.line_counter === 1 ? <br /> : ''}
+									{line.line_counter === 1 ? (
+										<React.Fragment>
+											<br/>
+											<p style={{width:"80%",margin:"0 auto",fontWeight:700}}>PARAGRAPH {line.para} <br/></p>
+										</React.Fragment>
+									) : (
+										''
+									)}
 									<Row
 										doc_id={this.state.doc_id}
 										change={this.state.change}

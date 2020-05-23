@@ -15,6 +15,20 @@ export default class ReviewBoard extends Component {
 			{},
 			{ headers: { user_id: localStorage.getItem('user_id') } }
 		)
+		for (let index = 0; index < result.data.docs.length; index++) {
+			const element = result.data.docs[index]
+			let date = new Date(element.created_at)
+			result.data.docs[index].created_at = `${date.getDate()}/${
+				date.getMonth() + 1
+			}/${date.getFullYear()} ${date.getHours()+1}:${date.getMinutes()+1}`
+		}
+		for (let index = 0; index < result.data.docs.length; index++) {
+			const element = result.data.docs[index]
+			let date = new Date(element.updated_at)
+			result.data.docs[index].updated_at = `${date.getDate()}/${
+				date.getMonth() + 1
+			}/${date.getFullYear()} ${date.getHours()+1}:${date.getMinutes()+1}`
+		}
 
 		this.setState({ data: result.data.docs })
 
