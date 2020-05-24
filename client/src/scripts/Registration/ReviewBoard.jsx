@@ -51,12 +51,13 @@ export default class ReviewBoard extends Component {
 							<th>Language</th>
 							<th>Created at</th>
 							<th>Updated at</th>
-							<th>Status </th>
-							<th>Visit </th>
+							<th>Line By line <br /> Transcript </th>
+							<th> Line By line Status </th>
 							<th>
 								Visit Complete
 								<br /> transcript{' '}
 							</th>
+							<th >Complete transcript Status </th> 
 						</tr>
 						{this.state.data.map((elem) => {
 							return (
@@ -104,11 +105,6 @@ export default class ReviewBoard extends Component {
 										</td>
 										<td>
 											<span style={{ padding: '0 10px' }}>
-												{elem.status}
-											</span>
-										</td>
-										<td>
-											<span style={{ padding: '0 10px' }}>
 												<Link
 													to={`/review?doc_id=${elem.doc_id}`}
 												>
@@ -118,11 +114,21 @@ export default class ReviewBoard extends Component {
 										</td>
 										<td>
 											<span style={{ padding: '0 10px' }}>
+												{elem.status}
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
 												<Link
-													to={`/review?doc_id=${elem.doc_id}`}
+													to={`/fullreview?doc_id=${elem.doc_id}`}
 												>
 													Complete Review
 												</Link>
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
+												{elem.status}
 											</span>
 										</td>
 									</tr>

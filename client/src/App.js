@@ -17,6 +17,7 @@ import Dashboard from './scripts/Registration/Dashboard'
 import Translate from './scripts/Registration/Translate'
 import Text from './scripts/Registration/Text'
 import FullReview from './scripts/Registration/FullReview'
+import FullCreate from './scripts/Registration/FullCreate'
 
 class App extends React.Component {
 	render() {
@@ -39,7 +40,8 @@ class App extends React.Component {
 						<Route path='/translate' component={Translate}></Route>
 						<Route path='/review' component={Review}></Route>
 						<Route path='/test' component={Text}></Route>
-						<Route path='/fullReview' component={FullReview}></Route>
+						<Route path='/fullreview' component={FullReview}></Route>
+						<Route path='/fullcreate' component={FullCreate}></Route>
 					</Switch>
 				</Router>
 			</div>

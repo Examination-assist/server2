@@ -65,7 +65,7 @@ export default class Login extends Component {
 						<form method='post'>
 							<input
 								onChange={this.handleChange}
-								placeholder='email'
+								placeholder='Email-ID'
 								type='email'
 								name='email'
 								required
@@ -73,7 +73,7 @@ export default class Login extends Component {
 							<br />
 							<input
 								onChange={this.handleChange}
-								placeholder='password'
+								placeholder='Password'
 								type='password'
 								name='password'
 								required

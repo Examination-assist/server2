@@ -15,25 +15,20 @@ class FullReview extends Component {
 					<div className='rightBox'>
 						<Record />
 					</div> */}
-					<Record />
+					<Record />	
+
 				</div>
 				<div className='outerreview'>
-					<br />
-					<br />
-					<br />
-					<br />
-					<button
-						style={{ marginRight: '10px' }}
-						className='button  '
-					>
-						Save and back
-					</button>
-					<button className='button  '>Submit for approval</button>
-					{/* 
+							<h1>Review Complete Document</h1>
+							<button className='button ButtonReview ButtonReviewneeche Accept'>
+								Send for final review
+							</button>
+
 							<button className='button  ButtonReview ButtonReviewneeche Reject'>
 								Reject
-							</button> */}
-				</div>
+							</button>
+						</div>
+
 			</div>
 		)
 	}

@@ -178,7 +178,7 @@ tr:nth-child(odd) {
 }
 .tableDash {
 	width: 80% !important;
-	margin: 0 10% 0 8% !important;	
+	margin: 0 0% 0 5% !important;	
 }
 
 .button{
@@ -221,6 +221,9 @@ tr:nth-child(odd) {
 }
 .formButton{
 	text-align: center !important;
+	width:20% !important; 
+	background-color:green;
+	color:white;
 }
 .leftBox{
 	float:left;
@@ -239,4 +242,9 @@ tr:nth-child(odd) {
 	/* position: absolute;
 	top:50%;
 	transform: translateY(-50%); */
+}
+.buttonCreateDoc{
+	background-color: orangered;
+	color:white;
+	font-size: 1.3rem;
 }

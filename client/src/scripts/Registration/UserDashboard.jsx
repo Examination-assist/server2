@@ -36,9 +36,9 @@ export default class UserDashboard extends Component {
 				<p style={{ padding: '0 10px' }}>
 					<h1>User Dashboard</h1>
 					<Link to='/document'>
-						<button className='button'>
+						<button className='button buttonCreateDoc'>
 							<div className='buttonText'>
-								Create new Document
+								Create New Document
 							</div>
 						</button>
 					</Link>
@@ -55,7 +55,7 @@ export default class UserDashboard extends Component {
 							<th>Created at</th>
 							<th>Updated at</th>
 							<th>Status </th>
-							<th>Visit </th>
+							<th>Line By line <br /> Transcript </th>
 
 							<th>
 								Visit Complete
@@ -120,7 +120,7 @@ export default class UserDashboard extends Component {
 										<td>
 											<span style={{ padding: '0 10px' }}>
 												<Link
-													to={`/fullreview?doc_id=${elem.doc_id}`}
+													to={`/fullcreate?doc_id=${elem.doc_id}`}
 												>
 													Complete Review
 												</Link>
