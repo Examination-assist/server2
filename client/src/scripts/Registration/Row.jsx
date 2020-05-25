@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import Microphone from './Microphone'
 
+import axios from 'axios';
+
+const SERVER = require('./config')
+
 export default class Row extends Component {
 	state = {}
-	componentDidMount() {
+	async componentDidMount() {
 		this.setState({
 			left: this.props.left,
 			right: this.props.right,
@@ -13,6 +17,8 @@ export default class Row extends Component {
 			change: this.props.change,
 			doc_id: this.props.doc_id,
 		})
+		if(this.props.count===1)
+		console.log(await axios.post(`${SERVER}get_audio`,{doc_id:this.props.doc_id}))
 	}
 	colors = ['#BFBBFF', '#C4E3FF']
 	render() {

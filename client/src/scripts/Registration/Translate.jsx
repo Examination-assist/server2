@@ -57,7 +57,6 @@ export default class Translate extends Component {
 		let doc_id = qs.parse(this.props.location.search)['doc_id']
 		this.setState({ doc_id: doc_id })
 		
-		console.log(await axios.post(`${SERVER}get_audio`,{doc_id:doc_id}))
 		
 		let result = await axios.post(
 			SERVER+'about_document',
