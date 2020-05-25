@@ -102,6 +102,7 @@ export default class Translate extends Component {
 										''
 									)}
 									<RowReview
+										doc_id={this.state.doc_id}
 										status={line.status}
 										line_counter={line.line_counter}
 										count={line.count}

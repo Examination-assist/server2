@@ -23,9 +23,9 @@ export default class Row extends Component {
 				await this.audio()
 			}
 		)
-	}	
+	}
 
-	execute(){
+	execute() {
 		this.audio()
 	}
 
@@ -38,6 +38,7 @@ export default class Row extends Component {
 		else {
 			this.setState({ file: null })
 		}
+		// console.log(result)
 	}
 	colors = ['#BFBBFF', '#C4E3FF']
 	render() {
@@ -169,11 +170,14 @@ export default class Row extends Component {
 										target='_blank'
 										rel='noopener noreferrer'
 									> */}
-									<audio src={
+									<audio
+										src={
 											this.state.file !== null
 												? this.state.file
 												: false
-										} controls></audio>	
+										}
+										controls
+									></audio>
 									<Microphone
 										audio={this.execute}
 										doc_id={this.props.doc_id}
@@ -185,7 +189,14 @@ export default class Row extends Component {
 									/>
 								</React.Fragment>
 							) : (
-								<audio controls></audio>
+								<audio
+									src={
+										this.state.file !== null
+											? this.state.file
+											: false
+									}
+									controls
+								></audio>
 							)}
 						</div>
 					</div>

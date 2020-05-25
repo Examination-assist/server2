@@ -1,21 +1,38 @@
 import React, { Component } from 'react'
 import autosize from 'autosize'
 
+import axios from 'axios'
+const SERVER = require('./config')
+
 export default class Row extends Component {
 	state = {}
 	componentDidMount() {
-		autosize(document.querySelectorAll('textarea'));
-		this.setState({
-			left: this.props.left,
-			right: this.props.right,
-			line_counter: this.props.line_counter,
-			paragraph: this.props.paragraph,
-			count: this.props.count,
-			status: this.props.status,
-		})
-
-		// Array.prototype(document.getElementsByClassName('textReview'),e=>e.style.width=20)
+		autosize(document.querySelectorAll('textarea'))
+		this.setState(
+			{
+				left: this.props.left,
+				right: this.props.right,
+				line_counter: this.props.line_counter,
+				paragraph: this.props.paragraph,
+				count: this.props.count,
+				status: this.props.status,
+			},
+			() => this.audio()
+		)
 	}
+
+	async audio() {
+		const result = await axios.post(`${SERVER}get_audio`, {
+			doc_id: this.props.doc_id,
+			count: this.props.count,
+		})
+		if (result.data.length !== 0) this.setState({ file: result.data })
+		else {
+			this.setState({ file: null })
+		}
+		console.log(this.props.count)
+	}
+
 	handleAccept() {
 		this.setState({ status: 'Accepted' })
 		this.setState({ toggleAccept: true })
@@ -106,7 +123,15 @@ export default class Row extends Component {
 									borderRadius: 0,
 								}}
 							>
-								<audio style={{margin:"20px 0 0"}} height='54px' controls></audio>
+								<audio
+								style={{padding:'20px 0 0'}}
+									src={
+										this.state.file !== null
+											? this.state.file
+											: false
+									}
+									controls
+								></audio>
 							</div>
 						</div>
 						<div
@@ -171,9 +196,10 @@ export default class Row extends Component {
 										<br />
 										<textarea
 											type='text'
-											style={{ width: '90%',
-											height: '200px',
-										}}
+											style={{
+												width: '90%',
+												height: '200px',
+											}}
 											className='textReview'
 										/>
 									</div>
