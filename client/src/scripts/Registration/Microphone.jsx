@@ -3,7 +3,9 @@ import { Recorder } from 'react-voice-recorder'
 import './Microphone.css'
 import axios from 'axios'
 
-const qs = require('query-string')
+// const qs = require('query-string')
+const SERVER = require('./config')
+
 
 export default class Microphone extends React.Component {
 	constructor(props) {
@@ -47,7 +49,7 @@ export default class Microphone extends React.Component {
 		console.log(blob)
 		console.log(fd)
 		let data=(
-			await axios.post('http://localhost:8000/api/upload_audio', fd)
+			await axios.post(`${SERVER}upload_audio`, fd)
 		)
 		this.setState({file:data.data})
 	}

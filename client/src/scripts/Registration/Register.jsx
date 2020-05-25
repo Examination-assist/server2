@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import '../../Register.css'
+
+const SERVER = require('./config')
+
 export default class Register extends Component {
 	constructor() {
 		super()
@@ -22,7 +25,7 @@ export default class Register extends Component {
 		})
 	}
 	async post() {
-		const res = await axios.post('http://localhost:8000/api/register', {
+		const res = await axios.post(`${SERVER}register`, {
 			first_name: this.state.first_name,
 			last_name: this.state.last_name,
 			username: this.state.username,

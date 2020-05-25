@@ -6,8 +6,11 @@ import RowReview from './RowReview'
 
 const qs = require('query-string')
 
+const SERVER = require('./config')
+
+
 export default class Translate extends Component {
-	UPLOAD_ENDPOINT = 'http://localhost:8000/api/'
+	UPLOAD_ENDPOINT = SERVER
 
 	constructor() {
 		super()
@@ -35,7 +38,7 @@ export default class Translate extends Component {
 		this.setState({ doc_id: doc_id })
 
 		let result = await axios.post(
-			'http://localhost:8000/api/about_document',
+			SERVER+'about_document',
 			{
 				doc_id: doc_id,
 			}
@@ -43,7 +46,7 @@ export default class Translate extends Component {
 		this.setState({document_about:result.data});
 		
 		let data = await axios.post(
-			'http://localhost:8000/api/view_lines',
+			SERVER+'view_lines',
 			{ doc_id: this.state.doc_id },
 			{ headers: { user_id: localStorage.getItem('user_id') } }
 		)

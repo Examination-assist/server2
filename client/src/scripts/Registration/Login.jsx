@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import '../../Register.css'
 import { Redirect } from 'react-router'
+
+const SERVER = require('./config')
+
 export default class Login extends Component {
 	constructor() {
 		super()
@@ -24,7 +27,7 @@ export default class Login extends Component {
 
 	async post() {
 		try {
-			const res = await axios.post('http://localhost:8000/api/login', {
+			const res = await axios.post(`${SERVER}login`, {
 				email: this.state.email,
 				password: this.state.password,
 			})

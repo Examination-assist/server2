@@ -3,9 +3,10 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 const qs = require('query-string')
+const SERVER = require('./config')
 
 export default class Store extends Component {
-	UPLOAD_ENDPOINT = 'http://localhost:8000/api/'
+	UPLOAD_ENDPOINT = SERVER
 
 	constructor() {
 		super()
@@ -112,7 +113,7 @@ export default class Store extends Component {
 		this.setState({ doc_id: doc_id })
 
 		const result = await axios.post(
-			'http://localhost:8000/api/about_document',
+			SERVER+'about_document',
 			{
 				doc_id: doc_id,
 			}

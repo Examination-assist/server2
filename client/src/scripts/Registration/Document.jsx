@@ -13,6 +13,9 @@ const options = [
 	'Tamil',
 	'Telugu',
 ]
+
+const SERVER = require('./config')
+
 export default class Document extends Component {
 	constructor() {
 		super()
@@ -43,7 +46,7 @@ export default class Document extends Component {
 
 	async post() {
 		const res = await axios.post(
-			'http://localhost:8000/api/create_document',
+			`${SERVER}create_document`,
 			{
 				name: this.state.doc_name,
 				book_name: this.state.book_name,

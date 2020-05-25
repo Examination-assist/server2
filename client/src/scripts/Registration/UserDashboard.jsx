@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
+const SERVER = require('./config')
+
 export default class UserDashboard extends Component {
-	UPLOAD_ENDPOINT = 'http://localhost:8000/api/'
+	UPLOAD_ENDPOINT = SERVER
 	constructor() {
 		super()
 		this.state = { data: [] }

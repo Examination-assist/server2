@@ -29,10 +29,9 @@ export default class ReviewBoard extends Component {
 				date.getMonth() + 1
 			}/${date.getFullYear()} ${date.getHours()+1}:${date.getMinutes()+1}`
 		}
-
 		this.setState({ data: result.data.docs })
 
-		console.log(this.statestate)
+		console.log(this.state)
 	}
 
 	render() {

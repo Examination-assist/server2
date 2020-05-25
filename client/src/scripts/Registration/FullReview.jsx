@@ -19,7 +19,7 @@ class FullReview extends Component {
 					<div className='rightBox'>
 						<Record />
 					</div> */}
-					<Record />
+					<Record location={this.props.location} change={false}/>
 				</div>
 				<div className='outerreview'>
 					<br />

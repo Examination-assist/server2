@@ -9,6 +9,9 @@ class Record extends Component {
 	state = { text: '' }
 	async componentDidMount() {
 		// console.log('ok')
+		this.setState({
+			change:this.props.change
+		})
 		let doc_id = qs.parse(this.props.location.search)['doc_id']
 		this.setState({ doc_id: doc_id })
 
@@ -53,6 +56,7 @@ class Record extends Component {
 						name=''
 						className='textAreaRecord'
 						value={this.state.text}
+						disabled={this.state.change?false:true}
 						id=''
 					></textarea>
 					<div className='mic'>
