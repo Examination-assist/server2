@@ -27,6 +27,7 @@ export default class Login extends Component {
 
 	async post() {
 		try {
+			console.log(this.state)
 			const res = await axios.post(`${SERVER}login`, {
 				email: this.state.email,
 				password: this.state.password,
@@ -68,7 +69,7 @@ export default class Login extends Component {
 						<form method='post'>
 							<input
 								onChange={this.handleChange}
-								placeholder='Email-ID'
+								placeholder='EmailID'
 								type='email'
 								name='email'
 								required

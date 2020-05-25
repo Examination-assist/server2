@@ -25,7 +25,7 @@ export default class LoginTranslator extends Component {
 
 	async post() {
 		try {
-			const res = await axios.post(`${SERVER}/login`, {
+			const res = await axios.post(`${SERVER}login`, {
 				email: this.state.email,
 				password: this.state.password,
 			})
@@ -66,7 +66,7 @@ export default class LoginTranslator extends Component {
 						<form method='post'>
 							<input
 								onChange={this.handleChange}
-								placeholder='email'
+								placeholder='Email'
 								type='email'
 								name='email'
 								required
@@ -74,7 +74,7 @@ export default class LoginTranslator extends Component {
 							<br />
 							<input
 								onChange={this.handleChange}
-								placeholder='password'
+								placeholder='Password'
 								type='password'
 								name='password'
 								required
