@@ -8,22 +8,35 @@ const SERVER = require('./config')
 export default class Row extends Component {
 	state = {}
 	async componentDidMount() {
-		autosize(document.querySelectorAll('textarea'));
-		this.setState({
-			left: this.props.left,
-			right: this.props.right,
-			line_counter: this.props.line_counter,
-			paragraph: this.props.paragraph,
-			count: this.props.count,
-			change: this.props.change,
-			doc_id: this.props.doc_id,
-		})
-		if (this.props.count === 1) {
-			const result = await axios.post(`${SERVER}get_audio`, {
-				doc_id: this.props.doc_id,
+		autosize(document.querySelectorAll('textarea'))
+		this.setState(
+			{
+				left: this.props.left,
+				right: this.props.right,
+				line_counter: this.props.line_counter,
+				paragraph: this.props.paragraph,
 				count: this.props.count,
-			})
-			this.setState({file:result.data})
+				change: this.props.change,
+				doc_id: this.props.doc_id,
+			},
+			async () => {
+				await this.audio()
+			}
+		)
+	}	
+
+	execute(){
+		this.audio()
+	}
+
+	async audio() {
+		const result = await axios.post(`${SERVER}get_audio`, {
+			doc_id: this.props.doc_id,
+			count: this.props.count,
+		})
+		if (result.data.length !== 0) this.setState({ file: result.data })
+		else {
+			this.setState({ file: null })
 		}
 	}
 	colors = ['#BFBBFF', '#C4E3FF']
@@ -147,13 +160,26 @@ export default class Row extends Component {
 						>
 							{this.state.change === true ? (
 								<React.Fragment>
-				<a href={this.state.file} target="_blank" rel="noopener noreferrer">download</a>
+									<a
+										href={
+											this.state.file !== null
+												? this.state.file
+												: false
+										}
+										target='_blank'
+										rel='noopener noreferrer'
+									>
+										download
+									</a>
 
 									<Microphone
+										audio={this.execute}
 										doc_id={this.props.doc_id}
 										line_counter={this.props.line_counter}
 										paragraph={this.props.paragraph}
 										count={this.props.count}
+										count={this.props.count}
+										doc_id={this.props.doc_id}
 									/>
 								</React.Fragment>
 							) : (

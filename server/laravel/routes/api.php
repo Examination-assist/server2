@@ -80,4 +80,5 @@ Route::post('/get_audio', function (Request $request) {
     // Log::info();
     if (count($data) > 0)
         return (asset('storage/'.$data[0]->filename));
+    else return response()->json([]);
 });

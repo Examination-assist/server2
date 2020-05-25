@@ -52,6 +52,7 @@ export default class Microphone extends React.Component {
 			await axios.post(`${SERVER}upload_audio`, fd)
 		)
 		this.setState({file:data.data})
+		// this.props.audio()
 	}
 	handleRest() {
 		const reset = {
