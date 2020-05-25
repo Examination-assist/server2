@@ -44,31 +44,38 @@ Route::post('/convert', 'UploadFile@convert');
 
 Route::post('/upload_audio', function (Request $request) {
     $blobInput = $request->file('upl');
-    
-    
+
+
     $audio = new Audio;
-    
-    if($audio::where(['doc_id'=>$request->doc_id,'count'=>$request->count])->exists()){
-        $d=($audio::where(['doc_id'=>$request->doc_id,'count'=>$request->count])->get()->first());
-        $filename=$d->filename;
+
+    if ($audio::where(['doc_id' => $request->doc_id, 'count' => $request->count])->exists()) {
+        $d = ($audio::where(['doc_id' => $request->doc_id, 'count' => $request->count])->get()->first());
+        $filename = $d->filename;
         Storage::disk('public')->put('audio/' . $filename, file_get_contents($blobInput));
-        
+
         // $audio::where(['doc_id'=>$request->doc_id,'count'=>$request->count])->update(['filename'=>$filename])->save();
-        
+
         return (asset('storage/audio/' . $filename));
     };
-    
+
     $filename = time() . '.' . 'audio.wav';
     Storage::disk('public')->put('audio/' . $filename, file_get_contents($blobInput));
 
     // Log::info($request->count);
-    
+
     $audio = new Audio;
-    $audio->doc_id=$request->doc_id;
-    $audio->count=$request->count;
-    $audio->filename='audio/'.$filename;
-    
+    $audio->doc_id = $request->doc_id;
+    $audio->count = $request->count;
+    $audio->filename = 'audio/' . $filename;
+
     $audio->save();
 
     return (asset('storage/audio/' . $filename));
+});
+
+Route::post('/get_audio', function (Request $request) {
+    $audio = new Audio;
+    $data = $audio::where(['doc_id' => $request->doc_id, 'count' => $request->count])->get()->first();
+
+    return (asset('storage/audio/' . $audio->filename));
 });

@@ -1,0 +1,53 @@
+.RecordText{
+	color : black;
+}
+.outerRecord{
+	height:60vh;
+	/* background-color: green;	 */
+	padding:20px
+}
+.textAreaRecord{
+	padding:20px 30px;
+	height:100%;
+	width:40%;
+	float:left;	
+}
+.textAreaRecordPhone{
+	padding:20px 30px;
+	height:100%;
+	width:80%;
+	/* float:left; */
+}
+/* .right{
+	text-align: center !important;
+	width:62% !important;
+	margin-left: 19%;
+	margin-right: 19%;} */
+/* .record-section{
+	width:50%;
+} */
+/* .recorder-box-inner{
+	width:200%;
+} */
+.recorder{
+	/* position: absolute;
+	top: 65%;
+	transform: translateY(-50%);} */
+}
+.mic{
+	/* width:30%; */
+	position: relative;
+	top:50%;
+
+	transform: translateY(-50%);
+	width:30%;
+	text-align: left;
+	float:right;	
+}
+.recorderPhone{
+}
+.miconPhone{
+	width:52%;
+	/* text-align: left; */
+	float:left;
+}
