@@ -73,7 +73,6 @@ export default class Microphone extends React.Component {
 				style={{ width: '100%', textAlign: 'center' }}
 				className='Recorder1'
 			>
-				<a href={this.state.file} target="_blank" rel="noopener noreferrer">download</a>
 				<Recorder
 					record={true}
 					audioURL={this.state.audioDetails.url}

@@ -76,7 +76,8 @@ Route::post('/upload_audio', function (Request $request) {
 Route::post('/get_audio', function (Request $request) {
     $audio = new Audio;
     $data = $audio::where(['doc_id' => $request->doc_id, 'count' => $request->count])->get();
-    Log::info(($data));
-    if(count($data)>0)
-        return (asset('storage/audio/' . $data));
+
+    // Log::info();
+    if (count($data) > 0)
+        return (asset('storage/'.$data[0]->filename));
 });

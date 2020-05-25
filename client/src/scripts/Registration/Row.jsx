@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import Microphone from './Microphone'
-
-import axios from 'axios';
+import autosize from 'autosize'
+import axios from 'axios'
 
 const SERVER = require('./config')
 
 export default class Row extends Component {
 	state = {}
 	async componentDidMount() {
+		autosize(document.querySelectorAll('textarea'));
 		this.setState({
 			left: this.props.left,
 			right: this.props.right,
@@ -17,8 +18,13 @@ export default class Row extends Component {
 			change: this.props.change,
 			doc_id: this.props.doc_id,
 		})
-		if(this.props.count===1)
-		console.log(await axios.post(`${SERVER}get_audio`,{doc_id:this.props.doc_id}))
+		if (this.props.count === 1) {
+			const result = await axios.post(`${SERVER}get_audio`, {
+				doc_id: this.props.doc_id,
+				count: this.props.count,
+			})
+			this.setState({file:result.data})
+		}
 	}
 	colors = ['#BFBBFF', '#C4E3FF']
 	render() {
@@ -66,7 +72,7 @@ export default class Row extends Component {
 								borderRight: '0',
 								textAlign: 'left',
 								fontSize: '1.5rem',
-								fontWeight:"700"
+								fontWeight: '700',
 							}}
 							className='leftcont'
 						>
@@ -94,7 +100,7 @@ export default class Row extends Component {
 												outline: 'none',
 												border: 'none',
 												fontSize: '1.5rem',
-												fontWeight:"700",
+												fontWeight: '700',
 												backgroundColor:
 													'rgba(0,0,255,0)',
 										  }
@@ -105,7 +111,7 @@ export default class Row extends Component {
 												outline: 'none',
 												border: 'none',
 												fontSize: '1.5rem',
-												fontWeight:"700",
+												fontWeight: '700',
 												backgroundColor:
 													'rgba(0,0,255,0)',
 										  }
@@ -140,12 +146,16 @@ export default class Row extends Component {
 							}}
 						>
 							{this.state.change === true ? (
-								<Microphone
-									doc_id={this.props.doc_id}
-									line_counter={this.props.line_counter}
-									paragraph={this.props.paragraph}
-									count={this.props.count}
-								/>
+								<React.Fragment>
+				<a href={this.state.file} target="_blank" rel="noopener noreferrer">download</a>
+
+									<Microphone
+										doc_id={this.props.doc_id}
+										line_counter={this.props.line_counter}
+										paragraph={this.props.paragraph}
+										count={this.props.count}
+									/>
+								</React.Fragment>
 							) : (
 								<audio controls></audio>
 							)}

@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import autosize from 'autosize'
 
 export default class Row extends Component {
 	state = {}
 	componentDidMount() {
+		autosize(document.querySelectorAll('textarea'));
 		this.setState({
 			left: this.props.left,
 			right: this.props.right,
@@ -104,7 +106,7 @@ export default class Row extends Component {
 									borderRadius: 0,
 								}}
 							>
-								<audio height='54px' controls></audio>
+								<audio style={{margin:"20px 0 0"}} height='54px' controls></audio>
 							</div>
 						</div>
 						<div
