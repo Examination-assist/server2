@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import Record from '../../Record'
+
+
 class FullReview extends Component {
 	state = {}
+
+
 	render() {
 		return (
 			<div className='outer'>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
 import Row from './Row'
 
+import axios from 'axios'
 const qs = require('query-string')
 
 export default class Translate extends Component {

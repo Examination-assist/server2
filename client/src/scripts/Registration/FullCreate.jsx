@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import Record from '../../Record'
+
+
 class FullReview extends Component {
 	state = {}
+
+	
 	render() {
 		return (
 			<div className='outer'>
@@ -9,26 +13,19 @@ class FullReview extends Component {
 					<h1>Review Complete Document</h1>
 				</div>
 				<div className='outBox'>
-					{/* <div className='leftBox'>
-						<textarea className='box' disabled rows='40'></textarea>
-					</div>
-					<div className='rightBox'>
-						<Record />
-					</div> */}
-					<Record />	
-
+					
+					<Record location={this.props.location}/>
 				</div>
 				<div className='outerreview'>
-							<h1>Review Complete Document</h1>
-							<button className='button ButtonReview ButtonReviewneeche Accept'>
-								Send for final review
-							</button>
+					<h1>Review Complete Document</h1>
+					<button className='button ButtonReview ButtonReviewneeche Accept'>
+						Send for final review
+					</button>
 
-							<button className='button  ButtonReview ButtonReviewneeche Reject'>
-								Reject
-							</button>
-						</div>
-
+					<button className='button  ButtonReview ButtonReviewneeche Reject'>
+						Reject
+					</button>
+				</div>
 			</div>
 		)
 	}

@@ -21,7 +21,7 @@ class UserController extends Controller
             'password' => 'required'
         ]);
 
-        $user = User::where('email', $validated['email'])->select(['email', 'password', 'user_id','type_id'])->first();
+        $user = User::where('email', $validated['email'])->select(['email', 'password', 'user_id', 'type_id'])->first();
 
         if ($validated['password'] == Crypt::decryptString($user->password)) {
             $secret = base64_encode(env('SECRET'));
@@ -37,6 +37,13 @@ class UserController extends Controller
             return response()->json([], 403);
         }
     }
+
+    function get_user(Request $request)
+    {
+        $request->user_id;
+        return User::where('user_id',$request->user_id)->get()->first;
+    }
+    
     function register(Request $request)
     {
         $validated = $request->validate([
@@ -60,7 +67,7 @@ class UserController extends Controller
         $user->type_id = $type_id;
 
         $user->course_name = $request->course_name;
-            
+
         Log::info($user);
         $user->save();
 

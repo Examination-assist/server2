@@ -19,14 +19,18 @@ export default class UserDashboard extends Component {
 			let date = new Date(element.created_at)
 			result.data.docs[index].created_at = `${date.getDate()}/${
 				date.getMonth() + 1
-			}/${date.getFullYear()} ${date.getHours()+1}:${date.getMinutes()+1}`
+			}/${date.getFullYear()} ${date.getHours() + 1}:${
+				date.getMinutes() + 1
+			}`
 		}
 		for (let index = 0; index < result.data.docs.length; index++) {
 			const element = result.data.docs[index]
 			let date = new Date(element.updated_at)
 			result.data.docs[index].updated_at = `${date.getDate()}/${
 				date.getMonth() + 1
-			}/${date.getFullYear()} ${date.getHours()+1}:${date.getMinutes()+1}`
+			}/${date.getFullYear()} ${date.getHours() + 1}:${
+				date.getMinutes() + 1
+			}`
 		}
 		this.setState({ data: result.data.docs })
 	}
@@ -55,7 +59,9 @@ export default class UserDashboard extends Component {
 							<th>Created at</th>
 							<th>Updated at</th>
 							<th>Status </th>
-							<th>Line By line <br /> Transcript </th>
+							<th>
+								Line By line <br /> Transcript{' '}
+							</th>
 
 							<th>
 								Visit Complete
