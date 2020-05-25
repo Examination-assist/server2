@@ -56,7 +56,9 @@ export default class Translate extends Component {
 		// console.log('ok')
 		let doc_id = qs.parse(this.props.location.search)['doc_id']
 		this.setState({ doc_id: doc_id })
-
+		
+		console.log(await axios.post(`${SERVER}get_audio`,{doc_id:doc_id}))
+		
 		let result = await axios.post(
 			SERVER+'about_document',
 			{
@@ -64,6 +66,8 @@ export default class Translate extends Component {
 			}
 		)
 		this.setState({ document_about: result.data })
+		
+
 
 		this.setState()
 		if (result.data.status === 'Under Review') {
