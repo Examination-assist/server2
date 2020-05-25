@@ -160,7 +160,7 @@ export default class Row extends Component {
 						>
 							{this.state.change === true ? (
 								<React.Fragment>
-									<a
+									{/* <a
 										href={
 											this.state.file !== null
 												? this.state.file
@@ -168,10 +168,12 @@ export default class Row extends Component {
 										}
 										target='_blank'
 										rel='noopener noreferrer'
-									>
-										download
-									</a>
-
+									> */}
+									<audio src={
+											this.state.file !== null
+												? this.state.file
+												: false
+										} controls></audio>	
 									<Microphone
 										audio={this.execute}
 										doc_id={this.props.doc_id}
