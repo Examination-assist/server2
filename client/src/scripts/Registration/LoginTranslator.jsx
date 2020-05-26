@@ -86,6 +86,7 @@ export default class LoginTranslator extends Component {
 							<input
 								type='button'
 								value='Submit'
+								className="formButton"
 								onClick={this.post}
 							/>
 						</form>

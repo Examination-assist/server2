@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Record from '../../Record'
+import FullReviewRecord from './FullReviewRecord'
 
 
 class FullReview extends Component {
@@ -17,9 +17,9 @@ class FullReview extends Component {
 						<textarea className='box' disabled rows='40'></textarea>
 					</div>
 					<div className='rightBox'>
-						<Record />
+						<FullReviewRecord />
 					</div> */}
-					<Record location={this.props.location} change={false}/>
+					<FullReviewRecord location={this.props.location} change={false}/>
 				</div>
 				<div className='outerreview'>
 					<br />
@@ -28,11 +28,11 @@ class FullReview extends Component {
 					<br />
 					<button
 						style={{ marginRight: '10px' }}
-						className='button  '
+						className='button Accept ButtonReview  '
 					>
-						Save and back
+						Accept
 					</button>
-					<button className='button  '>Submit for approval</button>
+					<button className='button ButtonReview Reject'>Reject</button>
 					{/* 
 							<button className='button  ButtonReview ButtonReviewneeche Reject'>
 								Reject

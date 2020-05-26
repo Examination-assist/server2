@@ -8,7 +8,9 @@ export default class UserDashboard extends Component {
 	UPLOAD_ENDPOINT = SERVER
 	constructor() {
 		super()
-		this.state = { data: [] }
+		this.state = { data: [] ,
+		name : "Aaryan"
+		}
 	}
 	async componentDidMount() {
 		const result = await axios.post(
@@ -39,8 +41,11 @@ export default class UserDashboard extends Component {
 	render() {
 		return (
 			<div style={{ textAlign: 'center' }}>
+					<h5> Hello, {this.state.name}</h5>
 				<p style={{ padding: '0 10px' }}>
 					<h1>User Dashboard</h1>
+				
+					
 					<Link to='/document'>
 						<button className='button buttonCreateDoc'>
 							<div className='buttonText'>
@@ -49,7 +54,7 @@ export default class UserDashboard extends Component {
 						</button>
 					</Link>
 				</p>
-				<h2>My Work</h2>
+				<h3>My Work</h3>
 				<div className='outerDash' style={{ overflowX: 'auto' }}>
 					<table className='tableDash'>
 						<tr>
@@ -74,6 +79,7 @@ export default class UserDashboard extends Component {
 						{this.state.data.map((elem) => {
 							return (
 								<React.Fragment key={elem.doc_id}>
+								
 									<tr>
 										<td>
 											<span style={{ padding: '0 10px' }}>
