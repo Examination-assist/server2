@@ -60,15 +60,15 @@ export default class UserDashboard extends Component {
 							<th>Language</th>
 							<th>Created at</th>
 							<th>Updated at</th>
-							<th>Status </th>
 							<th>
 								Line By line <br /> Transcript{' '}
 							</th>
-
+							<th> Line By line Status </th>
 							<th>
 								Visit Complete
 								<br /> transcript{' '}
 							</th>
+							<th>Complete transcript Status </th>
 						</tr>
 
 						{this.state.data.map((elem) => {
@@ -113,11 +113,6 @@ export default class UserDashboard extends Component {
 
 										<td>
 											<span style={{ padding: '0 10px' }}>
-												{elem.status}
-											</span>
-										</td>
-										<td>
-											<span style={{ padding: '0 10px' }}>
 												<Link
 													to={`/translate?doc_id=${elem.doc_id}`}
 												>
@@ -127,11 +122,21 @@ export default class UserDashboard extends Component {
 										</td>
 										<td>
 											<span style={{ padding: '0 10px' }}>
+												{elem.status}
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
 												<Link
 													to={`/fullcreate?doc_id=${elem.doc_id}`}
 												>
 													Complete Review
 												</Link>
+											</span>
+										</td>
+										<td>
+											<span style={{ padding: '0 10px' }}>
+												{elem.status}
 											</span>
 										</td>
 									</tr>

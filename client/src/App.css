@@ -174,11 +174,11 @@ tr:nth-child(odd) {
 }
 .outerDash {
 	width: 100% !important;
-	text-align: center !important;
+	text-align: left !important;
 }
 .tableDash {
-	width: 80% !important;
-	margin: 0 0% 0 5% !important;	
+	width: 90% !important;
+	margin: 0 0% 0 6% !important;	
 }
 
 .button{

@@ -27,7 +27,7 @@ class FullReview extends Component {
 					</button>
 				</div>
 			</div>
-		)
+		)	
 	}
 }
 
