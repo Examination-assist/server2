@@ -18,7 +18,9 @@ import Translate from './scripts/Registration/Translate'
 import Text from './scripts/Registration/Text'
 import FullReview from './scripts/Registration/FullReview'
 import FullCreate from './scripts/Registration/FullCreate'
-import Assign from './scripts/Registration/Assign'
+import AssignReviewer from './scripts/Registration/AssignReviewer'
+import AssignTranslator from './scripts/Registration/AssignTranslator'
+import Reporting from './scripts/Registration/Reporting'
 
 class App extends React.Component {
 	render() {
@@ -43,7 +45,9 @@ class App extends React.Component {
 						<Route path='/test' component={Text}></Route>
 						<Route path='/fullreview' component={FullReview}></Route>
 						<Route path='/fullcreate' component={FullCreate}></Route>
-						<Route path='/assign' component={Assign}></Route>
+						<Route path='/assignreviewer' component={AssignReviewer}></Route>
+						<Route path='/assigntranslator' component={AssignTranslator}></Route>
+						<Route path='/reporting' component={Reporting}></Route>
 					</Switch>
 				</Router>
 			</div>

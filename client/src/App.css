@@ -186,6 +186,14 @@ tr:nth-child(odd) {
     border-radius: 30px;
     border: none;
 }
+.buttonAssign{
+	width:100%;
+	padding:10px 40px;
+	border: none;
+	text-align: left;
+	/* background-color: white; */
+
+}
 .button1{
 	padding:10px 10px;
 	border-radius: 30px;
@@ -291,16 +299,36 @@ tr:nth-child(odd) {
 	background-color: #3e8e41;
   }
 
-  
+  th, td {
+	padding: 10px;
+	text-align: left;
+  }
   th, td {
 	border-bottom: 1px solid #ddd;
+	text-align: left;
   }
-  tr:nth-child(even) {background-color: #f2f2f2;}
+ tr{
+	 background-color: white !important;	
+ }
+tr:nth-child(odd) {background-color: #a5a5a5;}
+
+
+
 .leftAssign{
 	width:50%;
-	
+	float: left;
+	text-align: center;
+}
+.rightAssign{
+	width:50%;
+	float: right;
 	text-align: center;
 }
 .tableAssign{
-	width:100%;
+	width:95%;
+	overflow-x: auto;
+	margin: 0 2.5%;
+}
+.cardReport{
+	width:80% !important;
 }
