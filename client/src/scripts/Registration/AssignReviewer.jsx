@@ -8,10 +8,10 @@ class Assign extends Component {
 					<h2> Assign Reviewers</h2>
 					<div class='dropdown'>
 						<select n class='dropbtn' name='Discipline' id='Discipline'>
-							<option value='Discipline 1'>Discipline 1</option>
-							<option value='Discipline 2'>Discipline 2</option>
-							<option value='Discipline 3'>Discipline 3</option>
-							<option value='Discipline 4'>Discipline 4</option>
+							<option className="option" value='Discipline 1'>Discipline 1</option>
+							<option className="option" value='Discipline 2'>Discipline 2</option>
+							<option className="option" value='Discipline 3'>Discipline 3</option>
+							<option className="option" value='Discipline 4'>Discipline 4</option>
 						</select>
 					</div>
 

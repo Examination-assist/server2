@@ -20,7 +20,9 @@ import FullReview from './scripts/Registration/FullReview'
 import FullCreate from './scripts/Registration/FullCreate'
 import AssignReviewer from './scripts/Registration/AssignReviewer'
 import AssignTranslator from './scripts/Registration/AssignTranslator'
-import Reporting from './scripts/Registration/Reporting'
+import ReportingCourse from './scripts/Registration/ReportingCourse'
+import ReportingTranslator from './scripts/Registration/ReportingTranslator'
+import ReportingApprover from './scripts/Registration/ReportingApprover'
 
 class App extends React.Component {
 	render() {
@@ -36,18 +38,44 @@ class App extends React.Component {
 						</Route>
 						<Route path='/register' component={Register}></Route>
 						<Route path='/login' component={Login}></Route>
-						<Route path='/loginTranslator' component={LoginTranslator}></Route>
+						<Route
+							path='/loginTranslator'
+							component={LoginTranslator}
+						></Route>
 						<Route path='/document' component={Document}></Route>
 						<Route path='/store_document' component={Store}></Route>
 						<Route path='/dashboard' component={Dashboard}></Route>
 						<Route path='/translate' component={Translate}></Route>
 						<Route path='/review' component={Review}></Route>
 						<Route path='/test' component={Text}></Route>
-						<Route path='/fullreview' component={FullReview}></Route>
-						<Route path='/fullcreate' component={FullCreate}></Route>
-						<Route path='/assignreviewer' component={AssignReviewer}></Route>
-						<Route path='/assigntranslator' component={AssignTranslator}></Route>
-						<Route path='/reporting' component={Reporting}></Route>
+						<Route
+							path='/fullreview'
+							component={FullReview}
+						></Route>
+						<Route
+							path='/fullcreate'
+							component={FullCreate}
+						></Route>
+						<Route
+							path='/assignreviewer'
+							component={AssignReviewer}
+						></Route>
+						<Route
+							path='/assigntranslator'
+							component={AssignTranslator}
+						></Route>
+						<Route
+							path='/reportingcourse'
+							component={ReportingCourse}
+						></Route>
+						<Route
+							path='/ReportingApprover'
+							component={ReportingApprover}
+						></Route>
+						<Route
+							path='/ReportingTranslator'
+							component={ReportingTranslator}
+						></Route>
 					</Switch>
 				</Router>
 			</div>

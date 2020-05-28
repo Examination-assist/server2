@@ -8,13 +8,20 @@ class Assign extends Component {
 					<h2> Assign Translator</h2>
 					<div class='dropdown'>
 						<select n class='dropbtn' name='Discipline' id='Discipline'>
-							<option value='Discipline 1'>Discipline 1</option>
+							<option className="option" value='Discipline 1'>Discipline 1</option>
 							<option value='Discipline 2'>Discipline 2</option>
 							<option value='Discipline 3'>Discipline 3</option>
 							<option value='Discipline 4'>Discipline 4</option>
 						</select>
 					</div>
-
+					<div class='dropdown'>
+						<select n class='dropbtn' name='Course' id='Course'>
+							<option value='Course 1'>Course 1</option>
+							<option value='Course 2'>Course 2</option>
+							<option value='Course 3'>Course 3</option>
+							<option value='Course 4'>Course 4</option>
+						</select>
+					</div>
 					<div class='dropdown'>
 						<select n class='dropbtn' name='Language' id='Language'>
 							<option value='Language 1'>Language 1</option>
@@ -58,16 +65,16 @@ class Assign extends Component {
 						</table>
 					</div>
 					<div className='rightAssign'>
-						<h3>Courses</h3>
+						<h3>Chapters</h3>
 						<table className='tableAssign'>
 							<tr>
-								<th>Names of Courses</th>
+								<th>Names of Chapters</th>
 							</tr>
 							<tr>
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Course Name
+											Chapter Name
 										</div>
 									</button>
 								</td>
@@ -76,7 +83,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Course Name
+											Chapter Name
 										</div>
 									</button>
 								</td>
@@ -85,7 +92,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Course Name
+											Chapter Name
 										</div>
 									</button>
 								</td>
@@ -94,7 +101,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Course Name
+											Chapter Name
 										</div>
 									</button>
 								</td>
@@ -103,7 +110,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Course Name
+											Chapter Name
 										</div>
 									</button>
 								</td>
@@ -112,7 +119,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Course Name
+											Chapter Name
 										</div>
 									</button>
 								</td>

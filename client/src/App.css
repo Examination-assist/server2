@@ -332,3 +332,6 @@ tr:nth-child(odd) {background-color: #a5a5a5;}
 .cardReport{
 	width:80% !important;
 }
+.option{
+	padding:10px !important;
+}
