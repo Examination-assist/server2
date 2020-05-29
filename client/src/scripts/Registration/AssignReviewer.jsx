@@ -7,28 +7,48 @@ class Assign extends Component {
 				<div className='card'>
 					<h2> Assign Reviewers</h2>
 					<div class='dropdown'>
-						<select n class='dropbtn' name='Discipline' id='Discipline'>
-							<option className="option" value='Discipline 1'>Discipline 1</option>
-							<option className="option" value='Discipline 2'>Discipline 2</option>
-							<option className="option" value='Discipline 3'>Discipline 3</option>
-							<option className="option" value='Discipline 4'>Discipline 4</option>
+						<select
+							n
+							class='dropbtn'
+							name='Discipline'
+							id='Discipline'
+						>
+							<option value='Discipline 1'>BASIC SCIENCE</option>
+							<option value='Discipline 2'>
+								CIVIL ENGINEERING
+							</option>
+							<option value='Discipline 3'>HUMANITIES</option>
+							<option value='Discipline 4'>HUMANITIES</option>
+							<option value='Discipline 1'>BIOTECHNOLOGY</option>
+							<option value='Discipline 2'>BIOTECHNOLOGY</option>
+							<option value='Discipline 1'>BIOTECHNOLOGY</option>
+							<option value='Discipline 2'>BIOTECHNOLOGY</option>
+							<option value='Discipline 3'>
+								CHEMICAL ENGINEERING
+							</option>
+							<option value='Discipline 4'>
+								CHEMICAL ENGINEERING
+							</option>{' '}
 						</select>
 					</div>
 
 					<div class='dropdown'>
 						<select n class='dropbtn' name='Language' id='Language'>
-							<option value='Language 1'>Language 1</option>
-							<option value='Language 2'>Language 2</option>
-							<option value='Language 3'>Language 3</option>
-							<option value='Language 4'>Language 4</option>
+							<option value='Language 1'>Tamil</option>
+							<option value='Language 2'>Telugu</option>
+							<option value='Language 3'>Hindi</option>
+							<option value='Language 4'>Bengali</option>
+							<option value='Language 4'>Gujarati</option>
 						</select>
 					</div>
 					<br />
 					<br />
-					<button className="button1 ">
-						<span className="buttonText" style={{padding:" 0 10px"}}>
-
-						Submit
+					<button className='button1 '>
+						<span
+							className='buttonText'
+							style={{ padding: ' 0 10px' }}
+						>
+							Submit
 						</span>
 					</button>
 					<br />
@@ -68,7 +88,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Course Name
+											TISSUE ENGINEERING
 										</div>
 									</button>
 								</td>
@@ -77,7 +97,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Course Name
+										QUANTUM MECHANICS I
 										</div>
 									</button>
 								</td>
@@ -86,7 +106,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Course Name
+										ENGINEERING GRAPHICS
 										</div>
 									</button>
 								</td>
@@ -95,7 +115,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Course Name
+										INTRODUCTION TO PROFESSIONAL SCIENTIFIC COMMUNICATION
 										</div>
 									</button>
 								</td>
@@ -104,7 +124,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Course Name
+										INTRODUCTION TO PROTEOMICS
 										</div>
 									</button>
 								</td>
@@ -113,7 +133,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Course Name
+										BIOINFORMATICS: ALGORITHMS AND APPLICATIONS
 										</div>
 									</button>
 								</td>
