@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 
 const names = [
-	"AVDHESH	TYAGI",
-"Babruvan Ramrao	Solunke",
-"Dinesh	Kulkarni",
-"Jayachandran 	Thangarasu",
-"Jeyali Laseetha	",
-"Jitendra M	Bakliwal",
-"Madumathi	K",
-"MAHESH SAKHARAM	NARKHEDE",
-"Nitin Pandurang	Sonaje",
-"Praveen Kumar	Padigela",
+	'AVDHESH	TYAGI',
+	'Babruvan Ramrao	Solunke',
+	'Dinesh	Kulkarni',
+	'Jayachandran 	Thangarasu',
+	'Jeyali Laseetha	',
+	'Jitendra M	Bakliwal',
+	'Madumathi	K',
+	'MAHESH SAKHARAM	NARKHEDE',
+	'Nitin Pandurang	Sonaje',
+	'Praveen Kumar	Padigela',
 ]
 class Assign extends Component {
 	state = {}
@@ -33,10 +33,14 @@ class Assign extends Component {
 							<option value='Discipline 3'>HUMANITIES</option>
 							<option value='Discipline 4'>HUMANITIES</option>
 							<option value='Discipline 1'>BIOTECHNOLOGY</option>
-							<option >COMPUTER SCIENCE AND ENGINEERING </option>
+							<option>COMPUTER SCIENCE AND ENGINEERING </option>
 							<option>ELECTRICAL ENGINEERING</option>
-							<option>ELECTRONICS AND COMMUNICATION ENGINEERING</option>
-							<option>METALLURGICAL ENGINEERING AND MATERIAL SCIENCE</option>
+							<option>
+								ELECTRONICS AND COMMUNICATION ENGINEERING
+							</option>
+							<option>
+								METALLURGICAL ENGINEERING AND MATERIAL SCIENCE
+							</option>
 							<option value='Discipline 4'>
 								CHEMICAL ENGINEERING
 							</option>{' '}
@@ -74,19 +78,18 @@ class Assign extends Component {
 							<tr>
 								<th>Names of Reveiwers</th>
 							</tr>
+							{names.map((name) => {
+								return <tr>
+									<td>
+										<button className='buttonAssign'>
+											<div className='buttonText'>
+												{name}
+											</div>
+										</button>
+									</td>
+								</tr>
+							})}
 
-
-
-							
-							<tr>
-								<td>
-									<button className='buttonAssign'>
-										<div className='buttonText'>
-											
-										</div>
-									</button>
-								</td>
-							</tr>
 							<tr>
 								<td>
 									<button className='buttonAssign'>
@@ -117,7 +120,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-										QUANTUM MECHANICS I
+											QUANTUM MECHANICS I
 										</div>
 									</button>
 								</td>
@@ -126,7 +129,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-										ENGINEERING GRAPHICS
+											ENGINEERING GRAPHICS
 										</div>
 									</button>
 								</td>
@@ -135,7 +138,8 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-										INTRODUCTION TO PROFESSIONAL SCIENTIFIC COMMUNICATION
+											INTRODUCTION TO PROFESSIONAL
+											SCIENTIFIC COMMUNICATION
 										</div>
 									</button>
 								</td>
@@ -144,7 +148,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-										INTRODUCTION TO PROTEOMICS
+											INTRODUCTION TO PROTEOMICS
 										</div>
 									</button>
 								</td>
@@ -153,7 +157,8 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-										BIOINFORMATICS: ALGORITHMS AND APPLICATIONS
+											BIOINFORMATICS: ALGORITHMS AND
+											APPLICATIONS
 										</div>
 									</button>
 								</td>
