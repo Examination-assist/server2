@@ -46,10 +46,11 @@ class Assign extends Component {
 					</div>
 					<div class='dropdown'>
 						<select n class='dropbtn' name='Language' id='Language'>
-							<option value='Language 1'>Language 1</option>
-							<option value='Language 2'>Language 2</option>
-							<option value='Language 3'>Language 3</option>
-							<option value='Language 4'>Language 4</option>
+							<option value='Language 1'>Hindi</option>
+							<option value='Language 2'>Bengali</option>
+							<option value='Language 3'>Tamil</option>
+							<option value='Language 4'>Teleugu</option>
+							<option value='Language 4'>Gujarati</option>
 						</select>
 					</div>
 					<br />
