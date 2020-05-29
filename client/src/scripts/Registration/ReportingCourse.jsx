@@ -20,15 +20,15 @@ class Assign extends Component {
 							<option value='Discipline 3'>HUMANITIES</option>
 							<option value='Discipline 4'>HUMANITIES</option>
 							<option value='Discipline 1'>BIOTECHNOLOGY</option>
-							<option value='Discipline 2'>BIOTECHNOLOGY</option>
-							<option value='Discipline 1'>BIOTECHNOLOGY</option>
-							<option value='Discipline 2'>BIOTECHNOLOGY</option>
-							<option value='Discipline 3'>
-								CHEMICAL ENGINEERING
-							</option>
+							<option >COMPUTER SCIENCE AND ENGINEERING </option>
+							<option>ELECTRICAL ENGINEERING</option>
+							<option>ELECTRONICS AND COMMUNICATION ENGINEERING</option>
+							<option>METALLURGICAL ENGINEERING AND MATERIAL SCIENCE</option>
 							<option value='Discipline 4'>
 								CHEMICAL ENGINEERING
-							</option>
+							</option>{' '}
+							<option>MECHANICAL ENGINEERING</option>
+							<option>Multidisciplinary</option>
 						</select>
 					</div>
 					<div class='dropdown'>
@@ -73,11 +73,14 @@ class Assign extends Component {
 					</div>
 					<div class='dropdown'>
 						<select n class='dropbtn' name='Language' id='Language'>
-							<option value='Language 1'>Hindi</option>
-							<option value='Language 2'>Bengali</option>
-							<option value='Language 3'>Tamil</option>
-							<option value='Language 4'>Teleugu</option>
+							<option value='Language 3'>Hindi</option>
+							<option value='Language 4'>Bengali</option>
+							<option>Marathi</option>
+							<option value='Language 2'>Telugu</option>
+							<option value='Language 1'>Tamil</option>
 							<option value='Language 4'>Gujarati</option>
+							<option>Kannada</option>
+							<option>Malayalam</option>
 						</select>
 					</div>
 					<br />
