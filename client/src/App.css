@@ -335,3 +335,14 @@ tr:nth-child(odd) {background-color: #a5a5a5;}
 .option{
 	padding:10px !important;
 }
+table{
+	overflow-x: auto;
+}
+
+
+.tableAssign{
+	/* width:60vw !important; */
+}
+.reporting{
+	/* width:60% !important; */
+}

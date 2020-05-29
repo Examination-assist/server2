@@ -14,15 +14,21 @@ class Assign extends Component {
 							id='Discipline'
 						>
 							<option value='Discipline 1'>BASIC SCIENCE</option>
-							<option value='Discipline 2'>CIVIL ENGINEERING</option>
+							<option value='Discipline 2'>
+								CIVIL ENGINEERING
+							</option>
 							<option value='Discipline 3'>HUMANITIES</option>
 							<option value='Discipline 4'>HUMANITIES</option>
 							<option value='Discipline 1'>BIOTECHNOLOGY</option>
 							<option value='Discipline 2'>BIOTECHNOLOGY</option>
 							<option value='Discipline 1'>BIOTECHNOLOGY</option>
 							<option value='Discipline 2'>BIOTECHNOLOGY</option>
-							<option value='Discipline 3'>CHEMICAL ENGINEERING</option>
-							<option value='Discipline 4'>CHEMICAL ENGINEERING</option>
+							<option value='Discipline 3'>
+								CHEMICAL ENGINEERING
+							</option>
+							<option value='Discipline 4'>
+								CHEMICAL ENGINEERING
+							</option>
 						</select>
 					</div>
 					<div class='dropdown'>
@@ -32,21 +38,42 @@ class Assign extends Component {
 							name='CourseName'
 							id='CourseName'
 						>
-							<option value='CourseName 1'>QUANTUM MECHANICS I</option>
-							<option value='CourseName 2'>ENGINEERING GRAPHICS</option>
-							<option value='CourseName 3'>TECHNICAL ENGLISH FOR ENGINEERS</option>
-							<option value='CourseName 4'>INTRODUCTION TO PROFESSIONAL SCIENTIFIC COMMUNICATION</option>
-							<option value='CourseName 1'>INTRODUCTION TO PROTEOMICS</option>
-							<option value='CourseName 2'>BIOINFORMATICS: ALGORITHMS AND APPLICATIONS</option>
-							<option value='CourseName 3'>COMPUTER AIDED DRUG DESIGN</option>
-							<option value='CourseName 4'>TISSUE ENGINEERING</option>
-							<option value='CourseName 1'>MASS TRANSFER OPERATIONS- II</option>
-							<option value='CourseName 2'>FLUID AND PARTICLE MECHANICS</option>
+							<option value='CourseName 1'>
+								QUANTUM MECHANICS I
+							</option>
+							<option value='CourseName 2'>
+								ENGINEERING GRAPHICS
+							</option>
+							<option value='CourseName 3'>
+								TECHNICAL ENGLISH FOR ENGINEERS
+							</option>
+							<option value='CourseName 4'>
+								INTRODUCTION TO PROFESSIONAL SCIENTIFIC
+								COMMUNICATION
+							</option>
+							<option value='CourseName 1'>
+								INTRODUCTION TO PROTEOMICS
+							</option>
+							<option value='CourseName 2'>
+								BIOINFORMATICS: ALGORITHMS AND APPLICATIONS
+							</option>
+							<option value='CourseName 3'>
+								COMPUTER AIDED DRUG DESIGN
+							</option>
+							<option value='CourseName 4'>
+								TISSUE ENGINEERING
+							</option>
+							<option value='CourseName 1'>
+								MASS TRANSFER OPERATIONS- II
+							</option>
+							<option value='CourseName 2'>
+								FLUID AND PARTICLE MECHANICS
+							</option>
 						</select>
 					</div>
 					<div class='dropdown'>
 						<select n class='dropbtn' name='Language' id='Language'>
-						<option value='Language 1'>Hindi</option>
+							<option value='Language 1'>Hindi</option>
 							<option value='Language 2'>Bengali</option>
 							<option value='Language 3'>Tamil</option>
 							<option value='Language 4'>Teleugu</option>
@@ -104,6 +131,7 @@ class Assign extends Component {
 							<tr>
 								<td>CIVIL ENGINEERING</td>
 								<td>ENGINEERING GRAPHICS</td>
+									<td>Tamil</td>
 								<td>16</td>
 								<td>8</td>
 								<td>50%</td>
