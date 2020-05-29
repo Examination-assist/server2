@@ -34,10 +34,11 @@ class Assign extends Component {
 					</div>
 					<div class='dropdown'>
 						<select n class='dropbtn' name='Language' id='Language'>
-							<option value='Language 1'>Language 1</option>
-							<option value='Language 2'>Language 2</option>
-							<option value='Language 3'>Language 3</option>
-							<option value='Language 4'>Language 4</option>
+							<option value='Language 1'>Tamil</option>
+							<option value='Language 2'>Telugu</option>
+							<option value='Language 3'>Hindi</option>
+							<option value='Language 4'>Bengali</option>
+							<option value='Language 4'>Gujarati</option>
 						</select>
 					</div>
 					<br />
@@ -56,12 +57,12 @@ class Assign extends Component {
 						<table className='tableAssign'>
 							<tr>
 								<th>Approver</th>
-							<th>Discipline Name</th>
+								<th>Discipline Name</th>
 								<th>Course Name</th>
 								<th>Language</th>
 								<th>Total Lectures</th>
 								<th>Finished Lectures</th>
-								<th>Percentage 		</th>
+								<th>Percentage </th>
 								<th>Translators</th>
 								<th>Status</th>
 								<th>Comments</th>
@@ -70,7 +71,7 @@ class Assign extends Component {
 
 							<tr>
 								<td>Approver 1</td>
-							<td>Discippline 1</td>
+								<td>Discippline 1</td>
 
 								<td>Course 1</td>
 								<td>Bengali</td>
@@ -89,9 +90,8 @@ class Assign extends Component {
 								</td>
 							</tr>
 							<tr>
-								
 								<td>Approver 3</td>
-							<td>Discippline 1</td>
+								<td>Discippline 1</td>
 
 								<td>Course 2</td>
 								<td>Gujurati</td>

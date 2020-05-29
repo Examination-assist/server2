@@ -55,12 +55,12 @@ class Assign extends Component {
 						<h3>Details</h3>
 						<table className='tableAssign'>
 							<tr>
-							<th>Discipline Name</th>
+								<th>Discipline Name</th>
 								<th>Course Name</th>
 								<th>Language</th>
 								<th>Total Lectures</th>
 								<th>Finished Lectures</th>
-								<th>Percentage 		</th>
+								<th>Percentage </th>
 								<th>Translators</th>
 								<th>Approvers</th>
 								<th>Status</th>
@@ -69,9 +69,9 @@ class Assign extends Component {
 							</tr>
 
 							<tr>
-							<td>Discippline 1</td>
+								<td>BASIC SCIENCE</td>
 
-								<td>Course 1</td>
+								<td>QUANTUM MECHANICS I</td>
 								<td>Bengali</td>
 								<td>20</td>
 								<td>14</td>
@@ -89,9 +89,8 @@ class Assign extends Component {
 								</td>
 							</tr>
 							<tr>
-
-								<td>Course 2</td>
-								<td>Gujurati</td>
+								<td>CIVIL ENGINEERING</td>
+								<td>ENGINEERING GRAPHICS</td>
 								<td>16</td>
 								<td>8</td>
 								<td>50%</td>
