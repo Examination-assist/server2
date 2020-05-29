@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import React from 'react'
 
 import './App.css'
@@ -30,6 +30,25 @@ class App extends React.Component {
 			<div className='App'>
 				<Router>
 					<Switch>
+						<Route path='/link'>
+							<Link to='/table'>Table</Link>
+							<br/><Link to='/register'>Register</Link>
+							<br/><Link to='/login'>Login</Link>
+							<br/><Link to='/loginTranslator'>Translator Login</Link>
+							<br/><Link to='/document'>Document</Link>
+							<br/><Link to='/store_document'>Store Document</Link>
+							<br/><Link to='/dashboard'>Dashboard</Link>
+							<br/><Link to='/translate'>Translate</Link>
+							<br/><Link to='/review'>Review</Link>
+							<br/><Link to='/test'>Test</Link>
+							<br/><Link to='/fullreview'>Full Review</Link>
+							<br/><Link to='/fullcreate'>Full Create</Link>
+							<br/><Link to='/assignreviewer'>Assign Reviewer</Link>
+							<br/><Link to='/assigntranslator'>Assign Translator</Link>
+							<br/><Link to='/reportingcourse'>Assign Course</Link>
+							<br/><Link to='/ReportingApprover'>Reporting Approver</Link>
+							<br/><Link to='/ReportingTranslator'>Reporting Translator</Link>
+						</Route>
 						<Route exact path='/'>
 							<Dashboard></Dashboard>
 						</Route>
