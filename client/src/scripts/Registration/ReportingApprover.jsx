@@ -12,10 +12,6 @@ class Assign extends Component {
 			ENDPOINT + 'courses?get=course_name&discipline=' + 'BASIC SCIENCE'
 		)
 		this.setState({ course: course.data })
-	
-		Array.prototype.slice.call(document.querySelectorAll('select')).map(e=>{
-			console.log(e.value)
-		})
 	}
 
 	async execute(e) {
@@ -25,13 +21,21 @@ class Assign extends Component {
 		)
 		this.setState({ course: course.data })
 	}
+
+	async handleSubmit() {
+		Array.prototype.slice
+			.call(document.querySelectorAll('select'))
+			.map((e) => {
+				console.log(e.value)
+			})
+	}
 	render() {
 		return (
 			<React.Fragment>
 				<div className='cardReport card'>
 					<h2> Reporting</h2>
 					<div class='dropdown'>
-					<select
+						<select
 							class='dropbtn'
 							name='Discipline'
 							id='Discipline'
@@ -45,7 +49,7 @@ class Assign extends Component {
 						</select>
 					</div>
 					<div class='dropdown'>
-					<select
+						<select
 							class='dropbtn'
 							name='CourseName'
 							id='CourseName'
@@ -75,6 +79,7 @@ class Assign extends Component {
 						<span
 							className='buttonText'
 							style={{ padding: ' 0 10px' }}
+							onClick={this.handleSubmit}
 						>
 							Submit
 						</span>

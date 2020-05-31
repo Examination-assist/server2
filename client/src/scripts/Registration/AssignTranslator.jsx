@@ -5,7 +5,7 @@ import axios from 'axios'
 const ENDPOINT = require('./config')
 
 class Assign extends Component {
-	state = { discipline: [], course: [] }
+	state = { discipline: [], course: [], users: [] }
 	async componentDidMount() {
 		const discipline = await axios.post(ENDPOINT + 'courses?get=discipline')
 		console.log(discipline)
@@ -15,7 +15,8 @@ class Assign extends Component {
 			ENDPOINT + 'courses?get=course_name&discipline=' + 'BASIC SCIENCE'
 		)
 		this.setState({ course: course.data })
-	
+
+		this.handleSubmit()
 	}
 
 	async execute(e) {
@@ -24,8 +25,22 @@ class Assign extends Component {
 			ENDPOINT + 'courses?get=course_name&discipline=' + disp
 		)
 		this.setState({ course: course.data })
+	}
 
-		
+	async handleSubmit() {
+		const elems = []
+		Array.prototype.slice
+			.call(document.querySelectorAll('select'))
+			.map((e) => {
+				elems.push(e.value)
+			})
+
+		const data = await axios.post(ENDPOINT + 'get_user_data', {
+			discipline: elems[0],
+			course_name: elems[1],
+			language: elems[2],
+		})
+		this.setState({ users: data.data })
 	}
 	render() {
 		return (
@@ -47,7 +62,7 @@ class Assign extends Component {
 						</select>{' '}
 					</div>
 					<div class='dropdown'>
-						<select n class='dropbtn' name='Course' id='Course'>
+						<select class='dropbtn' name='Course' id='Course'>
 							{this.state.course.map((elem) => (
 								<option value={elem.course_name}>
 									{elem.course_name}
@@ -59,14 +74,14 @@ class Assign extends Component {
 					<br></br>
 					<div class='dropdown'>
 						<select n class='dropbtn' name='Language' id='Language'>
-							<option value='Language 3'>Hindi</option>
-							<option value='Language 4'>Bengali</option>
-							<option>Marathi</option>
-							<option value='Language 2'>Telugu</option>
-							<option value='Language 1'>Tamil</option>
-							<option value='Language 4'>Gujarati</option>
-							<option>Kannada</option>
-							<option>Malayalam</option>
+							<option value='Hindi'>Hindi</option>
+							<option value='Bengali'>Bengali</option>
+							<option value='Marathi'>Marathi</option>
+							<option value='Telugu'>Telugu</option>
+							<option value='Tamil'>Tamil</option>
+							<option value='Gujarati'>Gujarati</option>
+							<option value='Kannada'>Kannada</option>
+							<option value='Malayalam'>Malayalam</option>
 						</select>
 					</div>
 					<br />
@@ -75,6 +90,7 @@ class Assign extends Component {
 						<span
 							className='buttonText'
 							style={{ padding: ' 0 10px' }}
+							onClick={e=>this.handleSubmit()}
 						>
 							Submit
 						</span>
@@ -86,24 +102,19 @@ class Assign extends Component {
 							<tr>
 								<th>Names of Translator</th>
 							</tr>
-							<tr>
-								<td>
-									<button className='buttonAssign'>
-										<div className='buttonText'>
-											Translator
-										</div>
-									</button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<button className='buttonAssign'>
-										<div className='buttonText'>
-											Translator
-										</div>
-									</button>
-								</td>
-							</tr>
+							{this.state.users.map((elem) => {
+								return (
+									<tr>
+										<td>
+											<button className='buttonAssign'>
+												<div className='buttonText'>
+													{elem}{' '}
+												</div>
+											</button>
+										</td>
+									</tr>
+								)
+							})}
 						</table>
 					</div>
 					<div className='rightAssign'>
