@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             
             
             $table->string('email')->nullable();
-            $table->integer('phone')->nullable();
+            $table->bigInteger('phone')->nullable();
 
             $table->string('language')->nullable();
             
@@ -39,7 +39,7 @@ class CreateUsersTable extends Migration
             $table->string('password',500);
             
             $table->string('course_id')->references('course_id')->on('courses')->nullable();
-            $table->foreignId('type_id')->references('type_id')->on('user_types');
+            $table->foreignId('type_id')->references('type_id')->on('user_types')->nullable();
         });
     }
 
