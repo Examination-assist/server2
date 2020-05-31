@@ -9,6 +9,11 @@ class Assign extends Component {
 		const discipline = await axios.post(ENDPOINT + 'courses?get=discipline')
 		console.log(discipline)
 		this.setState({ discipline: discipline.data })
+
+		const course = await axios.post(
+			ENDPOINT + 'courses?get=course_name&discipline=' + 'BASIC SCIENCE'
+		)
+		this.setState({ course: course.data })
 	}
 
 	async execute(e) {
