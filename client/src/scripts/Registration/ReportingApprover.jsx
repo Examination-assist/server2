@@ -5,7 +5,7 @@ class Assign extends Component {
 		return (
 			<React.Fragment>
 				<div className='cardReport card'>
-					<h2> Reporting</h2>
+					<h2> Reporting Approver</h2>
 					<div class='dropdown'>
 						<select
 							n
@@ -91,8 +91,9 @@ class Assign extends Component {
 							</tr>
 
 							<tr>
-								<td>Approver 1</td>
-								<td>Discippline 1</td>
+								<td>Jayachandran 	Thangarasu
+	</td>
+								<td>BIOTECHNOLOGY</td>
 
 								<td>Course 1</td>
 								<td>Bengali</td>
@@ -111,8 +112,8 @@ class Assign extends Component {
 								</td>
 							</tr>
 							<tr>
-								<td>Approver 3</td>
-								<td>Discippline 1</td>
+								<td>Jeyali Laseetha</td>
+								<td>CHEMICAL ENGINEERING</td>
 
 								<td>Course 2</td>
 								<td>Gujurati</td>

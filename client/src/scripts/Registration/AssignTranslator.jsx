@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
+const translators = [
+	"KAYALA K V N RAJ	KUMAR",
+	"Ravi	Kumar",
+	"SAROJ	KUMAR",
+	"Madhura	Wagh",
+	"Arjun	Saini",
+]
 class Assign extends Component {
 	state = {}
 	render() {
 		return (
 			<React.Fragment>
-				<div className='card'>
+				<div className='card cardTranslator'>
 					<h2> Assign Translator</h2>
 					<div class='dropdown'>
 						<select
@@ -66,8 +73,6 @@ class Assign extends Component {
 							</option>
 						</select>
 					</div>
-					<br></br>
-					<br></br>
 					<div class='dropdown'>
 						<select n class='dropbtn' name='Language' id='Language'>
 							<option value='Language 3'>Hindi</option>
@@ -97,37 +102,31 @@ class Assign extends Component {
 							<tr>
 								<th>Names of Translator</th>
 							</tr>
-							<tr>
-								<td>
-									<button className='buttonAssign'>
-										<div className='buttonText'>
-											Translator
-										</div>
-									</button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<button className='buttonAssign'>
-										<div className='buttonText'>
-											Translator
-										</div>
-									</button>
-								</td>
-							</tr>
+								{translators.map((name) => {
+								return <tr>
+									<td>
+										<button className='buttonAssign'>
+											<div className='buttonText'>
+												{name}
+											</div>
+										</button>
+									</td>
+								</tr>
+							})}
+							
 						</table>
 					</div>
 					<div className='rightAssign'>
-						<h3>Chapters</h3>
+						<h3>Lectures</h3>
 						<table className='tableAssign'>
 							<tr>
-								<th>Names of Chapters</th>
+								<th>Names of Lectures</th>
 							</tr>
 							<tr>
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Chapter Name
+											Lecture Name 1
 										</div>
 									</button>
 								</td>
@@ -136,7 +135,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Chapter Name
+											Lecture Name 2
 										</div>
 									</button>
 								</td>
@@ -145,7 +144,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Chapter Name
+											Lecture Name 3
 										</div>
 									</button>
 								</td>
@@ -154,7 +153,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Chapter Name
+											Lecture Name 4
 										</div>
 									</button>
 								</td>
@@ -163,7 +162,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Chapter Name
+											Lecture Name 5
 										</div>
 									</button>
 								</td>
@@ -172,7 +171,7 @@ class Assign extends Component {
 								<td>
 									<button className='buttonAssign'>
 										<div className='buttonText'>
-											Chapter Name
+											Lecture Name 6
 										</div>
 									</button>
 								</td>

@@ -6,11 +6,7 @@ const names = [
 	'Dinesh	Kulkarni',
 	'Jayachandran 	Thangarasu',
 	'Jeyali Laseetha	',
-	'Jitendra M	Bakliwal',
-	'Madumathi	K',
-	'MAHESH SAKHARAM	NARKHEDE',
-	'Nitin Pandurang	Sonaje',
-	'Praveen Kumar	Padigela',
+	
 ]
 class Assign extends Component {
 	state = {}
@@ -90,15 +86,7 @@ class Assign extends Component {
 								</tr>
 							})}
 
-							<tr>
-								<td>
-									<button className='buttonAssign'>
-										<div className='buttonText'>
-											Reviewer
-										</div>
-									</button>
-								</td>
-							</tr>
+							
 						</table>
 					</div>
 					<div className='rightAssign'>
