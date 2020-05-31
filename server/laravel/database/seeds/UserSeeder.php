@@ -7,16 +7,18 @@ use Illuminate\Database\Seeder;
 use League\Csv\Reader;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class Course extends Model
 {
     protected $table = 'courses';
     protected $id = 'course_id';
-    
+
     public $incrementing = true;
     public $timestamps = true;
-    
-    protected $fillable =  ['stream','discipline','course_name'];
+
+    protected $fillable =  ['stream', 'discipline', 'course_name'];
     //
 }
 
@@ -27,12 +29,17 @@ class UserSeeder extends Seeder
     {
         $csv = Reader::createFromPath('database/seeds/Translators.csv', 'r');
         $csv->setHeaderOffset(0);
-
         foreach ($csv as $record) {
-            print_r(
-                Course::where(['stream' => $record['stream']])
-            );
-            break;
+            // try {
+            // DB
+            $d=[];
+            $course_id = DB::table('courses')->where([
+                // 'stream' => $record['stream'],
+                // 'discipline' => $record['discipline'],
+                'course_name' => $record['course_name']
+                ])->select('course_id')->get();
+            if(count($course_id)==2){echo($record['course_name']."\n");}
+            // }
         }
         // $user = new User([
         //     'first_name' => 'Aniket',
