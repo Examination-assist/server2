@@ -16,16 +16,30 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id('user_id');
             $table->timestamps();
+
+            $table->string('username')->nullable();
+            
             $table->string('first_name',50)->nullable();
             $table->string('last_name',50)->nullable();
             
-            $table->string('course_name')->nullable();
+            
+            $table->string('email')->nullable();
+            $table->bigInteger('phone')->nullable();
 
-            $table->string('email')->unique();
-            $table->string('username',25)->nullable()->unique();
+            $table->string('language')->nullable();
+            
+            $table->string('role')->nullable();
+            
+            $table->string('gender')->nullable();
+            
+            $table->string('title')->nullable();
+            
+            $table->string('qualification')->nullable();
+            
             $table->string('password',500);
             
-            $table->foreignId('type_id')->references('type_id')->on('user_types');
+            $table->string('course_id')->references('course_id')->on('courses')->nullable();
+            $table->foreignId('type_id')->references('type_id')->on('user_types')->nullable();
         });
     }
 

@@ -1,13 +1,47 @@
 import React, { Component } from 'react'
-const translators = [
-	"KAYALA K V N RAJ	KUMAR",
-	"Ravi	Kumar",
-	"SAROJ	KUMAR",
-	"Madhura	Wagh",
-	"Arjun	Saini",
-]
+
+import axios from 'axios'
+
+const ENDPOINT = require('./config')
+
 class Assign extends Component {
-	state = {}
+	state = { discipline: [], course: [], users: [] }
+	async componentDidMount() {
+		const discipline = await axios.post(ENDPOINT + 'courses?get=discipline')
+		console.log(discipline)
+		this.setState({ discipline: discipline.data })
+
+		const course = await axios.post(
+			ENDPOINT + 'courses?get=course_name&discipline=' + 'BASIC SCIENCE'
+		)
+		this.setState({ course: course.data })
+
+		this.handleSubmit()
+	}
+
+	async execute(e) {
+		const disp = e.target.value
+		const course = await axios.post(
+			ENDPOINT + 'courses?get=course_name&discipline=' + disp
+		)
+		this.setState({ course: course.data })
+	}
+
+	async handleSubmit() {
+		const elems = []
+		Array.prototype.slice
+			.call(document.querySelectorAll('select'))
+			.map((e) => {
+				elems.push(e.value)
+			})
+
+		const data = await axios.post(ENDPOINT + 'get_user_data', {
+			discipline: elems[0],
+			course_name: elems[1],
+			language: elems[2],
+		})
+		this.setState({ users: data.data })
+	}
 	render() {
 		return (
 			<React.Fragment>
@@ -15,74 +49,37 @@ class Assign extends Component {
 					<h2> Assign Translator</h2>
 					<div class='dropdown'>
 						<select
-							n
 							class='dropbtn'
 							name='Discipline'
 							id='Discipline'
+							onClick={(e) => this.execute(e)}
 						>
-							<option value='Discipline 1'>BASIC SCIENCE</option>
-							<option value='Discipline 2'>
-								CIVIL ENGINEERING
-							</option>
-							<option value='Discipline 3'>HUMANITIES</option>
-							<option value='Discipline 4'>HUMANITIES</option>
-							<option value='Discipline 1'>BIOTECHNOLOGY</option>
-							<option >COMPUTER SCIENCE AND ENGINEERING </option>
-							<option>ELECTRICAL ENGINEERING</option>
-							<option>ELECTRONICS AND COMMUNICATION ENGINEERING</option>
-							<option>METALLURGICAL ENGINEERING AND MATERIAL SCIENCE</option>
-							<option value='Discipline 4'>
-								CHEMICAL ENGINEERING
-							</option>{' '}
-							<option>MECHANICAL ENGINEERING</option>
-							<option>Multidisciplinary</option>
-						</select>
+							{this.state.discipline.map((elem) => (
+								<option value={elem.discipline}>
+									{elem.discipline}
+								</option>
+							))}
+						</select>{' '}
 					</div>
 					<div class='dropdown'>
-						<select n class='dropbtn' name='Course' id='Course'>
-							<option value='CourseName 1'>
-								QUANTUM MECHANICS I
-							</option>
-							<option value='CourseName 2'>
-								ENGINEERING GRAPHICS
-							</option>
-							<option value='CourseName 3'>
-								TECHNICAL ENGLISH FOR ENGINEERS
-							</option>
-							<option value='CourseName 4'>
-								INTRODUCTION TO PROFESSIONAL SCIENTIFIC
-								COMMUNICATION
-							</option>
-							<option value='CourseName 1'>
-								INTRODUCTION TO PROTEOMICS
-							</option>
-							<option value='CourseName 2'>
-								BIOINFORMATICS: ALGORITHMS AND APPLICATIONS
-							</option>
-							<option value='CourseName 3'>
-								COMPUTER AIDED DRUG DESIGN
-							</option>
-							<option value='CourseName 4'>
-								TISSUE ENGINEERING
-							</option>
-							<option value='CourseName 1'>
-								MASS TRANSFER OPERATIONS- II
-							</option>
-							<option value='CourseName 2'>
-								FLUID AND PARTICLE MECHANICS
-							</option>
+						<select class='dropbtn' name='Course' id='Course'>
+							{this.state.course.map((elem) => (
+								<option value={elem.course_name}>
+									{elem.course_name}
+								</option>
+							))}
 						</select>
 					</div>
 					<div class='dropdown'>
 						<select n class='dropbtn' name='Language' id='Language'>
-							<option value='Language 3'>Hindi</option>
-							<option value='Language 4'>Bengali</option>
-							<option>Marathi</option>
-							<option value='Language 2'>Telugu</option>
-							<option value='Language 1'>Tamil</option>
-							<option value='Language 4'>Gujarati</option>
-							<option>Kannada</option>
-							<option>Malayalam</option>
+							<option value='Hindi'>Hindi</option>
+							<option value='Bengali'>Bengali</option>
+							<option value='Marathi'>Marathi</option>
+							<option value='Telugu'>Telugu</option>
+							<option value='Tamil'>Tamil</option>
+							<option value='Gujarati'>Gujarati</option>
+							<option value='Kannada'>Kannada</option>
+							<option value='Malayalam'>Malayalam</option>
 						</select>
 					</div>
 					<br />
@@ -91,6 +88,7 @@ class Assign extends Component {
 						<span
 							className='buttonText'
 							style={{ padding: ' 0 10px' }}
+							onClick={e=>this.handleSubmit()}
 						>
 							Submit
 						</span>
@@ -102,18 +100,19 @@ class Assign extends Component {
 							<tr>
 								<th>Names of Translator</th>
 							</tr>
-								{translators.map((name) => {
-								return <tr>
-									<td>
-										<button className='buttonAssign'>
-											<div className='buttonText'>
-												{name}
-											</div>
-										</button>
-									</td>
-								</tr>
+							{this.state.users.map((elem) => {
+								return (
+									<tr>
+										<td>
+											<button className='buttonAssign'>
+												<div className='buttonText'>
+													{elem}{' '}
+												</div>
+											</button>
+										</td>
+									</tr>
+								)
 							})}
-							
 						</table>
 					</div>
 					<div className='rightAssign'>

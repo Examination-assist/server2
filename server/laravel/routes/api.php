@@ -3,6 +3,8 @@
 // use GuzzleHttp\Psr7\Request;
 
 use App\Audio;
+use App\Course;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +20,23 @@ use Illuminate\Support\Facades\Storage;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('/courses', function (Request $request) {
+    $send = $request->query('get');
+
+    if ($send == 'course_name') {
+        $data = Course::where('discipline', $request->query('discipline'))->select('course_name')->get();
+    } else
+        $data = (collect(Course::select($send)->get())->unique()->values());
+    return response()->json($data);
+});
+
+Route::post('/get_user_data', function(Request $request){
+    $course_id = Course::where(['discipline'=>$request->discipline,'course_name'=>$request->course_name])->get()->first()['course_id'];
+    $data=User::where(['course_id'=>$course_id,'language'=>$request->language])->get()->pluck('full_name')->take(50);
+    return $data;
+});
+
 
 Route::post('/register', 'UserController@register');
 Route::post('/login', 'UserController@login');
@@ -79,6 +98,6 @@ Route::post('/get_audio', function (Request $request) {
 
     // Log::info();
     if (count($data) > 0)
-        return (asset('storage/'.$data[0]->filename));
+        return (asset('storage/' . $data[0]->filename));
     else return response()->json([]);
 });

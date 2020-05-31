@@ -13,9 +13,11 @@
         "firebase/php-jwt": "^5.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "jeroenzwart/laravel-csv-seeder": "^1.2",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "league/csv": "^9.6",
         "phpoffice/phpword": "^0.17.0"
     },
     "require-dev": {
