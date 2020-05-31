@@ -1,6 +1,26 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+const ENDPOINT = require('./config')
 class Assign extends Component {
-	state = {}
+	state = { discipline: [], course: [] }
+	async componentDidMount() {
+		const discipline = await axios.post(ENDPOINT + 'courses?get=discipline')
+		console.log(discipline)
+		this.setState({ discipline: discipline.data })
+
+		const course = await axios.post(
+			ENDPOINT + 'courses?get=course_name&discipline=' + 'BASIC SCIENCE'
+		)
+		this.setState({ course: course.data })
+	}
+
+	async execute(e) {
+		const disp = e.target.value
+		const course = await axios.post(
+			ENDPOINT + 'courses?get=course_name&discipline=' + disp
+		)
+		this.setState({ course: course.data })
+	}
 	render() {
 		return (
 			<React.Fragment>
@@ -8,46 +28,29 @@ class Assign extends Component {
 					<h2> Reporting</h2>
 					<div class='dropdown'>
 						<select
-							n
 							class='dropbtn'
 							name='Discipline'
 							id='Discipline'
+							onClick={(e) => this.execute(e)}
 						>
-							<option value='Discipline 1'>BASIC SCIENCE</option>
-							<option value='Discipline 2'>
-								CIVIL ENGINEERING
-							</option>
-							<option value='Discipline 3'>HUMANITIES</option>
-							<option value='Discipline 4'>HUMANITIES</option>
-							<option value='Discipline 1'>BIOTECHNOLOGY</option>
-							<option >COMPUTER SCIENCE AND ENGINEERING </option>
-							<option>ELECTRICAL ENGINEERING</option>
-							<option>ELECTRONICS AND COMMUNICATION ENGINEERING</option>
-							<option>METALLURGICAL ENGINEERING AND MATERIAL SCIENCE</option>
-							<option value='Discipline 4'>
-								CHEMICAL ENGINEERING
-							</option>{' '}
-							<option>MECHANICAL ENGINEERING</option>
-							<option>Multidisciplinary</option>
+							{this.state.discipline.map((elem) => (
+								<option value={elem.discipline}>
+									{elem.discipline}
+								</option>
+							))}
 						</select>
 					</div>
 					<div class='dropdown'>
 						<select
-							n
 							class='dropbtn'
 							name='CourseName'
 							id='CourseName'
 						>
-							<option value='CourseName 1'>QUANTUM MECHANICS I</option>
-							<option value='CourseName 2'>ENGINEERING GRAPHICS</option>
-							<option value='CourseName 3'>TECHNICAL ENGLISH FOR ENGINEERS</option>
-							<option value='CourseName 4'>INTRODUCTION TO PROFESSIONAL SCIENTIFIC COMMUNICATION</option>
-							<option value='CourseName 1'>INTRODUCTION TO PROTEOMICS</option>
-							<option value='CourseName 2'>BIOINFORMATICS: ALGORITHMS AND APPLICATIONS</option>
-							<option value='CourseName 3'>COMPUTER AIDED DRUG DESIGN</option>
-							<option value='CourseName 4'>TISSUE ENGINEERING</option>
-							<option value='CourseName 1'>MASS TRANSFER OPERATIONS- II</option>
-							<option value='CourseName 2'>FLUID AND PARTICLE MECHANICS</option>
+							{this.state.course.map((elem) => (
+								<option value={elem.course_name}>
+									{elem.course_name}
+								</option>
+							))}
 						</select>
 					</div>
 					<div class='dropdown'>
