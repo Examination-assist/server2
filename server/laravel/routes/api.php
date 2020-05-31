@@ -23,8 +23,11 @@ use Illuminate\Support\Facades\Storage;
 Route::post('/courses', function (Request $request) {
     $send = $request->query('get');
 
-    $data=(collect(Course::select($send)->get())->unique()->values());
-
+    if ($send == 'course_name') {
+        $data = Course::where('discipline', $request->query('discipline'))->select('course_name')->get();
+        Log::info($data);
+    } else
+        $data = (collect(Course::select($send)->get())->unique()->values());
     return response()->json($data);
 });
 

@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+
+const ENDPOINT = require('./config')
 
 const names = [
 	'AVDHESH	TYAGI',
@@ -13,7 +16,20 @@ const names = [
 	'Praveen Kumar	Padigela',
 ]
 class Assign extends Component {
-	state = {}
+	state = { discipline: [], course: [] }
+	async componentDidMount() {
+		const discipline = await axios.post(ENDPOINT + 'courses?get=discipline')
+		console.log(discipline)
+		this.setState({ discipline: discipline.data })
+	}
+
+	async execute(e) {
+		const disp = e.target.value
+		const course = await axios.post(
+			ENDPOINT + 'courses?get=course_name&discipline=' + disp
+		)
+		this.setState({course:course.data})
+	}
 	render() {
 		return (
 			<React.Fragment>
@@ -25,27 +41,13 @@ class Assign extends Component {
 							class='dropbtn'
 							name='Discipline'
 							id='Discipline'
+							onClick={(e) => this.execute(e)}
 						>
-							<option value='Discipline 1'>BASIC SCIENCE</option>
-							<option value='Discipline 2'>
-								CIVIL ENGINEERING
-							</option>
-							<option value='Discipline 3'>HUMANITIES</option>
-							<option value='Discipline 4'>HUMANITIES</option>
-							<option value='Discipline 1'>BIOTECHNOLOGY</option>
-							<option>COMPUTER SCIENCE AND ENGINEERING </option>
-							<option>ELECTRICAL ENGINEERING</option>
-							<option>
-								ELECTRONICS AND COMMUNICATION ENGINEERING
-							</option>
-							<option>
-								METALLURGICAL ENGINEERING AND MATERIAL SCIENCE
-							</option>
-							<option value='Discipline 4'>
-								CHEMICAL ENGINEERING
-							</option>{' '}
-							<option>MECHANICAL ENGINEERING</option>
-							<option>Multidisciplinary</option>
+							{this.state.discipline.map((elem) => (
+								<option value={elem.discipline}>
+									{elem.discipline}
+								</option>
+							))}
 						</select>
 					</div>
 
@@ -79,15 +81,17 @@ class Assign extends Component {
 								<th>Names of Reveiwers</th>
 							</tr>
 							{names.map((name) => {
-								return <tr>
-									<td>
-										<button className='buttonAssign'>
-											<div className='buttonText'>
-												{name}
-											</div>
-										</button>
-									</td>
-								</tr>
+								return (
+									<tr>
+										<td>
+											<button className='buttonAssign'>
+												<div className='buttonText'>
+													{name}
+												</div>
+											</button>
+										</td>
+									</tr>
+								)
 							})}
 
 							<tr>
@@ -107,62 +111,19 @@ class Assign extends Component {
 							<tr>
 								<th>Names of Courses</th>
 							</tr>
-							<tr>
-								<td>
-									<button className='buttonAssign'>
-										<div className='buttonText'>
-											TISSUE ENGINEERING
-										</div>
-									</button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<button className='buttonAssign'>
-										<div className='buttonText'>
-											QUANTUM MECHANICS I
-										</div>
-									</button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<button className='buttonAssign'>
-										<div className='buttonText'>
-											ENGINEERING GRAPHICS
-										</div>
-									</button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<button className='buttonAssign'>
-										<div className='buttonText'>
-											INTRODUCTION TO PROFESSIONAL
-											SCIENTIFIC COMMUNICATION
-										</div>
-									</button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<button className='buttonAssign'>
-										<div className='buttonText'>
-											INTRODUCTION TO PROTEOMICS
-										</div>
-									</button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<button className='buttonAssign'>
-										<div className='buttonText'>
-											BIOINFORMATICS: ALGORITHMS AND
-											APPLICATIONS
-										</div>
-									</button>
-								</td>
-							</tr>
+							{this.state.course.map((elem) => {
+								return (
+									<tr>
+										<td>
+											<button className='buttonAssign'>
+												<div className='buttonText'>
+													{elem.course_name}
+												</div>
+											</button>
+										</td>
+									</tr>
+								)
+							})}
 						</table>
 					</div>
 				</div>
