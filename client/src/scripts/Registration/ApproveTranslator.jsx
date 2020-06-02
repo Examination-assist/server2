@@ -63,7 +63,7 @@ export default class ApproveTranslator extends Component {
 		return (
 			<React.Fragment>
 				<div className='card'>
-					<h2> Assign Translator</h2>
+					<h2> Approve Translator</h2>
 					<div class='dropdown'>
 						<select
 							class='dropbtn'
