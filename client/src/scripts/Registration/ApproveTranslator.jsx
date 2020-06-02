@@ -201,7 +201,7 @@ export default class ApproveTranslator extends Component {
 												</div>
 												<div
 													className='flex'
-													style={{
+													style={{ 
 														display: 'flex',
 														width: '100%',
 														justifyContent:
@@ -214,6 +214,7 @@ export default class ApproveTranslator extends Component {
 																elem.user_id
 															)
 														}
+														style={{margin:'0 20px'}}
 													>
 														Toggle
 													</button>
