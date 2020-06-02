@@ -5,7 +5,7 @@ import axios from 'axios'
 const ENDPOINT = require('./config')
 
 export default class ApproveTranslator extends Component {
-	state = { discipline: [], course: [], users: [] }
+	state = { discipline: [], course: [], users: [], filtering:'all' }
 	async componentDidMount() {
 		const discipline = await axios.post(ENDPOINT + 'courses?get=discipline')
 		console.log(discipline)
@@ -58,6 +58,18 @@ export default class ApproveTranslator extends Component {
 		})
 		console.log(users)
 		this.setState({ users: users })
+	}
+
+	setRadio(e) {
+		// console.log(e.target.value)
+		this.setState({ filtering: e.target.value })
+	}
+
+	decide(elem){
+		if(this.state.filtering==='all') return true
+		if(elem.approved==='Yes' && this.state.filtering!=='unapproved') return true;
+		if(elem.approved==='No' && this.state.filtering!=='approved') return true;
+		return false;
 	}
 	render() {
 		return (
@@ -112,7 +124,38 @@ export default class ApproveTranslator extends Component {
 							Submit
 						</span>
 					</button>
-					<br />{' '}
+					<br />
+					<div
+						style={{ textAlign: 'left' }}
+						onChange={(event) => this.setRadio(event)}
+					>
+						<input
+							style={{ width: '20px' }}
+							type='radio'
+							id='All'
+							name='approve-radio'
+							value='all'
+						/>
+						<label for='all'>All</label>
+						<br />
+						<input
+							style={{ width: '20px' }}
+							type='radio'
+							id='Approved'
+							name='approve-radio'
+							value='approved'
+						/>
+						<label for='approved'>Approved</label>
+						<br />
+						<input
+							style={{ width: '20px' }}
+							type='radio'
+							id='Unapproved'
+							name='approve-radio'
+							value='unapproved'
+						/>
+						<label for='unapproved'>Unapproved</label>
+					</div>
 					<div className=''>
 						<h3>Translator</h3>
 						<table className='tableAssign'>
@@ -120,40 +163,41 @@ export default class ApproveTranslator extends Component {
 								<th>Names of Translator</th>
 							</tr>
 							{this.state.users.map((elem) => {
-								return (
-									<tr>
-										<td>
-											<button
-												className='buttonAssign'
-												style={{ display: 'flex' }}
-											>
-												<div className='buttonText'>
-													{elem.name}{' '}
-												</div>
-												<div
-													className='flex'
-													style={{
-														display: 'flex',
-														width: '100%',
-														justifyContent:
-															'flex-end',
-													}}
+								if (this.decide(elem))
+									return (
+										<tr>
+											<td>
+												<button
+													className='buttonAssign'
+													style={{ display: 'flex' }}
 												>
-													<button
-														onClick={() =>
-															this.toggle(
-																elem.user_id
-															)
-														}
+													<div className='buttonText'>
+														{elem.name}{' '}
+													</div>
+													<div
+														className='flex'
+														style={{
+															display: 'flex',
+															width: '100%',
+															justifyContent:
+																'flex-end',
+														}}
 													>
-														Toggle
-													</button>
-													{elem.approved}
-												</div>
-											</button>
-										</td>
-									</tr>
-								)
+														<button
+															onClick={() =>
+																this.toggle(
+																	elem.user_id
+																)
+															}
+														>
+															Toggle
+														</button>
+														{elem.approved}
+													</div>
+												</button>
+											</td>
+										</tr>
+									)
 							})}
 						</table>
 					</div>
