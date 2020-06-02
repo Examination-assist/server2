@@ -33,8 +33,18 @@ Route::post('/courses', function (Request $request) {
 
 Route::post('/get_user_data', function(Request $request){
     $course_id = Course::where(['discipline'=>$request->discipline,'course_name'=>$request->course_name])->get()->first()['course_id'];
-    $data=User::where(['course_id'=>$course_id,'language'=>$request->language])->get()->pluck('full_name')->take(50);
+    $data=User::where(['course_id'=>$course_id,'language'=>$request->language])->select('first_name','last_name','user_id','username','approved')->get();
+    foreach ($data as $key => $value) {
+        $value['name']=$value['first_name']." ".$value['last_name'];
+    }
     return $data;
+});
+
+Route::post('/approve',function(Request $request){
+    $user=User::where('user_id',$request->user_id);
+    $updated = $user->get()[0]->approved=='Yes'?'No':'Yes';
+    $user->update(['approved'=>$updated]);
+    return $updated;
 });
 
 
