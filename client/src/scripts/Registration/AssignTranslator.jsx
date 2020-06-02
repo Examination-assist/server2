@@ -90,7 +90,7 @@ class Assign extends Component {
 						<span
 							className='buttonText'
 							style={{ padding: ' 0 10px' }}
-							onClick={e=>this.handleSubmit()}
+							onClick={(e) => this.handleSubmit()}
 						>
 							Submit
 						</span>
@@ -103,7 +103,7 @@ class Assign extends Component {
 								<th>Names of Translator</th>
 							</tr>
 							{this.state.users.map((elem) => {
-								return (
+								return elem.approved === 'Yes' ? (
 									<tr>
 										<td>
 											<button className='buttonAssign'>
@@ -113,6 +113,8 @@ class Assign extends Component {
 											</button>
 										</td>
 									</tr>
+								) : (
+									''
 								)
 							})}
 						</table>
