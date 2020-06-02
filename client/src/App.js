@@ -24,6 +24,7 @@ import ReportingCourse from './scripts/Registration/ReportingCourse'
 import ReportingTranslator from './scripts/Registration/ReportingTranslator'
 import ReportingApprover from './scripts/Registration/ReportingApprover'
 import ApproveTranslator from './scripts/Registration/ApproveTranslator'
+import CleaningEnglish from './scripts/Registration/CleaningEnglish'
 
 class App extends React.Component {
 	render() {
@@ -50,6 +51,8 @@ class App extends React.Component {
 							<br/><Link to='/ReportingApprover'>Reporting Approver</Link>
 							<br/><Link to='/ReportingTranslator'>Reporting Translator</Link>
 							<br/><Link to='/approveTranslator'>Approve Translator</Link>
+							<br/><Link to='/cleaningEnglish'>CleaningEnglish</Link>
+							
 						</Route>
 						<Route exact path='/'>
 							<Dashboard></Dashboard>
@@ -98,6 +101,16 @@ class App extends React.Component {
 							path='/ReportingTranslator'
 							component={ReportingTranslator}
 						></Route>
+	<Route
+							path='/cleaningEnglish'
+							component={CleaningEnglish}
+						></Route>
+
+
+
+
+
+
 					</Switch>
 				</Router>
 			</div>

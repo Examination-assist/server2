@@ -66,7 +66,7 @@ export default class ApproveTranslator extends Component {
 		// if(this.state.filtering==='approved') {
 		// };
 		elems.sort((a, b) => {
-			if(a.approved==='Yes' ) return -1;
+			if (a.approved === 'Yes') return -1
 		})
 		console.log(elems)
 	}
@@ -145,6 +145,7 @@ export default class ApproveTranslator extends Component {
 					</button>
 					<br />
 					<input
+					className="Search"
 						type='text'
 						id='search_input'
 						onKeyUp={(e) => this.search(e)}
@@ -182,9 +183,9 @@ export default class ApproveTranslator extends Component {
 						/>
 						<label for='unapproved'>Unapproved</label>
 					</div>
-					<div className=''>
+					<div className='ApproveTranslator'>
 						<h3>Translator</h3>
-						<table id='Table' className='tableAssign'>
+						<table id='Table' className='tableApprove	'>
 							<tr>
 								<th>Names of Translator</th>
 							</tr>
@@ -199,22 +200,16 @@ export default class ApproveTranslator extends Component {
 												<div className='buttonText'>
 													<span>{elem.name} </span>
 												</div>
-												<div
-													className='flex'
-													style={{ 
-														display: 'flex',
-														width: '100%',
-														justifyContent:
-															'flex-end',
-													}}
-												>
+												<div className='flexApproval'>
 													<button
 														onClick={() =>
 															this.toggle(
 																elem.user_id
 															)
 														}
-														style={{margin:'0 20px'}}
+														style={{
+															margin: '0 20px',
+														}}
 													>
 														Toggle
 													</button>

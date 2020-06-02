@@ -13,12 +13,7 @@ class FullReview extends Component {
 					<h1>Review Complete Document</h1>
 				</div>
 				<div className='outBox'>
-					{/* <div className='leftBox'>
-						<textarea className='box' disabled rows='40'></textarea>
-					</div>
-					<div className='rightBox'>
-						<FullReviewRecord />
-					</div> */}
+					
 					<FullReviewRecord location={this.props.location} change={false}/>
 				</div>
 				<div className='outerreview'>
