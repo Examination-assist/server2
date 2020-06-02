@@ -37,6 +37,8 @@ class CreateUsersTable extends Migration
             $table->string('qualification')->nullable();
             
             $table->string('password',500);
+
+            $table->string('approved')->default('NO');
             
             $table->string('course_id')->references('course_id')->on('courses')->nullable();
             $table->foreignId('type_id')->references('type_id')->on('user_types')->nullable();
