@@ -115,6 +115,10 @@ class CleaningEnglish extends Component {
 
 					</div>
 						</div>
+
+						<button className="buttonSubmit">
+							Submit
+						</button>
 					</div>
 				</div>
 			</React.Fragment>

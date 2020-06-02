@@ -367,3 +367,12 @@ width: 100% !important;}
 .Search{
 	margin-top: 20px;
 }
+.buttonSubmit{
+	padding : 10px 20px;
+	background-color: orangered;
+	color: white;
+	font-weight: 600;
+	font-size:1rem;
+	margin-top: 20px;
+	border: none;
+}
