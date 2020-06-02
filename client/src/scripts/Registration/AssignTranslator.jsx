@@ -108,7 +108,7 @@ class Assign extends Component {
 										<td>
 											<button className='buttonAssign'>
 												<div className='buttonText'>
-													{elem}{' '}
+													{elem.name}{' '}
 												</div>
 											</button>
 										</td>
