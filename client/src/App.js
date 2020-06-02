@@ -23,6 +23,7 @@ import AssignTranslator from './scripts/Registration/AssignTranslator'
 import ReportingCourse from './scripts/Registration/ReportingCourse'
 import ReportingTranslator from './scripts/Registration/ReportingTranslator'
 import ReportingApprover from './scripts/Registration/ReportingApprover'
+import ApproveTranslator from './scripts/Registration/ApproveTranslator'
 
 class App extends React.Component {
 	render() {
@@ -48,6 +49,7 @@ class App extends React.Component {
 							<br/><Link to='/reportingcourse'>Assign Course</Link>
 							<br/><Link to='/ReportingApprover'>Reporting Approver</Link>
 							<br/><Link to='/ReportingTranslator'>Reporting Translator</Link>
+							<br/><Link to='/approveTranslator'>Approve Translator</Link>
 						</Route>
 						<Route exact path='/'>
 							<Dashboard></Dashboard>
@@ -55,6 +57,7 @@ class App extends React.Component {
 						<Route exact path='/table'>
 							<Table></Table>
 						</Route>
+						<Route path='/approveTranslator' component={ApproveTranslator}></Route>
 						<Route path='/register' component={Register}></Route>
 						<Route path='/login' component={Login}></Route>
 						<Route
