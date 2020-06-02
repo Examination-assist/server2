@@ -5,7 +5,7 @@ import axios from 'axios'
 const ENDPOINT = require('./config')
 
 export default class ApproveTranslator extends Component {
-	state = { discipline: [], course: [], users: [], filtering:'all' }
+	state = { discipline: [], course: [], users: [], filtering: 'all' }
 	async componentDidMount() {
 		const discipline = await axios.post(ENDPOINT + 'courses?get=discipline')
 		console.log(discipline)
@@ -65,11 +65,33 @@ export default class ApproveTranslator extends Component {
 		this.setState({ filtering: e.target.value })
 	}
 
-	decide(elem){
-		if(this.state.filtering==='all') return true
-		if(elem.approved==='Yes' && this.state.filtering!=='unapproved') return true;
-		if(elem.approved==='No' && this.state.filtering!=='approved') return true;
-		return false;
+	decide(elem) {
+		if (this.state.filtering === 'all') return true
+		if (elem.approved === 'Yes' && this.state.filtering !== 'unapproved')
+			return true
+		if (elem.approved === 'No' && this.state.filtering !== 'approved')
+			return true
+		return false
+	}
+
+	search() {
+		var input, filter, table, tr, td, i, txtValue
+		input = document.getElementById('search_input')
+		filter = input.value.toUpperCase()
+		table = document.getElementById('Table')
+		tr = table.getElementsByTagName('tr')
+		console.log(input)
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName('span')[0]
+			if (td) {
+				txtValue = td.textContent || td.innerText
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = ''
+				} else {
+					tr[i].style.display = 'none'
+				}
+			}
+		}
 	}
 	render() {
 		return (
@@ -125,6 +147,13 @@ export default class ApproveTranslator extends Component {
 						</span>
 					</button>
 					<br />
+					<input
+						type='text'
+						id='search_input'
+						onKeyUp={(e) => this.search(e)}
+						placeholder='Search for names..'
+					></input>
+					<br />
 					<div
 						style={{ textAlign: 'left' }}
 						onChange={(event) => this.setRadio(event)}
@@ -158,7 +187,7 @@ export default class ApproveTranslator extends Component {
 					</div>
 					<div className=''>
 						<h3>Translator</h3>
-						<table className='tableAssign'>
+						<table id='Table' className='tableAssign'>
 							<tr>
 								<th>Names of Translator</th>
 							</tr>
@@ -172,7 +201,9 @@ export default class ApproveTranslator extends Component {
 													style={{ display: 'flex' }}
 												>
 													<div className='buttonText'>
-														{elem.name}{' '}
+														<span>
+															{elem.name}{' '}
+														</span>
 													</div>
 													<div
 														className='flex'
