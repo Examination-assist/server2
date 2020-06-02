@@ -61,17 +61,14 @@ export default class ApproveTranslator extends Component {
 	}
 
 	setRadio(e) {
-		// console.log(e.target.value)
 		this.setState({ filtering: e.target.value })
-	}
-
-	decide(elem) {
-		if (this.state.filtering === 'all') return true
-		if (elem.approved === 'Yes' && this.state.filtering !== 'unapproved')
-			return true
-		if (elem.approved === 'No' && this.state.filtering !== 'approved')
-			return true
-		return false
+		const elems = this.state.users
+		// if(this.state.filtering==='approved') {
+		// };
+		elems.sort((a, b) => {
+			if(a.approved==='Yes' ) return -1;
+		})
+		console.log(elems)
 	}
 
 	search() {
@@ -192,43 +189,40 @@ export default class ApproveTranslator extends Component {
 								<th>Names of Translator</th>
 							</tr>
 							{this.state.users.map((elem) => {
-								if (this.decide(elem))
-									return (
-										<tr>
-											<td>
-												<button
-													className='buttonAssign'
-													style={{ display: 'flex' }}
+								return (
+									<tr>
+										<td>
+											<button
+												className='buttonAssign'
+												style={{ display: 'flex' }}
+											>
+												<div className='buttonText'>
+													<span>{elem.name} </span>
+												</div>
+												<div
+													className='flex'
+													style={{
+														display: 'flex',
+														width: '100%',
+														justifyContent:
+															'flex-end',
+													}}
 												>
-													<div className='buttonText'>
-														<span>
-															{elem.name}{' '}
-														</span>
-													</div>
-													<div
-														className='flex'
-														style={{
-															display: 'flex',
-															width: '100%',
-															justifyContent:
-																'flex-end',
-														}}
+													<button
+														onClick={() =>
+															this.toggle(
+																elem.user_id
+															)
+														}
 													>
-														<button
-															onClick={() =>
-																this.toggle(
-																	elem.user_id
-																)
-															}
-														>
-															Toggle
-														</button>
-														{elem.approved}
-													</div>
-												</button>
-											</td>
-										</tr>
-									)
+														Toggle
+													</button>
+													{elem.approved}
+												</div>
+											</button>
+										</td>
+									</tr>
+								)
 							})}
 						</table>
 					</div>
