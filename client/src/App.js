@@ -24,7 +24,9 @@ import ReportingCourse from './scripts/Registration/ReportingCourse'
 import ReportingTranslator from './scripts/Registration/ReportingTranslator'
 import ReportingApprover from './scripts/Registration/ReportingApprover'
 import ApproveTranslator from './scripts/Registration/ApproveTranslator'
-import CleaningEnglish from './scripts/Registration/CleaningEnglish'
+import CleaningEnglish from './scripts/Cleaning/CleaningEnglish'
+import AssignCleaning from './scripts/Cleaning/AssignCleaning'
+import ApproveCleaning from './scripts/Cleaning/ApproveCleaning'
 
 class App extends React.Component {
 	render() {
@@ -33,6 +35,7 @@ class App extends React.Component {
 				<Router>
 					<Switch>
 						<Route path='/link'>
+						
 							<Link to='/table'>Table</Link>
 							<br/><Link to='/register'>Register</Link>
 							<br/><Link to='/login'>Login</Link>
@@ -52,6 +55,8 @@ class App extends React.Component {
 							<br/><Link to='/ReportingTranslator'>Reporting Translator</Link>
 							<br/><Link to='/approveTranslator'>Approve Translator</Link>
 							<br/><Link to='/cleaningEnglish'>CleaningEnglish</Link>
+							<br/><Link to='/assignCleaning'>AssignCleaning</Link>
+							<br/><Link to='/approveCleaning'>ApproveCleaning</Link>
 							
 						</Route>
 						<Route exact path='/'>
@@ -104,6 +109,15 @@ class App extends React.Component {
 	<Route
 							path='/cleaningEnglish'
 							component={CleaningEnglish}
+						></Route>
+
+<Route
+							path='/AssignCleaning'
+							component={AssignCleaning}
+						></Route>
+							<Route
+							path='/ApproveCleaning'
+							component={ApproveCleaning}
 						></Route>
 
 

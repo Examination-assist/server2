@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import axios from 'axios'
 
-const ENDPOINT = require('./config')
+const ENDPOINT = require('../Registration/config')
 
 class CleaningEnglish extends Component {
 	state = { discipline: [], course: [], users: [] }
@@ -107,18 +107,21 @@ class CleaningEnglish extends Component {
 							<h1>Review Complete Document</h1>
 						</div>
 						<div className='outBox'>
-						<div className='leftBox'>
-						<textarea className='box' disabled rows='40'></textarea>
-					</div>
-					<div className='rightBox'>
-					<textarea className='box'  rows='40'></textarea>
-
-					</div>
+							<div className='leftBox'>
+								<textarea
+									className='box'
+									value='Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, fugiat! Placeat deserunt totam earum numquam molestiae quibusdam suscipit, cumque explicabo dignissimos adipisci et deleniti, est reiciendis rerum esse fugiat in?
+'
+									disabled
+									rows='30'
+								></textarea>
+							</div>
+							<div className='rightBox'>
+								<textarea className='box' rows='30'></textarea>
+							</div>
 						</div>
 
-						<button className="buttonSubmit">
-							Submit
-						</button>
+						<button className='buttonSubmit'>Submit</button>
 					</div>
 				</div>
 			</React.Fragment>

@@ -376,3 +376,11 @@ width: 100% !important;}
 	margin-top: 20px;
 	border: none;
 }
+
+.outBox{
+	overflow-y: scroll;
+}
+.divTableOuter{
+	overflow-y: scroll;
+	height: 40vh;
+}
