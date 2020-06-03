@@ -38,10 +38,10 @@ export default class ApproveTranslator extends Component {
 		const data = await axios.post(ENDPOINT + 'get_user_data', {
 			discipline: elems[0],
 			course_name: elems[1],
-			language: elems[2],
+			language: 'all',
 		})
 		this.setState({ users: data.data })
-		// console.log(data)
+		console.log(data)
 	}
 
 	async toggle(user_id) {

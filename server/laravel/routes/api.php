@@ -31,19 +31,22 @@ Route::post('/courses', function (Request $request) {
     return response()->json($data);
 });
 
-Route::post('/get_user_data', function(Request $request){
-    $course_id = Course::where(['discipline'=>$request->discipline,'course_name'=>$request->course_name])->get()->first()['course_id'];
-    $data=User::where(['course_id'=>$course_id,'language'=>$request->language])->select('first_name','last_name','user_id','username','approved')->get();
+Route::post('/get_user_data', function (Request $request) {
+    $course_id = Course::where(['discipline' => $request->discipline, 'course_name' => $request->course_name])->get()->first()['course_id'];
+    if ($request->language)
+        $data = User::where(['course_id' => $course_id, 'language' => $request->language])->select('first_name', 'last_name', 'user_id', 'username', 'approved')->get();
+    $data = User::where(['course_id' => $course_id])->select('first_name', 'last_name', 'user_id', 'username', 'approved')->get();
+
     foreach ($data as $key => $value) {
-        $value['name']=$value['first_name']." ".$value['last_name'];
+        $value['name'] = $value['first_name'] . " " . $value['last_name'];
     }
     return $data;
 });
 
-Route::post('/approve',function(Request $request){
-    $user=User::where('user_id',$request->user_id);
-    $updated = $user->get()[0]->approved=='Yes'?'No':'Yes';
-    $user->update(['approved'=>$updated]);
+Route::post('/approve', function (Request $request) {
+    $user = User::where('user_id', $request->user_id);
+    $updated = $user->get()[0]->approved == 'Yes' ? 'No' : 'Yes';
+    $user->update(['approved' => $updated]);
     return $updated;
 });
 
