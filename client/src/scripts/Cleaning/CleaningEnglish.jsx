@@ -51,11 +51,25 @@ class CleaningEnglish extends Component {
 	async YTD(e) {
 		let lec_id = e.target.value
 		this.state.lectures.forEach((elem) => {
-			if (lec_id === elem.lectureID) {
+			// console.log(lec_id,elem)
+			if (lec_id === elem.lectureId) {
 				this.setState({ ytd: elem.YouTubeId })
 			}
 		})
-		this.forceUpdate()
+		// let parent = document.getElementById('if-outer')
+		// let child = document.getElementById('child')
+		// parent.removeChild(child)
+		// child = document.createElement('iframe')
+		// child.setAttribute('width', '540')
+		// child.setAttribute('height', '315')
+		// child.setAttribute(
+		// 	'src',
+		// 	`https://www.youtube.com/embed/${this.state.ytd}`
+		// )
+		// parent.appendChild(child)
+		// console.log(parent)
+		// console.log(this.state.ytd)
+		// this.forceUpdate()
 	}
 
 	// async handleSubmit() {
@@ -119,6 +133,7 @@ class CleaningEnglish extends Component {
 					<br></br>
 					<div id='if-outer'>
 						<iframe
+							id='child'
 							width='540'
 							height='315'
 							src={`https://www.youtube.com/embed/${this.state.ytd}`}

@@ -4,6 +4,7 @@
 
 use App\Audio;
 use App\Course;
+use App\links;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -50,6 +51,10 @@ Route::post('/approve', function (Request $request) {
     return $updated;
 });
 
+Route::post('/links', function (Request $request) {
+    $links = links::all();
+    return $links;
+});
 
 Route::post('/register', 'UserController@register');
 Route::post('/login', 'UserController@login');
