@@ -143,7 +143,7 @@ class CleaningEnglish extends Component {
 							</div>
 							<div className='outBox'>
 								<div className='leftBox'>
-								<iframe src="https://drive.google.com/file/d/12xJf909pn0H38-JjRyuRPMDcqLYDNy7J/preview" className="box docBox"></iframe>
+								<iframe src="https://drive.google.com/file/d/1t4XqenWhHPMJGbTqUrXZquAJVzHIF5tO/preview" className="box docBox"></iframe>
 								</div>
 								<div className='rightBox'>
 									<textarea
