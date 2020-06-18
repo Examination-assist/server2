@@ -11,7 +11,9 @@
  cd server
   cd laravel
   composer install 
-  php artisan storage: link
+  php artisan storage:link
+  php artisan migrate
+  php artisan db:seed
   php artisan serve
   ```
 ##### Step 3: setup DB
