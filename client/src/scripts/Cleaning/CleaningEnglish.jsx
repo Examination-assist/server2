@@ -91,6 +91,7 @@ class CleaningEnglish extends Component {
 		return (
 			<React.Fragment>
 				<div className='card cardTranslator'>
+					<div className="overflowCard">
 					<h2> English Cleaning</h2>
 					<div class='dropdown'>
 						<select
@@ -120,15 +121,7 @@ class CleaningEnglish extends Component {
 					</div>
 					<br />
 					<br />
-					<button className='button1 '>
-						<span
-							className='buttonText'
-							style={{ padding: ' 0 10px' }}
-							onClick={(e) => this.handleSubmit()}
-						>
-							Submit
-						</span>
-					</button>
+					
 					<br></br>
 					<br></br>
 					<div id='if-outer'>
@@ -149,19 +142,19 @@ class CleaningEnglish extends Component {
 								<textarea
 									className='box'
 									value='Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, fugiat! Placeat deserunt totam earum numquam molestiae quibusdam suscipit, cumque explicabo dignissimos adipisci et deleniti, est reiciendis rerum esse fugiat in?
-'
-									disabled
-									rows='30'
+'									disabled
+									rows='5'
 								></textarea>
 							</div>
 							<div className='rightBox'>
-								<textarea className='box' rows='30'></textarea>
+								<textarea className='box' rows='5'></textarea>
 							</div>
 						</div>
 
 						<button className='buttonSubmit'>Submit</button>
 					</div>
-				</div>
+					
+					</div>				</div>
 			</React.Fragment>
 		)
 	}
