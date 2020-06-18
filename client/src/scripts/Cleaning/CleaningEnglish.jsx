@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 
 import axios from 'axios'
-
-import GoogleDocsViewer from 'react-google-docs-viewer'
 const ENDPOINT = require('../Registration/config')
 
 class CleaningEnglish extends Component {
@@ -143,7 +141,9 @@ class CleaningEnglish extends Component {
 							</div>
 							<div className='outBox'>
 								<div className='leftBox'>
-								<iframe src="https://drive.google.com/file/d/1t4XqenWhHPMJGbTqUrXZquAJVzHIF5tO/preview" className="box docBox"></iframe>
+								<iframe 
+								title = "Transcript"
+								src="https://drive.google.com/file/d/102oxEXCaKcnHhAQVA9M01az86p-yvrDE/preview" className="box docBox"></iframe>
 								</div>
 								<div className='rightBox'>
 									<textarea
