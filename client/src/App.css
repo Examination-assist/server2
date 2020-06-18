@@ -390,6 +390,8 @@ width: 100% !important;}
 	font-size:1.5rem;
 	font-weight: 600;
 	width:85% !important;
+	height:70vh;
+
 }
 
 
@@ -400,4 +402,6 @@ width: 100% !important;}
 
 .cardTranslator{
 	width:90vw !important;
+}
+.docBox{
 }
