@@ -143,11 +143,11 @@ class CleaningEnglish extends Component {
 									className='box'
 									value='Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, fugiat! Placeat deserunt totam earum numquam molestiae quibusdam suscipit, cumque explicabo dignissimos adipisci et deleniti, est reiciendis rerum esse fugiat in?
 '									disabled
-									rows='5'
+									rows='20'
 								></textarea>
 							</div>
 							<div className='rightBox'>
-								<textarea className='box' rows='5'></textarea>
+								<textarea className='box' rows='20'></textarea>
 							</div>
 						</div>
 
