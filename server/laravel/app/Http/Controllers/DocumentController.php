@@ -30,7 +30,7 @@ class DocumentController extends Controller
 
         $doc->user_id = $user_id;
 
-        $doc->course_name = User::where('user_id', $user_id)->select('course_name')->first()['course_name'];
+        // $doc->course_name = User::where('user_id', $user_id)->select('course_name')->first()['course_name'];
 
         $doc->save();
 
