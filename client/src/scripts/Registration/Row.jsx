@@ -2,12 +2,21 @@ import React, { Component } from 'react'
 import Microphone from './Microphone'
 import autosize from 'autosize'
 import axios from 'axios'
-
+import SpeechRecognition from 'react-speech-recognition'
 const SERVER = require('./config')
 
-export default class Row extends Component {
-	state = {}
-	async componentDidMount() {
+class Row extends Component {
+	state={name:"",
+		interval: '',
+		lang: 'hi-IN',
+}
+
+	 componentDidMount() {
+		setInterval(() => {
+			this.setState({
+				transcript: document.getElementById('hidden').value,
+			})
+		}, 300)
 		autosize(document.querySelectorAll('textarea'))
 		this.setState(
 			{
@@ -24,7 +33,13 @@ export default class Row extends Component {
 			}
 		)
 	}
-
+	setActive(name) {
+		clearInterval(this.state.interval)
+		let interval = setInterval(() => {
+			this.setState({ [name]: this.state.transcript })
+		}, 300)
+		this.setState({ interval: interval })
+	}
 	execute() {
 		this.audio()
 	}
@@ -42,6 +57,24 @@ export default class Row extends Component {
 	}
 	colors = ['#BFBBFF', '#C4E3FF']
 	render() {
+		let {
+			transcript,
+			startListening,
+			stopListening,
+			browserSupportsSpeechRecognition,
+			resetTranscript,
+		} = this.props
+		this.props.recognition.lang = this.state.lang
+		if (!browserSupportsSpeechRecognition) {
+			return null
+		}
+		function stop() {
+			localStorage.setItem('data', transcript)
+			console.log(localStorage.getItem('data'))
+		}
+		function start() {
+			resetTranscript()
+		}
 		return (
 			<React.Fragment>
 				<div className='outer'>
@@ -66,6 +99,12 @@ export default class Row extends Component {
 						}
 						className={`OuterRow `}
 					>
+						<input
+						type='hidden'
+						name='hidden'
+						id='hidden'
+						value={transcript}
+					/>
 						<div
 							style={{
 								textAlign: 'center',
@@ -101,7 +140,7 @@ export default class Row extends Component {
 							}}
 							className='rightcont'
 						>
-							<textarea
+							{/* <textarea
 								disabled={
 									this.state.change === true ? false : true
 								}
@@ -148,7 +187,43 @@ export default class Row extends Component {
 										e.target.value
 									)
 								}
-							/>
+							/> */}
+							<div className='entry'>
+								<button
+									className='ButtonRecording'
+									onClick={() => {
+										start()
+										this.setActive('name')
+									}}
+								>
+									Start
+								</button>
+								<textarea
+									className='inputField'
+									required
+									rows='30'
+									id='outlined-basic'
+									label='Owner Name'
+									variant='outlined'
+									type='text'
+									value={this.state.name}
+									onChange={(e) => {
+										clearInterval(this.state.interval)
+										this.setState({
+											name: [e.target.value],
+										})
+									}}
+								/>
+								<button
+									className='ButtonRecording'
+									onClick={() => {
+										stop()
+										clearInterval(this.state.interval)
+									}}
+								>
+									Stop
+								</button>
+							</div>
 						</div>
 						<div
 							style={{
@@ -205,3 +280,10 @@ export default class Row extends Component {
 		)
 	}
 }
+
+const options = {
+	lang: 'hi-IN',
+	// autoStart: false
+}
+
+export default SpeechRecognition(options)(Row)

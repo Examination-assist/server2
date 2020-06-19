@@ -27,7 +27,7 @@ import ApproveTranslator from './scripts/Registration/ApproveTranslator'
 import CleaningEnglish from './scripts/Cleaning/CleaningEnglish'
 import AssignCleaning from './scripts/Cleaning/AssignCleaning'
 import ApproveCleaning from './scripts/Cleaning/ApproveCleaning'
-
+import Row from './scripts/Registration/Row'
 class App extends React.Component {
 	render() {
 		return (
@@ -119,7 +119,10 @@ class App extends React.Component {
 							path='/ApproveCleaning'
 							component={ApproveCleaning}
 						></Route>
-
+<Route
+							path='/Row'
+							component={Row}
+						></Route>
 
 
 

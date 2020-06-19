@@ -132,7 +132,7 @@ class CleaningEnglish extends Component {
 							></iframe>
 						</div>
 
-						<div className='outerClean outer'>
+						<div className='outer'>
 							<div
 								className='title'
 								style={{ textAlign: 'center' }}

@@ -6,8 +6,11 @@ body{
 	/* top: 50%; */
 	left: 50%;
 	transform: translateX(-50%);
-	/* padding: 0 10vw; */
+	padding: 0 10vw;
 	/* background-color: blanchedalmond; */
+}
+.outerClean{
+	padding:0 !important;
 }
 /* .leftcont:nth-child(even) {background-color: white;} */
 
