@@ -408,3 +408,10 @@ width: 100% !important;}
 }
 .docBox{
 }
+
+.inputFieldSpeech{
+	/* height:100% !important; */
+	width:80%;
+	font-weight: 700;
+	font-size: 1.3rem;
+}

@@ -198,17 +198,25 @@ class Row extends Component {
 										this.setState({ record: true })
 									}}
 								>
-									Start
+									{this.state.record === true ? (
+										<p>Restart</p>
+									) : (
+										<p>Start</p>
+									)}
+									{/* Start */}
 								</button>
 								{this.state.record === true ? (
-									<p>{transcript}</p>
+									<div className=''>
+										<strong>Preview:</strong>{' '}
+										<p>{transcript}</p>
+									</div>
 								) : (
 									''
 								)}
 								<textarea
-									className='inputField'
+									className='inputFieldSpeech'
 									required
-									rows='30'
+									rows='10	'
 									id='outlined-basic'
 									label='Owner Name'
 									variant='outlined'
@@ -229,11 +237,15 @@ class Row extends Component {
 											record: false,
 										})
 										resetTranscript()
-										// stop()
+										stop()
 										// clearInterval(this.state.interval)
 									}}
 								>
-									Stop
+									{this.state.record === true ? (
+										<p>Confirm</p>
+									) : (
+										<p>Stop</p>
+									)}
 								</button>
 							</div>
 						</div>
