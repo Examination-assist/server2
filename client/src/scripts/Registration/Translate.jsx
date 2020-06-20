@@ -116,7 +116,7 @@ class Translate extends Component {
 					<Redirect to='/'></Redirect>
 				) : (
 					<div>
-						{transcript}
+						{/* {transcript} */}
 						<p>
 						{(transcript) => {
 							localStorage.setItem('transcript', transcript)
