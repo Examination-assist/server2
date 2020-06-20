@@ -179,6 +179,7 @@ class Translate extends Component {
 										left={line.input}
 										right={line.output}
 										transcript={transcript}
+										resetTranscript={this.props.resetTranscript}
 									></Row>
 								</React.Fragment>
 							)

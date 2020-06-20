@@ -73,10 +73,6 @@ class Row extends Component {
 		// }
 		let { transcript, resetTranscript } = this.props
 		// let transcript = ''
-		function stop() {
-			// localStorage.setItem('data', transcript)
-			// console.log(localStorage.getItem('data'))
-		}
 		// function
 		return (
 			<React.Fragment>
@@ -228,7 +224,9 @@ class Row extends Component {
 											name: transcript,
 											record: false,
 										})
-										resetTranscript()
+										this.props.resetTranscript()
+
+										// resetTranscript()
 										// stop()
 										// clearInterval(this.state.interval)
 									}}
