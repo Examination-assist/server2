@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import React, { Component } from 'react'
 
 import Row from './Row'
+
+import SpeechRecognition from 'react-speech-recognition'
 
 import axios from 'axios'
 const qs = require('query-string')
 const SERVER = require('./config')
 
-
-export default class Translate extends Component {
+class Translate extends Component {
 	UPLOAD_ENDPOINT = SERVER
 
 	constructor() {
@@ -20,6 +21,11 @@ export default class Translate extends Component {
 			back: false,
 			change: true,
 			document_about: {},
+
+			transcript: '',
+			startListening: '',
+			browserSupportsSpeechRecognition: '',
+			resetTranscript: '',
 		}
 		this.updateRow = this.updateRow.bind(this)
 
@@ -53,20 +59,39 @@ export default class Translate extends Component {
 	}
 
 	async componentDidMount() {
+		let {
+			transcript,
+			startListening,
+			stopListening,
+			browserSupportsSpeechRecognition,
+			resetTranscript,
+		} = this.props
+		this.setState({
+			transcript: transcript,
+			startListening: startListening,
+			browserSupportsSpeechRecognition: browserSupportsSpeechRecognition,
+			resetTranscript: resetTranscript,
+		})
+		this.props.recognition.lang = this.state.lang
+		if (!browserSupportsSpeechRecognition) {
+			return null
+		}
+		function stop() {
+			localStorage.setItem('data', transcript)
+			console.log(localStorage.getItem('data'))
+		}
+		function start() {
+			console.log(transcript)
+			// resetTranscript()
+		}
 		// console.log('ok')
 		let doc_id = qs.parse(this.props.location.search)['doc_id']
 		this.setState({ doc_id: doc_id })
-		
-		
-		let result = await axios.post(
-			SERVER+'about_document',
-			{
-				doc_id: doc_id,
-			}
-		)
-		this.setState({ document_about: result.data })
-		
 
+		let result = await axios.post(SERVER + 'about_document', {
+			doc_id: doc_id,
+		})
+		this.setState({ document_about: result.data })
 
 		this.setState()
 		if (result.data.status === 'Under Review') {
@@ -75,7 +100,7 @@ export default class Translate extends Component {
 		this.setState({ result: JSON.stringify(result.data) })
 
 		let data = await axios.post(
-			SERVER+'view_lines',
+			SERVER + 'view_lines',
 			{ doc_id: this.state.doc_id },
 			{ headers: { user_id: localStorage.getItem('user_id') } }
 		)
@@ -91,13 +116,26 @@ export default class Translate extends Component {
 		// console.log(this.state.lines[count - 1].output)
 	}
 
+	setActive(name) {
+		clearInterval(this.state.interval)
+		let interval = setInterval(() => {
+			this.setState({ [name]: this.state.transcript })
+		}, 300)
+		this.setState({ interval: interval })
+	}
+
 	render() {
+		let {transcript}=this.props
+		function start() {
+			console.log(transcript)
+		}
 		return (
 			<React.Fragment>
 				{this.state.doc_id === undefined ? (
 					<Redirect to='/'></Redirect>
 				) : (
 					<div>
+						{transcript}
 						<p
 							style={{
 								width: '80%',
@@ -105,6 +143,15 @@ export default class Translate extends Component {
 								fontWeight: 700,
 							}}
 						>
+							<button
+								className='ButtonRecording'
+								onClick={() => {
+									start()
+									this.setActive('name')
+								}}
+							>
+								Start
+							</button>
 							{this.state.document_about === {} ? (
 								''
 							) : (
@@ -112,7 +159,7 @@ export default class Translate extends Component {
 									{`Course Discipline: ${this.state.document_about.name}`}
 									<br />
 									{`Course Name: ${this.state.document_about.book_name}`}
-									<br/>
+									<br />
 									{`Lecture Number: ${this.state.document_about.chapter_number}`}
 								</React.Fragment>
 							)}
@@ -209,3 +256,10 @@ export default class Translate extends Component {
 		)
 	}
 }
+
+const options = {
+	lang: 'hi-IN',
+	// autoStart: false
+}
+
+export default SpeechRecognition(options)(Translate)

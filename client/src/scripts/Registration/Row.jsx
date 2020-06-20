@@ -2,16 +2,13 @@ import React, { Component } from 'react'
 import Microphone from './Microphone'
 import autosize from 'autosize'
 import axios from 'axios'
-import SpeechRecognition from 'react-speech-recognition'
+// import SpeechRecognition from 'react-speech-recognition'
 const SERVER = require('./config')
 
 class Row extends Component {
-	state={name:"",
-		interval: '',
-		lang: 'hi-IN',
-}
+	state = { name: '', interval: '', lang: 'hi-IN' }
 
-	 componentDidMount() {
+	componentDidMount() {
 		setInterval(() => {
 			this.setState({
 				transcript: document.getElementById('hidden').value,
@@ -57,23 +54,24 @@ class Row extends Component {
 	}
 	colors = ['#BFBBFF', '#C4E3FF']
 	render() {
-		let {
-			transcript,
-			startListening,
-			stopListening,
-			browserSupportsSpeechRecognition,
-			resetTranscript,
-		} = this.props
-		this.props.recognition.lang = this.state.lang
-		if (!browserSupportsSpeechRecognition) {
-			return null
-		}
+		// let {
+		// 	transcript,
+		// 	startListening,
+		// 	stopListening,
+		// 	browserSupportsSpeechRecognition,
+		// 	resetTranscript,
+		// } = this.props
+		// this.props.recognition.lang = this.state.lang
+		// if (!browserSupportsSpeechRecognition) {
+		// 	return null
+		// }
+		let transcript = ''
 		function stop() {
-			localStorage.setItem('data', transcript)
-			console.log(localStorage.getItem('data'))
+			// localStorage.setItem('data', transcript)
+			// console.log(localStorage.getItem('data'))
 		}
 		function start() {
-			resetTranscript()
+			// resetTranscript()
 		}
 		return (
 			<React.Fragment>
@@ -100,11 +98,11 @@ class Row extends Component {
 						className={`OuterRow `}
 					>
 						<input
-						type='hidden'
-						name='hidden'
-						id='hidden'
-						value={transcript}
-					/>
+							type='hidden'
+							name='hidden'
+							id='hidden'
+							value={transcript}
+						/>
 						<div
 							style={{
 								textAlign: 'center',
@@ -286,4 +284,4 @@ const options = {
 	// autoStart: false
 }
 
-export default SpeechRecognition(options)(Row)
+export default Row
