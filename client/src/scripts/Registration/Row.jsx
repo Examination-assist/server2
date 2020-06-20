@@ -5,9 +5,11 @@ import axios from 'axios'
 // import SpeechRecognition from 'react-speech-recognition'
 const SERVER = require('./config')
 
+// import "../transliteration-input.bundle"
+const langs = require('../supportedLanguages.js')
+
 class Row extends Component {
 	state = { name: '', interval: '', lang: 'hi-IN', record: false }
-
 	componentDidMount() {
 		autosize(document.querySelectorAll('textarea'))
 		this.setState(
@@ -24,6 +26,8 @@ class Row extends Component {
 			async () => {
 				await this.audio()
 			}
+
+			
 		)
 
 		// setInterval(() => {
@@ -39,6 +43,7 @@ class Row extends Component {
 	// }
 	execute() {
 		this.audio()
+		
 	}
 
 	async audio() {
@@ -71,6 +76,7 @@ class Row extends Component {
 		// if (!browserSupportsSpeechRecognition) {
 		// 	return null
 		// }
+
 		let { transcript, resetTranscript } = this.props
 		// let transcript = ''
 		// function
@@ -210,6 +216,7 @@ class Row extends Component {
 									''
 								)}
 								<textarea
+								id="transliteration"
 									className='inputFieldSpeech'
 									required
 									rows='10	'
