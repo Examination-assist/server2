@@ -21,7 +21,7 @@ class Translate extends Component {
 			back: false,
 			change: true,
 			document_about: {},
-
+			lang: 'hi-IN',
 			transcript: '',
 			startListening: '',
 			browserSupportsSpeechRecognition: '',
@@ -59,31 +59,22 @@ class Translate extends Component {
 	}
 
 	async componentDidMount() {
-		let {
-			transcript,
-			startListening,
-			stopListening,
-			browserSupportsSpeechRecognition,
-			resetTranscript,
-		} = this.props
-		this.setState({
-			transcript: transcript,
-			startListening: startListening,
-			browserSupportsSpeechRecognition: browserSupportsSpeechRecognition,
-			resetTranscript: resetTranscript,
-		})
-		this.props.recognition.lang = this.state.lang
-		if (!browserSupportsSpeechRecognition) {
-			return null
-		}
-		function stop() {
-			localStorage.setItem('data', transcript)
-			console.log(localStorage.getItem('data'))
-		}
-		function start() {
-			console.log(transcript)
-			// resetTranscript()
-		}
+		// let {
+		// 	// transcript,
+		// 	startListening,
+		// 	stopListening,
+		// 	browserSupportsSpeechRecognition,
+		// 	// resetTranscript,
+		// } = this.props
+		// this.setState({
+		// 	// transcript: transcript,
+		// 	startListening: startListening,
+		// 	browserSupportsSpeechRecognition: browserSupportsSpeechRecognition,
+		// })
+		// if (!browserSupportsSpeechRecognition) {
+		// 	return null
+		// }
+
 		// console.log('ok')
 		let doc_id = qs.parse(this.props.location.search)['doc_id']
 		this.setState({ doc_id: doc_id })
@@ -116,19 +107,9 @@ class Translate extends Component {
 		// console.log(this.state.lines[count - 1].output)
 	}
 
-	setActive(name) {
-		clearInterval(this.state.interval)
-		let interval = setInterval(() => {
-			this.setState({ [name]: this.state.transcript })
-		}, 300)
-		this.setState({ interval: interval })
-	}
-
 	render() {
-		let {transcript}=this.props
-		function start() {
-			console.log(transcript)
-		}
+		let { transcript, resetTranscript } = this.props
+		this.props.recognition.lang = this.state.lang
 		return (
 			<React.Fragment>
 				{this.state.doc_id === undefined ? (
@@ -136,6 +117,12 @@ class Translate extends Component {
 				) : (
 					<div>
 						{transcript}
+						<p>
+						{(transcript) => {
+							localStorage.setItem('transcript', transcript)
+							console.log(transcript)
+						}}
+						</p>
 						<p
 							style={{
 								width: '80%',
@@ -143,15 +130,15 @@ class Translate extends Component {
 								fontWeight: 700,
 							}}
 						>
-							<button
+							{/* <button
 								className='ButtonRecording'
 								onClick={() => {
-									start()
-									this.setActive('name')
+									// start()
+									// setActive('name')
 								}}
 							>
 								Start
-							</button>
+							</button> */}
 							{this.state.document_about === {} ? (
 								''
 							) : (
@@ -191,6 +178,7 @@ class Translate extends Component {
 										count={line.count}
 										left={line.input}
 										right={line.output}
+										transcript={transcript}
 									></Row>
 								</React.Fragment>
 							)

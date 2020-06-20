@@ -6,14 +6,9 @@ import axios from 'axios'
 const SERVER = require('./config')
 
 class Row extends Component {
-	state = { name: '', interval: '', lang: 'hi-IN' }
+	state = { name: '', interval: '', lang: 'hi-IN', record: false }
 
 	componentDidMount() {
-		setInterval(() => {
-			this.setState({
-				transcript: document.getElementById('hidden').value,
-			})
-		}, 300)
 		autosize(document.querySelectorAll('textarea'))
 		this.setState(
 			{
@@ -24,19 +19,24 @@ class Row extends Component {
 				count: this.props.count,
 				change: this.props.change,
 				doc_id: this.props.doc_id,
+				transcript: this.props.transcript,
 			},
 			async () => {
 				await this.audio()
 			}
 		)
+
+		// setInterval(() => {
+		// 	console.log(this.state.trans())
+		// }, 300)
 	}
-	setActive(name) {
-		clearInterval(this.state.interval)
-		let interval = setInterval(() => {
-			this.setState({ [name]: this.state.transcript })
-		}, 300)
-		this.setState({ interval: interval })
-	}
+	// setActive(name) {
+	// 	clearInterval(this.state.interval)
+	// 	let interval = setInterval(() => {
+	// 		this.setState({ [name]: this.state.transcript })
+	// 	}, 300)
+	// 	this.setState({ interval: interval })
+	// }
 	execute() {
 		this.audio()
 	}
@@ -52,6 +52,12 @@ class Row extends Component {
 		}
 		// console.log(result)
 	}
+	// start(transcript) {
+
+	// }
+	stop() {
+		clearInterval(this.state.interval)
+	}
 	colors = ['#BFBBFF', '#C4E3FF']
 	render() {
 		// let {
@@ -65,14 +71,13 @@ class Row extends Component {
 		// if (!browserSupportsSpeechRecognition) {
 		// 	return null
 		// }
-		let transcript = ''
+		let { transcript, resetTranscript } = this.props
+		// let transcript = ''
 		function stop() {
 			// localStorage.setItem('data', transcript)
 			// console.log(localStorage.getItem('data'))
 		}
-		function start() {
-			// resetTranscript()
-		}
+		// function
 		return (
 			<React.Fragment>
 				<div className='outer'>
@@ -97,12 +102,12 @@ class Row extends Component {
 						}
 						className={`OuterRow `}
 					>
-						<input
+						{/* <input
 							type='hidden'
 							name='hidden'
 							id='hidden'
 							value={transcript}
-						/>
+						/> */}
 						<div
 							style={{
 								textAlign: 'center',
@@ -189,13 +194,17 @@ class Row extends Component {
 							<div className='entry'>
 								<button
 									className='ButtonRecording'
-									onClick={() => {
-										start()
-										this.setActive('name')
+									onClick={(e) => {
+										this.setState({ record: true })
 									}}
 								>
 									Start
 								</button>
+								{this.state.record === true ? (
+									<p>{transcript}</p>
+								) : (
+									''
+								)}
 								<textarea
 									className='inputField'
 									required
@@ -215,8 +224,13 @@ class Row extends Component {
 								<button
 									className='ButtonRecording'
 									onClick={() => {
-										stop()
-										clearInterval(this.state.interval)
+										this.setState({
+											name: transcript,
+											record: false,
+										})
+										resetTranscript()
+										// stop()
+										// clearInterval(this.state.interval)
 									}}
 								>
 									Stop
