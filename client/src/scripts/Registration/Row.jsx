@@ -336,7 +336,7 @@ class Row extends Component {
 
 const options = {
 	lang: 'hi-IN',
-	autoStart: false
+	// autoStart: false
 }
 
 export default Row

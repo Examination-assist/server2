@@ -10,6 +10,7 @@ class CleaningEnglish extends Component {
 		text: ' ',
 		users: [],
 		all_data: [],
+
 		lectures: [],
 		ytd: 'tgbNymZ7vqY',
 		lang: 'en-IN',
@@ -111,7 +112,22 @@ class CleaningEnglish extends Component {
 						</div>
 						<div class='dropdown'>
 							<select
-								onChange={(e) => this.YTD(e)}
+								onClick={(e) => {
+									this.setState({ record: true })
+								}}
+								onChange={
+									(e) => {
+								this.YTD(e)
+								this.setState({
+									doc: !this.state.doc
+
+								})
+								
+								
+								
+								}
+							}
+							
 								class='dropbtn'
 								name='lecture_name'
 								id='lecture_name'
@@ -141,8 +157,8 @@ class CleaningEnglish extends Component {
 										id='child'
 										width='540'
 										height='315'
-
-										frameborder="0" allowfullscreen
+										frameborder='0'
+										allowfullscreen
 										src={`https://www.youtube.com/embed/${this.state.ytd}`}
 									></iframe>
 								</div>
@@ -196,41 +212,47 @@ class CleaningEnglish extends Component {
 						</div>
 						<br />
 
-						
-							<div
-								className='title'
-								style={{ textAlign: 'center' }}
-							>
-								{/* <h1>Review Complete Document</h1> */}
-							</div>
-							<div className='outBox'>
-								<div className='leftBox'>
-									<strong>Transcript Document:</strong> <br />
+						<div className='title' style={{ textAlign: 'center' }}>
+							{/* <h1>Review Complete Document</h1> */}
+						</div>
+						<div className='outBox'>
+							<div className='leftBox'>
+								<strong>Transcript Document:</strong> <br />
+								{this.state.doc === true ? (
+									<div className=''>
+										<iframe
+											title='Transcript'
+											src='https://drive.google.com/file/d/102oxEXCaKcnHhAQVA9M01az86p-yvrDE/preview'
+											className='box docBox'
+										></iframe>
+									</div>
+								) : (
 									<iframe
 										title='Transcript'
-										src='https://drive.google.com/file/d/102oxEXCaKcnHhAQVA9M01az86p-yvrDE/preview'
+										src='https://drive.google.com/file/d/12M301QMl_x-Mb-S1NozhuNBlgo9lbAd5/preview'
 										className='box docBox'
 									></iframe>
-								</div>
-								<div className='rightBox'>
-									<strong>Cleaned Document:</strong> <br />
-									<textarea
-										// value={transcript}
-										value={this.state.text}
-										className='box'
-										// rows='20'
-										onChange={(e) => {
-											clearInterval(this.state.interval)
-											this.setState({
-												text: [e.target.value],
-											})
-										}}
-									></textarea>
-								</div>
+								)}
 							</div>
-
-							<button className='buttonSubmit'>Submit</button>
+							<div className='rightBox'>
+								<strong>Cleaned Document:</strong> <br />
+								<textarea
+									// value={transcript}
+									value={this.state.text}
+									className='box'
+									// rows='20'
+									onChange={(e) => {
+										clearInterval(this.state.interval)
+										this.setState({
+											text: [e.target.value],
+										})
+									}}
+								></textarea>
+							</div>
 						</div>
+
+						<button className='buttonSubmit'>Submit</button>
+					</div>
 				</div>
 			</React.Fragment>
 		)
