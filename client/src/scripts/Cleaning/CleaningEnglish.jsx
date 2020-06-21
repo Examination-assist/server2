@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SpeechRecognition from 'react-speech-recognition'
 
 import axios from 'axios'
 const ENDPOINT = require('../Registration/config')
@@ -10,6 +11,7 @@ class CleaningEnglish extends Component {
 		all_data: [],
 		lectures: [],
 		ytd: 'tgbNymZ7vqY',
+		lang: 'hi-IN',
 	}
 	async componentDidMount() {
 		const all_data = await axios.post(ENDPOINT + 'links')
@@ -87,6 +89,8 @@ class CleaningEnglish extends Component {
 	// 	this.setState({ users: data.data })
 	// }
 	render() {
+		let { transcript, resetTranscript } = this.props
+		this.props.recognition.lang = this.state.lang
 		return (
 			<React.Fragment>
 				<div className='card cardTranslator'>
@@ -141,12 +145,15 @@ class CleaningEnglish extends Component {
 							</div>
 							<div className='outBox'>
 								<div className='leftBox'>
-								<iframe 
-								title = "Transcript"
-								src="https://drive.google.com/file/d/102oxEXCaKcnHhAQVA9M01az86p-yvrDE/preview" className="box docBox"></iframe>
+									<iframe
+										title='Transcript'
+										src='https://drive.google.com/file/d/102oxEXCaKcnHhAQVA9M01az86p-yvrDE/preview'
+										className='box docBox'
+									></iframe>
 								</div>
 								<div className='rightBox'>
 									<textarea
+										value={transcript}
 										className='box'
 										// rows='20'
 									></textarea>
@@ -162,4 +169,8 @@ class CleaningEnglish extends Component {
 	}
 }
 
-export default CleaningEnglish
+const options = {
+	lang: 'hi-IN',
+}
+
+export default SpeechRecognition(options)(CleaningEnglish)
