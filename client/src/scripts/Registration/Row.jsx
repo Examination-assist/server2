@@ -4,13 +4,38 @@ import autosize from 'autosize'
 import axios from 'axios'
 // import SpeechRecognition from 'react-speech-recognition'
 const SERVER = require('./config')
-
-// import "../transliteration-input.bundle"
 const langs = require('../supportedLanguages.js')
+let googleTransliterate = require('google-input-tool')
 
 class Row extends Component {
-	state = { name: '', interval: '', lang: 'hi-IN', record: false }
+
+	state = {
+		name: '',
+		interval: '',
+		lang: 'hi-IN',
+		record: false,
+		transliterate: []
+	}
+	tran = (e) => {
+	var sourceText = e
+		// console.log(sourceText)
+		var inputLanguage = 'hi-t-i0-und'
+		var maxResult = 1
+		var request = new XMLHttpRequest()
+		// var tran
+		// import "../transliteration-input.bundle"
+		googleTransliterate(request, sourceText, inputLanguage, maxResult).then(
+			(response) => { 
+				console.log(sourceText)
+				console.log('Transliterated Text: ', response)
+				// tran = response
+				this.setState({transliterate : response[0][0]}) 	 	
+			}
+		)
+}
 	componentDidMount() {
+		
+
 		autosize(document.querySelectorAll('textarea'))
 		this.setState(
 			{
@@ -26,14 +51,13 @@ class Row extends Component {
 			async () => {
 				await this.audio()
 			}
-
-			
 		)
 
 		// setInterval(() => {
 		// 	console.log(this.state.trans())
 		// }, 300)
 	}
+
 	// setActive(name) {
 	// 	clearInterval(this.state.interval)
 	// 	let interval = setInterval(() => {
@@ -43,7 +67,6 @@ class Row extends Component {
 	// }
 	execute() {
 		this.audio()
-		
 	}
 
 	async audio() {
@@ -58,8 +81,7 @@ class Row extends Component {
 		// console.log(result)
 	}
 	// start(transcript) {
-
-	// }
+	try() {}
 	stop() {
 		clearInterval(this.state.interval)
 	}
@@ -83,6 +105,7 @@ class Row extends Component {
 		return (
 			<React.Fragment>
 				<div className='outer'>
+					{this.state.transliterate}
 					<div
 						style={
 							this.state.active
@@ -216,7 +239,7 @@ class Row extends Component {
 									''
 								)}
 								<textarea
-								id="transliteration"
+									id='h'
 									className='inputFieldSpeech'
 									required
 									rows='10	'
@@ -226,6 +249,7 @@ class Row extends Component {
 									type='text'
 									value={this.state.name}
 									onChange={(e) => {
+										this.tran(e.target.value)
 										clearInterval(this.state.interval)
 										this.setState({
 											name: [e.target.value],

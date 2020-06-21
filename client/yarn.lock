@@ -4986,6 +4986,11 @@ globby@^6.1.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
+google-input-tool@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/google-input-tool/-/google-input-tool-1.4.3.tgz#94ab693a0ec9c83e71581b80b36423fa60d656e6"
+  integrity sha512-VqjOiMxEvCrIi7lzGUEAVqfZ5CmIkTzNeC8nSWaMuh18OQZ67Tv/Q4g+kDH0Hm47RFphBD4/HRv/yER5+1CN2g==
+
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.2:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
