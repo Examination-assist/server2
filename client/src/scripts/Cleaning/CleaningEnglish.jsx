@@ -7,11 +7,12 @@ const ENDPOINT = require('../Registration/config')
 class CleaningEnglish extends Component {
 	state = {
 		courses: [],
+		text: ' ',
 		users: [],
 		all_data: [],
 		lectures: [],
 		ytd: 'tgbNymZ7vqY',
-		lang: 'hi-IN',
+		lang: 'en-IN',
 	}
 	async componentDidMount() {
 		const all_data = await axios.post(ENDPOINT + 'links')
@@ -89,7 +90,7 @@ class CleaningEnglish extends Component {
 	// 	this.setState({ users: data.data })
 	// }
 	render() {
-		let { transcript, resetTranscript } = this.props
+		let { transcript, content, resetTranscript } = this.props
 		this.props.recognition.lang = this.state.lang
 		return (
 			<React.Fragment>
@@ -127,24 +128,84 @@ class CleaningEnglish extends Component {
 
 						<br></br>
 						<br></br>
-						<div id='if-outer'>
-							<iframe
-								id='child'
-								width='540'
-								height='315'
-								src={`https://www.youtube.com/embed/${this.state.ytd}`}
-							></iframe>
-						</div>
+						<div className='row'>
+							<div id='if-outer' className='youtubeDiv'>
+								<div className='textYT'>
+									<strong>Video:</strong>{' '}
+									<p className='warning'>
+										Video for the lecture:
+									</p>
+								</div>
+								<div className='vid'>
+									<iframe
+										id='child'
+										width='540'
+										height='315'
 
-						<div className='outerClean outer'>
+										frameborder="0" allowfullscreen
+										src={`https://www.youtube.com/embed/${this.state.ytd}`}
+									></iframe>
+								</div>
+							</div>
+							<strong>Preview:</strong>{' '}
+							<p className='warning'>
+								Will begin when you start speech to text
+							</p>
+							<button
+								className='ButtonRecording'
+								onClick={(e) => {
+									this.setState({ record: true })
+								}}
+							>
+								{this.state.record === true ? (
+									<p>Restart</p>
+								) : (
+									<p>Start</p>
+								)}
+								{/* Start */}
+							</button>
+							<button
+								className='ButtonRecording'
+								onClick={() => {
+									this.setState({
+										text: transcript,
+										record: false,
+									})
+									this.props.resetTranscript()
+
+									// resetTranscript()
+									// stop()
+									// clearInterval(this.state.interval)
+								}}
+							>
+								{this.state.record === true ? (
+									<p>Confirm</p>
+								) : (
+									<p>Stop</p>
+								)}
+							</button>
+							<div className='preview'>
+								{this.state.record === true ? (
+									<div className=''>
+										<p>{transcript}</p>
+									</div>
+								) : (
+									''
+								)}
+							</div>
+						</div>
+						<br />
+
+						
 							<div
 								className='title'
 								style={{ textAlign: 'center' }}
 							>
-								<h1>Review Complete Document</h1>
+								{/* <h1>Review Complete Document</h1> */}
 							</div>
 							<div className='outBox'>
 								<div className='leftBox'>
+									<strong>Transcript Document:</strong> <br />
 									<iframe
 										title='Transcript'
 										src='https://drive.google.com/file/d/102oxEXCaKcnHhAQVA9M01az86p-yvrDE/preview'
@@ -152,17 +213,24 @@ class CleaningEnglish extends Component {
 									></iframe>
 								</div>
 								<div className='rightBox'>
+									<strong>Cleaned Document:</strong> <br />
 									<textarea
-										value={transcript}
+										// value={transcript}
+										value={this.state.text}
 										className='box'
 										// rows='20'
+										onChange={(e) => {
+											clearInterval(this.state.interval)
+											this.setState({
+												text: [e.target.value],
+											})
+										}}
 									></textarea>
 								</div>
 							</div>
 
 							<button className='buttonSubmit'>Submit</button>
 						</div>
-					</div>{' '}
 				</div>
 			</React.Fragment>
 		)
@@ -170,7 +238,8 @@ class CleaningEnglish extends Component {
 }
 
 const options = {
-	lang: 'hi-IN',
+	lang: 'en-IN',
+	// autoStart: false
 }
 
 export default SpeechRecognition(options)(CleaningEnglish)
