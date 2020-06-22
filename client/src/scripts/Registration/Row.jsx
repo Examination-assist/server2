@@ -8,16 +8,15 @@ const langs = require('../supportedLanguages.js')
 let googleTransliterate = require('google-input-tool')
 
 class Row extends Component {
-
 	state = {
 		name: '',
 		interval: '',
 		lang: 'hi-IN',
 		record: false,
-		transliterate: []
+		transliterate: [],
 	}
 	tran = (e) => {
-	var sourceText = e
+		var sourceText = e
 		// console.log(sourceText)
 		var inputLanguage = 'hi-t-i0-und'
 		var maxResult = 1
@@ -25,22 +24,21 @@ class Row extends Component {
 		// var tran
 		// import "../transliteration-input.bundle"
 		googleTransliterate(request, sourceText, inputLanguage, maxResult).then(
-			(response) => { 
+			(response) => {
 				console.log(sourceText)
 				console.log('Transliterated Text: ', response)
 				// tran = response
-				this.setState({transliterate : response[0][0]}) 	 	
+				this.setState({ transliterate: response[0][0] })
 			}
 		)
-}
+	}
 	componentDidMount() {
-		
-
 		autosize(document.querySelectorAll('textarea'))
 		this.setState(
 			{
 				left: this.props.left,
 				right: this.props.right,
+				name:this.props.right,
 				line_counter: this.props.line_counter,
 				paragraph: this.props.paragraph,
 				count: this.props.count,
@@ -254,6 +252,19 @@ class Row extends Component {
 										this.setState({
 											name: [e.target.value],
 										})
+									}}
+									onBlurCapture={(e) => {
+										console.log(e)
+										this.props.updateRow(
+											this.state.count,
+											e.target.value
+										)
+										this.setState({ active: false })
+									}}
+									onFocusCapture={(e) =>{
+										console.log('capture')
+
+										this.setState({ active: true })
 									}}
 								/>
 								<button

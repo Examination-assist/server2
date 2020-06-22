@@ -39,6 +39,7 @@ class Translate extends Component {
 
 	async save() {
 		let translate = []
+		console.log(this.state.lines)
 		this.state.lines.map((line) => {
 			let obj = {
 				translate_id: line.translate_id,
