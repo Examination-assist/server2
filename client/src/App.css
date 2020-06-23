@@ -435,6 +435,7 @@ height: 100% !important;
 }
 .preview{
 	float:left;
+	padding : 2px;
 	width:45%;
 	margin: 0 2vw 1vh 3vw;
 	text-align: left;

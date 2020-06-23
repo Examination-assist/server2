@@ -103,7 +103,7 @@ class Row extends Component {
 		return (
 			<React.Fragment>
 				<div className='outer'>
-					{this.state.transliterate}
+					{/* {this.state.transliterate} */}
 					<div
 						style={
 							this.state.active

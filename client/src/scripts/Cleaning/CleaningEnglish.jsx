@@ -250,6 +250,41 @@ class CleaningEnglish extends Component {
 								></textarea>
 							</div>
 						</div>
+						<div className='outBox'>
+							<div className='leftBox'>
+								<strong>Transcript Document:</strong> <br />
+								{this.state.doc === true ? (
+									<div className=''>
+										<iframe
+											title='Transcript'
+											src='https://drive.google.com/file/d/102oxEXCaKcnHhAQVA9M01az86p-yvrDE/preview'
+											className='box docBox'
+										></iframe>
+									</div>
+								) : (
+									<iframe
+										title='Transcript'
+										src='https://drive.google.com/file/d/12M301QMl_x-Mb-S1NozhuNBlgo9lbAd5/preview'
+										className='box docBox'
+									></iframe>
+								)}
+							</div>
+							<div className='rightBox'>
+								<strong>Cleaned Document:</strong> <br />
+								<textarea
+									// value={transcript}
+									value={this.state.text}
+									className='box'
+									// rows='20'
+									onChange={(e) => {
+										clearInterval(this.state.interval)
+										this.setState({
+											text: [e.target.value],
+										})
+									}}
+								></textarea>
+							</div>
+						</div>
 
 						<button className='buttonSubmit'>Submit</button>
 					</div>
