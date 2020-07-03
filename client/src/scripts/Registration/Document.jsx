@@ -19,10 +19,14 @@ const SERVER = require('./config')
 export default class Document extends Component {
 	constructor() {
 		super()
-		this.state = { success: false }
+		this.state = { success: false ,
+		
+	
+	}
 		this.handleChange = this.handleChange.bind(this)
 		this.handleDropDown = this.handleDropDown.bind(this)
 		this.post = this.post.bind(this)
+
 		this.state = {
 			doc_id: '',
 			name: '',
@@ -30,6 +34,9 @@ export default class Document extends Component {
 			name: '',
 			book_name: '',
 			chapter_number: '',
+			chosenDiscipline: "COMPUTER SCIENCE AND ENGINEERING",
+		chosenCourse: "DATABASE MANAGEMENT SYSTEM",
+		chosenLanguage: "Marathi",
 		}
 	}
 
@@ -68,26 +75,32 @@ export default class Document extends Component {
 				<form action=''>
 					<input
 						type='text'
-						placeholder='Course Discipline'
+						// placeholder='Course Discipline'
 						name='doc_name'
-						onChange={(e) => this.handleChange(e)}
-						required
+						disabled
+						value={this.state.chosenDiscipline}
+						// onChange={(e) => this.handleChange(e)}
+						
 					></input>
 					<input
 						type='text'
-						placeholder='Course Name'
+						// placeholder='Course Name'
+						value={this.state.chosenCourse}
 						name='book_name'
-						onChange={(e) => this.handleChange(e)}
-						required
+						// onChange={(e) => this.handleChange(e)}
+						disabled
+						
 					></input>
+					<input value = {this.state.chosenLanguage} disabled 
+					type="text"/>
 					<input
 						name='chapter_number'
 						type='number'
 						placeholder='Lecture Number'
-						onChange={(e) => this.handleChange(e)}
-						required
+						// onChange={(e) => this.handleChange(e)}
+						
 					></input>
-					<div className='dropDown'>
+					{/* <div className='dropDown'>
 						<h5>Choose language to translate into:</h5>
 						<Dropdown
 							className='dropdownhello'
@@ -96,7 +109,7 @@ export default class Document extends Component {
 							value={this.state.language}
 							placeholder='Select Language'
 						/>
-					</div>
+					</div> */}
 					<input type='button' Value='Submit'  onClick={this.post}/>
 				</form>
 				{this.state.doc_id !== '' ? (

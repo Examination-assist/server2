@@ -21,7 +21,7 @@ class Translate extends Component {
 			back: false,
 			change: true,
 			document_about: {},
-			lang: 'hi-IN',
+			lang: 'mr-IN',
 			transcript: '',
 			startListening: '',
 			browserSupportsSpeechRecognition: '',
@@ -248,7 +248,7 @@ class Translate extends Component {
 }
 
 const options = {
-	lang: 'hi-IN',
+	lang: 'mr-IN',
 	// autoStart: false
 }
 

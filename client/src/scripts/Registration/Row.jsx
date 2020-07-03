@@ -11,7 +11,7 @@ class Row extends Component {
 	state = {
 		name: '',
 		interval: '',
-		lang: 'hi-IN',
+		lang: 'mr-IN',
 		record: false,
 		transliterate: [],
 	}
@@ -346,7 +346,7 @@ class Row extends Component {
 }
 
 const options = {
-	lang: 'hi-IN',
+	lang: 'mr-IN',
 	// autoStart: false
 }
 
