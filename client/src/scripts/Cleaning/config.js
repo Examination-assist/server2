@@ -1,2 +1,2 @@
-const link = 'http://localhost:8000/api/'
+const link = 'https://translation.aicte-india.org/server/api/'
 module.exports= link
