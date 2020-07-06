@@ -12,7 +12,7 @@ export default class ReviewBoard extends Component {
 	async componentDidMount() {
 		const result = await axios.post(
 			this.UPLOAD_ENDPOINT + 'show_documents_review',
-			{},
+			{user_id: localStorage.getItem('user_id')},
 			{ headers: { user_id: localStorage.getItem('user_id') } }
 		)
 		for (let index = 0; index < result.data.docs.length; index++) {

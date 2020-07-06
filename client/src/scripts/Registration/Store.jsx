@@ -30,7 +30,8 @@ export default class Store extends Component {
 			this.UPLOAD_ENDPOINT + 'save_lines',
 			{
 				translate: this.state.translate,
-				doc_id:this.state.doc_id
+				doc_id:this.state.doc_id,
+				user_id: localStorage.getItem('user_id')
 			},
 			{
 				headers: { user_id: localStorage.getItem('user_id') },

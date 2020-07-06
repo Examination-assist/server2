@@ -44,6 +44,15 @@ Route::post('/get_user_data', function (Request $request) {
     return $data;
 });
 
+Route::post('/get_doc_fill_data', function (Request $request) {
+    $user_id = ($request->header('user_id'));
+    $user = (User::where('user_id', $user_id)->get()->first());
+    // Log::info(($user));
+
+    $course = Course::where('course_id', $user['course_id'])->get()->first();
+    return response()->json(['user' => $user,'course'=>$course]);
+});
+
 Route::post('/approve', function (Request $request) {
     $user = User::where('user_id', $request->user_id);
     $updated = $user->get()[0]->approved == 'Yes' ? 'No' : 'Yes';

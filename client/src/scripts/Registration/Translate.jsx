@@ -50,7 +50,7 @@ class Translate extends Component {
 		// console.log(translate)
 		const data = await axios.post(
 			'http://localhost:8000/api/update_lines',
-			{ translate: translate },
+			{ translate: translate, user_id: localStorage.getItem('user_id') },
 			{
 				headers: {
 					user_id: localStorage.getItem('user_id'),
@@ -93,7 +93,10 @@ class Translate extends Component {
 
 		let data = await axios.post(
 			SERVER + 'view_lines',
-			{ doc_id: this.state.doc_id },
+			{
+				doc_id: this.state.doc_id,
+				user_id: localStorage.getItem('user_id'),
+			},
 			{ headers: { user_id: localStorage.getItem('user_id') } }
 		)
 
@@ -119,10 +122,10 @@ class Translate extends Component {
 					<div>
 						{/* {transcript} */}
 						<p>
-						{(transcript) => {
-							localStorage.setItem('transcript', transcript)
-							console.log(transcript)
-						}}
+							{(transcript) => {
+								localStorage.setItem('transcript', transcript)
+								console.log(transcript)
+							}}
 						</p>
 						<p
 							style={{
@@ -180,7 +183,9 @@ class Translate extends Component {
 										left={line.input}
 										right={line.output}
 										transcript={transcript}
-										resetTranscript={this.props.resetTranscript}
+										resetTranscript={
+											this.props.resetTranscript
+										}
 									></Row>
 								</React.Fragment>
 							)

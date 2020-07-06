@@ -19,10 +19,7 @@ const SERVER = require('./config')
 export default class Document extends Component {
 	constructor() {
 		super()
-		this.state = { success: false ,
-		
-	
-	}
+		this.state = { success: false }
 		this.handleChange = this.handleChange.bind(this)
 		this.handleDropDown = this.handleDropDown.bind(this)
 		this.post = this.post.bind(this)
@@ -30,13 +27,14 @@ export default class Document extends Component {
 		this.state = {
 			doc_id: '',
 			name: '',
-			language: '',
+			language: 'Marathi',
 			name: '',
-			book_name: '',
+			doc_name: 'COMPUTER SCIENCE AND ENGINEERING',
+			book_name: 'DATABASE MANAGEMENT SYSTEM',
 			chapter_number: '',
-			chosenDiscipline: "COMPUTER SCIENCE AND ENGINEERING",
-		chosenCourse: "DATABASE MANAGEMENT SYSTEM",
-		chosenLanguage: "Marathi",
+			chosenDiscipline: 'COMPUTER SCIENCE AND ENGINEERING',
+			chosenCourse: 'DATABASE MANAGEMENT SYSTEM',
+			chosenLanguage: 'Marathi',
 		}
 	}
 
@@ -48,6 +46,19 @@ export default class Document extends Component {
 		// console.log(this.state.)
 	}
 	async componentDidMount() {
+		const result = await axios.post(
+			SERVER + 'get_doc_fill_data',
+			{user_id: localStorage.getItem('user_id')},
+			{
+				headers: { user_id: localStorage.getItem('user_id') },
+			}
+		)
+		console.log(result, 'ok')
+		this.setState({
+			language: result.data.user.language,
+			doc_name: result.data.course.discipline,
+			book_name: result.data.course.course_name
+		})
 		console.log('ladfhlads')
 	}
 
@@ -60,6 +71,7 @@ export default class Document extends Component {
 				chapter_number: this.state.chapter_number,
 				from_: 'English',
 				to_: this.state.language,
+				user_id: localStorage.getItem('user_id'),
 			},
 			{
 				headers: { user_id: localStorage.getItem('user_id') },
@@ -78,27 +90,23 @@ export default class Document extends Component {
 						// placeholder='Course Discipline'
 						name='doc_name'
 						disabled
-						value={this.state.chosenDiscipline}
+						value={this.state.doc_name}
 						// onChange={(e) => this.handleChange(e)}
-						
 					></input>
 					<input
 						type='text'
 						// placeholder='Course Name'
-						value={this.state.chosenCourse}
+						value={this.state.book_name}
 						name='book_name'
 						// onChange={(e) => this.handleChange(e)}
 						disabled
-						
 					></input>
-					<input value = {this.state.chosenLanguage} disabled 
-					type="text"/>
+					<input value={this.state.language} disabled type='text' />
 					<input
 						name='chapter_number'
 						type='number'
 						placeholder='Lecture Number'
 						// onChange={(e) => this.handleChange(e)}
-						
 					></input>
 					{/* <div className='dropDown'>
 						<h5>Choose language to translate into:</h5>
@@ -110,7 +118,7 @@ export default class Document extends Component {
 							placeholder='Select Language'
 						/>
 					</div> */}
-					<input type='button' Value='Submit'  onClick={this.post}/>
+					<input type='button' Value='Submit' onClick={this.post} />
 				</form>
 				{this.state.doc_id !== '' ? (
 					<Link to={`/store_document?doc_id=${this.state.doc_id}`}>

@@ -31,7 +31,7 @@ class Record extends Component {
 
 		let data = await axios.post(
 			SERVER+'view_lines',
-			{ doc_id: this.state.doc_id },
+			{ doc_id: this.state.doc_id,user_id: localStorage.getItem('user_id') },
 			{ headers: { user_id: localStorage.getItem('user_id') } }
 		)
 

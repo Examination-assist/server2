@@ -13,7 +13,7 @@ export default class UserDashboard extends Component {
 	async componentDidMount() {
 		const result = await axios.post(
 			this.UPLOAD_ENDPOINT + 'show_documents',
-			{},
+			{user_id: localStorage.getItem('user_id') },
 			{ headers: { user_id: localStorage.getItem('user_id') } }
 		)
 		for (let index = 0; index < result.data.docs.length; index++) {
