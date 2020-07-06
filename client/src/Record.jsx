@@ -16,7 +16,7 @@ class Record extends Component {
 		this.setState({ doc_id: doc_id })
 
 		let result = await axios.post(
-			'http://localhost:8000/api/about_document',
+			require('./config')+'about_document',
 			{
 				doc_id: doc_id,
 			}
@@ -30,7 +30,7 @@ class Record extends Component {
 		this.setState({ result: JSON.stringify(result.data) })
 
 		let data = await axios.post(
-			'http://localhost:8000/api/view_lines',
+			require('./config')+'view_lines',
 			{ doc_id: this.state.doc_id },
 			{ headers: { user_id: localStorage.getItem('user_id') } }
 		)

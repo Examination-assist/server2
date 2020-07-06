@@ -49,7 +49,7 @@ class Translate extends Component {
 		})
 		// console.log(translate)
 		const data = await axios.post(
-			'http://localhost:8000/api/update_lines',
+			require('./config')+'update_lines',
 			{ translate: translate, user_id: localStorage.getItem('user_id') },
 			{
 				headers: {
@@ -218,7 +218,7 @@ class Translate extends Component {
 											onClick={async () => {
 												this.save()
 												axios.post(
-													'http://localhost:8000/api/review_document',
+													require('./config')+'review_document',
 													{
 														doc_id: this.state
 															.doc_id,

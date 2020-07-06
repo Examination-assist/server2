@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 export default class ReviewBoard extends Component {
-	UPLOAD_ENDPOINT = 'http://localhost:8000/api/'
+	UPLOAD_ENDPOINT =  require('./config')
 	constructor() {
 		super()
 		this.state = { data: [] }

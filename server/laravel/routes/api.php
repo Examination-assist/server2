@@ -45,7 +45,7 @@ Route::post('/get_user_data', function (Request $request) {
 });
 
 Route::post('/get_doc_fill_data', function (Request $request) {
-    $user_id = ($request->header('user_id'));
+    $user_id = ($request->user_id);
     $user = (User::where('user_id', $user_id)->get()->first());
     // Log::info(($user));
 
